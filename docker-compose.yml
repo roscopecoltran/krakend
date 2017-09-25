@@ -1,0 +1,62 @@
+version: '2'
+
+services:
+
+  memcached:
+    image: memcached:1.5-alpine
+    container_name: memcached-v1.5
+    ports:
+    - "11211:11211"
+
+  postgres:
+    image: postgres:10-alpine
+    container_name: postgres-v10
+    ports:
+    - "5432:5432"
+
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    container_name: rabbitmq-v3
+    ports:
+    - "4369:4369"
+    - "5671:5671" 
+    - "5672:5672"
+    - "25672:25672"
+
+  ha:
+    image: haproxy:1.7.9-alpine
+    container_name: haproxy-v1.7
+    ports:
+    - "8083:80"
+    volumes:
+        - ./shared/conf.d/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+
+  elastic2x:
+    image: elasticsearch:2-alpine
+    container_name: elastic-v2
+    ports:
+    - "9200:9200"
+    - "9300:9300"
+
+  elastic5x:
+    image: elasticsearch:5-alpine
+    container_name: elastic-v5
+    ports:
+    - "9200:9200"
+    - "9300:9300"
+    #volumes:
+    #    - ./shared/conf.d/elastic:/usr/local/etc/elastic
+
+  etcd:
+    hostname: etcd
+    container_name: etcd-v3.2
+    image: quay.io/coreos/etcd:v3.2.6
+    ports:
+    - "4001:4001"
+    - "2380:2380"
+    - "2379:2379"
+    command: >
+      --listen-client-urls 'http://etcd:4001'
+      --advertise-client-urls 'http://etcd:4001'
+      --initial-cluster-state new
+
