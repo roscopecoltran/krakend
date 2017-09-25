@@ -1,9 +1,9 @@
 package gin
 
 import (
-	"time"
+	//"time"
 
-	"github.com/gin-gonic/contrib/cors"
+	// "github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	"github.com/roscopecoltran/krakend/logging"
@@ -33,7 +33,9 @@ func CORSMiddleware(logger logging.Logger) gin.HandlerFunc {
 /*
 CORS allow CORS.
 See: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+Depecrated: AllowedMethods, AbortOnError,AllowedHeaders
 */
+/*
 func CORS() gin.HandlerFunc {
 	return cors.New(cors.Config{
 		AbortOnError:    false,
@@ -45,3 +47,4 @@ func CORS() gin.HandlerFunc {
 		MaxAge:           12 * time.Hour,
 	})
 }
+*/

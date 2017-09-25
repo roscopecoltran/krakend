@@ -11,7 +11,7 @@ import (
 
 	"github.com/cep21/xdgbasedir"
 	"github.com/joho/godotenv"
-	// "github.com/k0kubun/pp"
+	"github.com/k0kubun/pp"
 
 	"github.com/roscopecoltran/krakend/encoding"
 	// "github.com/roscopecoltran/krakend/logging"
@@ -32,16 +32,37 @@ import (
     fmt.Println(user.Name) # -> suzuki
 
 */
+
 var Config = struct {
-	Env struct {
-		Files []string          `json:"files" yaml:"files"`
-		Keys  map[string]string `json:"kvs" yaml:"kvs"`
-	} `json:"envs" yaml:"envs" file:".env"`
-	Server    ServerConfig    `json:"server" yaml:"server" file:"providers"`
-	Datastore DatabaseConfig  `json:"datastores" yaml:"datastores" file:"providers"`
-	Gates     []GatewayConfig `json:"gateways" yaml:"gateways" file:"providers"`
-	Providers []Provider      `json:"providers" yaml:"providers" file:"providers"`
-	// Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks"`
+	Env       EnvConfig        `json:"env" yaml:"env" file:"environment" toml:"env"`
+	Server    ServerConfig     `json:"server" yaml:"server" file:"server" toml:"server"`
+	Store     StoreConfig      `json:"stores" yaml:"stores" file:"stores" toml:"stores"`
+	Gateways  []GatewayConfig  `json:"gateways" yaml:"gateways" file:"gateways" toml:"gateways"`
+	Providers []ProviderConfig `json:"providers" yaml:"providers" file:"providers" toml:"providers"`
+
+	// Flows     map[string][]Flow   `json:"flows" yaml:"flows" toml:"flows"`
+	Common struct {
+		Locales LocalesConfig `gorm:"column:locales" json:"locales" yaml:"locales" toml:"locales"`
+	} `json:"common" yaml:"common" file:"common" toml:"common"`
+
+	Backend struct {
+		Api      InstanceConfig        `gorm:"column:server" json:"server" yaml:"server" toml:"server"`
+		History  InstanceHistoryConfig `gorm:"column:history" json:"-" yaml:"-" toml:"-"`
+		Settings struct {
+			UI       WebInterfaceConfig   `gorm:"column:ui" json:"ui" yaml:"ui" toml:"ui"`
+			Outgoing OutgoingConfig       `gorm:"column:outgoing" json:"outgoing" yaml:"outgoing" toml:"outgoing"`
+			Search   SearchSettingsConfig `gorm:"column:search" json:"search" yaml:"search" toml:"search"`
+		} `json:"settings" yaml:"settings" toml:"settings"`
+	} `json:"backend" yaml:"backend" file:"backend" toml:"backend"`
+
+	Frontend struct {
+		Settings struct {
+			UI       WebInterfaceConfig   `gorm:"column:ui" json:"ui" yaml:"ui" toml:"ui"`
+			Outgoing OutgoingConfig       `gorm:"column:outgoing" json:"outgoing" yaml:"outgoing" toml:"outgoing"`
+			Search   SearchSettingsConfig `gorm:"column:search" json:"search" yaml:"search" toml:"search"`
+		} `json:"settings" yaml:"settings" toml:"settings"`
+	} `json:"frontend" yaml:"frontend" file:"frontend" toml:"frontend"`
+	// Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks" toml:"tasks"`
 }{}
 
 const (
@@ -103,12 +124,11 @@ func (s *ServiceConfig) Init() error {
 
 	if len(Config.Env.Files) == 0 {
 		Config.Env.Files = append(Config.Env.Files, ".env")
-		// pp.Println(Config.Env.Files)
 	}
 
 	Config.Env.Keys, _ = godotenv.Read(Config.Env.Files...)
-	// fmt.Println("config/config.go > Config.Env.Keys: ")
-	// pp.Println(Config.Env.Keys)
+	fmt.Println("config/config.go > Config.Env.Keys: ")
+	pp.Println(Config.Env.Keys)
 
 	s.uriParser = NewURIParser()
 

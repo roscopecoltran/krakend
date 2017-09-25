@@ -1,8 +1,9 @@
-package main
+package plugins
 
+/*
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/qiujinwu/gin-utils/sessions"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/sessions"
 	"gopkg.in/redis.v5"
 )
 
@@ -52,3 +53,4 @@ func main() {
 	})
 	r.Run(":4000") // listen and serve on 0.0.0.0:8080
 }
+*/

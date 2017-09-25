@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing/quick"
 
-	"securecookie"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/securecookie"
 )
 
 var hashKey = []byte("very-secret12345")

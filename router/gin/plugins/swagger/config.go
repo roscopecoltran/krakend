@@ -1,10 +1,10 @@
 package swagger
 
 import (
-	"github.com/qiujinwu/gin-utils/utils"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/utils"
 	"net/http"
-	"strings"
 	"reflect"
+	"strings"
 )
 
 type SwaggerMethodParameter struct {
@@ -42,7 +42,7 @@ func SliceContain(s []string, e string) bool {
 }
 
 func parseParameter(param *SwaggerMethodEntry, data interface{}, ptype string) {
-	if reflect.TypeOf(data).Kind() != reflect.Ptr{
+	if reflect.TypeOf(data).Kind() != reflect.Ptr {
 		panic("data must be pointer")
 	}
 
@@ -94,13 +94,13 @@ func NewSwaggerMethodEntry(param *StructParam) *SwaggerMethodEntry {
 		panic("response must exist")
 		return nil
 	}
-	if reflect.TypeOf(param.ResponseData).Kind() != reflect.Ptr{
+	if reflect.TypeOf(param.ResponseData).Kind() != reflect.Ptr {
 		panic("data must be pointer")
 	}
 	obj := utils.JsonSchemaObj{}
 	obj.ParseObject(param.ResponseData)
 	parameter := &utils.JsonSchemaObj{
-		Schema:&obj,
+		Schema: &obj,
 	}
 	resp := make(map[int]*utils.JsonSchemaObj)
 	resp[http.StatusOK] = parameter
@@ -112,7 +112,7 @@ func NewSwaggerMethodEntry(param *StructParam) *SwaggerMethodEntry {
 	}
 
 	if param.JsonData != nil {
-		if reflect.TypeOf(param.JsonData).Kind() != reflect.Ptr{
+		if reflect.TypeOf(param.JsonData).Kind() != reflect.Ptr {
 			panic("data must be pointer")
 		}
 		obj := utils.JsonSchemaObj{}

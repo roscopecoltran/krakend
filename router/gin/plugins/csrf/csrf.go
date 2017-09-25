@@ -3,13 +3,13 @@ package csrf
 import (
 	"crypto/sha1"
 	"encoding/base64"
-	"io"
 	"github.com/dchest/uniuri"
-	"github.com/qiujinwu/gin-utils/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/sessions"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/utils"
+	"io"
 	"log"
 	"net/http"
-	"github.com/qiujinwu/gin-utils/utils"
 )
 
 const (
@@ -19,16 +19,16 @@ const (
 )
 
 var (
-	DefaultCookieKey  = "_crsf"
-	default_store sessions.Store = nil
- 	_config *utils.Config = nil
+	DefaultCookieKey                = "_crsf"
+	default_store    sessions.Store = nil
+	_config          *utils.Config  = nil
 )
 
 var defaultIgnoreMethods = []string{"GET", "HEAD", "OPTIONS"}
 
 var defaultErrorFunc = func(c *gin.Context) {
 	c.JSON(http.StatusForbidden, gin.H{
-		"code": http.StatusForbidden,
+		"code":    http.StatusForbidden,
 		"message": "CSRF token mismatch",
 	})
 }
@@ -55,7 +55,7 @@ type Options struct {
 	IgnoreMethods []string
 	ErrorFunc     gin.HandlerFunc
 	TokenGetter   func(c *gin.Context) string
-	Blacklist bool
+	Blacklist     bool
 }
 
 func tokenize(secret, salt string) string {
@@ -79,7 +79,7 @@ func inArray(arr []string, value string) bool {
 	return inarr
 }
 
-func AddUrl(url string,regex string) {
+func AddUrl(url string, regex string) {
 	if _config == nil {
 		log.Fatal("add url before new filter")
 		return
@@ -93,9 +93,9 @@ func Middleware(options Options) gin.HandlerFunc {
 	errorFunc := options.ErrorFunc
 	tokenGetter := options.TokenGetter
 
-	if default_store == nil{
+	if default_store == nil {
 		default_store = sessions.NewCookieStore([]byte(options.Secret))
-	}else{
+	} else {
 		log.Fatal("bind filter more than once")
 		return nil
 	}
@@ -121,7 +121,7 @@ func Middleware(options Options) gin.HandlerFunc {
 			return
 		}
 
-		session,_ := default_store.Get(c,DefaultCookieKey)
+		session, _ := default_store.Get(c, DefaultCookieKey)
 		c.Set(csrfSecret, options.Secret)
 
 		if inArray(ignoreMethods, c.Request.Method) {
@@ -152,7 +152,7 @@ func Middleware(options Options) gin.HandlerFunc {
 
 // GetToken returns a CSRF token.
 func GetToken(c *gin.Context) string {
-	session,_ := default_store.Get(c,DefaultCookieKey)
+	session, _ := default_store.Get(c, DefaultCookieKey)
 	secret := c.MustGet(csrfSecret).(string)
 
 	if t, ok := c.Get(csrfToken); ok {

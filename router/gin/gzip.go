@@ -1,7 +1,7 @@
 package gin
 
 import (
-	"github.com/gin-gonic/contrib/gzip"
+	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 )
 

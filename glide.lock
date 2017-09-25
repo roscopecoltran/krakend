@@ -1,5 +1,5 @@
-hash: 006937b0ef8bfddb0ba33d4cc9b8792c8ea23261c33c0102e31ce2d0d48e4427
-updated: 2017-09-25T13:19:57.340175362+02:00
+hash: b04faa0d3e461f81855331c0dffa6fc60050fdc1712f3a5d3a694413feef8099
+updated: 2017-09-25T16:03:50.424582209+02:00
 imports:
 - name: github.com/7ing/go-flow
   version: d71f89c3fbef4896a3a49fec536494a81f4c61d2
@@ -51,6 +51,8 @@ imports:
   version: aded00b617d46a43f8da045e914574bf471d2473
   subpackages:
   - lib/go/thrift
+- name: github.com/apaxa-go/eval
+  version: 777d9813105ac8851cf569cf9310a0a22b66c901
 - name: github.com/artpar/api2go-adapter
   version: 4515b68a9d1972b2246048facb0dfdd8878dda36
   subpackages:
@@ -278,6 +280,8 @@ imports:
   - pkg/util/tracing
 - name: github.com/coddingtonbear/go-jsonselect
   version: 7a793de4cf71f6ca323a92e6ac6c14477d812dd4
+- name: github.com/codegangsta/cli
+  version: 7fb9c86b14e6a702a4157ccb5a863f07d844a207
 - name: github.com/coreos/etcd
   version: bb66589f8cf18960c7f3d56b1b83753caeed9c7a
   subpackages:
@@ -358,6 +362,8 @@ imports:
   - spew
 - name: github.com/dbohdan/remarshal
   version: 61646eb27eb66391e91273345005a31ebed7bfb2
+- name: github.com/dchest/uniuri
+  version: 8902c56451e9b58ff940bbe5fec35d5f9c04584a
 - name: github.com/deiu/rdf2go
   version: ba3ab40de4961dadc8e5fdcf57ddec818a6d9d0e
 - name: github.com/dennwc/graphql
@@ -494,6 +500,8 @@ imports:
   subpackages:
   - persistence
   - utils
+- name: github.com/gin-contrib/cors
+  version: 51f0ef8b07e973afb8b6c192bf90d5c3e575c01a
 - name: github.com/gin-contrib/gzip
   version: 9b22cb967bcc8481c9fe3ab99f70d715f88980f0
 - name: github.com/gin-contrib/location
@@ -520,8 +528,6 @@ imports:
   version: 14f66d54cdb96059bafca98665bcc6d9df4951f2
   subpackages:
   - cache
-  - cors
-  - gzip
   - jwt
   - secure
   - sessions
@@ -600,6 +606,7 @@ imports:
 - name: github.com/go-playground/locales
   version: b860c92274dfb72f517b8b4c11c6d9f2f8cc9d91
   subpackages:
+  - currency
   - en
 - name: github.com/go-playground/universal-translator
   version: b32fa301c9fe55953584134cb6853a13c87ec0a1
@@ -693,6 +700,8 @@ imports:
   version: 1f550f6f2f69009f6ae57347c188e0a67cd4e500
 - name: github.com/guregu/null
   version: 41961cea0328defc5f95c1c473f89ebf0d1813f6
+- name: github.com/hashicorp/go-multierror
+  version: 83588e72410abfbe4df460eeb6f30841ae47d4c4
 - name: github.com/hashicorp/go-plugin
   version: 3e6d191694b5a3a2b99755f31b47fa209e4bcd09
 - name: github.com/hashicorp/go-version
@@ -921,6 +930,8 @@ imports:
   version: 68fecaef60268522d2ac3f0123cec9d3bcab7b6e
 - name: github.com/mitchellh/mapstructure
   version: cc8532a8e9a55ea36402aa21efdf403a60d34096
+- name: github.com/mmbros/treepath
+  version: 53acc49e4a3f8a495b5fb26fb961454766f31feb
 - name: github.com/mmcdole/gofeed
   version: 6ccd8620e1110c07992bb4d80c11e9bb57670fed
   subpackages:
@@ -949,6 +960,22 @@ imports:
   subpackages:
   - graph
   - wiki
+- name: github.com/nikolay-turpitko/structor
+  version: 6876bd78f3ab7c296deba8f495d659f6a37d7799
+  subpackages:
+  - el
+  - el/go-el
+  - funcs/bytes
+  - funcs/crypt
+  - funcs/encoding
+  - funcs/goquery
+  - funcs/math
+  - funcs/os
+  - funcs/regexp
+  - funcs/strings
+  - funcs/use
+  - funcs/xpath
+  - scanner
 - name: github.com/nsqio/go-nsq
   version: a53d495e81424aaf7a7665a9d32a97715c40e953
 - name: github.com/NYTimes/openapi2proto
@@ -986,6 +1013,8 @@ imports:
   version: 2ae17bc4c860c83513ee50feb9746f3e50d7515d
 - name: github.com/orcaman/writerseeker
   version: bec89464ed15e03d2ecd9145eb0669eabbc42d49
+- name: github.com/patrickmn/go-cache
+  version: a3647f8e31d79543b2d0f0ae2fe5c379d72cedc0
 - name: github.com/paulvollmer/yaml2json
   version: 9d0f12607453282bbdd690bd6bd0a4e7f9bdbf8a
   subpackages:
@@ -1109,6 +1138,8 @@ imports:
   version: cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c
 - name: github.com/rcrowley/go-metrics
   version: dee209f2455f101a5e4e593dea94872d2c62d85d
+- name: github.com/Rican7/mediatype
+  version: 0a7f972c433b7683c51f2c0e304d086defd2a479
 - name: github.com/robertkrimen/otto
   version: d1b4d8ef0e0e4b088c8328c95ca63ab9ebd8fc9d
   subpackages:
@@ -1297,6 +1328,8 @@ imports:
   - leveldb/iterator
   - leveldb/opt
   - leveldb/util
+- name: github.com/tebeka/selenium
+  version: a7e71178aa40d9b298d464b912c4e831b2be4455
 - name: github.com/tensorflow/tensorflow
   version: e0501bc4d0293f4c2a42d56cf0caff1b9a8b4e4c
   subpackages:
@@ -1431,6 +1464,8 @@ imports:
   - acme
 - name: github.com/xh3b4sd/taskq
   version: 894487ad7dab38bc81ac3788607467fbdd60635d
+- name: github.com/xlvector/dlog
+  version: 53e591e3ce75e3e6e2e488aab06bd10667b0c1dd
 - name: github.com/yanatan16/itertools
   version: afd1891e0c4fc9f9129c7b6bbb22de9e7a652a9b
 - name: github.com/yhat/wsutil
@@ -1477,6 +1512,7 @@ imports:
   version: dd96d35c1b251a7ef77f057fc5c4f92ea2b285b4
   subpackages:
   - bcrypt
+  - blowfish
   - md4
   - nacl/box
   - ocsp
@@ -1605,6 +1641,13 @@ imports:
   version: 27c40922c40b43fe04554d8223a402af3ea333f3
 - name: gopkg.in/gin-contrib/cors.v1
   version: cf4846e6a636a76237a28d9286f163c132e841bc
+- name: gopkg.in/go-playground/validator.v9
+  version: a021b2ec9a8a8bb970f3f15bc42617cb520e8a64
+- name: gopkg.in/h2non/filetype.v1
+  version: 22e255079ab40241c671d457081831d972f0436b
+  subpackages:
+  - matchers
+  - types
 - name: gopkg.in/inconshreveable/log15.v2
   version: b105bd37f74e5d9dc7b6ad7806715c7a2b83fd3f
   subpackages:
@@ -1633,6 +1676,14 @@ imports:
   - uritemplates
 - name: gopkg.in/project-iris/iris-go.v1
   version: eef23de185e04ba00264dfa9b2f5100df2d31845
+- name: gopkg.in/redis.v5
+  version: a16aeec10ff407b1e7be6dd35797ccf5426ef0f0
+  subpackages:
+  - internal
+  - internal/consistenthash
+  - internal/hashtag
+  - internal/pool
+  - internal/proto
 - name: gopkg.in/src-d/enry.v1
   version: 0fe0a97f67b4dd856f36e689ec886b9226701ffc
   subpackages:
@@ -1642,6 +1693,8 @@ imports:
   - shared
 - name: gopkg.in/unrolled/secure.v1
   version: 19a872c81779b0456e9ee495a8162fb60c57b0c0
+- name: gopkg.in/xmlpath.v2
+  version: 860cbeca3ebcc600db0b213c0e83ad6ce91f5739
 - name: gopkg.in/yaml.v2
   version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
 testImports: []

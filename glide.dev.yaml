@@ -15,10 +15,13 @@ ignore:
 - golang.org/x/crypto/ssh/knownhosts
 - github.com/docker/docker
 - github.com/Sirupsen/logrus
+- github.com/gin-gonic/contrib
+# - github.com/roscopecoltran/krakend/router/gin/plugins
 import:
 - package: github.com/ryszard/goskiplist
   subpackages:
   - skiplist
+- package: github.com/tebeka/selenium
 - package: github.com/gansidui/skiplist
 - package: github.com/orcaman/concurrent-map
 - package: github.com/orcaman/writerseeker
@@ -402,6 +405,13 @@ import:
 - package: gopkg.in/fatih/set.v0
 - package: github.com/motemen/go-colorine
 - package: github.com/onsi/gomega
+- package: github.com/sclevine/agouti
+- package: github.com/gravitational/configure
+  subpackages:
+  - cstrings
+- package: github.com/gravitational/trace
+- package: github.com/tebeka/selenium
+- package: gopkg.in/alecthomas/kingpin.v2
 - package: github.com/hydrogen18/memlistener
   version: master
 - package: github.com/segmentio/ksuid
@@ -490,6 +500,7 @@ import:
   - openpgp/clearsign
   - ocsp
   - nacl/box
+- package: github.com/PuerkitoBio/purell
 - package: github.com/PuerkitoBio/goquery
   version: ^1.1.0
 - package: github.com/go-chi/chi
@@ -732,13 +743,6 @@ import:
   subpackages:
   - redis
 - package: github.com/geekypanda/httpcache
-- package: github.com/gin-gonic/contrib
-  subpackages:
-  - cache
-  - jwt
-  - secure
-  - sessions
-  - sse
 - package: github.com/coreos/etcd
   version: v3.2.7
   subpackages:

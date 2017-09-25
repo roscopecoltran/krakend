@@ -10,20 +10,20 @@ import (
 
 // ServiceConfig defines the krakend service
 type ServiceConfig struct {
-	gorm.Model `json:"-" yaml:"-"`
+	gorm.Model `json:"-" yaml:"-" toml:"-"`
 	// set of endpoint definitions
-	Endpoints []*EndpointConfig `gorm:"-" mapstructure:"endpoints" json:"endpoints" yaml:"endpoints"`
+	Endpoints []*EndpointConfig `gorm:"-" mapstructure:"endpoints" json:"endpoints" yaml:"endpoints" toml:"endpoints"`
 	// defafult timeout
-	Timeout time.Duration `gorm:"column:timeout" mapstructure:"timeout" json:"timeout" yaml:"timeout"`
+	Timeout time.Duration `gorm:"column:timeout" mapstructure:"timeout" json:"timeout" yaml:"timeout" toml:"timeout"`
 	// default TTL for GET
-	CacheTTL time.Duration `gorm:"column:cache_ttl" mapstructure:"cache_ttl" json:"cache_ttl" yaml:"cache_ttl"`
+	CacheTTL time.Duration `gorm:"column:cache_ttl" mapstructure:"cache_ttl" json:"cache_ttl" yaml:"cache_ttl" toml:"cache_ttl"`
 	// default set of hosts
-	Host []string `gorm:"-" mapstructure:"host" json:"host" yaml:"host"` // many2many:service_hosts;
+	Host []string `gorm:"-" mapstructure:"host" json:"host" yaml:"host" toml:"host"` // many2many:service_hosts;
 	// port to bind the krakend service
-	Port int `gorm:"column:port" mapstructure:"port" json:"port" yaml:"port"`
+	Port int `gorm:"column:port" mapstructure:"port" json:"port" yaml:"port" toml:"port"`
 	// version code of the configuration
-	Version int `gorm:"column:version" mapstructure:"version" json:"version" yaml:"version"`
+	Version int `gorm:"column:version" mapstructure:"version" json:"version" yaml:"version" toml:"version"`
 	// run krakend in debug mode
-	Debug     bool      `gorm:"column:debug" mapstructure:"debug" json:"debug" yaml:"debug"`
-	uriParser URIParser `gorm:"-" json:"-" yaml:"-"`
+	Debug     bool      `gorm:"column:debug" mapstructure:"debug" json:"debug" yaml:"debug" toml:"debug"`
+	uriParser URIParser `gorm:"-" json:"-" yaml:"-" toml:"-"`
 }

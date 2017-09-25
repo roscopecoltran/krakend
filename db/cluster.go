@@ -32,37 +32,37 @@ import (
 	- https://github.com/supple/gorest/blob/master/storage/mongo.go
 */
 
-type DataClusters struct {
+type StoreClusters struct {
 	RDB struct {
-		Gorm map[string]*gorm.DB
+		Gorm map[string]*gorm.DB `json:"-" yaml:"-"`
 		// DynamoDB map[string]*dynamodb.DynamoDB
-	}
+	} `json:"-" yaml:"-"`
 	KVS struct {
-		Redis    map[string]*redis.Conn
-		Bolt     map[string]*bolt.DB
-		Memcache map[string]*memcache.Client
-		BigCache map[string]*bigcache.BigCache
-		Etcd     map[string]*etcd.Client
-	}
+		Redis    map[string]*redis.Conn        `json:"-" yaml:"-"`
+		Bolt     map[string]*bolt.DB           `json:"-" yaml:"-"`
+		Memcache map[string]*memcache.Client   `json:"-" yaml:"-"`
+		BigCache map[string]*bigcache.BigCache `json:"-" yaml:"-"`
+		Etcd     map[string]*etcd.Client       `json:"-" yaml:"-"`
+	} `json:"-" yaml:"-"`
 	//DOC struct {
 	//	Mongo map[string]*mgo.Session
 	//}
 	IDX struct {
-		Bleve   map[string]bleve.Index
-		Elastic map[string]*elastic.Client
+		Bleve   map[string]bleve.Index     `json:"-" yaml:"-"`
+		Elastic map[string]*elastic.Client `json:"-" yaml:"-"`
 		//Sphinx  map[string]*sphinx.Client
-	}
+	} `json:"-" yaml:"-"`
 	GRA struct {
-		Neo4J  map[string]*neoism.Database
-		Cayley map[string]*cayley.Handle
+		Neo4J  map[string]*neoism.Database `json:"-" yaml:"-"`
+		Cayley map[string]*cayley.Handle   `json:"-" yaml:"-"`
 		//TaggGraph   map[string]*taggraph.TagGrapher
-	}
+	} `json:"-" yaml:"-"`
 	MQ struct {
-		NsqProducer map[string]*nsq.Producer
-	}
+		NsqProducer map[string]*nsq.Producer `json:"-" yaml:"-"`
+	} `json:"-" yaml:"-"`
 }
 
-func (cluster *DataClusters) initGatewayCluster() {
+func (cluster *StoreClusters) initGatewayCluster() {
 
 	// Relational Databases
 	cluster.RDB.Gorm = make(map[string]*gorm.DB)

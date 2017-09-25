@@ -11,12 +11,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/gin-gonic/gin"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/securecookie"
+	"gopkg.in/redis.v5"
 	"net/http"
 	"strings"
-	"gopkg.in/redis.v5"
-	"github.com/gin-gonic/gin"
 	"time"
-	"github.com/qiujinwu/gin-utils/securecookie"
 )
 
 // Amount of time for cookies/redis keys to expire.
@@ -24,15 +24,15 @@ var sessionExpire = 86400 * 30
 
 // SessionSerializer provides an interface hook for alternative serializers
 type SessionSerializer interface {
-	Deserialize(d []byte, session* SessionImp) error
-	Serialize(session* SessionImp) ([]byte, error)
+	Deserialize(d []byte, session *SessionImp) error
+	Serialize(session *SessionImp) ([]byte, error)
 }
 
 // JSONSerializer encode the session map to JSON.
 type JSONSerializer struct{}
 
 // Serialize to JSON. Will err if there are unmarshalable key values
-func (s JSONSerializer) Serialize(session* SessionImp) ([]byte, error) {
+func (s JSONSerializer) Serialize(session *SessionImp) ([]byte, error) {
 	m := make(map[string]interface{}, len(session.Values))
 	for k, v := range session.Values {
 		ks, ok := k.(string)
@@ -47,7 +47,7 @@ func (s JSONSerializer) Serialize(session* SessionImp) ([]byte, error) {
 }
 
 // Deserialize back to map[string]interface{}
-func (s JSONSerializer) Deserialize(d []byte, session* SessionImp) error {
+func (s JSONSerializer) Deserialize(d []byte, session *SessionImp) error {
 	m := make(map[string]interface{})
 	err := json.Unmarshal(d, &m)
 	if err != nil {
@@ -64,7 +64,7 @@ func (s JSONSerializer) Deserialize(d []byte, session* SessionImp) error {
 type GobSerializer struct{}
 
 // Serialize using gob
-func (s GobSerializer) Serialize(session* SessionImp) ([]byte, error) {
+func (s GobSerializer) Serialize(session *SessionImp) ([]byte, error) {
 	buf := new(bytes.Buffer)
 	enc := gob.NewEncoder(buf)
 	err := enc.Encode(session.Values)
@@ -75,7 +75,7 @@ func (s GobSerializer) Serialize(session* SessionImp) ([]byte, error) {
 }
 
 // Deserialize back to map[interface{}]interface{}
-func (s GobSerializer) Deserialize(d []byte, session* SessionImp) error {
+func (s GobSerializer) Deserialize(d []byte, session *SessionImp) error {
 	dec := gob.NewDecoder(bytes.NewBuffer(d))
 	return dec.Decode(&session.Values)
 }
@@ -85,7 +85,7 @@ type RediStore struct {
 	Pool          *redis.Client
 	Codecs        []securecookie.Codec
 	Options       *Options // default configuration
-	DefaultMaxAge int   // default Redis TTL for a MaxAge == 0 session
+	DefaultMaxAge int      // default Redis TTL for a MaxAge == 0 session
 	maxLength     int
 	keyPrefix     string
 	serializer    SessionSerializer
@@ -138,7 +138,7 @@ func (s *RediStore) SetMaxAge(v int) {
 
 // NewRediStore returns a new RediStore.
 // size: maximum number of idle connections.
-func NewRediStore(redis* redis.Client, keyPairs ...[]byte) (*RediStore, error) {
+func NewRediStore(redis *redis.Client, keyPairs ...[]byte) (*RediStore, error) {
 	return NewRediStoreWithPool(redis, keyPairs...)
 }
 
@@ -171,7 +171,7 @@ func NewRediStore(redis* redis.Client, keyPairs ...[]byte) (*RediStore, error) {
 //}
 
 // NewRediStoreWithPool instantiates a RediStore with a *redis.Pool passed in.
-func NewRediStoreWithPool(redis* redis.Client, keyPairs ...[]byte) (*RediStore, error) {
+func NewRediStoreWithPool(redis *redis.Client, keyPairs ...[]byte) (*RediStore, error) {
 	rs := &RediStore{
 		Pool:   redis,
 		Codecs: securecookie.CodecsFromPairs(keyPairs...),
@@ -188,7 +188,6 @@ func NewRediStoreWithPool(redis* redis.Client, keyPairs ...[]byte) (*RediStore, 
 	return rs, err
 }
 
-
 // ping does an internal ping against a server to check if it is alive.
 func (s *RediStore) ping() (bool, error) {
 	pong, err := s.Pool.Ping().Result()
@@ -198,7 +197,6 @@ func (s *RediStore) ping() (bool, error) {
 	}
 	return (pong == "PONG"), nil
 }
-
 
 // Close closes the underlying *redis.Pool
 //func (s *RediStore) Close() error {
@@ -210,7 +208,7 @@ func (s *RediStore) ping() (bool, error) {
 // See gorilla/sessions FilesystemStore.Get().
 func (s *RediStore) Get(c *gin.Context, name string) (*SessionImp, error) {
 	registry := GetRegistry(c)
-	return registry.Get(s,name)
+	return registry.Get(s, name)
 }
 
 // New returns a session for the given name without adding it to the registry.
@@ -234,7 +232,7 @@ func (s *RediStore) New(c *gin.Context, name string) (*SessionImp, error) {
 }
 
 // Save adds a single session to the response.
-func (s *RediStore) Save(c *gin.Context, session* SessionImp) error {
+func (s *RediStore) Save(c *gin.Context, session *SessionImp) error {
 	// Marked for deletion.
 	if session.Options.MaxAge < 0 {
 		if err := s.delete(session); err != nil {
@@ -258,19 +256,18 @@ func (s *RediStore) Save(c *gin.Context, session* SessionImp) error {
 	return nil
 }
 
-
 // Save adds a single session to the response.
 func (s *RediStore) Delete(c *gin.Context, name string) error {
-	session,error := s.Get(c,name)
-	if error != nil{
+	session, error := s.Get(c, name)
+	if error != nil {
 		return error
 	}
 	session.Options.MaxAge = -1
-	return s.Save(c,session)
+	return s.Save(c, session)
 }
 
 // save stores the session in redis.
-func (s *RediStore) save(session* SessionImp) error {
+func (s *RediStore) save(session *SessionImp) error {
 	b, err := s.serializer.Serialize(session)
 	if err != nil {
 		return err
@@ -293,8 +290,8 @@ func (s *RediStore) save(session* SessionImp) error {
 
 // load reads the session from redis.
 // returns true if there is a sessoin data in DB
-func (s *RediStore) load(session* SessionImp) (bool, error) {
-	data, err := s.Pool.Get(s.keyPrefix+session.ID).Bytes()
+func (s *RediStore) load(session *SessionImp) (bool, error) {
+	data, err := s.Pool.Get(s.keyPrefix + session.ID).Bytes()
 	if err != nil {
 		return false, err
 	}
@@ -306,7 +303,6 @@ func (s *RediStore) load(session* SessionImp) (bool, error) {
 }
 
 // delete removes keys from redis if MaxAge<0
-func (s *RediStore) delete(session* SessionImp) error {
-	return s.Pool.Del(s.keyPrefix+session.ID).Err()
+func (s *RediStore) delete(session *SessionImp) error {
+	return s.Pool.Del(s.keyPrefix + session.ID).Err()
 }
-

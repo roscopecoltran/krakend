@@ -3,8 +3,8 @@ package main
 import (
 	"time"
 
-	"github.com/qiujinwu/gin-utils/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/cors"
 )
 
 func main() {

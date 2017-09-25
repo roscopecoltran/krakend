@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/muesli/cache2go"
-	// "github.com/gin-gonic/contrib/cache"
+	// "github.com/gin-contrib/cache"
 )
 
 func NoCache() gin.HandlerFunc {

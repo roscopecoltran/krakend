@@ -16,9 +16,44 @@ ignore:
 - github.com/docker/docker
 - github.com/Sirupsen/logrus
 import:
+- package: github.com/nikolay-turpitko/structor
+  subpackages:
+  - scanner
+  - funcs/bytes
+  - funcs/crypt
+  - funcs/encoding
+  - funcs/goquery
+  - funcs/math
+  - funcs/os
+  - funcs/regexp
+  - funcs/strings
+  - funcs/use
+  - funcs/xpath
+  - el
+  - el/go-el
+- package: github.com/mmbros/treepath
+- package: github.com/jteeuwen/go-pkg-xmlx
+- package: github.com/santhosh-tekuri/xpathparser
+- package: github.com/gtank/cryptopasta
+- package: github.com/hashicorp/go-multierror
+- package: github.com/apaxa-go/eval
+- package: github.com/patrickmn/go-cache
+- package: github.com/robfig/go-cache
+- package: github.com/antchfx/xpath
+- package: github.com/antchfx/xquery
+  subpackages:
+  - html
+- package: github.com/xlvector/dlog
+- package: gopkg.in/h2non/filetype.v1
+  subpackages:
+  - matchers
+  - types
+- package: github.com/Rican7/mediatype
+- package: gopkg.in/xmlpath.v2
 - package: github.com/ryszard/goskiplist
   subpackages:
   - skiplist
+- package: github.com/tebeka/selenium
 - package: github.com/gansidui/skiplist
 - package: github.com/orcaman/concurrent-map
 - package: github.com/orcaman/writerseeker
@@ -31,6 +66,8 @@ import:
   subpackages:
   - concurrent
 - package: github.com/plar/go-adaptive-radix-tree 
+# - package: github.com/gin-contrib/jwt
+- package: github.com/gin-contrib/cors
 - package: github.com/gin-contrib/sse
 - package: github.com/gin-contrib/size
 - package: github.com/gin-contrib/rollbar

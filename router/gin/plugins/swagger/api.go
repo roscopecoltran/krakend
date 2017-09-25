@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/codegangsta/cli"
 	"github.com/gin-gonic/gin"
-	"github.com/qiujinwu/gin-utils/binding"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/binding"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"net/http"
@@ -219,7 +219,7 @@ func GetFlags(baseUrl string) []cli.Flag {
 	}
 }
 
-func InitializeApiRoutes(grouter *gin.Engine, param *cli.Context, docLoader DocLoader,headers []SecurityDefinition) {
+func InitializeApiRoutes(grouter *gin.Engine, param *cli.Context, docLoader DocLoader, headers []SecurityDefinition) {
 	if gOption != nil {
 		panic("swagger inited yet")
 		return
@@ -232,8 +232,8 @@ func InitializeApiRoutes(grouter *gin.Engine, param *cli.Context, docLoader DocL
 		swaggerData1 := gOption.swaggerData
 
 		headersDef := make(map[string]SecurityDefinition)
-		if headers != nil{
-			for _,v := range headers{
+		if headers != nil {
+			for _, v := range headers {
 				key := v.Type
 				v.In = "header"
 				v.Type = "apiKey"
@@ -253,8 +253,8 @@ func InitializeApiRoutes(grouter *gin.Engine, param *cli.Context, docLoader DocL
 				Title:       param.String("swagger_doc_title"),
 				Version:     param.String("swagger_doc_version"),
 			},
-			"definition": struct{}{},
-			"paths":      swaggerData1,
+			"definition":          struct{}{},
+			"paths":               swaggerData1,
 			"securityDefinitions": headersDef,
 		})
 

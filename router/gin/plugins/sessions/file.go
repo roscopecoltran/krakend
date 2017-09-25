@@ -1,20 +1,18 @@
 package sessions
 
 import (
-	"path/filepath"
-	"io/ioutil"
-	"os"
-	"net/http"
-	"strings"
 	"encoding/base32"
 	"github.com/gin-gonic/gin"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/securecookie"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
 	"sync"
-	"github.com/qiujinwu/gin-utils/securecookie"
 )
 
 var fileMutex sync.RWMutex
-
-
 
 // NewFilesystemStore returns a new FilesystemStore.
 //
@@ -66,7 +64,7 @@ func (s *FilesystemStore) MaxLength(l int) {
 // See CookieStore.Get().
 func (s *FilesystemStore) Get(c *gin.Context, name string) (*SessionImp, error) {
 	registry := GetRegistry(c)
-	return registry.Get(s,name)
+	return registry.Get(s, name)
 }
 
 // New returns a session for the given name without adding it to the registry.
@@ -96,7 +94,7 @@ func (s *FilesystemStore) New(c *gin.Context, name string) (*SessionImp, error) 
 // deleted from the store path. With this process it enforces the properly
 // session cookie handling so no need to trust in the cookie management in the
 // web browser.
-func (s *FilesystemStore) Save(c *gin.Context, session* SessionImp) error {
+func (s *FilesystemStore) Save(c *gin.Context, session *SessionImp) error {
 	// Delete if max-age is <= 0
 	if session.Options.MaxAge <= 0 {
 		if err := s.erase(session); err != nil {
@@ -126,12 +124,12 @@ func (s *FilesystemStore) Save(c *gin.Context, session* SessionImp) error {
 
 // Save adds a single session to the response.
 func (s *FilesystemStore) Delete(c *gin.Context, name string) error {
-	session,error := s.Get(c,name)
-	if error != nil{
+	session, error := s.Get(c, name)
+	if error != nil {
 		return error
 	}
 	session.Options.MaxAge = -1
-	return s.Save(c,session)
+	return s.Save(c, session)
 }
 
 // MaxAge sets the maximum age for the store and the underlying cookie
@@ -187,4 +185,3 @@ func (s *FilesystemStore) erase(session *SessionImp) error {
 	err := os.Remove(filename)
 	return err
 }
-

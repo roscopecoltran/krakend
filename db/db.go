@@ -29,36 +29,36 @@ var (
 	ADMIN *admin.Admin
 )
 
-type RDBStorage struct {
-	RDB   *gorm.DB
-	Ready bool
+type StorageRDB struct {
+	RDB   *gorm.DB `json:"-" yaml:"-"`
+	Ready bool     `json:"-" yaml:"-"`
 }
 
-type KVSStorage struct {
+type StorageKVS struct {
 	Bolt struct {
-		Client *bolt.DB
-		Ready  bool
+		Client *bolt.DB `json:"-" yaml:"-"`
+		Ready  bool     `json:"-" yaml:"-"`
 	}
 	Storm struct {
-		Client *storm.DB
-		Ready  bool
+		Client *storm.DB `json:"-" yaml:"-"`
+		Ready  bool      `json:"-" yaml:"-"`
 	}
 }
 
 type AdminHelper struct {
-	UI    *admin.Admin
-	Ready bool
+	UI    *admin.Admin `json:"-" yaml:"-"`
+	Ready bool         `json:"-" yaml:"-"`
 }
 
 func NewStack() error {
 	// pp.Println(config.Config)
-	dbConfig := config.Config.Datastore.RDB
+	dbConfig := config.Config.Store.RDB
 	if dbConfig.Disabled == false {
 		if err := InitGorm(); err != nil {
 			return err
 		}
 	}
-	kvConfig := config.Config.Datastore.KVS
+	kvConfig := config.Config.Store.KVS
 	if kvConfig.Disabled == false {
 		if kvConfig.Adapter == "boltdb" {
 			if err := InitBolt(); err != nil {
@@ -73,7 +73,7 @@ func NewStack() error {
 
 func InitGorm() error {
 	var err error
-	dbConfig := config.Config.Datastore.RDB
+	dbConfig := config.Config.Store.RDB
 	if dbConfig.Disabled == false {
 		if dbConfig.Adapter == "mysql" {
 			RDB, err = gorm.Open("mysql", fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?parseTime=True&loc=Local", dbConfig.User, dbConfig.Password, dbConfig.Host, dbConfig.Port, dbConfig.Name))
@@ -157,7 +157,7 @@ func MigrateDB(isAdminUI bool, isAutoMigrate bool, isTruncate bool, tables ...in
 
 // InitBolt init bolt
 func InitBolt() error {
-	kvsConfig := config.Config.Datastore.KVS
+	kvsConfig := config.Config.Store.KVS
 	if kvsConfig.Disabled == false {
 		var err error
 		if err := os.MkdirAll(kvsConfig.PrefixPath, 0777); err != nil {
@@ -181,9 +181,9 @@ func GetKVS() *bolt.DB {
 	return KVS
 }
 
-func (kvss *KVSStorage) InitStorm(driver string) (*KVSStorage, error) {
+func (kvss *StorageKVS) InitStorm(driver string) (*StorageKVS, error) {
 	var err error
-	kvsConfig := config.Config.Datastore.KVS
+	kvsConfig := config.Config.Store.KVS
 	if err := os.MkdirAll(kvsConfig.PrefixPath, 0777); err != nil {
 		return kvss, err
 	}
@@ -206,7 +206,7 @@ func (kvss *KVSStorage) InitStorm(driver string) (*KVSStorage, error) {
 	return kvss, nil
 }
 
-func (kvss *KVSStorage) Close(driver string) error {
+func (kvss *StorageKVS) Close(driver string) error {
 	switch drv := driver; drv {
 	case "storm":
 		kvss.Storm.Ready = false

@@ -6,6 +6,6 @@ import (
 )
 
 var (
- 	Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks"`
+ 	Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks" toml:"tasks"`
 )
 */

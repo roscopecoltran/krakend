@@ -1,19 +1,17 @@
 package authentication
 
 import (
+	"encoding/gob"
 	"github.com/gin-gonic/gin"
-	"github.com/qiujinwu/gin-utils/sessions"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/sessions"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/utils"
 	"log"
 	"net/http"
-	"encoding/gob"
-	"github.com/qiujinwu/gin-utils/utils"
 )
 
 const (
 	CurrentUserKey = "current_user"
 )
-
-
 
 //--------------------------------------
 var _config *utils.Config = nil
@@ -22,20 +20,20 @@ var _handle gin.HandlerFunc = nil
 
 var defaultErrorFunc = func(c *gin.Context) {
 	c.JSON(http.StatusForbidden, gin.H{
-		"code": http.StatusForbidden,
+		"code":    http.StatusForbidden,
 		"message": "authentication requried",
 	})
 }
 
 // Options stores configurations for a CSRF middleware.
 type Options struct {
-	Blacklist bool
-	ErrorFunc gin.HandlerFunc
+	Blacklist    bool
+	ErrorFunc    gin.HandlerFunc
 	SessionStore sessions.Store
-	User interface{}
+	User         interface{}
 }
 
-func AddUrl(url string,regex string) {
+func AddUrl(url string, regex string) {
 	if _config == nil {
 		log.Fatal("add url before new filter")
 		return
@@ -43,7 +41,7 @@ func AddUrl(url string,regex string) {
 	_config.Items[url] = regex
 }
 
-func Login(c *gin.Context,user interface{}) {
+func Login(c *gin.Context, user interface{}) {
 	if _config == nil {
 		log.Fatal("add url before new filter")
 		return
@@ -68,11 +66,11 @@ func NewFilter(options Options) gin.HandlerFunc {
 		return nil
 	}
 
-	if options.ErrorFunc == nil{
+	if options.ErrorFunc == nil {
 		options.ErrorFunc = defaultErrorFunc
 	}
 
-	if options.SessionStore == nil{
+	if options.SessionStore == nil {
 		log.Fatal("store can NOT be empty")
 		return nil
 	}
@@ -91,7 +89,7 @@ func NewFilter(options Options) gin.HandlerFunc {
 		session_inst, _ := options.SessionStore.Get(c, "session")
 		v := session_inst.Get("user")
 		if v != nil {
-			c.Set(CurrentUserKey,v)
+			c.Set(CurrentUserKey, v)
 			c.Next()
 		} else {
 			options.ErrorFunc(c)

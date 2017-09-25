@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"time"
-	"github.com/qiujinwu/gin-utils/secure"
 	"github.com/gin-gonic/gin"
+	"github.com/roscopecoltran/krakend/router/gin/plugins/secure"
+	"time"
 )
 
 func main() {

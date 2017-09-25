@@ -14,6 +14,7 @@ package encoding
 
 //import (
 //	"github.com/roscopecoltran/krakend/logging"
+// 	"gopkg.in/xmlpath.v2"
 //)
 
 // XPATH is the key for the xpath encoding
@@ -48,4 +49,24 @@ func XPATHCollectionDecoder(r io.Reader, v *map[string]interface{}) error {
 	*(v) = map[string]interface{}{"collection": collection}
 	return nil
 }
+
+	node, err := xmlpath.ParseHTML(reader)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	path, err := xmlpath.Compile(xpath)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// output
+
+	it := path.Iter(node)
+	for it.Next() {
+		scrapText := it.Node().String()
+
+		fmt.Println(scrapText)
+	}
+
 */

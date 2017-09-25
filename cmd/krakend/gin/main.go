@@ -26,6 +26,23 @@ import (
 	// plug_openapi "github.com/roscopecoltran/krakend/plugins/openapi"
 )
 
+var defaultConfigFiles = []string{
+	"shared/conf.d/krakend/stores.yaml",
+	"shared/conf.d/krakend/apis.yaml",
+	"shared/conf.d/krakend/proxy.yaml",
+	"shared/conf.d/krakend/credentials.yaml",
+	"shared/conf.d/krakend/schemas.yaml",
+	"shared/conf.d/krakend/cloud.yaml",
+	"shared/conf.d/krakend/common.yaml",
+	"shared/conf.d/krakend/flows.yaml",
+	"shared/conf.d/krakend/tasks.yaml",
+	"shared/conf.d/krakend/frontend.yaml",
+	"shared/conf.d/krakend/backend.yaml",
+	"shared/conf.d/krakend/environment.yaml",
+	"shared/conf.d/krakend/locales.yaml",
+	"shared/conf.d/krakend/endpoints.yaml",
+	"shared/conf.d/krakend/providers.yaml"}
+
 func main() {
 	port := flag.Int("p", 0, "Port of the service")
 	logLevel := flag.String("l", "DEBUG", "Logging level")
@@ -33,13 +50,11 @@ func main() {
 	configFile := flag.String("c", "./conf.d/krakend/config.json", "Path to the configuration filename")
 	flag.Parse()
 
-	// $ export CONFIGOR_ENV=prod # Will load `config.json`, `config.prod.json` if it exists `config.prod.json` will overwrite `config.json`'s configuration
-	if err := configor.Load(&config.Config, *configFile, "shared/conf.d/database.yml", "shared/conf.d/endpoints.yml", "shared/conf.d/providers.yml"); err != nil {
-		log.Fatal("ERROR while loading the config struct:", err.Error())
-	}
+	defaultConfigFiles = append(defaultConfigFiles, *configFile)
 
-	if err := configor.Dump(config.Config, "all", "yaml,toml,json", "./dump"); err != nil {
-		log.Fatal("ERROR while dumping the config struct:", err.Error())
+	// $ export CONFIGOR_ENV=prod # Will load `config.json`, `config.prod.json` if it exists `config.prod.json` will overwrite `config.json`'s configuration
+	if err := configor.Load(&config.Config, defaultConfigFiles...); err != nil {
+		log.Fatal("ERROR while loading the config struct:", err.Error())
 	}
 
 	if err := db.NewStack(); err != nil {
@@ -98,6 +113,10 @@ func main() {
 			return cache.CachePage(store, configuration.CacheTTL, krakendgin.EndpointHandler(configuration, proxy))
 		},
 	})
+
+	if err := configor.Dump(config.Config, "all", "yaml,toml,json", "./dump"); err != nil {
+		log.Fatal("ERROR while dumping the config struct:", err.Error())
+	}
 
 	routerFactory.New().Run(serviceConfig)
 }

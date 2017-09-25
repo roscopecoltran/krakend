@@ -8,9 +8,15 @@
 **/krakend_jwt*
 server.rsa.crt
 server.rsa.key
+
 *.json
 *.yml
+*.yaml
 *.toml
+
+environment.yaml
+
+.snippets
 
 ### Go ###
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
@@ -21,6 +27,11 @@ server.rsa.key
 # Folders
 _obj
 _test
+
+dump
+dump/
+dump/**
+
 
 # Architecture specific extensions/prefixes
 *.[568vq]
