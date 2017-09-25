@@ -32,7 +32,7 @@ type StoreRDBConfig struct {
 	Adapter      string `env:"RDB_ADAPTER" default:"sqlite" json:"adapter" yaml:"adapter" toml:"adapter"` // mysql, postgres, sqlite3
 	Disabled     bool   `default:"false" env:"RDB_DISABLED" json:"disabled" yaml:"disabled" toml:"disabled"`
 	Debug        bool   `default:"true" env:"RDB_DEBUG" json:"debug" yaml:"debug" toml:"debug"`
-	PrefixPath   string `env:"RDB_PREFIX_PATH" default:"./data/db" json:"prefix_path" yaml:"prefix_path" toml:"prefix_path"`
+	PrefixPath   string `env:"RDB_PREFIX_PATH" default:"./shared/data/rdb" json:"prefix_path" yaml:"prefix_path" toml:"prefix_path"`
 	Name         string `env:"RDB_NAME" default:"sniper" json:"name" yaml:"name" toml:"name"`
 	Host         string `env:"RDB_HOST" default:"localhost" json:"host" yaml:"host" toml:"host"`
 	Port         string `env:"RDB_PORT" default:"3306" json:"port" yaml:"port" toml:"port"`
@@ -60,7 +60,7 @@ type StoreKVSConfig struct {
 	Disabled   bool   `default:"false" env:"KVS_DISABLED" json:"disabled" yaml:"disabled" toml:"disabled"`
 	Debug      bool   `default:"true" env:"KVS_DEBUG" json:"debug" yaml:"debug" toml:"debug"`
 	Name       string `env:"KVS_INDEX_NAME" default:"krakend" json:"name" yaml:"name" toml:"name"`
-	PrefixPath string `env:"KVS_INDEX_PREFIX_PATH" default:"./data/bucket"  json:"prefix_path" yaml:"prefix_path" toml:"prefix_path"`
+	PrefixPath string `env:"KVS_INDEX_PREFIX_PATH" default:"./shared/data/bucket"  json:"prefix_path" yaml:"prefix_path" toml:"prefix_path"`
 	Hosts      string `env:"KVS_HOSTS" default:"localhost" json:"host" yaml:"host" toml:"host"`
 }
 

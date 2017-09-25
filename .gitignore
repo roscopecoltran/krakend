@@ -32,6 +32,9 @@ dump
 dump/
 dump/**
 
+*.boltdb
+*.db
+*.sqlite*
 
 # Architecture specific extensions/prefixes
 *.[568vq]
