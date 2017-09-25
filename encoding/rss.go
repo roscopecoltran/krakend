@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/mmcdole/gofeed"
+	//	"github.com/roscopecoltran/krakend/logging"
 )
 
 // RSS is the key for the rss encoding

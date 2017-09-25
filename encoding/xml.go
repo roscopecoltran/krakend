@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/clbanning/mxj"
+	//	"github.com/roscopecoltran/krakend/logging"
 )
 
 // XML is the key for the xml encoding

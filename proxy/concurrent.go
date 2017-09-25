@@ -5,7 +5,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/devopsfaith/krakend/config"
+	"github.com/roscopecoltran/krakend/config"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // NewConcurrentMiddleware creates a proxy middleware that enables sending several requests concurrently

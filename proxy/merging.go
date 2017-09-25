@@ -4,7 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/devopsfaith/krakend/config"
+	"github.com/roscopecoltran/krakend/config"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // NewMergeDataMiddleware creates proxy middleware for merging responses from several backends
@@ -45,7 +46,7 @@ func NewMergeDataMiddleware(endpointConfig *config.EndpointConfig) Middleware {
 			}
 			if isEmpty {
 				cancel()
-				return &Response{Data: make(map[string]interface{}, 0),IsComplete: false}, err
+				return &Response{Data: make(map[string]interface{}, 0), IsComplete: false}, err
 			}
 
 			result := combineData(localCtx, totalBackends, responses)
@@ -92,5 +93,5 @@ func combineData(ctx context.Context, total int, parts []*Response) *Response {
 		}
 	}
 
-	return &Response{Data: composedData,IsComplete: isComplete}
+	return &Response{Data: composedData, IsComplete: isComplete}
 }

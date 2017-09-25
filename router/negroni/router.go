@@ -6,11 +6,11 @@ import (
 	gorilla "github.com/gorilla/mux"
 	"github.com/urfave/negroni"
 
-	"github.com/devopsfaith/krakend/logging"
-	"github.com/devopsfaith/krakend/proxy"
-	"github.com/devopsfaith/krakend/router"
-	krakendgorilla "github.com/devopsfaith/krakend/router/gorilla"
-	"github.com/devopsfaith/krakend/router/mux"
+	"github.com/roscopecoltran/krakend/logging"
+	"github.com/roscopecoltran/krakend/proxy"
+	"github.com/roscopecoltran/krakend/router"
+	krakendgorilla "github.com/roscopecoltran/krakend/router/gorilla"
+	"github.com/roscopecoltran/krakend/router/mux"
 )
 
 // DefaultFactory returns a net/http mux router factory with the injected proxy factory and logger

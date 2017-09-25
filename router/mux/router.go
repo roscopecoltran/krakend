@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/devopsfaith/krakend/config"
-	"github.com/devopsfaith/krakend/logging"
-	"github.com/devopsfaith/krakend/proxy"
-	"github.com/devopsfaith/krakend/router"
+	"github.com/roscopecoltran/krakend/config"
+	"github.com/roscopecoltran/krakend/logging"
+	"github.com/roscopecoltran/krakend/proxy"
+	"github.com/roscopecoltran/krakend/router"
 )
 
 // DefaultDebugPattern is the default pattern used to define the debug endpoint

@@ -1,0 +1,48 @@
+envs:
+  files: []
+  kvs: {}
+server:
+  port: 8080
+  host: localhost
+  listen_addr: :8080
+  mode: dev
+datastores:
+  database:
+    adapter: sqlite
+    disabled: false
+    debug: true
+    prefix_path: ./data/db
+    name: sniper
+    host: localhost
+    port: "3306"
+    user: ""
+    password: ""
+    max_idle_connections: 2
+    max_open_connections: 4
+  kvstore:
+    adapter: boltdb
+    disabled: false
+    debug: true
+    name: krakend
+    prefix_path: ./data/bucket
+    host: localhost
+  fulltext:
+    adapter: elastic
+    disabled: false
+    debug: true
+    name: sniper
+    host: localhost
+    port: "9200"
+    user: ""
+    password: ""
+  graphdb:
+    adapter: neo4j
+    disabled: false
+    debug: true
+    name: sniper
+    host: localhost
+    port: "7474"
+    user: ""
+    password: ""
+gateways: []
+providers: []

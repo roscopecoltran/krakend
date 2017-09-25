@@ -2,6 +2,8 @@ package proxy
 
 import "strings"
 
+// "github.com/roscopecoltran/krakend/logging"
+
 // EntityFormatter formats the response data
 type EntityFormatter interface {
 	Format(entity Response) Response

@@ -5,13 +5,23 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"time"
+	// "go.uber.org/zap"
 
+	"github.com/gin-contrib/gzip"
+	// "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
+	// "github.com/gregjones/httpcache"
+	// "github.com/gin-contrib/pprof"
+	// "github.com/casbin/casbin"
+	// "github.com/gin-contrib/authz"
+	// "github.com/gin-contrib/size"
+	// "github.com/vanng822/gin-csrf"
 
-	"github.com/devopsfaith/krakend/config"
-	"github.com/devopsfaith/krakend/logging"
-	"github.com/devopsfaith/krakend/proxy"
-	"github.com/devopsfaith/krakend/router"
+	"github.com/roscopecoltran/krakend/config"
+	"github.com/roscopecoltran/krakend/logging"
+	"github.com/roscopecoltran/krakend/proxy"
+	"github.com/roscopecoltran/krakend/router"
 )
 
 // Config is the struct that collects the parts the router should be builded from
@@ -22,6 +32,14 @@ type Config struct {
 	ProxyFactory   proxy.Factory
 	Logger         logging.Logger
 }
+
+/*
+// ref. https://github.com/stevokk/netflixplusplus/blob/master/api/main.go
+var reqClient = &http.Client{
+	Timeout:   10 * time.Second,
+	Transport: httpcache.NewMemoryCacheTransport(),
+}
+*/
 
 // DefaultFactory returns a gin router factory with the injected proxy factory and logger.
 // It also uses a default gin router and the default HandlerFactory
@@ -72,7 +90,40 @@ func (r ginRouter) Run(cfg config.ServiceConfig) {
 	r.cfg.Engine.RedirectFixedPath = true
 	r.cfg.Engine.HandleMethodNotAllowed = true
 
+	r.cfg.Engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	r.cfg.Engine.Use(r.cfg.Middlewares...)
+
+	// Add a ginzap middleware, which:
+	//   - Logs all requests, like a combined access and error log.
+	//   - Logs to stdout.
+	//   - RFC3339 with UTC time format.
+	// r.cfg.Engine.Use(ginzap.Ginzap(logger, time.RFC3339, true))
+
+	// Recovery middleware recovers from any panics and writes a 500 if there was one.
+	r.cfg.Engine.Use(gin.Recovery())
+
+	r.cfg.Engine.GET("/ping", func(c *gin.Context) {
+		c.String(200, "pong "+fmt.Sprint(time.Now().Unix()))
+	})
+
+	// options := csrf.DefaultOptions()
+	// options.MaxUsage = 10
+	// options.MaxAge = 15 * 60
+	// r.cfg.Engine.Use(csrf.Csrf(options))
+
+	/*
+		pprof.Register(r.cfg.Engine, &pprof.Options{
+			// default is "debug/pprof"
+			RoutePrefix: "debug/pprof",
+		})
+	*/
+
+	// load the casbin model and policy from files, database is also supported.
+	// e := casbin.NewEnforcer("authz_model.conf", "authz_policy.csv")
+
+	// r.cfg.Engine.Use(middleware.CORS())
+	// r.cfg.Engine.Use(middleware.Recovery())
+	// r.cfg.Engine.Use(authz.NewAuthorizer(e))
 
 	if cfg.Debug {
 		r.registerDebugEndpoints()
@@ -100,6 +151,25 @@ func (r ginRouter) registerDebugEndpoints() {
 	r.cfg.Engine.PUT("/__debug/*param", handler)
 }
 
+func (r ginRouter) registerAdminEndpoints() {
+	handler := AdminHandler(r.cfg.Logger)
+	r.cfg.Engine.Any("/admin/*w", handler)
+}
+
+func (r ginRouter) registerAuthEndpoints() {
+	handler := AuthRequiredHandler(r.cfg.Logger)
+	authorized := r.cfg.Engine.Group("/api")
+	authorized.Use(handler)
+	{
+		authorized.GET("/*w", handler)
+		authorized.POST("/*w", handler)
+		authorized.PUT("/*w", handler)
+		// nested group
+		// testing := authorized.Group("testing")
+		// testing.GET("/analytics", analyticsEndpoint)
+	}
+}
+
 func (r ginRouter) registerKrakendEndpoints(endpoints []*config.EndpointConfig) {
 	for _, c := range endpoints {
 		proxyStack, err := r.cfg.ProxyFactory.New(c)
@@ -107,7 +177,6 @@ func (r ginRouter) registerKrakendEndpoints(endpoints []*config.EndpointConfig) 
 			r.cfg.Logger.Error("calling the ProxyFactory", err.Error())
 			continue
 		}
-
 		r.registerKrakendEndpoint(c.Method, c.Endpoint, r.cfg.HandlerFactory(c, proxyStack), len(c.Backend))
 	}
 }
@@ -132,3 +201,54 @@ func (r ginRouter) registerKrakendEndpoint(method, path string, handler gin.Hand
 		r.cfg.Logger.Error("Unsupported method", method)
 	}
 }
+
+/*
+func (r ginRouter) registerBucketEndpoints() {
+	handlerEntity := BucketHandler(r.cfg.Logger)
+	r.cfg.Engine.POST("/entity/:entity_id", func(c *gin.Context) {
+		id := c.Param("entity_id")
+		d.Update(func(tx *bolt.Tx) error {
+			b := tx.Bucket([]byte("queue"))
+			q := b.Get([]byte("network_ids"))
+			append(*q, id)
+			err = b.Put([]byte("network_ids"), q)
+			return err
+		})
+		c.JSON(200, gin.H{"message": "Network submission successful."})
+	})
+
+	r.cfg.Engine.GET("/entity", func(c *gin.Context) {
+		d.Update(func(tx *bolt.Tx) error {
+			b := tx.Bucket([]byte("queue"))
+			q := b.Get([]byte("entity_ids"))
+			len := q.Len() - 1
+			network_id = (*q)[len]
+			*q = (*q)[:x]
+			err = b.Put([]byte("entity_ids"), q)
+			return err
+		})
+		c.JSON(200, gin.H{"entity_id": network_id})
+	})
+}
+*/
+
+/*
+
+// https://github.com/lebedev-yury/cities-api/blob/master/router.go
+func registerGeoHelpersEndpoints(db *bolt.DB, options *config.Options, c *cache.Cache) *gin.Engine {
+	// router := gin.Default()
+	// router.Use(middleware.CommonHeaders(options.CORSOrigins))
+
+	handler := GeoHelperHandler(r.cfg.Logger)
+	geoHelpers := r.cfg.Engine.Group("/api")
+
+	v1 := geoHelpers.Group("/geo")
+	{
+		v1.GET("/app/status", MakeApplicationStatusEndpoint(db))
+		v1.GET("/cities/:id", MakeCityEndpoint(db, options))
+		v1.GET("/cities", MakeCitiesEndpoint(db, options, c))
+	}
+
+	return router
+}
+*/

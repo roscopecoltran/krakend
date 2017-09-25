@@ -5,9 +5,13 @@ import (
 	"io"
 
 	gologging "github.com/op/go-logging"
-
-	"github.com/devopsfaith/krakend/logging"
+	// "github.com/sirupsen/logrus"
+	// "github.com/o1egl/gormrus" // logs-logrus
+	// prefixed "github.com/x-cray/logrus-prefixed-formatter"
+	"github.com/roscopecoltran/krakend/logging"
 )
+
+// Logger           *logrus.Logger
 
 // NewLogger returns a krakend logger wrapping a gologging logger
 func NewLogger(level string, out io.Writer, prefix string) (logging.Logger, error) {

@@ -3,11 +3,15 @@ package proxy
 import (
 	"context"
 	"errors"
+	// "fmt"
+	"io"
 	"net/http"
 
-	"github.com/devopsfaith/krakend/config"
-	"github.com/devopsfaith/krakend/encoding"
-	"io"
+	// "github.com/k0kubun/pp"
+	"github.com/roscopecoltran/krakend/config"
+	"github.com/roscopecoltran/krakend/encoding"
+	// "github.com/roscopecoltran/krakend/logging"
+	// "github.com/Jeffail/gabs"
 )
 
 // ErrInvalidStatusCode is the error returned by the http proxy when the received status code
@@ -139,6 +143,9 @@ func NewRequestBuilderMiddleware(remote *config.Backend) Middleware {
 		}
 		return func(ctx context.Context, request *Request) (*Response, error) {
 			r := request.Clone()
+			r.AddQueryStrings(remote.QueryStrings)
+			r.AddParameters(remote.Parameters)
+			r.AddHeaders(remote.Header)
 			r.GeneratePath(remote.URLPattern)
 			r.Method = remote.Method
 			return next[0](ctx, &r)

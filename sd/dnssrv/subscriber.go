@@ -7,8 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/devopsfaith/krakend/config"
-	"github.com/devopsfaith/krakend/sd"
+	"github.com/roscopecoltran/krakend/config"
+	"github.com/roscopecoltran/krakend/sd"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 var (

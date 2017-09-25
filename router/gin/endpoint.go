@@ -9,11 +9,27 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	// "github.com/k0kubun/pp"
 
-	"github.com/devopsfaith/krakend/config"
-	"github.com/devopsfaith/krakend/core"
-	"github.com/devopsfaith/krakend/proxy"
+	"github.com/roscopecoltran/krakend/config"
+	"github.com/roscopecoltran/krakend/core"
+	"github.com/roscopecoltran/krakend/proxy"
 )
+
+/*
+	refs:
+	- https://github.com/bassam/stargazers/blob/pr-fix-logging/fetch/fetch.go
+
+	req.Header.Add("User-Agent", "Cockroach Labs Stargazers App")
+	req.Header.Add("Accept-Encoding", "application/json")
+	req.Header.Add("Authorization", fmt.Sprintf("token %s", c.Token))
+	if len(c.acceptHeader) > 0 {
+		req.Header.Add("Accept", c.acceptHeader)
+	}
+
+	- https://github.com/hprose/hprose-golang/blob/master/examples/gin_hello_server/gin_hello_server.go
+
+*/
 
 // ErrInternalError is the error returned by the router when something went wrong
 var ErrInternalError = errors.New("internal server error")
@@ -30,7 +46,7 @@ func EndpointHandler(configuration *config.EndpointConfig, proxy proxy.Proxy) gi
 
 		c.Header(core.KrakendHeaderName, core.KrakendHeaderValue)
 
-		response, err := proxy(requestCtx, NewRequest(c, configuration.QueryString))
+		response, err := proxy(requestCtx, NewRequest(c, configuration.QueryStrings))
 		if err != nil {
 			c.AbortWithError(http.StatusInternalServerError, err)
 			cancel()
@@ -58,24 +74,25 @@ func EndpointHandler(configuration *config.EndpointConfig, proxy proxy.Proxy) gi
 }
 
 var (
-	headersToSend        = []string{"Content-Type"}
+	headersToSend        = []string{"Content-Type", "Accept", "User-Agent", "Authentication", "Accept-Encoding"}
 	userAgentHeaderValue = []string{core.KrakendUserAgent}
 )
 
 // NewRequest gets a request from the current gin context and the received query string
 func NewRequest(c *gin.Context, queryString []string) *proxy.Request {
+
 	params := make(map[string]string, len(c.Params))
 	for _, param := range c.Params {
 		params[strings.Title(param.Key)] = param.Value
 	}
 
-	headers := make(map[string][]string, 2+len(headersToSend))
+	headers := make(map[string][]string, 5+len(headersToSend))
 	headers["X-Forwarded-For"] = []string{c.ClientIP()}
 	headers["User-Agent"] = userAgentHeaderValue
 
 	for _, k := range headersToSend {
-		if h, ok := c.Request.Header[k]; ok {
-			headers[k] = h
+		if _, ok := c.Request.Header[k]; ok {
+			headers[k] = []string(c.Request.Header[k])
 		}
 	}
 

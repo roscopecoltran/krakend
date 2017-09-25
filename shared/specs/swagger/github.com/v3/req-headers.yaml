@@ -1,0 +1,88 @@
+---
+headers:
+  rate:
+  - slug: headerRateLimit
+    value: X-RateLimit-Limit
+  - slug: headerRateRemaining
+    value: X-RateLimit-Remaining
+  - slug: headerRateReset
+    value: X-RateLimit-Reset
+  otp:
+  - slug: headerOTP
+    value: X-GitHub-OTP
+  accept:
+  - endpoint: 
+    slug: mediaTypeV3
+    value: application/vnd.github.v3+json
+  - endpoint: 
+    slug: defaultMediaType
+    value: application/octet-stream
+  - endpoint: 
+    slug: mediaTypeV3SHA
+    value: application/vnd.github.v3.sha
+  - endpoint: 
+    slug: mediaTypeV3Diff
+    value: application/vnd.github.v3.diff
+  - endpoint: 
+    slug: mediaTypeV3Patch
+    value: application/vnd.github.v3.patch
+  - endpoint: 
+    slug: mediaTypeOrgPermissionRepo
+    value: application/vnd.github.v3.repository+json
+  - endpoint: 
+    slug: mediaTypeLicensesPreview
+    value: application/vnd.github.drax-preview+json
+  - endpoint: 
+    slug: mediaTypeStarringPreview
+    value: application/vnd.github.v3.star+json
+  - endpoint: 
+    slug: mediaTypeProtectedBranchesPreview
+    value: application/vnd.github.loki-preview+json
+  - endpoint: 
+    slug: mediaTypeMigrationsPreview
+    value: application/vnd.github.wyandotte-preview+json
+  - endpoint: 
+    slug: mediaTypeDeploymentStatusPreview
+    value: application/vnd.github.ant-man-preview+json
+  - endpoint: 
+    slug: mediaTypeImportPreview
+    value: application/vnd.github.barred-rock-preview
+  - endpoint: 
+    slug: mediaTypeReactionsPreview
+    value: application/vnd.github.squirrel-girl-preview
+  - endpoint: 
+    slug: mediaTypeGitSigningPreview
+    value: application/vnd.github.cryptographer-preview+json
+  - endpoint: 
+    slug: mediaTypeTimelinePreview
+    value: application/vnd.github.mockingbird-preview+json
+  - endpoint: 
+    slug: mediaTypeRepositoryInvitationsPreview
+    value: application/vnd.github.swamp-thing-preview+json
+  - endpoint: 
+    slug: mediaTypePagesPreview
+    value: application/vnd.github.mister-fantastic-preview+json
+  - endpoint: 
+    slug: mediaTypeProjectsPreview
+    value: application/vnd.github.inertia-preview+json
+  - endpoint: 
+    slug: mediaTypeIntegrationPreview
+    value: application/vnd.github.machine-man-preview+json
+  - endpoint: 
+    slug: mediaTypeCommitSearchPreview
+    value: application/vnd.github.cloak-preview+json
+  - endpoint: 
+    slug: mediaTypeBlockUsersPreview
+    value: application/vnd.github.giant-sentry-fist-preview+json
+  - endpoint: 
+    slug: mediaTypeRepositoryCommunityHealthMetricsPreview
+    value: application/vnd.github.black-panther-preview+json
+  - endpoint: 
+    slug: mediaTypeCodesOfConductPreview
+    value: application/vnd.github.scarlet-witch-preview+json
+  - endpoint: 
+    slug: mediaTypeTopicsPreview
+    value: application/vnd.github.mercy-preview+json
+  - endpoint: 
+    slug: mediaTypeTeamReviewPreview
+    value: application/vnd.github.thor-preview+json

@@ -6,6 +6,8 @@ import (
 )
 
 var (
+	endpointHDRKeysPattern = regexp.MustCompile(`/\{([a-zA-Z\-_0-9]+)\}`)
+	endpointVARKeysPattern = regexp.MustCompile(`/\{([a-zA-Z\-_0-9]+)\}`)
 	endpointURLKeysPattern = regexp.MustCompile(`/\{([a-zA-Z\-_0-9]+)\}`)
 	hostPattern            = regexp.MustCompile(`(https?://)?([a-zA-Z0-9\._\-]+)(:[0-9]{2,6})?/?`)
 )

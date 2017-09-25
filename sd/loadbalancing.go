@@ -4,6 +4,7 @@ import (
 	"errors"
 	"math/rand"
 	"sync/atomic"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // Balancer applys a balancing stategy in order to select the backend host to be used

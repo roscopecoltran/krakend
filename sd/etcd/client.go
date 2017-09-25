@@ -10,6 +10,7 @@ import (
 	"time"
 
 	etcd "github.com/coreos/etcd/client"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // Code taken from https://github.com/go-kit/kit/blob/master/sd/etcd/client.go

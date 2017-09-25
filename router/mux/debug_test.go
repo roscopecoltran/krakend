@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/devopsfaith/krakend/logging/gologging"
+	"github.com/roscopecoltran/krakend/logging/gologging"
 )
 
 func TestDebugHandler(t *testing.T) {

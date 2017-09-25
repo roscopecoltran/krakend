@@ -1,0 +1,124 @@
+package: github.com/roscopecoltran/krakend
+import:
+- package: github.com/NYTimes/openapi2proto
+- package: github.com/allegro/bigcache
+- package: github.com/asdine/storm
+- package: github.com/aviddiviner/gin-limit
+- package: github.com/blevesearch/bleve
+- package: github.com/boltdb/bolt
+- package: github.com/bradfitz/gomemcache
+  subpackages:
+  - memcache
+- package: github.com/captncraig/ghauth
+- package: github.com/captncraig/temple
+- package: github.com/cayleygraph/cayley
+- package: github.com/clbanning/mxj
+- package: github.com/cockroachdb/cockroach
+  subpackages:
+  - pkg/util/log
+- package: github.com/coreos/etcd
+  subpackages:
+  - client
+  - clientv3
+- package: github.com/dgrijalva/jwt-go
+- package: github.com/dogtools/dog
+- package: github.com/emicklei/go-restful
+- package: github.com/emicklei/go-restful-openapi
+- package: github.com/garyburd/redigo
+  subpackages:
+  - redis
+- package: github.com/geekypanda/httpcache
+- package: github.com/gin-gonic/contrib
+  subpackages:
+  - cache
+  - jwt
+  - secure
+  - sessions
+- package: github.com/gin-gonic/gin
+- package: github.com/go-openapi/spec
+- package: github.com/google/go-github
+  subpackages:
+  - github
+- package: github.com/gorilla/mux
+- package: github.com/gorilla/pat
+- package: github.com/gorilla/sessions
+- package: github.com/gregjones/httpcache
+- package: github.com/jinzhu/configor
+- package: github.com/jinzhu/gorm
+  subpackages:
+  - dialects/mysql
+  - dialects/postgres
+  - dialects/sqlite
+- package: github.com/jmcvetta/neoism
+- package: github.com/joho/godotenv
+- package: github.com/k0kubun/pp
+- package: github.com/kennygrant/sanitize
+- package: github.com/mmcdole/gofeed
+- package: github.com/muesli/cache2go
+- package: github.com/nsqio/go-nsq
+- package: github.com/op/go-logging
+- package: github.com/paulvollmer/yaml2json
+  subpackages:
+  - src
+- package: github.com/prometheus/client_golang
+  subpackages:
+  - prometheus
+- package: github.com/qor/admin
+- package: github.com/qor/qor
+- package: github.com/roscopecoltran/goth
+  subpackages:
+  - gothic
+  - providers/amazon
+  - providers/auth0
+  - providers/battlenet
+  - providers/bitbucket
+  - providers/box
+  - providers/dailymotion
+  - providers/deezer
+  - providers/digitalocean
+  - providers/discord
+  - providers/dropbox
+  - providers/eveonline
+  - providers/facebook
+  - providers/fitbit
+  - providers/github
+  - providers/gitlab
+  - providers/gplus
+  - providers/heroku
+  - providers/instagram
+  - providers/intercom
+  - providers/lastfm
+  - providers/linkedin
+  - providers/meetup
+  - providers/onedrive
+  - providers/openidConnect
+  - providers/paypal
+  - providers/salesforce
+  - providers/slack
+  - providers/soundcloud
+  - providers/spotify
+  - providers/steam
+  - providers/stripe
+  - providers/twitch
+  - providers/twitter
+  - providers/uber
+  - providers/wepay
+  - providers/xero
+  - providers/yahoo
+  - providers/yammer
+- package: github.com/roscopecoltran/plugins
+  subpackages:
+  - stargazers/fetch
+- package: github.com/satori/go.uuid
+- package: github.com/sirupsen/logrus
+- package: github.com/speps/go-hashids
+- package: github.com/spf13/cobra
+  subpackages:
+  - doc
+- package: github.com/spf13/viper
+- package: github.com/trustmaster/goflow
+- package: github.com/urfave/negroni
+- package: github.com/zbindenren/negroni-prometheus
+- package: gopkg.in/gin-contrib/cors.v1
+- package: gopkg.in/olivere/elastic.v5
+- package: gopkg.in/unrolled/secure.v1

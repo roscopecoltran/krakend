@@ -2,7 +2,7 @@
 
 # KrakenD
 
-[![Travis-CI](https://travis-ci.org/devopsfaith/krakend.svg?branch=master)](https://travis-ci.org/devopsfaith/krakend) [![Go Report Card](https://goreportcard.com/badge/github.com/devopsfaith/krakend)](https://goreportcard.com/report/github.com/devopsfaith/krakend) [![Coverage Status](https://coveralls.io/repos/github/devopsfaith/krakend/badge.svg?branch=master)](https://coveralls.io/github/devopsfaith/krakend?branch=master) [![GoDoc](https://godoc.org/github.com/devopsfaith/krakend?status.svg)](https://godoc.org/github.com/devopsfaith/krakend)
+[![Travis-CI](https://travis-ci.org/devopsfaith/krakend.svg?branch=master)](https://travis-ci.org/devopsfaith/krakend) [![Go Report Card](https://goreportcard.com/badge/github.com/roscopecoltran/krakend)](https://goreportcard.com/report/github.com/roscopecoltran/krakend) [![Coverage Status](https://coveralls.io/repos/github/devopsfaith/krakend/badge.svg?branch=master)](https://coveralls.io/github/devopsfaith/krakend?branch=master) [![GoDoc](https://godoc.org/github.com/roscopecoltran/krakend?status.svg)](https://godoc.org/github.com/roscopecoltran/krakend)
 
 Ultra performant API Gateway with middlewares
 
@@ -63,10 +63,10 @@ For the lazy, a ready to use example:
         "log"
         "os"
 
-        "github.com/devopsfaith/krakend/config/viper"
-        "github.com/devopsfaith/krakend/logging/gologging"
-        "github.com/devopsfaith/krakend/proxy"
-        "github.com/devopsfaith/krakend/router/gin"
+        "github.com/roscopecoltran/krakend/config/viper"
+        "github.com/roscopecoltran/krakend/logging/gologging"
+        "github.com/roscopecoltran/krakend/proxy"
+        "github.com/roscopecoltran/krakend/router/gin"
     )
 
     func main() {

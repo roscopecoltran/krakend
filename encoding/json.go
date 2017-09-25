@@ -3,6 +3,7 @@ package encoding
 import (
 	"encoding/json"
 	"io"
+	//	"github.com/roscopecoltran/krakend/logging"
 )
 
 // JSON is the key for the json encoding

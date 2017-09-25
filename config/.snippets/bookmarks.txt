@@ -1,0 +1,6 @@
+refs:
+- https://github.com/qor/qor-example/blob/master/main.go
+- https://github.com/ssut/pocketnpm/blob/master/db/models.go
+- https://github.com/ssut/gocursive
+- https://github.com/mojotech/feedbag/blob/master/feedbag/routes.go
+- https://github.com/yinhm/friendfeed

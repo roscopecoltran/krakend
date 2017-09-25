@@ -2,8 +2,12 @@ package proxy
 
 import (
 	"bytes"
+	// "fmt"
+	// "github.com/k0kubun/pp"
 	"io"
 	"net/url"
+	"strings"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // Request contains the data to send to the backend
@@ -32,6 +36,43 @@ func (r *Request) GeneratePath(URLPattern string) {
 		buff = bytes.Replace(buff, key, []byte(v), -1)
 	}
 	r.Path = string(buff)
+}
+
+func (r *Request) AddQueryStrings(queryStrings map[string]string) {
+	if len(queryStrings) == 0 {
+		return
+	}
+	for key, value := range queryStrings {
+		if r.Params[key] != "" {
+			value = r.Params[key]
+		}
+		r.Query.Add(key, value)
+	}
+}
+
+func (r *Request) AddParameters(parameters map[string]string) {
+	if len(parameters) == 0 {
+		return
+	}
+	for key, value := range parameters {
+		if r.Params[key] == "" {
+			r.Params[key] = strings.Trim(string(value), " ")
+		}
+	}
+}
+
+func (r *Request) AddHeaders(headers []string) {
+	if len(headers) == 0 {
+		return
+	}
+	for _, header := range headers {
+		parts := strings.Split(header, ":")
+		if len(parts) == 2 {
+			name := parts[0]
+			value := parts[1]
+			r.Headers[name] = []string{strings.Trim(value, " ")}
+		}
+	}
 }
 
 // Clone clones itself into a new request

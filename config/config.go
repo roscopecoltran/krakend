@@ -5,102 +5,56 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"path"
 	"regexp"
 	"strings"
-	"time"
 
-	"github.com/devopsfaith/krakend/encoding"
+	"github.com/cep21/xdgbasedir"
+	"github.com/joho/godotenv"
+	// "github.com/k0kubun/pp"
+
+	"github.com/roscopecoltran/krakend/encoding"
+	// "github.com/roscopecoltran/krakend/logging"
+	// "github.com/roscopecoltran/krakend/utils"
+	// "github.com/yudppp/structs"
 )
+
+/*
+	refs:
+	- https://github.com/daichirata/yaml2env
+	- https://yudppp.github.io/json2struct/
+	- github.com/yudppp/structs
+
+    user := structs.NewExample(User{}).(User)
+    fmt.Println(user.Name) # -> ichiro
+
+    user = structs.NewDefault(User{}).(User)
+    fmt.Println(user.Name) # -> suzuki
+
+*/
+var Config = struct {
+	Env struct {
+		Files []string          `json:"files" yaml:"files"`
+		Keys  map[string]string `json:"kvs" yaml:"kvs"`
+	} `json:"envs" yaml:"envs" file:".env"`
+	Server    ServerConfig    `json:"server" yaml:"server" file:"providers"`
+	Datastore DatabaseConfig  `json:"datastores" yaml:"datastores" file:"providers"`
+	Gates     []GatewayConfig `json:"gateways" yaml:"gateways" file:"providers"`
+	Providers []Provider      `json:"providers" yaml:"providers" file:"providers"`
+	// Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks"`
+}{}
 
 const (
 	// BracketsRouterPatternBuilder uses brackets as route params delimiter
 	BracketsRouterPatternBuilder = iota
 	// ColonRouterPatternBuilder use a colon as route param delimiter
 	ColonRouterPatternBuilder
+	// Time822 formt time for RFC 822
+	Time822 = "02 Jan 2006 15:04:05 -0700" // "02 Jan 06 15:04 -0700"
 )
 
 // RoutingPattern to use during route conversion. By default, use the colon router pattern
 var RoutingPattern = ColonRouterPatternBuilder
-
-// ServiceConfig defines the krakend service
-type ServiceConfig struct {
-	// set of endpoint definitions
-	Endpoints []*EndpointConfig `mapstructure:"endpoints"`
-	// defafult timeout
-	Timeout time.Duration `mapstructure:"timeout"`
-	// default TTL for GET
-	CacheTTL time.Duration `mapstructure:"cache_ttl"`
-	// default set of hosts
-	Host []string `mapstructure:"host"`
-	// port to bind the krakend service
-	Port int `mapstructure:"port"`
-	// version code of the configuration
-	Version int `mapstructure:"version"`
-
-	// run krakend in debug mode
-	Debug     bool
-	uriParser URIParser
-}
-
-// EndpointConfig defines the configuration of a single endpoint to be exposed
-// by the krakend service
-type EndpointConfig struct {
-	// url pattern to be registered and exposed to the world
-	Endpoint string `mapstructure:"endpoint"`
-	// HTTP method of the endpoint (GET, POST, PUT, etc)
-	Method string `mapstructure:"method"`
-	// set of definitions of the backends to be linked to this endpoint
-	Backend []*Backend `mapstructure:"backend"`
-	// number of concurrent calls this endpoint must send to the backends
-	ConcurrentCalls int `mapstructure:"concurrent_calls"`
-	// timeout of this endpoint
-	Timeout time.Duration `mapstructure:"timeout"`
-	// duration of the cache header
-	CacheTTL time.Duration `mapstructure:"cache_ttl"`
-	// list of query string params to be extracted from the URI
-	QueryString []string `mapstructure:"querystring_params"`
-	// Endpoint Extra configuration for customized behaviour
-	ExtraConfig ExtraConfig `mapstructure:"extra_config"`
-}
-
-// Backend defines how krakend should connect to the backend service (the API resource to consume)
-// and how it should process the received response
-type Backend struct {
-	// the name of the group the response should be moved to. If empty, the response is
-	// not changed
-	Group string `mapstructure:"group"`
-	// HTTP method of the request to send to the backend
-	Method string `mapstructure:"method"`
-	// Set of hosts of the API
-	Host []string `mapstructure:"host"`
-	// False if the hostname should be sanitized
-	HostSanitizationDisabled bool `mapstructure:"disable_host_sanitize"`
-	// URL pattern to use to locate the resource to be consumed
-	URLPattern string `mapstructure:"url_pattern"`
-	// set of response fields to remove. If empty, the filter id not used
-	Blacklist []string `mapstructure:"blacklist"`
-	// set of response fields to allow. If empty, the filter id not used
-	Whitelist []string `mapstructure:"whitelist"`
-	// map of response fields to be renamed and their new names
-	Mapping map[string]string `mapstructure:"mapping"`
-	// the encoding format
-	Encoding string `mapstructure:"encoding"`
-	// the response to process is a collection
-	IsCollection bool `mapstructure:"is_collection"`
-	// name of the field to extract to the root. If empty, the formater will do nothing
-	Target string `mapstructure:"target"`
-
-	// list of keys to be replaced in the URLPattern
-	URLKeys []string
-	// number of concurrent calls this endpoint must send to the API
-	ConcurrentCalls int
-	// timeout of this backend
-	Timeout time.Duration
-	// decoder to use in order to parse the received response from the API
-	Decoder encoding.Decoder
-	// Backend Extra configuration for customized behaviours
-	ExtraConfig ExtraConfig `mapstructure:"extra_config"`
-}
 
 type ExtraConfig map[string]interface{}
 
@@ -110,7 +64,9 @@ type ConfigGetter func(ExtraConfig) interface{}
 // DefaultConfigGetter is the Default implementation for ConfigGetter, it just returns the ExtraConfig map.
 func DefaultConfigGetter(extra ExtraConfig) interface{} { return extra }
 
-const defaultNamespace = "github.com/devopsfaith/krakend/config"
+const defaultNamespace = "github.com/roscopecoltran/krakend/config"
+
+var configDirectoryPath string
 
 // ConfigGetters map than match namespaces and ConfigGetter so the components knows which type to expect returned by the
 // ConfigGetter ie: if we look for the defaultNamespace in the map, we will get the DefaultConfigGetter implementation
@@ -124,19 +80,50 @@ var (
 	defaultPort          = 8080
 )
 
+var (
+	DefaultGatewayModels = []interface{}{&ServiceConfig{}, &EndpointConfig{}, &Backend{}} // &Group{}, &Node{}, &Topic{}, &Plugin{},
+)
+
+func init() {
+	baseDir, err := xdgbasedir.ConfigHomeDirectory()
+	if err != nil {
+		log.Fatal("config/config.go > Can't find XDG BaseDirectory")
+	} else {
+		configDirectoryPath = path.Join(baseDir, "krakend")
+	}
+}
+
+// refs
+// - https://github.com/gooops/env_strings
+
 // Init initializes the configuration struct and its defined endpoints and backends.
 // Init also sanitizes the values, applies the default ones whenever necessary and
 // normalizes all the things.
 func (s *ServiceConfig) Init() error {
+
+	if len(Config.Env.Files) == 0 {
+		Config.Env.Files = append(Config.Env.Files, ".env")
+		// pp.Println(Config.Env.Files)
+	}
+
+	Config.Env.Keys, _ = godotenv.Read(Config.Env.Files...)
+	// fmt.Println("config/config.go > Config.Env.Keys: ")
+	// pp.Println(Config.Env.Keys)
+
 	s.uriParser = NewURIParser()
+
 	if s.Version != 1 {
-		return fmt.Errorf("Unsupported version: %d\n", s.Version)
+		return fmt.Errorf("config/config.go > Unsupported version: %d\n", s.Version)
 	}
+
 	if s.Port == 0 {
-		s.Port = defaultPort
+		s.Port = Config.Server.Port
 	}
+
 	s.Host = s.uriParser.CleanHosts(s.Host)
+
 	for i, e := range s.Endpoints {
+
 		e.Endpoint = s.uriParser.CleanPath(e.Endpoint)
 
 		if err := e.validate(); err != nil {
@@ -145,6 +132,7 @@ func (s *ServiceConfig) Init() error {
 
 		inputParams := s.extractPlaceHoldersFromURLTemplate(e.Endpoint, endpointURLKeysPattern)
 		inputSet := map[string]interface{}{}
+
 		for ip := range inputParams {
 			inputSet[inputParams[ip]] = nil
 		}
@@ -156,6 +144,9 @@ func (s *ServiceConfig) Init() error {
 		for j, b := range e.Backend {
 
 			s.initBackendDefaults(i, j)
+
+			// fmt.Println("initBackendDefaults: ")
+			// pp.Print(b)
 
 			b.Method = strings.ToTitle(b.Method)
 
@@ -179,6 +170,7 @@ func (s *ServiceConfig) extractPlaceHoldersFromURLTemplate(subject string, patte
 
 func (s *ServiceConfig) initEndpointDefaults(e int) {
 	endpoint := s.Endpoints[e]
+
 	if endpoint.Method == "" {
 		endpoint.Method = "GET"
 	} else {
@@ -198,6 +190,14 @@ func (s *ServiceConfig) initEndpointDefaults(e int) {
 func (s *ServiceConfig) initBackendDefaults(e, b int) {
 	endpoint := s.Endpoints[e]
 	backend := endpoint.Backend[b]
+	for n, h := range backend.Header {
+		for k, v := range Config.Env.Keys {
+			holderKey := fmt.Sprintf("{%s}", strings.Replace(k, "\"", "", -1))
+			h = strings.Replace(h, holderKey, v, -1) // backend.Header[n]
+			s.Endpoints[e].Backend[b].Header[n] = strings.Trim(h, " ")
+			backend.Header[n] = strings.Trim(h, " ")
+		}
+	}
 	if len(backend.Host) == 0 {
 		backend.Host = s.Host
 	} else if !backend.HostSanitizationDisabled {
@@ -208,9 +208,12 @@ func (s *ServiceConfig) initBackendDefaults(e, b int) {
 	}
 	backend.Timeout = endpoint.Timeout
 	backend.ConcurrentCalls = endpoint.ConcurrentCalls
+
 	switch strings.ToLower(backend.Encoding) {
 	case encoding.XML:
 		backend.Decoder = encoding.NewXMLDecoder(backend.IsCollection)
+	//case encoding.XPATH:
+	//	backend.Decoder = encoding.NewXPATHDecoder(backend.IsCollection)
 	case encoding.RSS:
 		backend.Decoder = encoding.NewRSSDecoder()
 	default:
@@ -231,14 +234,14 @@ func (s *ServiceConfig) initBackendURLMappings(e, b int, inputParams map[string]
 	}
 
 	if len(outputSet) > len(inputParams) {
-		return fmt.Errorf("Too many output params! input: %v, output: %v\n", outputSet, outputParams)
+		return fmt.Errorf("config/config.go > initBackendURLMappings > Too many output params! input: %v, output: %v\n", outputSet, outputParams)
 	}
 
 	tmp := backend.URLPattern
 	backend.URLKeys = make([]string, len(outputParams))
 	for o := range outputParams {
 		if _, ok := inputParams[outputParams[o]]; !ok {
-			return fmt.Errorf("Undefined output param [%s]! input: %v, output: %v\n", outputParams[o], inputParams, outputParams)
+			return fmt.Errorf("config/config.go > initBackendURLMappings > Undefined output param [%s]! input: %v, output: %v\n", outputParams[o], inputParams, outputParams)
 		}
 		tmp = strings.Replace(tmp, "{"+outputParams[o]+"}", "{{."+strings.Title(outputParams[o])+"}}", -1)
 		backend.URLKeys = append(backend.URLKeys, strings.Title(outputParams[o]))
@@ -250,15 +253,15 @@ func (s *ServiceConfig) initBackendURLMappings(e, b int, inputParams map[string]
 func (e *EndpointConfig) validate() error {
 	matched, err := regexp.MatchString(debugPattern, e.Endpoint)
 	if err != nil {
-		log.Printf("ERROR: parsing the endpoint url [%s]: %s. Ignoring\n", e.Endpoint, err.Error())
+		log.Printf("config/config.go > validate > ERROR: parsing the endpoint url [%s]: %s. Ignoring\n", e.Endpoint, err.Error())
 		return err
 	}
 	if matched {
-		return fmt.Errorf("ERROR: the endpoint url path [%s] is not a valid one!!! Ignoring\n", e.Endpoint)
+		return fmt.Errorf("config/config.go validate > > ERROR: the endpoint url path [%s] is not a valid one!!! Ignoring\n", e.Endpoint)
 	}
 
 	if len(e.Backend) == 0 {
-		return fmt.Errorf("WARNING: the [%s] endpoint has 0 backends defined! Ignoring\n", e.Endpoint)
+		return fmt.Errorf("config/config.go validate > > WARNING: the [%s] endpoint has 0 backends defined! Ignoring\n", e.Endpoint)
 	}
 	return nil
 }

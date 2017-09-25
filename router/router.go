@@ -4,7 +4,8 @@ package router
 import (
 	"context"
 
-	"github.com/devopsfaith/krakend/config"
+	"github.com/roscopecoltran/krakend/config"
+	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // Router sets up the public layer exposed to the users
