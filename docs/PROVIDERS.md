@@ -1,4 +1,4 @@
-# Configuration file
+# PROVIDERS
 
 Goal:
 Keywords: 

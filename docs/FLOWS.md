@@ -1,4 +1,4 @@
-# Configuration file
+# FLOWS
 
 Goal:
 Keywords: 
