@@ -16,6 +16,16 @@ ignore:
 - github.com/docker/docker
 - github.com/Sirupsen/logrus
 import:
+- package: github.com/gyuho/goraph
+- package: h12.me/socks
+  repo: https://github.com/h12w/socks.git
+  vcs: git
+- package: github.com/douglaslamb/rbstringdict
+- package: github.com/bloglovin/obpath
+- package: gopkg.in/validator.v2
+- package: github.com/jweir/csv
+- package: github.com/firewut/go-json-map
+- package: github.com/NodePrime/jsonpath
 - package: github.com/knakk/ftx
   subpackages:
   - char

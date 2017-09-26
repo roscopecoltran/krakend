@@ -210,36 +210,6 @@ func (r ginRouter) registerKrakendEndpoint(method, path string, handler gin.Hand
 }
 
 /*
-func (r ginRouter) registerBucketEndpoints() {
-	handlerEntity := BucketHandler(r.cfg.Logger)
-	r.cfg.Engine.POST("/entity/:entity_id", func(c *gin.Context) {
-		id := c.Param("entity_id")
-		d.Update(func(tx *bolt.Tx) error {
-			b := tx.Bucket([]byte("queue"))
-			q := b.Get([]byte("network_ids"))
-			append(*q, id)
-			err = b.Put([]byte("network_ids"), q)
-			return err
-		})
-		c.JSON(200, gin.H{"message": "Network submission successful."})
-	})
-
-	r.cfg.Engine.GET("/entity", func(c *gin.Context) {
-		d.Update(func(tx *bolt.Tx) error {
-			b := tx.Bucket([]byte("queue"))
-			q := b.Get([]byte("entity_ids"))
-			len := q.Len() - 1
-			network_id = (*q)[len]
-			*q = (*q)[:x]
-			err = b.Put([]byte("entity_ids"), q)
-			return err
-		})
-		c.JSON(200, gin.H{"entity_id": network_id})
-	})
-}
-*/
-
-/*
 
 // https://github.com/lebedev-yury/cities-api/blob/master/router.go
 func registerGeoHelpersEndpoints(db *bolt.DB, options *config.Options, c *cache.Cache) *gin.Engine {

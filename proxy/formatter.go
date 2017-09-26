@@ -3,8 +3,35 @@ package proxy
 import (
 	"fmt"
 	"strings"
-	// "github.com/Jeffail/gabs"
+	// map_path "github.com/firewut/go-json-map"
+	// "github.com/bloglovin/obpath"
 )
+
+/*
+	Refs:
+	- https://github.com/bloglovin/obpath
+		".store",
+		".store.books",
+		".store.*",
+		"..Author",
+		".store.counts[*]",
+		".store.counts[3]",
+		".store.counts[1:2]",
+		".store.counts[-2:]",
+		".store.counts[:1]",
+		".store.counts[:1].Price",
+		"..books[*](has(@.ISBN))",
+		".store.books[*](!empty(@.ISBN))",
+		".store.books[*](eq(@.Price, 8.99))",
+		".store.books[0:4](eq(@.Author, \"Louis L'Amour\"))",
+		"..books.*(between(@.Price, 8, 10)).Title",
+		"..books[*](gt(@.Price, 9))",
+		"..books[*](has(@.Metadata))",
+		"..books[*](contains(@.Title, 'R')).Title",
+		"..books[*](cicontains(@.Title, 'R')).Title",
+		".store.*[*](gt(@.Price, 18))"
+		- cat testdata/search.json  | obp --path=".items.books"
+*/
 
 // "github.com/roscopecoltran/krakend/logging"
 
@@ -90,22 +117,9 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 	wl := make(map[string]map[string]interface{}, len(whitelist))
 	for _, k := range whitelist {
 		keys := strings.Split(k, ".")
-		//
-		//if len(keys) > 1 {
-		//	tmp := make(map[string]interface{})
-		//} else {
 		tmp := make(map[string]interface{}, len(keys)-1)
-		//}
-
+		fmt.Printf("keys=%s \n", keys)
 		if len(keys) > 1 {
-
-			//switch keys[0] {
-			//case "[]":
-			//	if _, ok := wl[keys[0]]; ok {
-
-			// []interface {}{
-
-			//default:
 			fmt.Printf("wl[keys[0]]=%s \n", wl[keys[0]])
 			if _, ok := wl[keys[0]]; ok {
 				fmt.Printf("keys[1:]=%s \n", keys[1:])
@@ -119,7 +133,6 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 				}
 				wl[keys[0]] = tmp
 			}
-			//}
 		} else {
 			wl[keys[0]] = tmp
 		}
@@ -128,6 +141,8 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 	return func(entity *Response) {
 		accumulator := make(map[string]interface{}, len(whitelist))
 		for k, v := range entity.Data {
+			// property, err = map_path.GetProperty(document, "one.two.three", ".")
+			// fmt.Println(property)
 			if sub, ok := wl[k]; ok {
 				if len(sub) > 0 {
 					if tmp := whitelistFilterSub(v, sub); len(tmp) > 0 {

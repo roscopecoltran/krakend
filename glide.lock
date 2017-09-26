@@ -1,5 +1,5 @@
-hash: b04faa0d3e461f81855331c0dffa6fc60050fdc1712f3a5d3a694413feef8099
-updated: 2017-09-25T16:03:50.424582209+02:00
+hash: 32afbb8e84fc3e2397249c76de0c8fd3c5e50dc452b0b788d0a0219cf3e88495
+updated: 2017-09-26T02:32:50.627748434+02:00
 imports:
 - name: github.com/7ing/go-flow
   version: d71f89c3fbef4896a3a49fec536494a81f4c61d2
@@ -382,6 +382,8 @@ imports:
   version: 36174c11a4bb5b86413af31527b6a1469426ed06
   subpackages:
   - twotier
+- name: github.com/disintegration/imaging
+  version: a5858022df0e1734a59f973fffe3f87b51c087ed
 - name: github.com/disintegration/mqmq
   version: 6da5bf0c79dc4a5f2f0e727c39c6c5c6243d969c
 - name: github.com/dns-gh/tojson
@@ -450,6 +452,8 @@ imports:
   version: 570b54cabe6b8eb0bc2dfce68d964677d63b5260
 - name: github.com/fatih/structs
   version: 7e5a8eef611ee84dd359503f3969f80df4c50723
+- name: github.com/firewut/go-json-map
+  version: 3dcea0a0b323bc81e245e0f030948dfbb5eb2314
 - name: github.com/flowbase/flowbase
   version: 198cd4f9cac129a14de86ed50d3685eaa4cf2e14
 - name: github.com/flynn/go-shlex
@@ -786,12 +790,16 @@ imports:
   version: 72391e6fd7384785fa3c46a405214a616d6c4a1d
 - name: github.com/jteeuwen/go-pkg-xmlx
   version: 76f54ee73233b171ca9ee82ef837a1fc4d3809c0
+- name: github.com/juju/errgo
+  version: 08cceb5d0b5331634b9826762a8fd53b29b86ad8
 - name: github.com/juju/errors
   version: c7d06af17c68cd34c835053720b21f6549d9b0ee
 - name: github.com/justinas/alice
   version: 1051eaf52fcafdd87ead59d28b065f1fcb8274ec
 - name: github.com/justinas/nosurf
   version: cbe5fdb4a426586632a1ff60eca311bd286220f5
+- name: github.com/jweir/csv
+  version: 9a5d5b4c9f2212399b32050a77a0ea592443f4d3
 - name: github.com/k0kubun/pp
   version: d1532fc5d94ecdf2da29e24d7b99721f3287de4a
 - name: github.com/kayteh/waifudb
@@ -813,6 +821,35 @@ imports:
   version: ae7887de9fa5d2db4eaa8174a7eff2c1ac00f2da
 - name: github.com/klauspost/crc32
   version: bab58d77464aa9cf4e84200c3276da0831fe0c03
+- name: github.com/knakk/fenster
+  version: 63c9c6e286d7b2331574578e553405ba4c2a6579
+- name: github.com/knakk/ftx
+  version: 26ac22039456a610de53b86dfa87e76ce73047b7
+  subpackages:
+  - char
+  - index
+  - token
+- name: github.com/knakk/kbp
+  version: 0c65d493ebabaa418d1d972c4d2cb7890db0eb58
+  subpackages:
+  - isbn
+  - marc
+  - ncip
+  - onix
+  - rdf
+  - sip2
+- name: github.com/knakk/otra
+  version: 211620750a52b5c9c918a184530c790027c65bbe
+  subpackages:
+  - storage
+- name: github.com/knakk/rdf
+  version: 9659d914ab599d63e07af0b84aeabd4a942b66d5
+- name: github.com/knakk/rdf2rdf
+  version: 25f24ca3a5103ab344b0f569eaaa8046e40eeb1d
+- name: github.com/knakk/sparql
+  version: 3de19ad6a5dcee30dd5e101b47e3aedc7f69ef57
+- name: github.com/knakk/specs
+  version: a0b13621bba14b22c060e06892fca82d273a24c5
 - name: github.com/kpacha/bloomis
   version: 026e164086f6749a3ea15bf02b4dff983665bacd
 - name: github.com/kpacha/gin-auth0-profile
@@ -928,6 +965,10 @@ imports:
   - crane
 - name: github.com/microcosm-cc/bluemonday
   version: 68fecaef60268522d2ac3f0123cec9d3bcab7b6e
+- name: github.com/miku/esbulk
+  version: a6b167e4ccb99bb5524ae46f3ceeef9eb43e6e8e
+- name: github.com/miku/xmlcutty
+  version: 8165e3de7a5e459f7742063cfbf4f634c69acae4
 - name: github.com/mitchellh/mapstructure
   version: cc8532a8e9a55ea36402aa21efdf403a60d34096
 - name: github.com/mmbros/treepath
@@ -976,6 +1017,8 @@ imports:
   - funcs/use
   - funcs/xpath
   - scanner
+- name: github.com/NodePrime/jsonpath
+  version: 84403ded544328c99be3472727667179eef23a91
 - name: github.com/nsqio/go-nsq
   version: a53d495e81424aaf7a7665a9d32a97715c40e953
 - name: github.com/NYTimes/openapi2proto
@@ -1094,8 +1137,16 @@ imports:
   version: ff57fdc13a148d39c3e930cb27c7eaf82e376891
 - name: github.com/qor/audited
   version: 8e5b17948051dd655e725a39ef8137654874d3aa
+- name: github.com/qor/media
+  version: 8585678bc0b2b5de7b78303fbd1377aa8f0a7142
+  subpackages:
+  - oss
 - name: github.com/qor/middlewares
   version: 781378b69454a545d08058d8154aca40d079e7ab
+- name: github.com/qor/oss
+  version: cdabd64fd390d98d5aed2eb548c97221519e45ff
+  subpackages:
+  - filesystem
 - name: github.com/qor/qor
   version: 843ff6066b4fc9f723da987b670f483295f2d94e
   subpackages:
@@ -1105,6 +1156,8 @@ imports:
   version: 2d882089748afcf4e729334d7bb7fa17057de2e9
 - name: github.com/qor/roles
   version: 4b5e54326f5b13fe76cfb6206ee53f547250c700
+- name: github.com/qor/serializable_meta
+  version: b2914e39966b992a6a0d11aae564dcdd1fc8314a
 - name: github.com/qor/session
   version: 8206b0adab706a6ef3ee6fabba2584d34429a26a
   subpackages:
@@ -1342,6 +1395,8 @@ imports:
   version: fdb0bce574afe29c8c5544dd03d9416f10a40d60
 - name: github.com/timshannon/bolthold
   version: bc8956a9fb080ceee3fb5168f8d8ecd974cb7d5b
+- name: github.com/tobyhede/go-underscore
+  version: ea55fc9569918f099b1dfa785088434e5c53544d
 - name: github.com/trustmaster/goflow
   version: 6f14107b2c400fb787945c6aaad618754fafd26c
   repo: https://github.com/abferm/goflow.git
@@ -1371,7 +1426,7 @@ imports:
   subpackages:
   - lang
 - name: github.com/urandom/readeef
-  version: 32622febdb56e24e6ce7ce3088533e4d538a8f12
+  version: 9d514e5b78e6f94aff7036f1af90560c00cbec93
   repo: https://github.com/urandom/readeef.git
   vcs: git
   subpackages:
@@ -1522,6 +1577,12 @@ imports:
   - ssh
   - ssh/knownhosts
   - ssh/terminal
+- name: golang.org/x/image
+  version: e20db36d77bd0cb36cea8fe49d5c37d82d21591f
+  subpackages:
+  - bmp
+  - tiff
+  - tiff/lzw
 - name: golang.org/x/net
   version: ab5485076ff3407ad2d02db054635913f017b0ed
   subpackages:
@@ -1693,6 +1754,8 @@ imports:
   - shared
 - name: gopkg.in/unrolled/secure.v1
   version: 19a872c81779b0456e9ee495a8162fb60c57b0c0
+- name: gopkg.in/validator.v2
+  version: 460c83432a98c35224a6fe352acf8b23e067ad06
 - name: gopkg.in/xmlpath.v2
   version: 860cbeca3ebcc600db0b213c0e83ad6ce91f5739
 - name: gopkg.in/yaml.v2

@@ -5,17 +5,15 @@ import (
 	"io"
 
 	gologging "github.com/op/go-logging"
-	// "github.com/sirupsen/logrus"
-	// "github.com/o1egl/gormrus" // logs-logrus
-	// prefixed "github.com/x-cray/logrus-prefixed-formatter"
+
+	"github.com/roscopecoltran/krakend/config"
 	"github.com/roscopecoltran/krakend/logging"
 )
 
-// Logger           *logrus.Logger
-
 // NewLogger returns a krakend logger wrapping a gologging logger
 func NewLogger(level string, out io.Writer, prefix string) (logging.Logger, error) {
-	module := "KRAKEND"
+	module := config.Config.Service.Name
+	// module := "KRAKEND"
 	log := gologging.MustGetLogger(module)
 	logBackend := gologging.NewLogBackend(out, prefix, 0)
 	format := gologging.MustStringFormatter(

@@ -65,7 +65,7 @@ func EndpointHandler(configuration *config.EndpointConfig, proxy proxy.Proxy) gi
 		}
 
 		if response != nil {
-			c.JSON(http.StatusOK, response.Data)
+			c.IndentedJSON(http.StatusOK, response.Data)
 		} else {
 			c.JSON(http.StatusOK, gin.H{})
 		}
@@ -78,42 +78,6 @@ var (
 	// headersToSend        = []string{"Content-Type", "Accept", "User-Agent", "Authentication", "Accept-Encoding"}
 	userAgentHeaderValue = []string{core.KrakendUserAgent}
 )
-
-/*
-// NewRequest gets a request from the current gin context and the received query string
-func NewRequest(c *gin.Context, queryString []string) *proxy.Request {
-
-	params := make(map[string]string, len(c.Params))
-	for _, param := range c.Params {
-		params[strings.Title(param.Key)] = param.Value
-	}
-
-	headers := make(map[string][]string, 5+len(headersToSend))
-	headers["X-Forwarded-For"] = []string{c.ClientIP()}
-	headers["User-Agent"] = userAgentHeaderValue
-
-	for _, k := range headersToSend {
-		if _, ok := c.Request.Header[k]; ok {
-			headers[k] = []string(c.Request.Header[k])
-		}
-	}
-
-	query := make(map[string][]string, len(queryString))
-	for i := range queryString {
-		if v := c.Request.URL.Query().Get(queryString[i]); v != "" {
-			query[queryString[i]] = []string{v}
-		}
-	}
-
-	return &proxy.Request{
-		Method:  c.Request.Method,
-		Query:   query,
-		Body:    c.Request.Body,
-		Params:  params,
-		Headers: headers,
-	}
-}
-*/
 
 // NewRequest gets a request from the current gin context and the received query string
 func NewRequest(c *gin.Context, queryString []string) *proxy.Request {

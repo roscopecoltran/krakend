@@ -157,14 +157,8 @@ func NewHTTPProxyDetailed(remote *config.Backend, requestExecutor HTTPRequestExe
 			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.URL.String()")
 			pp.Println(request.URL.String())
 
-			// fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > requestToBakend.StatusCode")
-			// pp.Println(requestToBakend.StatusCode)
-
 			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > requestToBakend.Header")
 			pp.Println(requestToBakend.Header)
-
-			// fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.resp")
-			// pp.Print(resp)
 
 			if err != nil {
 				fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.err")

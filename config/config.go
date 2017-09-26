@@ -36,29 +36,23 @@ import (
 */
 
 var Config = struct {
-	Env       EnvConfig        `json:"env" yaml:"env" file:"environment" toml:"env"`
-	Server    ServerConfig     `json:"server" yaml:"server" file:"server" toml:"server"`
-	Store     StoreConfig      `json:"stores" yaml:"stores" file:"stores" toml:"stores"`
-	Gateways  []GatewayConfig  `json:"gateways" yaml:"gateways" file:"gateways" toml:"gateways"`
-	Providers []ProviderConfig `json:"providers" yaml:"providers" file:"providers" toml:"providers"`
+	Env EnvConfig `json:"env" yaml:"env" file:"environment" toml:"env"`
 
-	Debug struct {
-		Components struct {
-			Services    bool `default:"false" gorm:"column:services" json:"services" yaml:"services" toml:"services"`
-			Servers     bool `default:"false" gorm:"column:servers" json:"servers" yaml:"servers" toml:"servers"`
-			Routers     bool `default:"false" gorm:"column:routers" json:"routers" yaml:"routers" toml:"routers"`
-			Endpoints   bool `default:"false" gorm:"column:endpoints" json:"endpoints" yaml:"endpoints" toml:"endpoints"`
-			Proxies     bool `default:"false" gorm:"column:proxies" json:"proxies" yaml:"proxies" toml:"proxies"`
-			Backends    bool `default:"false" gorm:"column:backends" json:"backends" yaml:"backends" toml:"backends"`
-			Middlewares bool `default:"false" gorm:"column:middlewares" json:"middlewares" yaml:"middlewares" toml:"middlewares"`
-			Providers   bool `default:"false" gorm:"column:providers" json:"providers" yaml:"providers" toml:"providers"`
-		} `json:"components" yaml:"components" file:"components" toml:"components"`
-	} `json:"debug" yaml:"debug" file:"debug" toml:"debug"`
+	Service struct {
+		Name string `json:"name" yaml:"name" file:"name" toml:"name"`
+	} `json:"service" yaml:"service" file:"service" toml:"service"`
 
-	// Flows     map[string][]Flow   `json:"flows" yaml:"flows" toml:"flows"`
 	Common struct {
 		Locales LocalesConfig `gorm:"column:locales" json:"locales" yaml:"locales" toml:"locales"`
 	} `json:"common" yaml:"common" file:"common" toml:"common"`
+
+	Server ServerConfig `json:"server" yaml:"server" file:"server" toml:"server"`
+
+	Store     StoreConfig      `json:"stores" yaml:"stores" file:"stores" toml:"stores"`
+	Gateways  []GatewayConfig  `json:"gateways" yaml:"gateways" file:"gateways" toml:"gateways"`
+	Providers []ProviderConfig `json:"providers" yaml:"providers" file:"providers" toml:"providers"`
+	// Flows     map[string][]Flow   `json:"flows" yaml:"flows" toml:"flows"`
+	// Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks" toml:"tasks"`
 
 	Backend struct {
 		Api      InstanceConfig        `gorm:"column:server" json:"server" yaml:"server" toml:"server"`
@@ -77,7 +71,25 @@ var Config = struct {
 			Search   SearchSettingsConfig `gorm:"column:search" json:"search" yaml:"search" toml:"search"`
 		} `json:"settings" yaml:"settings" toml:"settings"`
 	} `json:"frontend" yaml:"frontend" file:"frontend" toml:"frontend"`
-	// Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks" toml:"tasks"`
+
+	Debug struct {
+		Logs struct {
+			Level     string `default:"Info" json:"level" yaml:"level" toml:"level"`
+			Out       string `default:"Stdout" json:"out" yaml:"out" toml:"out"`
+			AccessLog string `default:"access_log" json:"access_log" yaml:"access_log" toml:"access_log"`
+			ErrorLog  string `default:"error_log" json:"error_log" yaml:"error_log" toml:"error_log"`
+		} `json:"logs" yaml:"logs" file:"logs" toml:"logs"`
+		Components struct {
+			Services    bool `default:"false" gorm:"column:services" json:"services" yaml:"services" toml:"services"`
+			Servers     bool `default:"false" gorm:"column:servers" json:"servers" yaml:"servers" toml:"servers"`
+			Routers     bool `default:"false" gorm:"column:routers" json:"routers" yaml:"routers" toml:"routers"`
+			Endpoints   bool `default:"false" gorm:"column:endpoints" json:"endpoints" yaml:"endpoints" toml:"endpoints"`
+			Proxies     bool `default:"false" gorm:"column:proxies" json:"proxies" yaml:"proxies" toml:"proxies"`
+			Backends    bool `default:"false" gorm:"column:backends" json:"backends" yaml:"backends" toml:"backends"`
+			Middlewares bool `default:"false" gorm:"column:middlewares" json:"middlewares" yaml:"middlewares" toml:"middlewares"`
+			Providers   bool `default:"false" gorm:"column:providers" json:"providers" yaml:"providers" toml:"providers"`
+		} `json:"components" yaml:"components" file:"components" toml:"components"`
+	} `json:"debug" yaml:"debug" file:"debug" toml:"debug"`
 }{}
 
 const (
@@ -131,6 +143,10 @@ func init() {
 
 // refs
 // - https://github.com/gooops/env_strings
+
+//func (s *ServiceConfig) Set_Tor(opt bool) {
+//	s.Set_Proxy = opt
+//}
 
 // Init initializes the configuration struct and its defined endpoints and backends.
 // Init also sanitizes the values, applies the default ones whenever necessary and
