@@ -11,7 +11,7 @@ import (
 
 	"github.com/cep21/xdgbasedir"
 	"github.com/joho/godotenv"
-	"github.com/k0kubun/pp"
+	//"github.com/k0kubun/pp"
 
 	"github.com/roscopecoltran/krakend/encoding"
 	// "github.com/roscopecoltran/krakend/logging"
@@ -31,6 +31,8 @@ import (
     user = structs.NewDefault(User{}).(User)
     fmt.Println(user.Name) # -> suzuki
 
+	// many2many:provider_topics;
+
 */
 
 var Config = struct {
@@ -39,6 +41,19 @@ var Config = struct {
 	Store     StoreConfig      `json:"stores" yaml:"stores" file:"stores" toml:"stores"`
 	Gateways  []GatewayConfig  `json:"gateways" yaml:"gateways" file:"gateways" toml:"gateways"`
 	Providers []ProviderConfig `json:"providers" yaml:"providers" file:"providers" toml:"providers"`
+
+	Debug struct {
+		Components struct {
+			Services    bool `default:"false" gorm:"column:services" json:"services" yaml:"services" toml:"services"`
+			Servers     bool `default:"false" gorm:"column:servers" json:"servers" yaml:"servers" toml:"servers"`
+			Routers     bool `default:"false" gorm:"column:routers" json:"routers" yaml:"routers" toml:"routers"`
+			Endpoints   bool `default:"false" gorm:"column:endpoints" json:"endpoints" yaml:"endpoints" toml:"endpoints"`
+			Proxies     bool `default:"false" gorm:"column:proxies" json:"proxies" yaml:"proxies" toml:"proxies"`
+			Backends    bool `default:"false" gorm:"column:backends" json:"backends" yaml:"backends" toml:"backends"`
+			Middlewares bool `default:"false" gorm:"column:middlewares" json:"middlewares" yaml:"middlewares" toml:"middlewares"`
+			Providers   bool `default:"false" gorm:"column:providers" json:"providers" yaml:"providers" toml:"providers"`
+		} `json:"components" yaml:"components" file:"components" toml:"components"`
+	} `json:"debug" yaml:"debug" file:"debug" toml:"debug"`
 
 	// Flows     map[string][]Flow   `json:"flows" yaml:"flows" toml:"flows"`
 	Common struct {
@@ -127,8 +142,8 @@ func (s *ServiceConfig) Init() error {
 	}
 
 	Config.Env.Keys, _ = godotenv.Read(Config.Env.Files...)
-	fmt.Println("config/config.go > Config.Env.Keys: ")
-	pp.Println(Config.Env.Keys)
+	//fmt.Println("config/config.go > Config.Env.Keys: ")
+	//pp.Println(Config.Env.Keys)
 
 	s.uriParser = NewURIParser()
 
@@ -210,6 +225,7 @@ func (s *ServiceConfig) initEndpointDefaults(e int) {
 func (s *ServiceConfig) initBackendDefaults(e, b int) {
 	endpoint := s.Endpoints[e]
 	backend := endpoint.Backend[b]
+	// to do: unique replace action before loading config files with configor
 	for n, h := range backend.Header {
 		for k, v := range Config.Env.Keys {
 			holderKey := fmt.Sprintf("{%s}", strings.Replace(k, "\"", "", -1))

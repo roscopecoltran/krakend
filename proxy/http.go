@@ -7,7 +7,9 @@ import (
 	"io"
 	"net/http"
 
-	// "github.com/k0kubun/pp"
+	"fmt"
+	"github.com/k0kubun/pp"
+
 	"github.com/roscopecoltran/krakend/config"
 	"github.com/roscopecoltran/krakend/encoding"
 	// "github.com/roscopecoltran/krakend/logging"
@@ -83,6 +85,25 @@ func DefaultHTTPResponseParserFactory(cfg HTTPResponseParserConfig) HTTPResponse
 		var data map[string]interface{}
 		err := cfg.dec(resp.Body, &data)
 		resp.Body.Close()
+
+		if config.Config.Debug.Components.Servers {
+
+			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.resp.Header")
+			pp.Print(resp.Header)
+
+			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.resp.StatusCode")
+			pp.Println(resp.StatusCode)
+
+			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.data")
+			pp.Print(data)
+
+			if err != nil {
+				fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.err")
+				pp.Print(err)
+			}
+
+		}
+
 		if err != nil {
 			return nil, err
 		}
@@ -109,6 +130,14 @@ func DefaultHTTPStatusHandler(ctx context.Context, resp *http.Response) (*http.R
 func NewHTTPProxyDetailed(remote *config.Backend, requestExecutor HTTPRequestExecutor, ch HTTPStatusHandler, rp HTTPResponseParser) Proxy {
 	return func(ctx context.Context, request *Request) (*Response, error) {
 		requestToBakend, err := http.NewRequest(request.Method, request.URL.String(), request.Body)
+
+		if config.Config.Debug.Components.Proxies {
+			if err != nil {
+				fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > NewRequest(...) > var.err")
+				pp.Print(err)
+			}
+		}
+
 		if err != nil {
 			return nil, err
 		}
@@ -116,6 +145,34 @@ func NewHTTPProxyDetailed(remote *config.Backend, requestExecutor HTTPRequestExe
 
 		resp, err := requestExecutor(ctx, requestToBakend)
 		requestToBakend.Body.Close()
+
+		if config.Config.Debug.Components.Proxies {
+
+			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.Method")
+			pp.Println(request.Method)
+
+			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.Body")
+			pp.Println(request.Body)
+
+			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.URL.String()")
+			pp.Println(request.URL.String())
+
+			// fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > requestToBakend.StatusCode")
+			// pp.Println(requestToBakend.StatusCode)
+
+			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > requestToBakend.Header")
+			pp.Println(requestToBakend.Header)
+
+			// fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.resp")
+			// pp.Print(resp)
+
+			if err != nil {
+				fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.err")
+				pp.Print(err)
+			}
+
+		}
+
 		select {
 		case <-ctx.Done():
 			return nil, ctx.Err()
@@ -144,10 +201,19 @@ func NewRequestBuilderMiddleware(remote *config.Backend) Middleware {
 		return func(ctx context.Context, request *Request) (*Response, error) {
 			r := request.Clone()
 			r.AddQueryStrings(remote.QueryStrings)
-			r.AddParameters(remote.Parameters)
 			r.AddHeaders(remote.Header)
 			r.GeneratePath(remote.URLPattern)
+			if remote.Method != "GET" {
+				r.AddParameters(remote.Parameters)
+			} else {
+				//r.Params.Clear()
+				r.Params = make(map[string]string)
+			}
 			r.Method = remote.Method
+			if config.Config.Debug.Components.Middlewares {
+				fmt.Println("proxy/http.go > NewRequestBuilderMiddleware(..) > var.r")
+				pp.Print(request.Method)
+			}
 			return next[0](ctx, &r)
 		}
 	}

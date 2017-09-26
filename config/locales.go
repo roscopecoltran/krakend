@@ -6,30 +6,30 @@ import (
 
 type LocalesConfig struct {
 	gorm.Model `json:"-" yaml:"-" toml:"-"`
-	Bg         string `gorm:"column:bg" json:"bg" example:"Български (Bulgarian)" yaml:"bg" toml:"bg"`
-	Cs         string `gorm:"column:cs" json:"cs" example:"Čeština (Czech)" yaml:"cs" toml:"cs"`
-	De         string `gorm:"column:de" json:"de" example:"Deutsch (German)" yaml:"de" toml:"de"`
-	DeDE       string `gorm:"column:de_" json:"de_DE" example:"Deutsch (German_Germany)" yaml:"de_DE" toml:"de_DE"`
-	ElGR       string `gorm:"column:el_" json:"el_GR" example:"Ελληνικά (Greek_Greece)" yaml:"el_GR" toml:"el_GR"`
-	En         string `gorm:"column:en" json:"en" example:"English" yaml:"en" toml:"en"`
-	Eo         string `gorm:"column:eo" json:"eo" example:"Esperanto (Esperanto)" yaml:"eo" toml:"eo"`
-	Es         string `gorm:"column:es" json:"es" example:"Español (Spanish)" yaml:"es" toml:"es"`
-	Fi         string `gorm:"column:fi" json:"fi" example:"Suomi (Finnish)" yaml:"fi" toml:"fi"`
-	Fr         string `gorm:"column:fr" json:"fr" example:"Français (French)" yaml:"fr" toml:"fr"`
-	He         string `gorm:"column:he" json:"he" example:"עברית (Hebrew)" yaml:"he" toml:"he"`
-	Hu         string `gorm:"column:hu" json:"hu" example:"Magyar (Hungarian)" yaml:"hu" toml:"hu"`
-	It         string `gorm:"column:it" json:"it" example:"Italiano (Italian)" yaml:"it" toml:"it"`
-	Ja         string `gorm:"column:ja" json:"ja" example:"日本語 (Japanese)" yaml:"ja" toml:"ja"`
-	Nl         string `gorm:"column:nl" json:"nl" example:"Nederlands (Dutch)" yaml:"nl" toml:"nl"`
-	Pt         string `gorm:"column:pt" json:"pt" example:"Português (Portuguese)" yaml:"pt" toml:"pt"`
-	PtBR       string `gorm:"column:pt_" json:"pt_BR" example:"Português (Portuguese_Brazil)" yaml:"pt_BR" toml:"pt_BR"`
-	Ro         string `gorm:"column:ro" json:"ro" example:"Română (Romanian)" yaml:"ro" toml:"ro"`
-	Ru         string `gorm:"column:ru" json:"ru" example:"Русский (Russian)" yaml:"ru" toml:"ru"`
-	Sk         string `gorm:"column:sk" json:"sk" example:"Slovenčina (Slovak)" yaml:"sk" toml:"sk"`
-	Sv         string `gorm:"column:sv" json:"sv" example:"Svenska (Swedish)" yaml:"sv" toml:"sv"`
-	Tr         string `gorm:"column:tr" json:"tr" example:"Türkçe (Turkish)" yaml:"tr" toml:"tr"`
-	Uk         string `gorm:"column:uk" json:"uk" example:"українська мова (Ukrainian)" yaml:"uk" toml:"uk"`
-	Zh         string `gorm:"column:zh" json:"zh" example:"中文 (Chinese)" yaml:"zh" toml:"zh"`
+	Bg         string `gorm:"column:bg" json:"bg" example:"Български (Bulgarian)" default:"Български (Bulgarian)" yaml:"bg" toml:"bg"`
+	Cs         string `gorm:"column:cs" json:"cs" example:"Čeština (Czech)" default:"Čeština (Czech)" yaml:"cs" toml:"cs"`
+	De         string `gorm:"column:de" json:"de" example:"Deutsch (German)" default:"Deutsch (German)" yaml:"de" toml:"de"`
+	DeDE       string `gorm:"column:de_" json:"de_DE" example:"Deutsch (German_Germany)" default:"Deutsch (German_Germany)" yaml:"de_DE" toml:"de_DE"`
+	ElGR       string `gorm:"column:el_" json:"el_GR" example:"Ελληνικά (Greek_Greece)" default:"Ελληνικά (Greek_Greece)" yaml:"el_GR" toml:"el_GR"`
+	En         string `gorm:"column:en" json:"en" example:"English" default:"English" yaml:"en" toml:"en"`
+	Eo         string `gorm:"column:eo" json:"eo" example:"Esperanto (Esperanto)" default:"Esperanto (Esperanto)" yaml:"eo" toml:"eo"`
+	Es         string `gorm:"column:es" json:"es" example:"Español (Spanish)" default:"Español (Spanish)" yaml:"es" toml:"es"`
+	Fi         string `gorm:"column:fi" json:"fi" example:"Suomi (Finnish)" default:"Suomi (Finnish)" yaml:"fi" toml:"fi"`
+	Fr         string `gorm:"column:fr" json:"fr" example:"Français (French)" default:"Français (French)" yaml:"fr" toml:"fr"`
+	He         string `gorm:"column:he" json:"he" example:"עברית (Hebrew)" default:"עברית (Hebrew)" yaml:"he" toml:"he"`
+	Hu         string `gorm:"column:hu" json:"hu" example:"Magyar (Hungarian)" default:"Magyar (Hungarian)" yaml:"hu" toml:"hu"`
+	It         string `gorm:"column:it" json:"it" example:"Italiano (Italian)" default:"Italiano (Italian)" yaml:"it" toml:"it"`
+	Ja         string `gorm:"column:ja" json:"ja" example:"日本語 (Japanese)" default:"日本語 (Japanese)" yaml:"ja" toml:"ja"`
+	Nl         string `gorm:"column:nl" json:"nl" example:"Nederlands (Dutch)" default:"Nederlands (Dutch)" yaml:"nl" toml:"nl"`
+	Pt         string `gorm:"column:pt" json:"pt" example:"Português (Portuguese)" default:"Português (Portuguese)" yaml:"pt" toml:"pt"`
+	PtBR       string `gorm:"column:pt_" json:"pt_BR" example:"Português (Portuguese_Brazil)" default:"Português (Portuguese_Brazil)" yaml:"pt_BR" toml:"pt_BR"`
+	Ro         string `gorm:"column:ro" json:"ro" example:"Română (Romanian)" default:"Română (Romanian)" yaml:"ro" toml:"ro"`
+	Ru         string `gorm:"column:ru" json:"ru" example:"Русский (Russian)" default:"Русский (Russian)" yaml:"ru" toml:"ru"`
+	Sk         string `gorm:"column:sk" json:"sk" example:"Slovenčina (Slovak)" default:"Slovenčina (Slovak)" yaml:"sk" toml:"sk"`
+	Sv         string `gorm:"column:sv" json:"sv" example:"Svenska (Swedish)" default:"Svenska (Swedish)" yaml:"sv" toml:"sv"`
+	Tr         string `gorm:"column:tr" json:"tr" example:"Türkçe (Turkish)" default:"Türkçe (Turkish)" yaml:"tr" toml:"tr"`
+	Uk         string `gorm:"column:uk" json:"uk" example:"українська мова (Ukrainian)" default:"українська мова (Ukrainian)" yaml:"uk" toml:"uk"`
+	Zh         string `gorm:"column:zh" json:"zh" example:"中文 (Chinese)" default:"中文 (Chinese)" yaml:"zh" toml:"zh"`
 }
 
 type LocalesDetailsConfig struct {

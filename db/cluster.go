@@ -34,31 +34,31 @@ import (
 
 type StoreClusters struct {
 	RDB struct {
-		Gorm map[string]*gorm.DB `json:"-" yaml:"-"`
+		Gorm map[string]*gorm.DB `json:"-" yaml:"-" toml:"-"`
 		// DynamoDB map[string]*dynamodb.DynamoDB
 	} `json:"-" yaml:"-"`
 	KVS struct {
-		Redis    map[string]*redis.Conn        `json:"-" yaml:"-"`
-		Bolt     map[string]*bolt.DB           `json:"-" yaml:"-"`
-		Memcache map[string]*memcache.Client   `json:"-" yaml:"-"`
-		BigCache map[string]*bigcache.BigCache `json:"-" yaml:"-"`
-		Etcd     map[string]*etcd.Client       `json:"-" yaml:"-"`
+		Redis    map[string]*redis.Conn        `json:"-" yaml:"-" toml:"-"`
+		Bolt     map[string]*bolt.DB           `json:"-" yaml:"-" toml:"-"`
+		Memcache map[string]*memcache.Client   `json:"-" yaml:"-" toml:"-"`
+		BigCache map[string]*bigcache.BigCache `json:"-" yaml:"-" toml:"-"`
+		Etcd     map[string]*etcd.Client       `json:"-" yaml:"-" toml:"-"`
 	} `json:"-" yaml:"-"`
 	//DOC struct {
 	//	Mongo map[string]*mgo.Session
 	//}
 	IDX struct {
-		Bleve   map[string]bleve.Index     `json:"-" yaml:"-"`
-		Elastic map[string]*elastic.Client `json:"-" yaml:"-"`
+		Bleve   map[string]bleve.Index     `json:"-" yaml:"-" toml:"-"`
+		Elastic map[string]*elastic.Client `json:"-" yaml:"-" toml:"-"`
 		//Sphinx  map[string]*sphinx.Client
 	} `json:"-" yaml:"-"`
 	GRA struct {
-		Neo4J  map[string]*neoism.Database `json:"-" yaml:"-"`
-		Cayley map[string]*cayley.Handle   `json:"-" yaml:"-"`
+		Neo4J  map[string]*neoism.Database `json:"-" yaml:"-" toml:"-"`
+		Cayley map[string]*cayley.Handle   `json:"-" yaml:"-" toml:"-"`
 		//TaggGraph   map[string]*taggraph.TagGrapher
 	} `json:"-" yaml:"-"`
 	MQ struct {
-		NsqProducer map[string]*nsq.Producer `json:"-" yaml:"-"`
+		NsqProducer map[string]*nsq.Producer `json:"-" yaml:"-" toml:"-"`
 	} `json:"-" yaml:"-"`
 }
 

@@ -5,8 +5,10 @@ import (
 	"errors"
 	"time"
 
+	"fmt"
+	"github.com/k0kubun/pp"
+
 	"github.com/roscopecoltran/krakend/config"
-	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // NewConcurrentMiddleware creates a proxy middleware that enables sending several requests concurrently
@@ -55,8 +57,20 @@ var errNullResult = errors.New("invalid response")
 
 func processConcurrentCall(ctx context.Context, next Proxy, request *Request, out chan<- *Response, failed chan<- error) {
 	localCtx, cancel := context.WithCancel(ctx)
-
 	result, err := next(localCtx, request)
+
+	if config.Config.Debug.Components.Proxies {
+		// fmt.Println("proxy/concurrent.go > var.request.Code")
+		// pp.Print(request.Code)
+		// fmt.Println("proxy/concurrent.go > var.request.Header")
+		// pp.Print(request.Header)
+		// fmt.Println("proxy/concurrent.go > var.result")
+		// pp.Print(result)
+		if err != nil {
+			fmt.Println("proxy/concurrent.go > var.err")
+			pp.Print(err)
+		}
+	}
 	if err != nil {
 		failed <- err
 		cancel()

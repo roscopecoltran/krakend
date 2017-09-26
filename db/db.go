@@ -30,24 +30,24 @@ var (
 )
 
 type StorageRDB struct {
-	RDB   *gorm.DB `json:"-" yaml:"-"`
-	Ready bool     `json:"-" yaml:"-"`
+	RDB   *gorm.DB `json:"-" yaml:"-" toml:"-"`
+	Ready bool     `json:"-" yaml:"-" toml:"-"`
 }
 
 type StorageKVS struct {
 	Bolt struct {
-		Client *bolt.DB `json:"-" yaml:"-"`
-		Ready  bool     `json:"-" yaml:"-"`
+		Client *bolt.DB `json:"-" yaml:"-" toml:"-"`
+		Ready  bool     `json:"-" yaml:"-" toml:"-"`
 	}
 	Storm struct {
-		Client *storm.DB `json:"-" yaml:"-"`
-		Ready  bool      `json:"-" yaml:"-"`
+		Client *storm.DB `json:"-" yaml:"-" toml:"-"`
+		Ready  bool      `json:"-" yaml:"-" toml:"-"`
 	}
 }
 
 type AdminHelper struct {
-	UI    *admin.Admin `json:"-" yaml:"-"`
-	Ready bool         `json:"-" yaml:"-"`
+	UI    *admin.Admin `json:"-" yaml:"-" toml:"-"`
+	Ready bool         `json:"-" yaml:"-" toml:"-"`
 }
 
 func NewStack() error {

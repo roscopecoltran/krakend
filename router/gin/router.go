@@ -8,7 +8,7 @@ import (
 	"time"
 	// "go.uber.org/zap"
 
-	"github.com/gin-contrib/gzip"
+	// "github.com/gin-contrib/gzip"
 	// "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
 	// "github.com/gregjones/httpcache"
@@ -90,7 +90,7 @@ func (r ginRouter) Run(cfg config.ServiceConfig) {
 	r.cfg.Engine.RedirectFixedPath = true
 	r.cfg.Engine.HandleMethodNotAllowed = true
 
-	r.cfg.Engine.Use(gzip.Gzip(gzip.DefaultCompression))
+	// r.cfg.Engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	r.cfg.Engine.Use(r.cfg.Middlewares...)
 
 	// Add a ginzap middleware, which:
@@ -124,6 +124,12 @@ func (r ginRouter) Run(cfg config.ServiceConfig) {
 	// r.cfg.Engine.Use(middleware.CORS())
 	// r.cfg.Engine.Use(middleware.Recovery())
 	// r.cfg.Engine.Use(authz.NewAuthorizer(e))
+
+	/*
+		if cfg.Admin {
+			r.registerAdminEndpoints()
+		}
+	*/
 
 	if cfg.Debug {
 		r.registerDebugEndpoints()
@@ -177,6 +183,7 @@ func (r ginRouter) registerKrakendEndpoints(endpoints []*config.EndpointConfig) 
 			r.cfg.Logger.Error("calling the ProxyFactory", err.Error())
 			continue
 		}
+
 		r.registerKrakendEndpoint(c.Method, c.Endpoint, r.cfg.HandlerFactory(c, proxyStack), len(c.Backend))
 	}
 }

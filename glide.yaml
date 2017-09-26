@@ -16,6 +16,29 @@ ignore:
 - github.com/docker/docker
 - github.com/Sirupsen/logrus
 import:
+- package: github.com/knakk/ftx
+  subpackages:
+  - char
+  - index 
+  - token
+- package: github.com/knakk/rdf2rdf
+- package: github.com/knakk/fenster
+- package: github.com/knakk/kbp
+  subpackages:
+  - isbn 
+  - marc
+  - ncip
+  - onix 
+  - rdf 
+  - sip2
+- package: github.com/knakk/sparql
+- package: github.com/knakk/otra
+  subpackages:
+  - storage
+- package: github.com/knakk/specs
+- package: github.com/knakk/rdf
+- package: github.com/miku/esbulk
+- package: github.com/miku/xmlcutty
 - package: github.com/nikolay-turpitko/structor
   subpackages:
   - scanner

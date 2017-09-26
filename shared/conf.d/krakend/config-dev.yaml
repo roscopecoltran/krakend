@@ -5,15 +5,27 @@ host:
 - http://127.0.0.1:8080
 - http://localhost:8080
 endpoints:
+- endpoint: "/github"
+  method: GET
+  timeout: 3000
+  backend:
+  - host:
+    - https://api.github.com
+    url_pattern: "/"
+    whitelist:
+    - authorizations_url
+    - code_search_url
 - endpoint: "/search/{q}"
   method: GET
   timeout: 3000
-  cache_ttl: 3600
   header:
   - 'User-Agent: {USER_AGENT}'
   backend:
   - host:
     - https://api.github.com
+    encoding: json
+    method: GET
+    timeout: 3000
     url_pattern: "/search/repositories"
     query_strings:
       q: "{q}"
@@ -21,14 +33,15 @@ endpoints:
       order: desc
       page: 1
       per_page: 100
-    headers:
+    header:
     - 'Accept: application/vnd.github.mercy-preview+json'
     - 'Authentication: token {GITHUB_TOKEN}'
     - 'User-Agent: {USER_AGENT}'
+    group: repositories
     whitelist:
+    - fork
     - full_name
-    - name
-    - html_url
+    - topics
     - description
     - created_at
     - updated_at
@@ -38,7 +51,68 @@ endpoints:
     - watchers_count
     mapping:
       homepage: website
-oauth:
-  disable: true
-cache_ttl: 30m
-timeout: 5s
+- endpoint: "/search/code/{q}"
+  method: GET
+  timeout: 3000
+  header:
+  - 'User-Agent: {USER_AGENT}'
+  - host:
+    - https://api.github.com
+    encoding: json
+    method: GET
+    timeout: 3000
+    url_pattern: "/search/code"
+    group: code
+    query_strings:
+      q: "{q}"
+      sort: indexed
+      order: desc
+      page: 1
+      per_page: 100
+    header:
+    - 'Accept: application/vnd.github.mercy-preview+json'
+    - 'Authentication: token {GITHUB_TOKEN}'
+    - 'User-Agent: {USER_AGENT}'
+    whitelist:
+    - fork
+    - full_name
+    - topics
+    - description
+    - created_at
+    - updated_at
+    - pushed_at
+    - language
+    - stargazers_count
+    - watchers_count
+    mapping:
+      homepage: website
+  - host:
+    - https://api.github.com
+    encoding: json
+    method: GET
+    timeout: 3000
+    group: commits
+    url_pattern: "/search/commits"
+    query_strings:
+      q: "{q}"
+      sort: committer-date
+      order: desc
+      page: 1
+      per_page: 100
+    header:
+    - 'Accept: application/vnd.github.mercy-preview+json'
+    - 'Authentication: token {GITHUB_TOKEN}'
+    - 'User-Agent: {USER_AGENT}'
+    whitelist:
+    - fork
+    - full_name
+    - topics
+    - description
+    - created_at
+    - updated_at
+    - pushed_at
+    - language
+    - stargazers_count
+    - watchers_count
+    mapping:
+      homepage: website

@@ -7,7 +7,6 @@ import (
 
 	"github.com/roscopecoltran/krakend/config"
 	"github.com/roscopecoltran/krakend/sd"
-	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // NewRoundRobinLoadBalancedMiddleware creates proxy middleware adding a round robin balancer

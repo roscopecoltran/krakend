@@ -1,6 +1,10 @@
 package proxy
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+	// "github.com/Jeffail/gabs"
+)
 
 // "github.com/roscopecoltran/krakend/logging"
 
@@ -86,18 +90,36 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 	wl := make(map[string]map[string]interface{}, len(whitelist))
 	for _, k := range whitelist {
 		keys := strings.Split(k, ".")
+		//
+		//if len(keys) > 1 {
+		//	tmp := make(map[string]interface{})
+		//} else {
 		tmp := make(map[string]interface{}, len(keys)-1)
+		//}
+
 		if len(keys) > 1 {
+
+			//switch keys[0] {
+			//case "[]":
+			//	if _, ok := wl[keys[0]]; ok {
+
+			// []interface {}{
+
+			//default:
+			fmt.Printf("wl[keys[0]]=%s \n", wl[keys[0]])
 			if _, ok := wl[keys[0]]; ok {
+				fmt.Printf("keys[1:]=%s \n", keys[1:])
 				for _, k := range keys[1:] {
-					wl[keys[0]][k] = nil
+					wl[keys[0]][k] = nil //
 				}
 			} else {
+				fmt.Printf("keys[1:]=%s \n", keys[1:])
 				for _, k := range keys[1:] {
 					tmp[k] = nil
 				}
 				wl[keys[0]] = tmp
 			}
+			//}
 		} else {
 			wl[keys[0]] = tmp
 		}

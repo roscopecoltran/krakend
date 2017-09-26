@@ -1,11 +1,15 @@
 package entities
 
 import (
-	"github.com/jmcvetta/neoism" 															// data-neo4j
+	"github.com/jmcvetta/neoism" // data-neo4j
 	//"github.com/sirupsen/logrus" 															// logs-logrus
-	//"github.com/davecgh/go-spew/spew" 													// debug-print
 	//"github.com/k0kubun/pp" 																// debug-print
 )
+
+/*
+	Refs:
+	- https://github.com/knakk/mormor/blob/master/search.go
+*/
 
 /*
 Person model
@@ -24,7 +28,7 @@ func GetPeople(db *neoism.Database) (*[]Person, error) {
 
 	var people []Person
 	if err := db.Cypher(&neoism.CypherQuery{
-		Statement:`MATCH (person:Person)
+		Statement: `MATCH (person:Person)
                 RETURN DISTINCT ID(person) as id, person.name as name`,
 		Result: &people,
 	}); err != nil {

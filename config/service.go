@@ -2,19 +2,19 @@ package config
 
 import (
 	"time"
-
-	"github.com/jinzhu/gorm"
+	//"github.com/jinzhu/gorm"
 )
 
 // example: https://github.com/devopsfaith/krakend/blob/master/docs/CONFIG.md#json-example
 
 // ServiceConfig defines the krakend service
+/*
 type ServiceConfig struct {
 	gorm.Model `json:"-" yaml:"-" toml:"-"`
 	// set of endpoint definitions
 	Endpoints []*EndpointConfig `gorm:"-" mapstructure:"endpoints" json:"endpoints" yaml:"endpoints" toml:"endpoints"`
 	// defafult timeout
-	Timeout time.Duration `gorm:"column:timeout" mapstructure:"timeout" json:"timeout" yaml:"timeout" toml:"timeout"`
+	Timeout time.Duration `gorm:"column:timeout" default:"3000" mapstructure:"timeout" json:"timeout" yaml:"timeout" toml:"timeout"`
 	// default TTL for GET
 	CacheTTL time.Duration `gorm:"column:cache_ttl" mapstructure:"cache_ttl" json:"cache_ttl" yaml:"cache_ttl" toml:"cache_ttl"`
 	// default set of hosts
@@ -26,4 +26,25 @@ type ServiceConfig struct {
 	// run krakend in debug mode
 	Debug     bool      `gorm:"column:debug" mapstructure:"debug" json:"debug" yaml:"debug" toml:"debug"`
 	uriParser URIParser `gorm:"-" json:"-" yaml:"-" toml:"-"`
+}
+*/
+
+// ServiceConfig defines the krakend service
+type ServiceConfig struct {
+	// set of endpoint definitions
+	Endpoints []*EndpointConfig `mapstructure:"endpoints"`
+	// defafult timeout
+	Timeout time.Duration `mapstructure:"timeout"`
+	// default TTL for GET
+	CacheTTL time.Duration `mapstructure:"cache_ttl"`
+	// default set of hosts
+	Host []string `mapstructure:"host"`
+	// port to bind the krakend service
+	Port int `mapstructure:"port"`
+	// version code of the configuration
+	Version int `mapstructure:"version"`
+
+	// run krakend in debug mode
+	Debug     bool
+	uriParser URIParser
 }

@@ -16,6 +16,8 @@ server.rsa.key
 
 environment.yaml
 
+all.*
+
 .snippets
 
 ### Go ###

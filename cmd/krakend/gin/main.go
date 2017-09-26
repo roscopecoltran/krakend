@@ -27,6 +27,7 @@ import (
 )
 
 var defaultConfigFiles = []string{
+	"shared/conf.d/krakend/debug.yaml",
 	"shared/conf.d/krakend/stores.yaml",
 	"shared/conf.d/krakend/apis.yaml",
 	"shared/conf.d/krakend/proxy.yaml",

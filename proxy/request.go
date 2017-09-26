@@ -2,11 +2,14 @@ package proxy
 
 import (
 	"bytes"
-	// "fmt"
-	// "github.com/k0kubun/pp"
 	"io"
 	"net/url"
 	"strings"
+
+	"fmt"
+	"github.com/k0kubun/pp"
+
+	"github.com/roscopecoltran/krakend/config"
 	// "github.com/roscopecoltran/krakend/logging"
 )
 
@@ -42,15 +45,33 @@ func (r *Request) AddQueryStrings(queryStrings map[string]string) {
 	if len(queryStrings) == 0 {
 		return
 	}
+	//if r.Method != "POST" {
+	//	return
+	//}
+	r.Query = make(url.Values)
 	for key, value := range queryStrings {
-		if r.Params[key] != "" {
-			value = r.Params[key]
+		paramKey := strings.ToTitle(key)
+		if config.Config.Debug.Components.Middlewares {
+			// fmt.Println("proxy/request.go > AddQueryStrings(...) > var.queryStrings")
+			fmt.Printf("proxy/request.go > AddQueryStrings(...) > var.queryStrings > key=%s, value=%s , paramKey=%s, r.Params[paramKey]=%s \n", key, value, paramKey, r.Params[paramKey])
+		}
+		if r.Params[paramKey] != "" {
+			value = r.Params[paramKey]
 		}
 		r.Query.Add(key, value)
+	}
+	if config.Config.Debug.Components.Middlewares {
+		fmt.Println("proxy/request.go > AddQueryStrings(...) > var.r.Query")
+		pp.Print(r.Query)
+		fmt.Println("proxy/request.go > AddQueryStrings(...) > var.r.Params")
+		pp.Print(r.Params)
 	}
 }
 
 func (r *Request) AddParameters(parameters map[string]string) {
+	if r.Method == "GET" {
+		r.Params = make(map[string]string)
+	}
 	if len(parameters) == 0 {
 		return
 	}
