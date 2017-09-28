@@ -18,6 +18,22 @@ func GZIP() gin.HandlerFunc {
 	return gzip.Gzip(gzip.DefaultCompression)
 }
 
+func SizeHandler(logger logging.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		logger.Debug("Method:", c.Request.Method)
+		logger.Debug("URL:", c.Request.RequestURI)
+		logger.Debug("Query:", c.Request.URL.Query())
+		logger.Debug("Params:", c.Params)
+		logger.Debug("Headers:", c.Request.Header)
+		body, _ := ioutil.ReadAll(c.Request.Body)
+		c.Request.Body.Close()
+		logger.Debug("Body:", string(body))
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	}
+}
+
 /*
 // SendStatus takes an integer and sets the response status to the integer given.
 func (r ginRouter) SendStatus(statusCode int) {
@@ -129,19 +145,3 @@ func (r ginRouter) ClientIP() string {
 	return ""
 }
 */
-
-func SizeHandler(logger logging.Logger) gin.HandlerFunc {
-	return func(c *gin.Context) {
-		logger.Debug("Method:", c.Request.Method)
-		logger.Debug("URL:", c.Request.RequestURI)
-		logger.Debug("Query:", c.Request.URL.Query())
-		logger.Debug("Params:", c.Params)
-		logger.Debug("Headers:", c.Request.Header)
-		body, _ := ioutil.ReadAll(c.Request.Body)
-		c.Request.Body.Close()
-		logger.Debug("Body:", string(body))
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	}
-}

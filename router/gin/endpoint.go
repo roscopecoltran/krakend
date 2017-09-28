@@ -43,7 +43,6 @@ func EndpointHandler(configuration *config.EndpointConfig, proxy proxy.Proxy) gi
 
 	return func(c *gin.Context) {
 		requestCtx, cancel := context.WithTimeout(c, endpointTimeout)
-
 		c.Header(core.KrakendHeaderName, core.KrakendHeaderValue)
 
 		response, err := proxy(requestCtx, NewRequest(c, configuration.QueryStrings))

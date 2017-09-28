@@ -10,6 +10,7 @@ import (
 type ProviderConfig struct {
 	gorm.Model      `json:"-" yaml:"-" toml:"-"`
 	Disabled        bool          `gorm:"column:disabled" default:"false" json:"disabled" yaml:"disabled" toml:"disabled"`
+	Debug           bool          `gorm:"column:debug" default:"false" example:"false" json:"debug" yaml:"debug" toml:"debug"`
 	Name            string        `gorm:"column:name" json:"name,omitempty" example:"arch linux wiki" yaml:"name,omitempty" toml:"name,omitempty"`
 	Slug            string        `gorm:"column:slug" json:"slug,omitempty" yaml:"slug,omitempty" toml:"slug,omitempty"`
 	BaseURL         string        `gorm:"column:base_url" json:"base_url,omitempty" yaml:"base_url,omitempty" toml:"base_url,omitempty"`

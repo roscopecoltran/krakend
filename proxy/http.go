@@ -3,17 +3,16 @@ package proxy
 import (
 	"context"
 	"errors"
-	// "fmt"
+	"fmt"
 	"io"
 	"net/http"
+	"reflect"
 
-	"fmt"
+	// "github.com/davecgh/go-spew/spew"
 	"github.com/k0kubun/pp"
 
 	"github.com/roscopecoltran/krakend/config"
 	"github.com/roscopecoltran/krakend/encoding"
-	// "github.com/roscopecoltran/krakend/logging"
-	// "github.com/Jeffail/gabs"
 )
 
 // ErrInvalidStatusCode is the error returned by the http proxy when the received status code
@@ -57,7 +56,9 @@ func NewHTTPProxy(remote *config.Backend, clientFactory HTTPClientFactory, decod
 
 // NewHTTPProxyWithHTTPExecutor creates a http proxy with the injected configuration, HTTPRequestExecutor and Decoder
 func NewHTTPProxyWithHTTPExecutor(remote *config.Backend, requestExecutor HTTPRequestExecutor, dec encoding.Decoder) Proxy {
-	ef := NewEntityFormatter(remote.Target, remote.Whitelist, remote.Blacklist, remote.Group, remote.Mapping)
+	pp.Print(remote)
+	ef := NewEntityFormatter(remote.Target, remote.Whitelist, remote.Blacklist, remote.Group, remote.Mapping, remote.Paths)
+	pp.Print(ef)
 	return NewHTTPProxyDetailed(remote, requestExecutor, DefaultHTTPStatusHandler, DefaultHTTPResponseParserFactory(HTTPResponseParserConfig{dec, ef}))
 }
 
@@ -66,8 +67,9 @@ type HTTPResponseParser func(context.Context, *http.Response) (*Response, error)
 
 // DefaultHTTPResponseParserConfig defines a default HTTPResponseParserConfig
 var DefaultHTTPResponseParserConfig = HTTPResponseParserConfig{
-	func(r io.Reader, v *map[string]interface{}) error { return nil },
+	func(r io.Reader, v *map[string]interface{}, paths []map[string]string) error { return nil },
 	EntityFormatterFunc{func(entity Response) Response { return entity }},
+	//[]map[string]string,
 }
 
 // HTTPResponseParserConfig contains the config for a given HttpResponseParser
@@ -81,27 +83,58 @@ type HTTPResponseParserFactory func(HTTPResponseParserConfig) HTTPResponseParser
 
 // DefaultHTTPResponseParserFactory is the default implementation of HTTPResponseParserFactory
 func DefaultHTTPResponseParserFactory(cfg HTTPResponseParserConfig) HTTPResponseParser {
+	fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.cfg.ef")
+	pp.Print(cfg)
+	spew.Dump(cfg.ef)
 	return func(ctx context.Context, resp *http.Response) (*Response, error) {
 		var data map[string]interface{}
-		err := cfg.dec(resp.Body, &data)
-		resp.Body.Close()
-
+		var mapper []map[string]string
 		if config.Config.Debug.Components.Servers {
+			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > obj.cfg.ef")
+			pp.Print(cfg)
 
+			// https://play.golang.org/p/TnHP6N0oyH
+			v := reflect.ValueOf(cfg.ef)
+			fmt.Println("Type: ", v.Type())
+			fmt.Println("Interface: ", v.Interface())
+
+			s := reflect.ValueOf(v).Elem()
+			typeOfT := s.Type()
+			for i := 0; i < s.NumField(); i++ {
+				f := s.Field(i)
+				fmt.Printf("%d: %s %s = %v\n", i, typeOfT.Field(i).Name, f.Type(), f.Interface())
+			}
+
+			t := reflect.TypeOf(cfg.ef)
+			if t.Kind() == reflect.Ptr {
+				t = t.Elem()
+			}
+			for i := 0; i < t.NumField(); i++ {
+				fmt.Printf("%+v\n", t.Field(i))
+			}
+
+			v := reflect.ValueOf(reply)
+			if v.Kind() == reflect.Ptr {
+				v = v.Elem()
+			}
+			for i := 0; i < v.NumField(); i++ {
+				fmt.Println(v.Field(i))
+			}
+
+		}
+		err := cfg.dec(resp.Body, &data, mapper)
+		resp.Body.Close()
+		if config.Config.Debug.Components.Servers {
 			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.resp.Header")
 			pp.Print(resp.Header)
-
 			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.resp.StatusCode")
 			pp.Println(resp.StatusCode)
-
 			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.data")
 			pp.Print(data)
-
 			if err != nil {
 				fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.err")
 				pp.Print(err)
 			}
-
 		}
 
 		if err != nil {
@@ -122,7 +155,6 @@ func DefaultHTTPStatusHandler(ctx context.Context, resp *http.Response) (*http.R
 	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated {
 		return nil, ErrInvalidStatusCode
 	}
-
 	return resp, nil
 }
 
@@ -130,43 +162,32 @@ func DefaultHTTPStatusHandler(ctx context.Context, resp *http.Response) (*http.R
 func NewHTTPProxyDetailed(remote *config.Backend, requestExecutor HTTPRequestExecutor, ch HTTPStatusHandler, rp HTTPResponseParser) Proxy {
 	return func(ctx context.Context, request *Request) (*Response, error) {
 		requestToBakend, err := http.NewRequest(request.Method, request.URL.String(), request.Body)
-
 		if config.Config.Debug.Components.Proxies {
 			if err != nil {
 				fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > NewRequest(...) > var.err")
 				pp.Print(err)
 			}
 		}
-
 		if err != nil {
 			return nil, err
 		}
 		requestToBakend.Header = request.Headers
-
 		resp, err := requestExecutor(ctx, requestToBakend)
 		requestToBakend.Body.Close()
-
 		if config.Config.Debug.Components.Proxies {
-
 			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.Method")
 			pp.Println(request.Method)
-
 			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.Body")
 			pp.Println(request.Body)
-
 			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.request.URL.String()")
 			pp.Println(request.URL.String())
-
 			fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > requestToBakend.Header")
 			pp.Println(requestToBakend.Header)
-
 			if err != nil {
 				fmt.Println("proxy/http.go > NewHTTPProxyDetailed(..) > var.err")
 				pp.Print(err)
 			}
-
 		}
-
 		select {
 		case <-ctx.Done():
 			return nil, ctx.Err()
@@ -175,12 +196,10 @@ func NewHTTPProxyDetailed(remote *config.Backend, requestExecutor HTTPRequestExe
 		if err != nil {
 			return nil, err
 		}
-
 		resp, err = ch(ctx, resp)
 		if err != nil {
 			return nil, err
 		}
-
 		return rp(ctx, resp)
 	}
 }

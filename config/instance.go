@@ -8,6 +8,7 @@ import (
 
 type InstanceConfig struct {
 	gorm.Model          `json:"-" yaml:"-" toml:"-"`
+	Debug               bool   `gorm:"column:debug" default:"false" json:"debug" yaml:"debug" toml:"debug"`
 	BaseURL             bool   `gorm:"column:base_url" default:"false" example:"false" json:"base_url" yaml:"base_url" toml:"base_url"`
 	BindAddress         string `gorm:"column:bind_address" default:"127.0.0.1" example:"127.0.0.1" json:"bind_address" yaml:"bind_address" toml:"bind_address"`
 	HTTPProtocolVersion string `gorm:"column:http_protocol_version" json:"http_protocol_version" example:"1.0" yaml:"http_protocol_version" toml:"http_protocol_version"`

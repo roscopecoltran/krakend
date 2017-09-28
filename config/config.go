@@ -11,7 +11,7 @@ import (
 
 	"github.com/cep21/xdgbasedir"
 	"github.com/joho/godotenv"
-	//"github.com/k0kubun/pp"
+	"github.com/k0kubun/pp"
 
 	"github.com/roscopecoltran/krakend/encoding"
 	// "github.com/roscopecoltran/krakend/logging"
@@ -152,55 +152,33 @@ func init() {
 // Init also sanitizes the values, applies the default ones whenever necessary and
 // normalizes all the things.
 func (s *ServiceConfig) Init() error {
-
 	if len(Config.Env.Files) == 0 {
 		Config.Env.Files = append(Config.Env.Files, ".env")
 	}
-
 	Config.Env.Keys, _ = godotenv.Read(Config.Env.Files...)
-	//fmt.Println("config/config.go > Config.Env.Keys: ")
-	//pp.Println(Config.Env.Keys)
-
 	s.uriParser = NewURIParser()
-
 	if s.Version != 1 {
 		return fmt.Errorf("config/config.go > Unsupported version: %d\n", s.Version)
 	}
-
 	if s.Port == 0 {
 		s.Port = Config.Server.Port
 	}
-
 	s.Host = s.uriParser.CleanHosts(s.Host)
-
 	for i, e := range s.Endpoints {
-
 		e.Endpoint = s.uriParser.CleanPath(e.Endpoint)
-
 		if err := e.validate(); err != nil {
 			return err
 		}
-
 		inputParams := s.extractPlaceHoldersFromURLTemplate(e.Endpoint, endpointURLKeysPattern)
 		inputSet := map[string]interface{}{}
-
 		for ip := range inputParams {
 			inputSet[inputParams[ip]] = nil
 		}
-
 		e.Endpoint = s.uriParser.GetEndpointPath(e.Endpoint, inputParams)
-
 		s.initEndpointDefaults(i)
-
 		for j, b := range e.Backend {
-
 			s.initBackendDefaults(i, j)
-
-			// fmt.Println("initBackendDefaults: ")
-			// pp.Print(b)
-
 			b.Method = strings.ToTitle(b.Method)
-
 			if err := s.initBackendURLMappings(i, j, inputSet); err != nil {
 				return err
 			}
@@ -221,7 +199,6 @@ func (s *ServiceConfig) extractPlaceHoldersFromURLTemplate(subject string, patte
 
 func (s *ServiceConfig) initEndpointDefaults(e int) {
 	endpoint := s.Endpoints[e]
-
 	if endpoint.Method == "" {
 		endpoint.Method = "GET"
 	} else {
@@ -236,12 +213,18 @@ func (s *ServiceConfig) initEndpointDefaults(e int) {
 	if endpoint.ConcurrentCalls == 0 {
 		endpoint.ConcurrentCalls = 1
 	}
+	if len(endpoint.Paths) > 0 {
+		// s.Endpoints[e].Paths = endpoint.Paths
+		s.Endpoints[e].Processors.Formatter.Engine = "mxj"
+	}
+
+	fmt.Printf("ENDPOINT [%s] decoding engine", s.Endpoints[e].Endpoint)
+	pp.Print(s.Endpoints[e].Processors)
 }
 
 func (s *ServiceConfig) initBackendDefaults(e, b int) {
 	endpoint := s.Endpoints[e]
 	backend := endpoint.Backend[b]
-	// to do: unique replace action before loading config files with configor
 	for n, h := range backend.Header {
 		for k, v := range Config.Env.Keys {
 			holderKey := fmt.Sprintf("{%s}", strings.Replace(k, "\"", "", -1))
@@ -261,30 +244,35 @@ func (s *ServiceConfig) initBackendDefaults(e, b int) {
 	backend.Timeout = endpoint.Timeout
 	backend.ConcurrentCalls = endpoint.ConcurrentCalls
 
+	if backend.IsCollection {
+		endpoint.Backend[b].Processors.Formatter.Engine = "collection"
+	}
+	if len(backend.Paths) > 0 {
+		// endpoint.Backend[b].Paths = endpoint.Paths
+		endpoint.Backend[b].Processors.Formatter.Engine = "mxj"
+	}
+	fmt.Printf("BACKEND [%s] decoding engine", endpoint.Backend[b].URLPattern)
+	pp.Print(endpoint.Backend[b].Processors)
+
 	switch strings.ToLower(backend.Encoding) {
 	case encoding.XML:
-		backend.Decoder = encoding.NewXMLDecoder(backend.IsCollection)
-	//case encoding.XPATH:
-	//	backend.Decoder = encoding.NewXPATHDecoder(backend.IsCollection)
+		backend.Decoder = encoding.NewXMLDecoder(backend.Processors.Formatter.Engine)
 	case encoding.RSS:
 		backend.Decoder = encoding.NewRSSDecoder()
 	default:
-		backend.Decoder = encoding.NewJSONDecoder(backend.IsCollection)
+		backend.Decoder = encoding.NewJSONDecoder(backend.Processors.Formatter.Engine)
 	}
 }
 
 func (s *ServiceConfig) initBackendURLMappings(e, b int, inputParams map[string]interface{}) error {
 	backend := s.Endpoints[e].Backend[b]
-
 	backend.URLPattern = s.uriParser.CleanPath(backend.URLPattern)
-
 	outputParams := s.extractPlaceHoldersFromURLTemplate(backend.URLPattern, simpleURLKeysPattern)
 
 	outputSet := map[string]interface{}{}
 	for op := range outputParams {
 		outputSet[outputParams[op]] = nil
 	}
-
 	if len(outputSet) > len(inputParams) {
 		return fmt.Errorf("config/config.go > initBackendURLMappings > Too many output params! input: %v, output: %v\n", outputSet, outputParams)
 	}

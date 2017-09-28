@@ -15,7 +15,170 @@ ignore:
 - golang.org/x/crypto/ssh/knownhosts
 - github.com/docker/docker
 - github.com/Sirupsen/logrus
+- gx/ipfs
+- github.com/blevesearch/bleve/analysis/analyzer/custom
+- github.com/blevesearch/bleve/analysis/token/lowercase
+- github.com/blevesearch/bleve/analysis/token/porter
+- github.com/blevesearch/bleve/analysis/token/stop
+- github.com/blevesearch/bleve/analysis/token/unicodenorm
+- github.com/blevesearch/bleve/analysis/tokenizer/unicode
+- github.com/blevesearch/bleve/analysis/tokenmap
+- github.com/attic-labs
+- github.com/attic-labs/noms
+- github.com/attic-labs/graphql
 import:
+- package: github.com/urandom/graph
+  subpackages:
+  - base
+- package: github.com/advancedlogic/go-freeling
+  subpackages:
+  - lib 
+  - models
+  - engine
+  - net 
+  - nlp 
+  - wordnet
+- package: github.com/Workiva/go-rest
+  subpackages:
+  - rest
+- package: github.com/egorsmkv/feedly_search
+- package: github.com/timshannon/bolthold
+- package: github.com/sourcegraph/go-langserver
+  subpackages:
+  - langserver
+  - pkg/lsp
+  - pkg/lspext
+- package: github.com/mholt/archiver
+- package: github.com/gyuho/bst
+- package: github.com/gyuho/dataframe
+- package: github.com/coreos/bbolt
+- package: github.com/zacwood9/internetarchive
+- package: github.com/seesawlabs/raml
+- package: github.com/go-raml/raml
+- package: github.com/ahume/go-yamedit
+- package: gopkg.in/linkedin/goavro.v1
+- package: gopkg.in/raml.v0
+- package: github.com/andybalholm/cascadia
+- package: github.com/blevesearch/bleve
+  version: v0.5.0
+  subpackages:
+  - document
+  - index
+  - index/firestorm
+  - index/store
+  - index/store/boltdb
+  - index/store/gtreap
+  - index/upside_down
+  - numeric_util
+  - analysis/tokenmap
+  - analysis/token/porter
+  - analysis/token/lowercase
+  - analysis/token/unicode
+  - analysis/token/unicodenorm
+  - analysis/token/stop
+  - analysis/analyzer/custom_analyzer
+  - analysis/analyzers/keyword_analyzer
+  - analysis/analyzers/simple_analyzer
+  - analysis/analyzers/standard_analyzer
+  - analysis/byte_array_converters/json
+  - analysis/datetime_parsers/datetime_optional
+  - analysis/token_filters/stop_tokens_filter
+  - analysis/language/en
+  - analysis/datetime_parsers/flexible_go
+  - search/highlight
+  - search/highlight/fragment_formatters/html
+  - search/highlight/fragmenters/simple
+  - search/highlight/highlighters/simple
+  - search/scorers
+  - analysis/token_filters/lower_case_filter
+  - registry
+  - search
+  - search/collectors
+  - search/facets
+  - search/highlight/highlighters/html
+  - search/searchers
+  - search/scorers
+- package: github.com/dchest/safefile
+- package: github.com/denizeren/dynamostore
+- package: github.com/dimfeld/httppath
+- package: github.com/dimfeld/httptreemux
+- package: github.com/extemporalgenome/slug
+- package: github.com/feyeleanor/raw
+- package: github.com/feyeleanor/sets
+- package: github.com/feyeleanor/slices
+- package: github.com/garyburd/redigo
+  subpackages:
+  - internal
+  - redis
+- package: github.com/goincremental/dal
+- package: github.com/goincremental/negroni-sessions
+  subpackages:
+  - cookiestore
+- package: github.com/gorilla/context
+- package: github.com/gorilla/securecookie
+- package: github.com/gorilla/sessions
+- package: github.com/jteeuwen/go-bindata
+- package: github.com/steveyen/gtreap
+- package: github.com/stretchr/objx
+- package: github.com/pmezard/go-difflib
+  subpackages:
+  - difflib
+- package: github.com/crowdmob/goamz
+  subpackages:
+  - aws
+  - dynamodb
+  - dynamodb/dynamizer
+  - ec2
+  - elb
+  - iam
+  - s3
+- package: github.com/blevesearch/go-porterstemmer
+- package: github.com/blevesearch/segment
+- package: github.com/boj/redistore
+- package: github.com/cheggaaa/pb
+- package: github.com/codegangsta/negroni
+- package: github.com/diguinhorocks/api-handler
+  subpackages:
+  - factory/builder
+  - factory
+  - utils 
+  - utils/request
+  - utils/response
+- package: github.com/fatih/astrewrite
+- package: github.com/dgraph-io/dgraph
+  subpackages:
+  - client
+  - protos 
+  - schema
+  - x
+  - rdf
+- package: github.com/fatih/stopwatch
+- package: github.com/fatih/camelcase
+- package: github.com/fatih/structtag
+- package: github.com/fatih/set
+- package: github.com/clbanning/pseudo
+- package: github.com/clbanning/rfile
+- package: github.com/dpastoor/nonmemutils
+  subpackages:
+  - utils
+  - parser
+  - nmulib
+  - runner
+- package: github.com/clbanning/checkjson
+- package: github.com/clbanning/checkxml
+- package: github.com/attic-labs/noms
+  subpackages:
+  - go/config
+  - go/d
+  - go/datas
+  - go/spec
+  - go/types
+  - go/util/jsontonoms
+  - go/util/profile
+  - go/util/verbose
+- package: github.com/re-pe/go-dtree
+- package: github.com/clbanning/anyxml
+- package: github.com/clbanning/mxj
 - package: github.com/gyuho/goraph
 - package: h12.me/socks
   repo: https://github.com/h12w/socks.git
@@ -313,6 +476,11 @@ import:
   version: v1.1.4
   subpackages:
   - assert
+  - http
+  - mock
+  - require
+- package: github.com/Unknwon/paginater
+- package: github.com/willf/bitset
 - package: gopkg.in/yaml.v2
 - package: github.com/theplant/cldr
 - package: github.com/jteeuwen/go-pkg-xmlx
@@ -369,6 +537,7 @@ import:
   - codes
   - grpclog
   - status
+- package: github.com/alixaxel/pagerank
 - package: github.com/go-kit/kit
   version: "~0.5.0"
   subpackages:
@@ -533,6 +702,25 @@ import:
   - sets/treeset
   - containers
   - utils
+- package: github.com/chewxy/lingo
+  subpackages:
+  - lexer 
+  - dep
+  - pos 
+  - corpus
+  - media 
+  - treebank
+- package: github.com/chewxy/gorgonia
+  subpackages:
+  - blase
+  - tensor
+  - tensor/genlib2
+  - tensor/internal
+  - tensor/media
+- package: github.com/ferhatelmas/httpclass
+- package: github.com/One-com/digest
+- package: github.com/Lewiskong/GoHttp
+- package: github.com/sebcat/cget
 - package: github.com/kennygrant/sanitize
 - package: github.com/7ing/go-flow
 - package: github.com/satori/go.uuid
@@ -540,26 +728,87 @@ import:
 - package: github.com/gooops/env_strings
 - package: github.com/muesli/cache2go
 - package: github.com/NYTimes/openapi2proto
+- package: github.com/jaimelopez/datatypes
+  subpackages:
+  - dictionary
+  - collection
+  - string 
+  - generic
+- package: github.com/extemporalgenome/npdfpages
+- package: github.com/secnot/orderedmap
+- package: github.com/gepser/requester
 - package: github.com/allegro/bigcache
 - package: github.com/aviddiviner/gin-limit
-- package: github.com/blevesearch/bleve
-  version: v0.5.0
+- package: github.com/yanyiwu/gojieba
+- package: googlemaps.github.io/maps
+- package: github.com/braintree/manners
+  version: ^0.4.0
+- package: github.com/eclipse/paho.mqtt.golang
+  version: ^1.0.0
+- package: github.com/gorilla/feeds
+- package: github.com/growse/concurrent-expiring-map
+- package: github.com/kpawlik/geojson
+- package: github.com/oxtoacart/bpool
+- package: github.com/tanel/dbmigrate
+- package: github.com/DHowett/ranger
+- package: github.com/lrstanley/go-queryparser
+- package: github.com/labstack/echo
+  repo: https://github.com/labstack/echo.git
+  vcs: git
   subpackages:
-  - analysis/analyzers/keyword_analyzer
-  - analysis/analyzers/simple_analyzer
-  - analysis/language/en
+  - middleware
+- package: github.com/labstack/gommon
+  version: ^0.2.0
+  subpackages:
+  - log
+- package: github.com/oklog/ulid
+  version: ^0.3.0
+- package: github.com/phayes/permbits
+- package: github.com/namsral/flag
+  version: ^1.7.4-pre
+- package: github.com/google/go-querystring
+  subpackages:
+  - query
+- package: github.com/drhodes/golorem
+  version: master
+- package: github.com/twinj/uuid
+  version: master
+- package: github.com/syndtr/goleveldb
+- package: github.com/golang/snappy
+- package: github.com/jackwakefield/ghs-demangle
+- package: github.com/mschoch/blackfriday-text
 - package: golang.org/x/crypto
   version: dd96d35c1b251a7ef77f057fc5c4f92ea2b285b4
   subpackages:
-  - ssh
-  - ssh/knownhosts
-  - md4
   - bcrypt
+  - blowfish
+  - cast5
+  - curve25519
+  - cryptobyte
+  - cryptobyte/asn1
+  - ed25519
+  - hkdf
+  - md4
+  - nacl/auth
+  - nacl/box
+  - nacl/secretbox
+  - ocsp
   - openpgp
   - openpgp/armor
   - openpgp/clearsign
-  - ocsp
-  - nacl/box
+  - openpgp/elgamal
+  - openpgp/errors
+  - openpgp/packet
+  - openpgp/s2k
+  - poly1305
+  - scrypt
+  - sha3
+  - pbkdf2
+  - pkcs12/internal/rc2
+  - salsa20/salsa
+  - ssh
+  - ssh/terminal
+  - ssh/knownhosts
 - package: github.com/PuerkitoBio/goquery
   version: ^1.1.0
 - package: github.com/go-chi/chi
@@ -711,6 +960,7 @@ import:
   - secure/bidirule
   - secure/precis
   - unicode
+  - runes
   - transform
   - unicode
   - unicode/bidi
@@ -727,20 +977,56 @@ import:
   - encoding/unicode
   - encoding/unicode/utf32
   - encoding
+  - encoding/charmap
+  - encoding/htmlindex
+  - encoding/internal
+  - encoding/internal/identifier
+  - encoding/japanese
+  - encoding/korean
+  - encoding/simplifiedchinese
+  - encoding/traditionalchinese
+  - encoding/unicode
+  - internal
+  - internal/colltab
+  - internal/format
+  - internal/gen
+  - internal/tag
+  - internal/utf8internal
   - collate
   - cases
   - number
+- package: gopkg.in/tomb.v2
+- package: github.com/ikawaha/kagome
+- package: github.com/gocql/gocql
 - package: golang.org/x/net
   version: release-branch.go1.9
   subpackages:
   - context
   - html
   - html/atom
+  - lex/httplex
   - webdav
   - http2
   - http2/hpack
   - websocket
   - idna
+  - internal/iana
+  - internal/timeseries
+  - ipv4
+  - ipv6
+  - webdav/internal/xml
+  - dict
+- package: github.com/endeveit/go-gelf
+  subpackages:
+  - gelf
+- package: github.com/endeveit/go-snippets
+  subpackages:
+  - cli
+  - config
+- package: github.com/pquerna/ffjson
+  subpackages:
+  - fflib/v1
+- package: gopkg.in/gcfg.v1
 - package: github.com/jimstudt/http-authentication
   subpackages:
   - basic

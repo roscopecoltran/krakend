@@ -15,4 +15,4 @@ import "io"
 
 // A Decoder is a function that reads from the reader and decodes it
 // into an map of interfaces
-type Decoder func(r io.Reader, v *map[string]interface{}) error
+type Decoder func(r io.Reader, v *map[string]interface{}, paths []map[string]string) error

@@ -7,112 +7,193 @@ host:
 endpoints:
 - endpoint: "/github"
   method: GET
-  timeout: 3000
+  timeout: 30000
+  processors:
+    formatter: 
+      engine: mxj
+    indexer: 
+      engine: bleve
   backend:
   - host:
     - https://api.github.com
+    processors:
+      formatter: 
+        engine: mxj
+      indexer: 
+        engine: bleve
     url_pattern: "/"
     whitelist:
     - authorizations_url
     - code_search_url
-- endpoint: "/search/{q}"
+- endpoint: "/apis/specs"
   method: GET
-  timeout: 3000
+  timeout: 30000
+  processors:
+    formatter: 
+      engine: mxj
+    indexer: 
+      engine: bleve
   header:
   - 'User-Agent: {USER_AGENT}'
+  backend:
+  - host:
+    - https://api.apis.guru
+    encoding: json
+    method: GET
+    timeout: 30000
+    url_pattern: "/v2/list.json"
+    paths:
+    - path: $.versions[*].preferred
+      key: default_version
+    - path: $.versions[*].x-preferred
+      key: use_default_version
+    - path: $.versions[*].info.title
+      key: description
+    - path: $.versions[*].info.version
+      key: version
+    - path: $.versions[*].info.x-apisguru-categories
+      key: topics
+    - path: $.versions[*].updated
+      key: updated
+    - path: $.versions.*.swaggerUrl
+      key: swagger_url_json
+    - path: $.versions[*].swaggerYamlUrl
+      key: swagger_url_yaml
+    - path: $.versions.*.info.x-origin
+      key: reference_source
+    - path: $.versions[*].info.x-providerName
+      key: provider
+    - path: $.versions[*].info.x-origin
+      key: reference_source
+    processors:
+      formatter: 
+        engine: mxj
+      indexer: 
+        engine: bleve
+    indexes:
+      disabled: false
+      mappings:
+      - map: ""
+        type: ""
+    entities:
+      disabled: false
+      mappings:
+      - map: ""
+        type: ""
+        key: 
+    whitelist:
+    - preferred
+    - added
+    - updated
+    - swagger_url_json
+    - swagger_url_yaml
+    - info
+    - version
+    - default_version
+    - topics
+    header:
+    - 'Accept: application/vnd.github.mercy-preview+json'
+    - 'Authentication: token {GITHUB_TOKEN}'
+    - 'User-Agent: {USER_AGENT}'
+    group: specs
+  - host:
+    - https://api.apis.guru
+    encoding: json
+    method: GET
+    timeout: 30000
+    url_pattern: "/v2/metrics.json"
+    processors:
+      formatter: 
+        engine: mxj
+      indexer: 
+        engine: bleve
+    paths:
+    - path: numAPIs
+      key: apis
+    - path: numEndpoints
+      key: endpoints
+    - path: numSpecs
+      key: specs
+    whitelist:
+    - apis
+    - endpoints
+    - specs
+    #whitelist:
+    #- numAPIs
+    #- numEndpoints
+    #- numSpecs
+    #mapping:
+    #  numAPIs: apis
+    #  numEndpoints: endpoints
+    #  numSpecs: specs
+    group: metrics
+- endpoint: "/search/{q}"
+  method: GET
+  timeout: 30000
+  processors:
+    formatter: 
+      engine: mxj
+    indexer: 
+      engine: bleve
+  header:
+  - 'User-Agent: {USER_AGENT}'
+  taskq:
+  - id: {host_slug}
+    order: 1
+    type: series
+  - id: {host_slug}
+    order: 2
+    type: parallel
+  - id: {host_slug}
+    order: 3
+    type: mixed
+    map: 
   backend:
   - host:
     - https://api.github.com
     encoding: json
     method: GET
-    timeout: 3000
+    timeout: 30000
     url_pattern: "/search/repositories"
+    processors:
+      formatter: 
+        engine: mxj
+      indexer: 
+        engine: bleve
     query_strings:
       q: "{q}"
       sort: stars
       order: desc
       page: 1
-      per_page: 100
+      per_page: 5
+    holders: # body, header (regex on strings, no multiline)
+    - key: ratelimit-limit # {ratelimit-limit}
+      location: header
+      match: X-RateLimit-Limit
+    - key: ratelimit-reset # {ratelimit-reset}
+      location: header
+      match: X-Ratelimit-Reset
+    - key: ratelimit-remaining # {ratelimit-remaining}
+      location: header
+      match: X-RateLimit-Remaining
+    - key: page-next # {page-next}
+      location: header
+      match: "?page=(0-9+)>; rel=\"next\""
+    - key: page-last
+      location: header
+      match: "?page=(0-9+)>; rel=\"last\""
+    #- location: body
+    #  pattern: ""
+    #  holder: review-last
+    paths:
+    - path: items*
+      rename: results
+    whitelist:
+    - items
+    - total_count
+    - incomplete_results
     header:
     - 'Accept: application/vnd.github.mercy-preview+json'
     - 'Authentication: token {GITHUB_TOKEN}'
     - 'User-Agent: {USER_AGENT}'
     group: repositories
-    whitelist:
-    - fork
-    - full_name
-    - topics
-    - description
-    - created_at
-    - updated_at
-    - pushed_at
-    - language
-    - stargazers_count
-    - watchers_count
-    mapping:
-      homepage: website
-- endpoint: "/search/code/{q}"
-  method: GET
-  timeout: 3000
-  header:
-  - 'User-Agent: {USER_AGENT}'
-  - host:
-    - https://api.github.com
-    encoding: json
-    method: GET
-    timeout: 3000
-    url_pattern: "/search/code"
-    group: code
-    query_strings:
-      q: "{q}"
-      sort: indexed
-      order: desc
-      page: 1
-      per_page: 100
-    header:
-    - 'Accept: application/vnd.github.mercy-preview+json'
-    - 'Authentication: token {GITHUB_TOKEN}'
-    - 'User-Agent: {USER_AGENT}'
-    whitelist:
-    - fork
-    - full_name
-    - topics
-    - description
-    - created_at
-    - updated_at
-    - pushed_at
-    - language
-    - stargazers_count
-    - watchers_count
-    mapping:
-      homepage: website
-  - host:
-    - https://api.github.com
-    encoding: json
-    method: GET
-    timeout: 3000
-    group: commits
-    url_pattern: "/search/commits"
-    query_strings:
-      q: "{q}"
-      sort: committer-date
-      order: desc
-      page: 1
-      per_page: 100
-    header:
-    - 'Accept: application/vnd.github.mercy-preview+json'
-    - 'Authentication: token {GITHUB_TOKEN}'
-    - 'User-Agent: {USER_AGENT}'
-    whitelist:
-    - fork
-    - full_name
-    - topics
-    - description
-    - created_at
-    - updated_at
-    - pushed_at
-    - language
-    - stargazers_count
-    - watchers_count
-    mapping:
-      homepage: website

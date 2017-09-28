@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/roscopecoltran/krakend/config"
-	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // NewMergeDataMiddleware creates proxy middleware for merging responses from several backends

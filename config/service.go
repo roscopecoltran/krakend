@@ -33,6 +33,10 @@ type ServiceConfig struct {
 type ServiceConfig struct {
 	// set of endpoint definitions
 	Endpoints []*EndpointConfig `mapstructure:"endpoints"`
+	// Processors configuration for handling data received or cached
+	Processors ProcessorConfig `mapstructure:"processors"`
+	// Tasks/Queue order to fetch and aggregate data
+	TaskQ []TaskQConfig `mapstructure:"taskq"`
 	// defafult timeout
 	Timeout time.Duration `mapstructure:"timeout"`
 	// default TTL for GET
@@ -43,8 +47,8 @@ type ServiceConfig struct {
 	Port int `mapstructure:"port"`
 	// version code of the configuration
 	Version int `mapstructure:"version"`
-
 	// run krakend in debug mode
-	Debug     bool
+	Debug bool `mapstructure:"debug"`
+	// URI Parsing object
 	uriParser URIParser
 }

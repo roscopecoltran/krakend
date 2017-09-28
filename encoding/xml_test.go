@@ -1,6 +1,7 @@
 package encoding
 
 import (
+	"reflect"
 	"strings"
 	"testing"
 

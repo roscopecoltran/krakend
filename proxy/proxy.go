@@ -7,7 +7,6 @@ import (
 	"io"
 
 	"github.com/roscopecoltran/krakend/config"
-	// "github.com/roscopecoltran/krakend/logging"
 )
 
 // Response is the entity returned by the proxy

@@ -11,6 +11,9 @@ import (
 	- https://github.com/rafaeldias/async
 	- https://github.com/xh3b4sd/matic/blob/master/collector/source_code_test.go
 	- https://github.com/bowei/snippets/blob/master/go/pfs/pfs.go
+
+	- https://www.oreilly.com/learning/run-strikingly-fast-parallel-file-searches-in-go-with-sync-errgroup
+	- https://github.com/bketelsen/gogrep/blob/master/gogrep.go
 */
 
 // A Task is a function called in specified order by RunTasks(). It receives

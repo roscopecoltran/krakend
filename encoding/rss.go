@@ -1,8 +1,10 @@
 package encoding
 
 import (
+	"fmt"
 	"io"
 
+	"github.com/k0kubun/pp"
 	"github.com/mmcdole/gofeed"
 	//	"github.com/roscopecoltran/krakend/logging"
 )
@@ -12,10 +14,14 @@ const RSS = "rss"
 
 // NewRSSDecoder returns the RSS decoder
 func NewRSSDecoder() Decoder {
+	fmt.Printf("NewRSSDecoder(..)")
 	fp := gofeed.NewParser()
-	return func(r io.Reader, v *map[string]interface{}) error {
+	return func(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
+		fmt.Printf("NewRSSDecoder(..), paths:")
+		pp.Print(paths)
 		feed, err := fp.Parse(r)
 		if err != nil {
+			fmt.Println("error while init fp.Parse(...),  err:\n", err)
 			return err
 		}
 		*(v) = map[string]interface{}{

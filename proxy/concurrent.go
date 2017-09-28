@@ -22,20 +22,15 @@ func NewConcurrentMiddleware(remote *config.Backend) Middleware {
 		if len(next) > 1 {
 			panic(ErrTooManyProxies)
 		}
-
 		return func(ctx context.Context, request *Request) (*Response, error) {
 			localCtx, cancel := context.WithTimeout(ctx, serviceTimeout)
-
 			results := make(chan *Response, remote.ConcurrentCalls)
 			failed := make(chan error, remote.ConcurrentCalls)
-
 			for i := 0; i < remote.ConcurrentCalls; i++ {
 				go processConcurrentCall(localCtx, next[0], request, results, failed)
 			}
-
 			var response *Response
 			var err error
-
 			for i := 0; i < remote.ConcurrentCalls; i++ {
 				select {
 				case response = <-results:
@@ -58,14 +53,7 @@ var errNullResult = errors.New("invalid response")
 func processConcurrentCall(ctx context.Context, next Proxy, request *Request, out chan<- *Response, failed chan<- error) {
 	localCtx, cancel := context.WithCancel(ctx)
 	result, err := next(localCtx, request)
-
 	if config.Config.Debug.Components.Proxies {
-		// fmt.Println("proxy/concurrent.go > var.request.Code")
-		// pp.Print(request.Code)
-		// fmt.Println("proxy/concurrent.go > var.request.Header")
-		// pp.Print(request.Header)
-		// fmt.Println("proxy/concurrent.go > var.result")
-		// pp.Print(result)
 		if err != nil {
 			fmt.Println("proxy/concurrent.go > var.err")
 			pp.Print(err)

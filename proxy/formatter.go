@@ -3,41 +3,12 @@ package proxy
 import (
 	"fmt"
 	"strings"
-	// map_path "github.com/firewut/go-json-map"
-	// "github.com/bloglovin/obpath"
 )
-
-/*
-	Refs:
-	- https://github.com/bloglovin/obpath
-		".store",
-		".store.books",
-		".store.*",
-		"..Author",
-		".store.counts[*]",
-		".store.counts[3]",
-		".store.counts[1:2]",
-		".store.counts[-2:]",
-		".store.counts[:1]",
-		".store.counts[:1].Price",
-		"..books[*](has(@.ISBN))",
-		".store.books[*](!empty(@.ISBN))",
-		".store.books[*](eq(@.Price, 8.99))",
-		".store.books[0:4](eq(@.Author, \"Louis L'Amour\"))",
-		"..books.*(between(@.Price, 8, 10)).Title",
-		"..books[*](gt(@.Price, 9))",
-		"..books[*](has(@.Metadata))",
-		"..books[*](contains(@.Title, 'R')).Title",
-		"..books[*](cicontains(@.Title, 'R')).Title",
-		".store.*[*](gt(@.Price, 18))"
-		- cat testdata/search.json  | obp --path=".items.books"
-*/
-
-// "github.com/roscopecoltran/krakend/logging"
 
 // EntityFormatter formats the response data
 type EntityFormatter interface {
 	Format(entity Response) Response
+	// paths []map[string]string
 }
 
 // EntityFormatterFunc holds the formatter function
@@ -57,10 +28,11 @@ type entityFormatter struct {
 	Prefix         string
 	PropertyFilter propertyFilter
 	Mapping        map[string]string
+	Paths          []map[string]string
 }
 
 // NewEntityFormatter creates an entity formatter with the received params
-func NewEntityFormatter(target string, whitelist, blacklist []string, group string, mappings map[string]string) EntityFormatter {
+func NewEntityFormatter(target string, whitelist, blacklist []string, group string, mappings map[string]string, paths []map[string]string) EntityFormatter {
 	var propertyFilter propertyFilter
 	if len(whitelist) > 0 {
 		propertyFilter = newWhitelistingFilter(whitelist)
@@ -77,8 +49,13 @@ func NewEntityFormatter(target string, whitelist, blacklist []string, group stri
 		Prefix:         group,
 		PropertyFilter: propertyFilter,
 		Mapping:        sanitizedMappings,
+		Paths:          paths,
 	}
 }
+
+//func (e entityFormatter) GetPaths() []map[string]string {
+//	return e.Paths
+//}
 
 // Format implements the EntityFormatter interface
 func (e entityFormatter) Format(entity Response) Response {
@@ -118,16 +95,13 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 	for _, k := range whitelist {
 		keys := strings.Split(k, ".")
 		tmp := make(map[string]interface{}, len(keys)-1)
-		fmt.Printf("keys=%s \n", keys)
+		// fmt.Printf("keys=%s , length: %d, len(wl[keys[0]]): %d, len(keys[1:]): %d\n", keys, len(keys), len(wl[keys[0]]), len(keys[1:]))
 		if len(keys) > 1 {
-			fmt.Printf("wl[keys[0]]=%s \n", wl[keys[0]])
 			if _, ok := wl[keys[0]]; ok {
-				fmt.Printf("keys[1:]=%s \n", keys[1:])
 				for _, k := range keys[1:] {
-					wl[keys[0]][k] = nil //
+					wl[keys[0]][k] = nil
 				}
 			} else {
-				fmt.Printf("keys[1:]=%s \n", keys[1:])
 				for _, k := range keys[1:] {
 					tmp[k] = nil
 				}
@@ -137,12 +111,9 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 			wl[keys[0]] = tmp
 		}
 	}
-
 	return func(entity *Response) {
 		accumulator := make(map[string]interface{}, len(whitelist))
 		for k, v := range entity.Data {
-			// property, err = map_path.GetProperty(document, "one.two.three", ".")
-			// fmt.Println(property)
 			if sub, ok := wl[k]; ok {
 				if len(sub) > 0 {
 					if tmp := whitelistFilterSub(v, sub); len(tmp) > 0 {
@@ -152,6 +123,7 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 					accumulator[k] = v
 				}
 			}
+			fmt.Printf("key=%s, value=%s, length: %d, len(wl[k]): %d\n", k, v, len(k), len(wl[k]))
 		}
 		*entity = Response{Data: accumulator, IsComplete: entity.IsComplete}
 	}
@@ -209,3 +181,31 @@ func blacklistFilterSub(v interface{}, blacklist []string) map[string]interface{
 	}
 	return tmp
 }
+
+/*
+	Refs:
+	- https://github.com/bloglovin/obpath
+		".store",
+		".store.books",
+		".store.*",
+		"..Author",
+		".store.counts[*]",
+		".store.counts[3]",
+		".store.counts[1:2]",
+		".store.counts[-2:]",
+		".store.counts[:1]",
+		".store.counts[:1].Price",
+		"..books[*](has(@.ISBN))",
+		".store.books[*](!empty(@.ISBN))",
+		".store.books[*](eq(@.Price, 8.99))",
+		".store.books[0:4](eq(@.Author, \"Louis L'Amour\"))",
+		"..books.*(between(@.Price, 8, 10)).Title",
+		"..books[*](gt(@.Price, 9))",
+		"..books[*](has(@.Metadata))",
+		"..books[*](contains(@.Title, 'R')).Title",
+		"..books[*](cicontains(@.Title, 'R')).Title",
+		".store.*[*](gt(@.Price, 18))"
+		- cat testdata/search.json  | obp --path=".items.books"
+*/
+
+// encoding.To("xml", response)

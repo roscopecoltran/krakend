@@ -15,9 +15,117 @@ ignore:
 - golang.org/x/crypto/ssh/knownhosts
 - github.com/docker/docker
 - github.com/Sirupsen/logrus
-- github.com/gin-gonic/contrib
-# - github.com/roscopecoltran/krakend/router/gin/plugins
+- gx/ipfs
 import:
+- package: github.com/diguinhorocks/api-handler
+  subpackages:
+  - factory/builder
+  - factory
+  - utils 
+  - utils/request
+  - utils/response
+- package: github.com/fatih/astrewrite
+- package: github.com/dgraph-io/dgraph
+  subpackages:
+  - client
+  - protos 
+  - schema
+  - x
+  - rdf
+- package: github.com/fatih/stopwatch
+- package: github.com/fatih/camelcase
+- package: github.com/fatih/structtag
+- package: github.com/fatih/set
+- package: github.com/clbanning/pseudo
+- package: github.com/clbanning/rfile
+- package: github.com/dpastoor/nonmemutils
+  subpackages:
+  - utils
+  - parser
+  - nmulib
+  - runner
+- package: github.com/clbanning/checkjson
+- package: github.com/clbanning/checkxml
+- package: github.com/attic-labs/noms
+  subpackages:
+  - go/config
+  - go/d"
+  - go/datas
+  - go/spec
+  - go/types
+  - go/util/jsontonoms
+  - go/util/profile
+  - go/util/verbose
+- package: github.com/re-pe/go-dtree
+- package: github.com/clbanning/anyxml
+- package: github.com/clbanning/mxj
+- package: github.com/gyuho/goraph
+- package: h12.me/socks
+  repo: https://github.com/h12w/socks.git
+  vcs: git
+- package: github.com/douglaslamb/rbstringdict
+- package: github.com/bloglovin/obpath
+- package: gopkg.in/validator.v2
+- package: github.com/jweir/csv
+- package: github.com/firewut/go-json-map
+- package: github.com/NodePrime/jsonpath
+- package: github.com/knakk/ftx
+  subpackages:
+  - char
+  - index 
+  - token
+- package: github.com/knakk/rdf2rdf
+- package: github.com/knakk/fenster
+- package: github.com/knakk/kbp
+  subpackages:
+  - isbn 
+  - marc
+  - ncip
+  - onix 
+  - rdf 
+  - sip2
+- package: github.com/knakk/sparql
+- package: github.com/knakk/otra
+  subpackages:
+  - storage
+- package: github.com/knakk/specs
+- package: github.com/knakk/rdf
+- package: github.com/miku/esbulk
+- package: github.com/miku/xmlcutty
+- package: github.com/nikolay-turpitko/structor
+  subpackages:
+  - scanner
+  - funcs/bytes
+  - funcs/crypt
+  - funcs/encoding
+  - funcs/goquery
+  - funcs/math
+  - funcs/os
+  - funcs/regexp
+  - funcs/strings
+  - funcs/use
+  - funcs/xpath
+  - el
+  - el/go-el
+- package: github.com/mmbros/treepath
+- package: github.com/jteeuwen/go-pkg-xmlx
+- package: github.com/santhosh-tekuri/xpathparser
+- package: github.com/gtank/cryptopasta
+- package: github.com/hashicorp/go-multierror
+- package: github.com/apaxa-go/eval
+- package: github.com/patrickmn/go-cache
+- package: github.com/robfig/go-cache
+- package: github.com/antchfx/xpath
+- package: github.com/antchfx/xquery
+  subpackages:
+  - html
+- package: github.com/xlvector/dlog
+- package: gopkg.in/h2non/filetype.v1
+  subpackages:
+  - matchers
+  - types
+- package: github.com/Rican7/mediatype
+- package: gopkg.in/xmlpath.v2
 - package: github.com/ryszard/goskiplist
   subpackages:
   - skiplist
@@ -34,6 +142,8 @@ import:
   subpackages:
   - concurrent
 - package: github.com/plar/go-adaptive-radix-tree 
+# - package: github.com/gin-contrib/jwt
+- package: github.com/gin-contrib/cors
 - package: github.com/gin-contrib/sse
 - package: github.com/gin-contrib/size
 - package: github.com/gin-contrib/rollbar
@@ -405,13 +515,6 @@ import:
 - package: gopkg.in/fatih/set.v0
 - package: github.com/motemen/go-colorine
 - package: github.com/onsi/gomega
-- package: github.com/sclevine/agouti
-- package: github.com/gravitational/configure
-  subpackages:
-  - cstrings
-- package: github.com/gravitational/trace
-- package: github.com/tebeka/selenium
-- package: gopkg.in/alecthomas/kingpin.v2
 - package: github.com/hydrogen18/memlistener
   version: master
 - package: github.com/segmentio/ksuid
@@ -485,6 +588,12 @@ import:
 - package: github.com/blevesearch/bleve
   version: v0.5.0
   subpackages:
+  - analysis/tokenmap
+  - analysis/token/unicode
+  - analysis/token/unicodenorm
+  - analysis/token/stop
+  - analysis/token/porter
+  - analysis/analyzer/custom
   - analysis/analyzers/keyword_analyzer
   - analysis/analyzers/simple_analyzer
   - analysis/language/en
@@ -500,7 +609,6 @@ import:
   - openpgp/clearsign
   - ocsp
   - nacl/box
-- package: github.com/PuerkitoBio/purell
 - package: github.com/PuerkitoBio/goquery
   version: ^1.1.0
 - package: github.com/go-chi/chi
@@ -743,6 +851,13 @@ import:
   subpackages:
   - redis
 - package: github.com/geekypanda/httpcache
+- package: github.com/gin-gonic/contrib
+  subpackages:
+  - cache
+  - jwt
+  - secure
+  - sessions
+  - sse
 - package: github.com/coreos/etcd
   version: v3.2.7
   subpackages:

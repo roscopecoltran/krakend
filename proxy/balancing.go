@@ -44,7 +44,6 @@ func newLoadBalancedMiddleware(lb sd.Balancer) Middleware {
 				return nil, err
 			}
 			r := request.Clone()
-
 			rawURL := []byte{}
 			rawURL = append(rawURL, host...)
 			rawURL = append(rawURL, r.Path...)
@@ -53,7 +52,6 @@ func newLoadBalancedMiddleware(lb sd.Balancer) Middleware {
 				return nil, err
 			}
 			r.URL.RawQuery = r.Query.Encode()
-
 			return next[0](ctx, &r)
 		}
 	}

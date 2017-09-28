@@ -10,8 +10,13 @@ import (
 	"github.com/k0kubun/pp"
 
 	"github.com/roscopecoltran/krakend/config"
-	// "github.com/roscopecoltran/krakend/logging"
 )
+
+/*
+	Refs:
+	- https://github.com/eidge/yurl/blob/master/examples/users.yml
+	-
+*/
 
 // Request contains the data to send to the backend
 type Request struct {
@@ -45,9 +50,6 @@ func (r *Request) AddQueryStrings(queryStrings map[string]string) {
 	if len(queryStrings) == 0 {
 		return
 	}
-	//if r.Method != "POST" {
-	//	return
-	//}
 	r.Query = make(url.Values)
 	for key, value := range queryStrings {
 		paramKey := strings.ToTitle(key)

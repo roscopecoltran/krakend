@@ -6,8 +6,7 @@ import (
 
 var (
 	ErrNoTasks = errgo.New("No tasks")
-
-	Mask = errgo.MaskFunc(IsErrNoTasks)
+	Mask       = errgo.MaskFunc(IsErrNoTasks)
 )
 
 func IsErrNoTasks(err error) bool {
