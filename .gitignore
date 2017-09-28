@@ -112,6 +112,8 @@ limo.yaml
 *.txt
 *.csv
 
+dydet*
+
 ## keep splitted archives (usually under 60Mb)
 !*.gz.*
 !*.zip.*

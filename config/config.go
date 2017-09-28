@@ -257,6 +257,8 @@ func (s *ServiceConfig) initBackendDefaults(e, b int) {
 	switch strings.ToLower(backend.Encoding) {
 	case encoding.XML:
 		backend.Decoder = encoding.NewXMLDecoder(backend.Processors.Formatter.Engine)
+	case encoding.RAW:
+		backend.Decoder = encoding.NewRawDecoder()
 	case encoding.RSS:
 		backend.Decoder = encoding.NewRSSDecoder()
 	default:
