@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/gin-gonic/contrib/cache"
+	"github.com/gin-contrib/cache"
 	"github.com/gin-gonic/gin"
 	"github.com/gregjones/httpcache"
 

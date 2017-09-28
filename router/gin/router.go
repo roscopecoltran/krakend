@@ -8,7 +8,7 @@ import (
 	"time"
 	// "go.uber.org/zap"
 
-	// "github.com/gin-contrib/gzip"
+	"github.com/gin-contrib/gzip"
 	// "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
 	// "github.com/gregjones/httpcache"
@@ -90,7 +90,7 @@ func (r ginRouter) Run(cfg config.ServiceConfig) {
 	r.cfg.Engine.RedirectFixedPath = true
 	r.cfg.Engine.HandleMethodNotAllowed = true
 
-	// r.cfg.Engine.Use(gzip.Gzip(gzip.DefaultCompression))
+	r.cfg.Engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	r.cfg.Engine.Use(r.cfg.Middlewares...)
 
 	// Add a ginzap middleware, which:

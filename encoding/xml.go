@@ -6,8 +6,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/clbanning/mxj"
 	"github.com/k0kubun/pp"
+	"github.com/roscopecoltran/mxj"
 	//	"github.com/roscopecoltran/krakend/logging"
 )
 
@@ -35,9 +35,9 @@ func NewXMLDecoder(mode string) Decoder {
 }
 
 // XMLDecoder implements the Decoder interface
-func XMLDecoder(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
-	fmt.Printf("XMLDecoder(..), paths:\n")
-	pp.Print(paths)
+func XMLDecoder(r io.Reader, v *map[string]interface{}, targets []map[string]string) error {
+	fmt.Printf("XMLDecoder(..), targets:\n")
+	pp.Print(targets)
 	mv, err := mxj.NewMapXmlReader(r)
 	if err != nil {
 		return err
@@ -47,9 +47,9 @@ func XMLDecoder(r io.Reader, v *map[string]interface{}, paths []map[string]strin
 }
 
 // XMLCollectionDecoder implements the Decoder interface over a collection
-func XMLCollectionDecoder(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
-	fmt.Printf("XMLCollectionDecoder(..), paths:\n")
-	pp.Print(paths)
+func XMLCollectionDecoder(r io.Reader, v *map[string]interface{}, targets []map[string]string) error {
+	fmt.Printf("XMLCollectionDecoder(..), targets:\n")
+	pp.Print(targets)
 	mv, err := mxj.NewMapXmlReader(r)
 	if err != nil {
 		return err
@@ -59,16 +59,16 @@ func XMLCollectionDecoder(r io.Reader, v *map[string]interface{}, paths []map[st
 }
 
 // XMLCollectionDecoder implements the Decoder interface over a collection
-func XMLDecoderMXJ(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
-	fmt.Printf("XMLDecoderMXJ(..), paths:\n")
-	pp.Print(paths)
-	result := make(map[string]interface{}, len(paths)) //-1)
-	// m, merr := NewMapXmlReader(jdata[:len(jdata)-2])
+func XMLDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string]string) error {
+	fmt.Printf("XMLDecoderMXJ(..), targets:\n")
+	pp.Print(targets)
+	result := make(map[string]interface{}, len(targets)) //-1)
 	mv, err := mxj.NewMapXmlReader(r)
 	if err != nil {
 		fmt.Println("error while init NewMapJsonReader,  err:\n", err)
+		return err
 	}
-	for _, mapping := range paths {
+	for _, mapping := range targets {
 		var fieldName, pathStr string
 		for _, fv := range mapping {
 			pp.Printf(fv)

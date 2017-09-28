@@ -1,6 +1,0 @@
-bin/
-pkg/
-.cache/
-vendor/*/
-.idea/
-src/github.com

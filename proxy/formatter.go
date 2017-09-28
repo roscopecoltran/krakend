@@ -1,14 +1,18 @@
 package proxy
 
 import (
-	"fmt"
+	// "fmt"
 	"strings"
+
+	// "github.com/fatih/structs"
+	// "github.com/davecgh/go-spew/spew"
+	"github.com/k0kubun/pp"
 )
 
 // EntityFormatter formats the response data
 type EntityFormatter interface {
 	Format(entity Response) Response
-	// paths []map[string]string
+	Targets() []map[string]string
 }
 
 // EntityFormatterFunc holds the formatter function
@@ -21,7 +25,15 @@ func (e EntityFormatterFunc) Format(entity Response) Response {
 	return e.Func(entity)
 }
 
+// Targets implements the EntityFormatter interface
+func (e EntityFormatterFunc) Targets() []map[string]string {
+	pp.Print(e)
+	return nil
+}
+
 type propertyFilter func(entity *Response)
+
+// type targetsFilter func(targets *[]map[string]string)
 
 type entityFormatter struct {
 	Target         string
@@ -53,9 +65,9 @@ func NewEntityFormatter(target string, whitelist, blacklist []string, group stri
 	}
 }
 
-//func (e entityFormatter) GetPaths() []map[string]string {
-//	return e.Paths
-//}
+func (e entityFormatter) Targets() []map[string]string {
+	return e.Paths
+}
 
 // Format implements the EntityFormatter interface
 func (e entityFormatter) Format(entity Response) Response {
@@ -123,7 +135,7 @@ func newWhitelistingFilter(whitelist []string) propertyFilter {
 					accumulator[k] = v
 				}
 			}
-			fmt.Printf("key=%s, value=%s, length: %d, len(wl[k]): %d\n", k, v, len(k), len(wl[k]))
+			// fmt.Printf("key=%s, value=%s, length: %d, len(wl[k]): %d\n", k, v, len(k), len(wl[k]))
 		}
 		*entity = Response{Data: accumulator, IsComplete: entity.IsComplete}
 	}

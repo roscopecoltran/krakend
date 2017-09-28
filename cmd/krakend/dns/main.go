@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/aviddiviner/gin-limit"
-	"github.com/gin-gonic/contrib/cache"
-	"github.com/gin-gonic/contrib/secure"
+	"github.com/gin-contrib/cache"
+	"github.com/gin-contrib/secure"
 	"github.com/gin-gonic/gin"
 
 	"github.com/roscopecoltran/krakend/config"

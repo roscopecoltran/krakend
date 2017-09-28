@@ -26,7 +26,25 @@ ignore:
 - github.com/attic-labs
 - github.com/attic-labs/noms
 - github.com/attic-labs/graphql
+- github.com/agrison/mxj
+- github.com/gin-gonic/contrib/sessions
+- github.com/gin-gonic/contrib/gzip
+- github.com/gin-gonic/contrib/secure
 import:
+- package: github.com/blendlabs/go-jsonl
+- package: github.com/buger/jsonparser
+- package: github.com/robfig/go-cache
+- package: github.com/tj/go-debug
+- package: github.com/gigawattio/oslib
+- package: github.com/gigawattio/netlib
+- package: github.com/gigawattio/concurrency
+- package: github.com/dsx/regexp2struct
+- package: github.com/ImJasonH/csvstruct
+- package: github.com/chenjie4255/gobind
+- package: github.com/gigawattio/metaflector
+- package: github.com/badu/reflector
+  subpackages:
+  - src
 - package: github.com/urandom/graph
   subpackages:
   - base
@@ -178,7 +196,7 @@ import:
   - go/util/verbose
 - package: github.com/re-pe/go-dtree
 - package: github.com/clbanning/anyxml
-- package: github.com/clbanning/mxj
+- package: github.com/roscopecoltran/mxj
 - package: github.com/gyuho/goraph
 - package: h12.me/socks
   repo: https://github.com/h12w/socks.git
@@ -1088,13 +1106,6 @@ import:
   subpackages:
   - redis
 - package: github.com/geekypanda/httpcache
-- package: github.com/gin-gonic/contrib
-  subpackages:
-  - cache
-  - jwt
-  - secure
-  - sessions
-  - sse
 - package: github.com/coreos/etcd
   version: v3.2.7
   subpackages:

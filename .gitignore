@@ -1,3 +1,4 @@
+stack.txt
 **/krakend_gin*
 **/krakend_dns*
 **/krakend_mux*
@@ -8,6 +9,15 @@
 **/krakend_jwt*
 server.rsa.crt
 server.rsa.key
+
+panicparse
+
+*.err
+*.log
+
+.debug
+.debug/
+.debug/**
 
 *.json
 *.yml

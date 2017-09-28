@@ -14,7 +14,7 @@ deps:
 	go get "github.com/roscopecoltran/krakend/proxy"
 	go get "github.com/roscopecoltran/krakend/router/gin"
 	go get "github.com/roscopecoltran/krakend/logging/gologging"
-	go get "github.com/gin-gonic/contrib/cache"
+	go get "github.com/gin-contrib/cache"
 	go get "github.com/gregjones/httpcache"
 
 build:

@@ -7,10 +7,14 @@ import (
 	"time"
 
 	"github.com/aviddiviner/gin-limit"
+
 	"github.com/gin-gonic/contrib/cache"
-	"github.com/gin-gonic/contrib/secure"
+	// "github.com/gin-contrib/cache"
+	// "github.com/gin-contrib/cache/persistence"
+	"github.com/gin-contrib/secure"
+	// "github.com/gin-contrib/static"
+
 	"github.com/gin-gonic/gin"
-	// "github.com/gin-gonic/contrib/static"
 
 	// "github.com/k0kubun/pp"
 	"github.com/roscopecoltran/configor"
@@ -87,12 +91,13 @@ func main() {
 
 	// pp.Println(store)
 
+	// https://github.com/gin-contrib/secure/blob/master/example/code1/example.go
 	mws := []gin.HandlerFunc{
-		secure.Secure(secure.Options{
-			AllowedHosts:          []string{"127.0.0.1:8080", "example.com", "ssl.example.com"},
-			SSLRedirect:           false,
-			SSLHost:               "ssl.example.com",
-			SSLProxyHeaders:       map[string]string{"X-Forwarded-Proto": "https"},
+		secure.New(secure.Config{
+			AllowedHosts: []string{"127.0.0.1:8080", "localhost:8080", "example.com", "ssl.example.com"},
+			SSLRedirect:  false,
+			SSLHost:      "ssl.example.com",
+			// SSLProxyHeaders:       map[string]string{"X-Forwarded-Proto": "https"},
 			STSSeconds:            315360000,
 			STSIncludeSubdomains:  true,
 			FrameDeny:             true,

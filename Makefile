@@ -65,6 +65,7 @@ GO_GLIDE			:= $(shell which glide)
 # general - helper
 TR_EXEC				:= $(shell which tr)
 AG_EXEC				:= $(shell which ag)
+PP_EXEC				:= $(shell which pp)
 
 # package managers
 BREW_EXEC			:= $(shell which brew)

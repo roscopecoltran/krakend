@@ -64,6 +64,7 @@ func EndpointHandler(configuration *config.EndpointConfig, proxy proxy.Proxy) gi
 		}
 
 		if response != nil {
+			// c.JSON(http.StatusOK, response.Data)
 			c.IndentedJSON(http.StatusOK, response.Data)
 		} else {
 			c.JSON(http.StatusOK, gin.H{})

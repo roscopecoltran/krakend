@@ -2,13 +2,14 @@ package encoding
 
 import (
 	"encoding/json"
-	"errors"
+	// "errors"
 	"fmt"
 	"io"
 	"strings"
 
-	"github.com/clbanning/mxj"
+	// "github.com/buger/jsonparser"
 	"github.com/k0kubun/pp"
+	"github.com/roscopecoltran/mxj"
 )
 
 // JSON is the key for the json encoding
@@ -34,19 +35,18 @@ func NewJSONDecoder(mode string) Decoder {
 	return JSONDecoder
 }
 
+// https://golang.org/pkg/encoding/json/#NewDecoder
 // JSONDecoder implements the Decoder interface
-func JSONDecoder(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
-	fmt.Println("JSONDecoder(..), paths:\n")
-	pp.Print(paths)
+func JSONDecoder(r io.Reader, v *map[string]interface{}, targets []map[string]string) error {
+	fmt.Printf("JSONDecoder(..)\n")
 	d := json.NewDecoder(r)
 	d.UseNumber()
 	return d.Decode(v)
 }
 
 // JSONCollectionDecoder implements the Decoder interface over a collection
-func JSONCollectionDecoder(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
-	fmt.Println("JSONCollectionDecoder(..), paths:\n")
-	pp.Print(paths)
+func JSONCollectionDecoder(r io.Reader, v *map[string]interface{}, targets []map[string]string) error {
+	fmt.Printf("JSONCollectionDecoder(..)\n")
 	var collection []interface{}
 	d := json.NewDecoder(r)
 	d.UseNumber()
@@ -57,40 +57,56 @@ func JSONCollectionDecoder(r io.Reader, v *map[string]interface{}, paths []map[s
 	return nil
 }
 
+// Retrieve a Map value from an io.Reader.
+//  NOTE: The raw JSON off the reader is buffered to []byte using a ByteReader. If the io.Reader is an
+//        os.File, there may be significant performance impact. If the io.Reader is wrapping a []byte
+//        value in-memory, however, such as http.Request.Body you CAN use it to efficiently unmarshal
+//        a JSON object.
 // https://github.com/clbanning/mxj/blob/master/jpath.go
 // https://github.com/clbanning/mxj/blob/master/json.go
-func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, paths []map[string]string) error {
-	fmt.Printf("JSONDecoderMXJ(..), paths:\n")
-	pp.Print(paths)
-	result := make(map[string]interface{}, len(paths)) // -1
-	// m, merr := NewMapJsonReader(jdata[:len(jdata)-2])
-	mv, merr := mxj.NewMapJsonReader(r)
-	if merr != nil && merr != io.EOF {
-		panic(merr)
-		fmt.Printf("error while init merr: %s\n", merr.Error())
+// https://github.com/clbanning/mxj/issues/21
+func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string]string) error {
+	result := make(map[string]interface{}, len(targets)) // -1
+	mxj.JsonUseNumber = true
+	mv, merr := mxj.NewMapJsonReaderAll(r)
+	if merr != nil {
+		return merr
 	}
-	for _, mapping := range paths {
-		var fieldName, pathStr string
-		for _, fv := range mapping {
-			pp.Printf(fv)
-			if strings.ToLower(fv) == "name" {
-				fieldName = fv
+	// fmt.Printf("NewMapJsonReader, mv : %#v\n", mv)
+	if len(targets) > 0 {
+		for _, target := range targets {
+			var newFieldName, targetName, targetPath string
+			for kv, fv := range target {
+				// fmt.Printf("JSONDecoderMXJ(..) > kv=%s, fv=%s\n", kv, fv)
+				if strings.ToLower(kv) == "target" {
+					targetName = fv
+				}
+				if strings.ToLower(kv) == "rename" {
+					newFieldName = fv
+				}
+				if strings.ToLower(kv) == "path" {
+					targetPath = fv
+				}
 			}
-			if strings.ToLower(fv) == "path" {
-				pathStr = fv
+			if targetName != "" || targetPath != "" {
+				// fmt.Printf("targetName: %s, newFieldName: %s, targetPath: %s", targetName, newFieldName, targetPath)
+				if newFieldName != "" {
+					err := mv.RenameKey(targetName, newFieldName)
+					if err != nil {
+						return err
+					}
+				}
+				node, err := mv.ValuesForPath(newFieldName)
+				if err != nil {
+					return err
+				}
+				// pp.Print(node)
+				result[newFieldName] = node
 			}
 		}
-		if fieldName == "" || pathStr == "" {
-			return errors.New("field name or data path are missing for this path extraction")
-		}
-		node, err := mv.ValuesForPath(pathStr)
-		if err != nil {
-			panic(merr)
-			fmt.Println("error while init mv.ValuesForPath(...),  err:\n", err)
-			return err
-		}
-		result[fieldName] = node
-		fmt.Println(fieldName, ":", result)
+		pp.Print(result)
+		*(v) = result
+		return nil
 	}
 	*(v) = mv
 	return nil
@@ -99,7 +115,7 @@ func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, paths []map[string]s
 /*
 
 // Extract / modify Map values
-paths := m.PathsForKey(key)
+targets := m.PathsForKey(key)
 path := mv.PathForKeyShortest(key)
 values, err := mv.ValuesForKey(key, subkeys)
 values, err := mv.ValuesForPath(path, subkeys)
@@ -113,8 +129,6 @@ leafvalues := mv.LeafValues()
 newMap, err := mv.NewMap("oldKey_1:newKey_1", "oldKey_2:newKey_2", ..., "oldKey_N:newKey_N")
 newXml, err := newMap.Xml()   // for example
 newJson, err := newMap.Json() // ditto
-
-
 
 */
 

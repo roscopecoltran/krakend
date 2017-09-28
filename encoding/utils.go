@@ -7,8 +7,8 @@ import (
 
 	// "github.com/fatih/camelcase"
 
-	"github.com/clbanning/mxj"
 	dtree "github.com/re-pe/go-dtree"
+	"github.com/roscopecoltran/mxj"
 )
 
 /*

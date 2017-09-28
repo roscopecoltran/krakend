@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"reflect"
 
+	// "github.com/fatih/structs"
+	// "github.com/gigawattio/metaflector"
 	// "github.com/davecgh/go-spew/spew"
 	"github.com/k0kubun/pp"
 
@@ -69,7 +70,6 @@ type HTTPResponseParser func(context.Context, *http.Response) (*Response, error)
 var DefaultHTTPResponseParserConfig = HTTPResponseParserConfig{
 	func(r io.Reader, v *map[string]interface{}, paths []map[string]string) error { return nil },
 	EntityFormatterFunc{func(entity Response) Response { return entity }},
-	//[]map[string]string,
 }
 
 // HTTPResponseParserConfig contains the config for a given HttpResponseParser
@@ -83,64 +83,25 @@ type HTTPResponseParserFactory func(HTTPResponseParserConfig) HTTPResponseParser
 
 // DefaultHTTPResponseParserFactory is the default implementation of HTTPResponseParserFactory
 func DefaultHTTPResponseParserFactory(cfg HTTPResponseParserConfig) HTTPResponseParser {
-	fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.cfg.ef")
-	pp.Print(cfg)
-	spew.Dump(cfg.ef)
 	return func(ctx context.Context, resp *http.Response) (*Response, error) {
 		var data map[string]interface{}
-		var mapper []map[string]string
-		if config.Config.Debug.Components.Servers {
-			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > obj.cfg.ef")
-			pp.Print(cfg)
-
-			// https://play.golang.org/p/TnHP6N0oyH
-			v := reflect.ValueOf(cfg.ef)
-			fmt.Println("Type: ", v.Type())
-			fmt.Println("Interface: ", v.Interface())
-
-			s := reflect.ValueOf(v).Elem()
-			typeOfT := s.Type()
-			for i := 0; i < s.NumField(); i++ {
-				f := s.Field(i)
-				fmt.Printf("%d: %s %s = %v\n", i, typeOfT.Field(i).Name, f.Type(), f.Interface())
-			}
-
-			t := reflect.TypeOf(cfg.ef)
-			if t.Kind() == reflect.Ptr {
-				t = t.Elem()
-			}
-			for i := 0; i < t.NumField(); i++ {
-				fmt.Printf("%+v\n", t.Field(i))
-			}
-
-			v := reflect.ValueOf(reply)
-			if v.Kind() == reflect.Ptr {
-				v = v.Elem()
-			}
-			for i := 0; i < v.NumField(); i++ {
-				fmt.Println(v.Field(i))
-			}
-
-		}
-		err := cfg.dec(resp.Body, &data, mapper)
+		targets := make([]map[string]string, len(cfg.ef.Targets())-1)
+		targets = cfg.ef.Targets()
+		/*if config.Config.Debug.Components.Servers {
+			fmt.Println("Targets: ")
+			pp.Println(targets)
+		}*/
+		err := cfg.dec(resp.Body, &data, targets)
 		resp.Body.Close()
 		if config.Config.Debug.Components.Servers {
-			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.resp.Header")
-			pp.Print(resp.Header)
-			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.resp.StatusCode")
-			pp.Println(resp.StatusCode)
-			fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.data")
-			pp.Print(data)
 			if err != nil {
 				fmt.Println("proxy/http.go > DefaultHTTPResponseParserFactory(..) > var.err")
-				pp.Print(err)
+				fmt.Print(err)
 			}
 		}
-
 		if err != nil {
 			return nil, err
 		}
-
 		newResponse := Response{Data: data, IsComplete: true}
 		newResponse = cfg.ef.Format(newResponse)
 		return &newResponse, nil

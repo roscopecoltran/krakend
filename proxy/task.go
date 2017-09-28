@@ -11,6 +11,11 @@ import (
 	- https://github.com/rafaeldias/async
 	- https://github.com/xh3b4sd/matic/blob/master/collector/source_code_test.go
 	- https://github.com/bowei/snippets/blob/master/go/pfs/pfs.go
+	- https://github.com/ERnsTL/flowd/tree/master/examples
+	- https://github.com/themalkolm/go-fbp
+	- https://github.com/gyuho/goraph
+	- https://github.com/jacopofar/wikilink-graph-importer
+	- https://github.com/pressure679/WikiPagerankDB/blob/master/sample-boltdb.go
 
 	- https://www.oreilly.com/learning/run-strikingly-fast-parallel-file-searches-in-go-with-sync-errgroup
 	- https://github.com/bketelsen/gogrep/blob/master/gogrep.go
