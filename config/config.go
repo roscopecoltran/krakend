@@ -55,7 +55,9 @@ var Config = struct {
 	// Tasks     []dog.Dogfile   `json:"tasks" yaml:"tasks" toml:"tasks"`
 
 	Backend struct {
-		Api      InstanceConfig        `gorm:"column:server" json:"server" yaml:"server" toml:"server"`
+		Disabled bool           `default:"true" json:"disabled" yaml:"disabled" toml:"disabled"`
+		Api      InstanceConfig `gorm:"column:server" json:"server" yaml:"server" toml:"server"`
+		// Admin    InstanceConfig        `gorm:"column:admin" json:"admin" yaml:"admin" toml:"admin"`
 		History  InstanceHistoryConfig `gorm:"column:history" json:"-" yaml:"-" toml:"-"`
 		Settings struct {
 			UI       WebInterfaceConfig   `gorm:"column:ui" json:"ui" yaml:"ui" toml:"ui"`
@@ -65,6 +67,7 @@ var Config = struct {
 	} `json:"backend" yaml:"backend" file:"backend" toml:"backend"`
 
 	Frontend struct {
+		Disabled bool `default:"true" json:"disabled" yaml:"disabled" toml:"disabled"`
 		Settings struct {
 			UI       WebInterfaceConfig   `gorm:"column:ui" json:"ui" yaml:"ui" toml:"ui"`
 			Outgoing OutgoingConfig       `gorm:"column:outgoing" json:"outgoing" yaml:"outgoing" toml:"outgoing"`
@@ -73,12 +76,15 @@ var Config = struct {
 	} `json:"frontend" yaml:"frontend" file:"frontend" toml:"frontend"`
 
 	Debug struct {
+		Disabled bool `default:"true" json:"disabled" yaml:"disabled" toml:"disabled"`
+
 		Logs struct {
 			Level     string `default:"Info" json:"level" yaml:"level" toml:"level"`
 			Out       string `default:"Stdout" json:"out" yaml:"out" toml:"out"`
 			AccessLog string `default:"access_log" json:"access_log" yaml:"access_log" toml:"access_log"`
 			ErrorLog  string `default:"error_log" json:"error_log" yaml:"error_log" toml:"error_log"`
 		} `json:"logs" yaml:"logs" file:"logs" toml:"logs"`
+
 		Components struct {
 			Services    bool `default:"false" gorm:"column:services" json:"services" yaml:"services" toml:"services"`
 			Servers     bool `default:"false" gorm:"column:servers" json:"servers" yaml:"servers" toml:"servers"`

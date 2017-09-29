@@ -31,6 +31,12 @@ ignore:
 - github.com/gin-gonic/contrib/gzip
 - github.com/gin-gonic/contrib/secure
 import:
+- package: github.com/mingrammer/commonregex
+- package: github.com/kataras/iris
+  subpackages:
+  - iris
+- package: github.com/GuiaBolso/Go-Events
+- package: github.com/sk88ks/flow
 - package: github.com/blendlabs/go-jsonl
 - package: github.com/buger/jsonparser
 - package: github.com/robfig/go-cache

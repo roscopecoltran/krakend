@@ -1,25 +1,50 @@
 ---
 name: Sample KrakenD configuration
 version: 1
+default_max_rate: 0
+client_max_rate: 0
+throttling_header: ''
+timeout: 3000ms
+cache_ttl: 300s
 host:
 - http://127.0.0.1:8080
 - http://localhost:8080
 endpoints:
-- endpoint: "/github"
+- endpoint: "/xpath"
   method: GET
-  timeout: 30000
+  timeout: 3000ms
   processors:
-    formatter: 
+    formatter:
       engine: mxj
-    indexer: 
+    indexer:
       engine: bleve
   backend:
   - host:
     - https://api.github.com
     processors:
-      formatter: 
+      formatter:
         engine: mxj
-      indexer: 
+      indexer:
+        engine: bleve
+    url_pattern: "/"
+    whitelist:
+    - authorizations_url
+    - code_search_url
+- endpoint: "/github"
+  method: GET
+  timeout: 3000ms
+  processors:
+    formatter:
+      engine: mxj
+    indexer:
+      engine: bleve
+  backend:
+  - host:
+    - https://api.github.com
+    processors:
+      formatter:
+        engine: mxj
+      indexer:
         engine: bleve
     url_pattern: "/"
     whitelist:
@@ -27,11 +52,11 @@ endpoints:
     - code_search_url
 - endpoint: "/apis/specs"
   method: GET
-  timeout: 30000
+  timeout: 3000ms
   processors:
-    formatter: 
+    formatter:
       engine: mxj
-    indexer: 
+    indexer:
       engine: bleve
   header:
   - 'User-Agent: {USER_AGENT}'
@@ -40,46 +65,44 @@ endpoints:
     - https://api.apis.guru
     encoding: json
     method: GET
-    timeout: 30000
+    timeout: 3000ms
     url_pattern: "/v2/list.json"
     paths:
-    - path: $.versions[*].preferred
-      key: default_version
-    - path: $.versions[*].x-preferred
-      key: use_default_version
-    - path: $.versions[*].info.title
-      key: description
-    - path: $.versions[*].info.version
-      key: version
-    - path: $.versions[*].info.x-apisguru-categories
-      key: topics
-    - path: $.versions[*].updated
-      key: updated
-    - path: $.versions.*.swaggerUrl
-      key: swagger_url_json
-    - path: $.versions[*].swaggerYamlUrl
-      key: swagger_url_yaml
-    - path: $.versions.*.info.x-origin
-      key: reference_source
-    - path: $.versions[*].info.x-providerName
-      key: provider
-    - path: $.versions[*].info.x-origin
-      key: reference_source
+    - path: preferred
+      rename: default_version
+    - path: x-preferred
+      rename: use_default_version
+    - path: info.title
+      rename: description
+    - path: info.version
+      rename: version
+    - path: info.x-apisguru-categories
+      rename: topics
+    - path: updated
+      rename: updated
+    - path: swaggerUrl
+      rename: swagger_url_json
+    - path: swaggerYamlUrl
+      rename: swagger_url_yaml
+    - path: info.x-origin
+      rename: reference_source
+    - path: info.x-providerName
+      rename: provider
     processors:
-      formatter: 
+      formatter:
         engine: mxj
-      indexer: 
+      indexer:
         engine: bleve
     indexes:
       disabled: false
       mappings:
-      - map: ""
-        type: ""
+      - map: ''
+        type: ''
     entities:
       disabled: false
       mappings:
-      - map: ""
-        type: ""
+      - map: ''
+        type: ''
         key: 
     whitelist:
     - preferred
@@ -100,51 +123,46 @@ endpoints:
     - https://api.apis.guru
     encoding: json
     method: GET
-    timeout: 30000
+    timeout: 3000ms
     url_pattern: "/v2/metrics.json"
     processors:
-      formatter: 
+      formatter:
         engine: mxj
-      indexer: 
+      indexer:
         engine: bleve
     paths:
     - path: numAPIs
-      key: apis
+      rename: apis
     - path: numEndpoints
-      key: endpoints
+      rename: endpoints
     - path: numSpecs
-      key: specs
+      rename: specs
     whitelist:
     - apis
     - endpoints
     - specs
-    #whitelist:
-    #- numAPIs
-    #- numEndpoints
-    #- numSpecs
-    #mapping:
-    #  numAPIs: apis
-    #  numEndpoints: endpoints
-    #  numSpecs: specs
     group: metrics
 - endpoint: "/search/{q}"
   method: GET
-  timeout: 30000
+  timeout: 3000ms
   processors:
-    formatter: 
+    formatter:
       engine: mxj
-    indexer: 
+    indexer:
       engine: bleve
   header:
   - 'User-Agent: {USER_AGENT}'
   taskq:
-  - id: {host_slug}
+  - id:
+      host_slug: 
     order: 1
     type: series
-  - id: {host_slug}
+  - id:
+      host_slug: 
     order: 2
     type: parallel
-  - id: {host_slug}
+  - id:
+      host_slug: 
     order: 3
     type: mixed
     map: 
@@ -153,43 +171,42 @@ endpoints:
     - https://api.github.com
     encoding: json
     method: GET
-    timeout: 30000
+    timeout: 3000ms
     url_pattern: "/search/repositories"
     processors:
-      formatter: 
+      formatter:
         engine: mxj
-      indexer: 
+      indexer:
         engine: bleve
     query_strings:
       q: "{q}"
       sort: stars
       order: desc
       page: 1
-      per_page: 5
-    holders: # body, header (regex on strings, no multiline)
-    - key: ratelimit-limit # {ratelimit-limit}
+      per_page: 3
+    holders:
+    - key: ratelimit-limit
       location: header
       match: X-RateLimit-Limit
-    - key: ratelimit-reset # {ratelimit-reset}
+    - key: ratelimit-reset
       location: header
       match: X-Ratelimit-Reset
-    - key: ratelimit-remaining # {ratelimit-remaining}
+    - key: ratelimit-remaining
       location: header
       match: X-RateLimit-Remaining
-    - key: page-next # {page-next}
+    - key: page-next
       location: header
       match: "?page=(0-9+)>; rel=\"next\""
     - key: page-last
       location: header
       match: "?page=(0-9+)>; rel=\"last\""
-    #- location: body
-    #  pattern: ""
-    #  holder: review-last
     paths:
-    - path: items*
+    - path: items.name
+      target: items
       rename: results
     whitelist:
     - items
+    - results
     - total_count
     - incomplete_results
     header:

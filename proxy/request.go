@@ -54,7 +54,6 @@ func (r *Request) AddQueryStrings(queryStrings map[string]string) {
 	for key, value := range queryStrings {
 		paramKey := strings.ToTitle(key)
 		if config.Config.Debug.Components.Middlewares {
-			// fmt.Println("proxy/request.go > AddQueryStrings(...) > var.queryStrings")
 			fmt.Printf("proxy/request.go > AddQueryStrings(...) > var.queryStrings > key=%s, value=%s , paramKey=%s, r.Params[paramKey]=%s \n", key, value, paramKey, r.Params[paramKey])
 		}
 		if r.Params[paramKey] != "" {

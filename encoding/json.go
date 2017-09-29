@@ -90,7 +90,7 @@ func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string
 			}
 			if targetName != "" || targetPath != "" {
 				// fmt.Printf("targetName: %s, newFieldName: %s, targetPath: %s", targetName, newFieldName, targetPath)
-				if newFieldName != "" {
+				if newFieldName != "" && targetName != "" {
 					err := mv.RenameKey(targetName, newFieldName)
 					if err != nil {
 						return err
@@ -100,8 +100,16 @@ func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string
 				if err != nil {
 					return err
 				}
-				// pp.Print(node)
+				/*
+					newFieldKeys := strings.Split(newFieldName, ".")
+					if len(newFieldKeys) > 1 {
+						for _, k := range newFieldKeys {
+							result[k] =
+						}
+					} else {
+				*/
 				result[newFieldName] = node
+				//}
 			}
 		}
 		pp.Print(result)

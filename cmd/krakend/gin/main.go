@@ -9,6 +9,8 @@ import (
 	"github.com/aviddiviner/gin-limit"
 
 	"github.com/gin-gonic/contrib/cache"
+	// "github.com/gregjones/httpcache"
+
 	// "github.com/gin-contrib/cache"
 	// "github.com/gin-contrib/cache/persistence"
 	"github.com/gin-contrib/secure"
@@ -88,6 +90,8 @@ func main() {
 	}
 
 	store := cache.NewInMemoryStore(time.Minute)
+	// tp := httpcache.NewMemoryCacheTransport()
+	// client := http.Client{Transport: tp}
 
 	// pp.Println(store)
 
@@ -111,7 +115,8 @@ func main() {
 	// routerFactory := krakendgin.DefaultFactory(proxy.DefaultFactory(logger), logger)
 
 	routerFactory := krakendgin.NewFactory(krakendgin.Config{
-		Engine:       gin.Default(),
+		Engine: gin.Default(),
+		// ProxyFactory: proxy.NewDefaultFactory(proxy.HTTPProxyFactory(&client), logger),
 		ProxyFactory: customProxyFactory{logger, proxy.DefaultFactory(logger)},
 		Middlewares:  mws,
 		Logger:       logger,

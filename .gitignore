@@ -12,6 +12,10 @@ server.rsa.key
 
 panicparse
 
+..bfg-report
+..bfg-report/
+..bfg-report/**
+
 *.err
 *.log
 

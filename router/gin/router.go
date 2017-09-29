@@ -131,8 +131,14 @@ func (r ginRouter) Run(cfg config.ServiceConfig) {
 		}
 	*/
 
-	if cfg.Debug {
+	fmt.Printf("r.registerDebugEndpoints? %t \n", cfg.Debug)
+	if !cfg.Debug {
 		r.registerDebugEndpoints()
+	}
+
+	fmt.Printf("r.registerAdminEndpoints? %t \n", cfg.Admin)
+	if !cfg.Admin {
+		r.registerAdminEndpoints()
 	}
 
 	r.registerKrakendEndpoints(cfg.Endpoints)
@@ -170,9 +176,6 @@ func (r ginRouter) registerAuthEndpoints() {
 		authorized.GET("/*w", handler)
 		authorized.POST("/*w", handler)
 		authorized.PUT("/*w", handler)
-		// nested group
-		// testing := authorized.Group("testing")
-		// testing.GET("/analytics", analyticsEndpoint)
 	}
 }
 

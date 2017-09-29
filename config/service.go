@@ -49,6 +49,8 @@ type ServiceConfig struct {
 	Version int `mapstructure:"version"`
 	// run krakend in debug mode
 	Debug bool `mapstructure:"debug"`
+	// run krakend in debug mode
+	Admin bool `mapstructure:"admin"`
 	// URI Parsing object
 	uriParser URIParser
 }
