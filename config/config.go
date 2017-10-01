@@ -190,7 +190,6 @@ func (s *ServiceConfig) Init() error {
 			}
 		}
 	}
-
 	return nil
 }
 

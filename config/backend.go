@@ -64,4 +64,11 @@ type Backend struct {
 	ExtraConfig ExtraConfig `mapstructure:"extra_config"`
 	// Execute backend in debug mode
 	Debug bool `default:"false" json:"debug" yaml:"debug" toml:"debug"`
+
+	// Provider Name
+	ProviderName string `mapstructure:"provider_name"`
+	// Provider Hook
+	ProviderHook string `mapstructure:"provider_hook"`
+	// Provider Name
+	ProviderSettings ProviderConfig `mapstructure:"provider_settings"`
 }

@@ -7,6 +7,16 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+/*
+	Refs:
+	- https://github.com/mattruggio/search_engine_totals/blob/master/config/engines.yml
+	- https://github.com/htano/summary_dev/blob/master/lib/contents-extractor/config/domain-extractor.yml
+	- https://github.com/rgilbert1/article-subscriber/blob/master/sources.yml
+	- https://github.com/asciimoo/searx/blob/master/searx/engines/google.py
+	- https://github.com/asciimoo/searx/blob/master/searx/settings.yml
+
+*/
+
 type ProviderConfig struct {
 	gorm.Model `json:"-" yaml:"-" toml:"-"`
 	Disabled   bool `gorm:"column:disabled" default:"false" json:"disabled" yaml:"disabled" toml:"disabled"`
@@ -44,8 +54,11 @@ type ProviderConfig struct {
 	Specs                 []SpecsConfig                `gorm:"many2many:provider_specs;" json:"specs,omitempty" yaml:"specs,omitempty" toml:"specs,omitempty"`
 	Topics                []TopicConfig                `gorm:"many2many:provider_topics;" json:"topics,omitempty" yaml:"topics,omitempty" toml:"topics,omitempty"`
 	Categories            string                       `gorm:"column:categories" json:"categories,omitempty" yaml:"categories,omitempty" toml:"categories,omitempty"`
+	ZeroIndicationStrings string                       `gorm:"column:zero_indication_strings" json:"zero_indication_strings,omitempty" yaml:"zero_indication_strings,omitempty" toml:"zero_indication_strings,omitempty"`
 
 	// Paths (to refactor and optimize)
+	ArticleQuery            string `gorm:"column:article_query" json:"article_query,omitempty" yaml:"article_query,omitempty" toml:"article_query,omitempty"`
+	ArticleXpath            string `gorm:"column:article_xpath" json:"article_xpath,omitempty" yaml:"article_xpath,omitempty" toml:"article_xpath,omitempty"`
 	AuthorQuery             string `gorm:"column:author_query" json:"author_query,omitempty" yaml:"author_query,omitempty" toml:"author_query,omitempty"`
 	AuthorXpath             string `gorm:"column:author_xpath" json:"author_xpath,omitempty" yaml:"author_xpath,omitempty" toml:"author_xpath,omitempty"`
 	ContentQuery            string `gorm:"column:content_query" json:"content_query,omitempty" yaml:"content_query,omitempty" toml:"content_query,omitempty"`
@@ -67,44 +80,7 @@ type ProviderConfig struct {
 	URLQuery                string `gorm:"column:url_query" json:"url_query,omitempty" yaml:"url_query,omitempty" toml:"url_query,omitempty"`
 	URLXpath                string `gorm:"column:url_xpath" json:"url_xpath,omitempty" yaml:"url_xpath,omitempty" toml:"url_xpath,omitempty"`
 
-	Paths struct {
-		JSON struct {
-			Author              string `gorm:"column:author" json:"author,omitempty" yaml:"author,omitempty" toml:"author,omitempty"`
-			Content             string `gorm:"column:content" json:"content,omitempty" yaml:"content,omitempty" toml:"content,omitempty"`
-			ContentMisc         string `gorm:"column:content_misc" json:"content_misc,omitempty" yaml:"content_misc,omitempty" toml:"content_misc,omitempty"`
-			Results             string `gorm:"column:results" json:"results,omitempty" yaml:"results,omitempty" toml:"results,omitempty"`
-			Suggestions         string `gorm:"column:suggestions" json:"suggestions,omitempty" yaml:"suggestions,omitempty" toml:"suggestions,omitempty"`
-			SpellingSuggestions string `gorm:"column:spelling_suggestions" json:"spelling_suggestions,omitempty" yaml:"spelling_suggestions,omitempty" toml:"spelling_suggestions,omitempty"`
-			Tags                string `gorm:"column:tags" json:"tags,omitempty" yaml:"tags,omitempty" toml:"tags,omitempty"`
-			Title               string `gorm:"column:title" json:"title,omitempty" yaml:"title,omitempty" toml:"title,omitempty"`
-			Thumbnail           string `gorm:"column:thumbnail" json:"thumbnail,omitempty" yaml:"thumbnail,omitempty" toml:"thumbnail,omitempty"`
-			URL                 string `gorm:"column:url" json:"url,omitempty" yaml:"url,omitempty" toml:"url,omitempty"`
-		} `json:"json,omitempty" yaml:"json,omitempty" toml:"json,omitempty"`
-		XPath struct {
-			Author              string `gorm:"column:author" json:"author,omitempty" yaml:"author,omitempty" toml:"author,omitempty"`
-			Content             string `gorm:"column:content" json:"content,omitempty" yaml:"content,omitempty" toml:"content,omitempty"`
-			ContentMisc         string `gorm:"column:content_misc" json:"content_misc,omitempty" yaml:"content_misc,omitempty" toml:"content_misc,omitempty"`
-			Results             string `gorm:"column:results" json:"results,omitempty" yaml:"results,omitempty" toml:"results,omitempty"`
-			SpellingSuggestions string `gorm:"column:spelling_suggestions" json:"spelling_suggestions,omitempty" yaml:"spelling_suggestions,omitempty" toml:"spelling_suggestions,omitempty"`
-			Suggestions         string `gorm:"column:suggestions" json:"suggestions,omitempty" yaml:"suggestions,omitempty" toml:"suggestions,omitempty"`
-			Tags                string `gorm:"column:tags" json:"tags,omitempty" yaml:"tags,omitempty" toml:"tags,omitempty"`
-			Title               string `gorm:"column:title" json:"title,omitempty" yaml:"title,omitempty" toml:"title,omitempty"`
-			Thumbnail           string `gorm:"column:thumbnail" json:"thumbnail,omitempty" yaml:"thumbnail,omitempty" toml:"thumbnail,omitempty"`
-			URL                 string `gorm:"column:url" json:"url,omitempty" yaml:"url,omitempty" toml:"url,omitempty"`
-		} `json:"xpath,omitempty" yaml:"xpath,omitempty" toml:"xpath,omitempty"`
-		XML struct {
-			Author              string `gorm:"column:author" json:"author,omitempty" yaml:"author,omitempty" toml:"author,omitempty"`
-			Content             string `gorm:"column:content" json:"content,omitempty" yaml:"content,omitempty" toml:"content,omitempty"`
-			ContentMisc         string `gorm:"column:content_misc" json:"content_misc,omitempty" yaml:"content_misc,omitempty" toml:"content_misc,omitempty"`
-			Results             string `gorm:"column:results" json:"results,omitempty" yaml:"results,omitempty" toml:"results,omitempty"`
-			SpellingSuggestions string `gorm:"column:spelling_suggestions" json:"spelling_suggestions,omitempty" yaml:"spelling_suggestions,omitempty" toml:"spelling_suggestions,omitempty"`
-			Suggestions         string `gorm:"column:suggestions" json:"suggestions,omitempty" yaml:"suggestions,omitempty" toml:"suggestions,omitempty"`
-			Tags                string `gorm:"column:tags" json:"tags,omitempty" yaml:"tags,omitempty" toml:"tags,omitempty"`
-			Title               string `gorm:"column:title" json:"title,omitempty" yaml:"title,omitempty" toml:"title,omitempty"`
-			Thumbnail           string `gorm:"column:thumbnail" json:"thumbnail,omitempty" yaml:"thumbnail,omitempty" toml:"thumbnail,omitempty"`
-			URL                 string `gorm:"column:url" json:"url,omitempty" yaml:"url,omitempty" toml:"url,omitempty"`
-		} `json:"xml,omitempty" yaml:"xml,omitempty" toml:"xml,omitempty"`
-	} `json:"paths,omitempty" yaml:"paths,omitempty" toml:"paths,omitempty"`
+	Paths PathConfig `gorm:"-" json:"paths,omitempty" yaml:"paths,omitempty" toml:"paths,omitempty"`
 }
 
 /*

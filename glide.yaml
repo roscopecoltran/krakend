@@ -31,6 +31,9 @@ ignore:
 - github.com/gin-gonic/contrib/gzip
 - github.com/gin-gonic/contrib/secure
 import:
+- package: github.com/jaspeen/mapto
+- package: github.com/sbogacz/go-pipeline
+- package: github.com/rakyll/coop
 - package: github.com/mingrammer/commonregex
 - package: github.com/kataras/iris
   subpackages:
