@@ -30,7 +30,16 @@ ignore:
 - github.com/gin-gonic/contrib/sessions
 - github.com/gin-gonic/contrib/gzip
 - github.com/gin-gonic/contrib/secure
+- github.com/generaltso/linguist # not committed modifications
+- github.com/ryszard/tfutils
 import:
+- package: github.com/google/martian
+  version: master
+  subpackages:
+  - body
+  - fifo
+  - header
+  - parse
 - package: github.com/jaspeen/mapto
 - package: github.com/sbogacz/go-pipeline
 - package: github.com/rakyll/coop

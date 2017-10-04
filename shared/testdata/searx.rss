@@ -1,0 +1,296 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Searx search: dlib</title>
+    <link>http://localhost:8888/?q=dlib</link>
+    <description>Search results for "dlib" - searx</description>
+    <opensearch:totalResults>4612746</opensearch:totalResults>
+    <opensearch:startIndex>1</opensearch:startIndex>
+    <opensearch:itemsPerPage>4612746</opensearch:itemsPerPage>
+    <atom:link rel="search" type="application/opensearchdescription+xml" href="http://localhost:8888/opensearch.xml"/>
+    <opensearch:Query role="request" searchTerms="dlib" startPage="1" />
+    <item>
+      <title>dlib C++ Library</title>
+      <link>http://dlib.net/</link>
+      <description>A library for developing portable applications that deal with networking, threads, graphical interfaces, complex data structures, linear algebra, machine learning, XML and text parsing, numerical optimization, or Bayesian networks. [Open source]</description>
+    </item>
+    <item>
+      <title>Dlib</title>
+      <link>https://en.wikipedia.org/wiki/Dlib</link>
+      <description>Dlib is a general purpose cross-platform software library written in the programming language C++. Its design is heavily influenced by ideas from design by contract and component-based software engineering.</description>
+    </item>
+    <item>
+      <title>D-Lib Magazine</title>
+      <link>http://www.dlib.org/</link>
+      <description>D-Lib Magazine is an electronic publication with a focus on digital library research and development, including new technologies, applications, and contextual social and economic issues.</description>
+    </item>
+    <item>
+      <title>dlib C++ Library</title>
+      <link>http://blog.dlib.net/</link>
+      <description>Dlib v19.5 is out and there are a lot of new features. There is a dlib to caffe converter, a bunch of new deep learning layer types, cuDNN v6 and v7 support, and a bunch of optimizations that make things run faster in different situations, like ARM NEON support, which makes HOG based detectors ...</description>
+    </item>
+    <item>
+      <title>dlib C++ Library - Machine Learning</title>
+      <link>http://dlib.net/ml.html</link>
+      <description>Dlib contains a wide range of machine learning algorithms. All designed to be highly modular, quick to execute, and simple to use via a clean and modern C++ API.</description>
+    </item>
+    <item>
+      <title>GitHub - davisking/dlib: A toolkit for making real world machine ...</title>
+      <link>https://github.com/davisking/dlib</link>
+      <description>dlib C++ library. Dlib is a modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world problems. ... Compiling dlib C++ example programs.</description>
+    </item>
+    <item>
+      <title>dlib 19.7.0 : Python Package Index</title>
+      <link>https://pypi.python.org/pypi/dlib</link>
+      <description>The long and short of the license is that you can use dlib however you like, even in closed source commercial software. ## dlib sponsors.</description>
+    </item>
+    <item>
+      <title>Digitalna knjižnica Slovenije - dLib.si</title>
+      <link>http://www.dlib.si/?&amp;language=eng</link>
+      <description>Digitalna knjižnica Slovenije – dLib.si. ... dLib.si - has been digitizing old Ljubljana postcards carrying the magic of nostalgia and the historical awareness of ...</description>
+    </item>
+    <item>
+      <title>Digitalna knjižnica Slovenije - dLib.si</title>
+      <link>http://www.dlib.si/</link>
+      <description>Digitalna knjižnica Slovenije - dLib.si ... Tiskar, knjigovez in knjigotržec Janž Mandelc (tudi Janez Mandelc, Hans Mannel ali Joannes Manlius) je na pobudo Jurija Dalmatina in Jurija Khisla v Ljubljano prišel spomladi leta 1575.</description>
+    </item>
+    <item>
+      <title>Getting Started with dlib on iOS</title>
+      <link>https://www.reddit.com/r/iOSProgramming/comments/6dzqgw/getting_started_with_dlib_on_ios/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>Home Assistant 0.44: ZigBee, OpenCV and DLib</title>
+      <link>https://www.reddit.com/r/homeassistant/comments/69nibc/home_assistant_044_zigbee_opencv_and_dlib/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>dlib vs OpenCV face detection</title>
+      <link>https://www.reddit.com/r/JordanShackelford/comments/6mrxp1/dlib_vs_opencv_face_detection/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>Head Pose Estimation using OpenCV and Dlib. C++ and Python code shared.</title>
+      <link>https://www.reddit.com/r/computervision/comments/54lcw8/head_pose_estimation_using_opencv_and_dlib_c_and/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>Fast Multiclass Object Detection in Dlib 19.7</title>
+      <link>https://www.reddit.com/r/computervision/comments/71yssd/fast_multiclass_object_detection_in_dlib_197/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>[N] Vehicle Detection with Dlib 19.5</title>
+      <link>https://www.reddit.com/r/MachineLearning/comments/6wq8ss/n_vehicle_detection_with_dlib_195/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>Vehicle Detection with Dlib 19.5</title>
+      <link>https://www.reddit.com/r/computervision/comments/6wfvto/vehicle_detection_with_dlib_195/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>Dlib 19.2 Released: Easily Create High Quality Object Detectors with Deep Learning</title>
+      <link>https://www.reddit.com/r/computervision/comments/56xgwa/dlib_192_released_easily_create_high_quality/</link>
+      <description></description>
+    </item>
+    <item>
+      <title>dlib C++ Library download | SourceForge.net</title>
+      <link>https://sourceforge.net/projects/dclib/</link>
+      <description>Rating: 5 - 17 votes - Free - DeveloperSep 17, 2017 ... Download dlib C++ Library for free. Dlib is a C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ ...</description>
+    </item>
+    <item>
+      <title>How to install dlib - PyImageSearch</title>
+      <link>http://www.pyimagesearch.com/2017/03/27/how-to-install-dlib/</link>
+      <description>In this tutorial I demonstrate how to install the dlib library with Python bindings on Ubuntu and macOS.</description>
+    </item>
+    <item>
+      <title>dlib C++ Library download | …</title>
+      <link>http://dclib.sourceforge.net/</link>
+      <description>Download dlib C++ Library for free. Dlib is a C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world ...</description>
+    </item>
+    <item>
+      <title>dlib vs OpenCV face detection - YouTube</title>
+      <link>https://www.youtube.com/watch?v=LsK0hzcEyHI</link>
+      <description>The red boxes are dlib&#39;s face detector and the circles are from OpenCV&#39;s face detector. Both run at the same speed and detect about the same number of true f...</description>
+    </item>
+    <item>
+      <title>dlib | Learn OpenCV</title>
+      <link>https://www.learnopencv.com/tag/dlib/</link>
+      <description>In this post, we will provide step by step instructions on how to install Dlib on Windows.Compiling Python modules such as NumPy, SciPy etc. is a ... Read More ...</description>
+    </item>
+    <item>
+      <title>DLib: Library for Machine Learning - KDnuggets</title>
+      <link>http://www.kdnuggets.com/2014/06/dlib-library-machine-learning.html</link>
+      <description>DLib is an open source C++ library implementing a variety of machine learning algorithms, including classification, regression, clustering, data transformation, ...</description>
+    </item>
+    <item>
+      <title>Head Pose Estimation using OpenCV and Dlib | Learn OpenCV</title>
+      <link>http://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/</link>
+      <description>Sep 26, 2016 ... This is a tutorial on head pose estimation using OpenCV ( C++ and Python ) and Dlib. We use solvePnP and solvePnPRansac for pose ...</description>
+    </item>
+    <item>
+      <title>Python based, OpenCV, Dlib libraries: FaceTrace, Facial recognition make-up software</title>
+      <link>https://www.reddit.com/r/Python/comments/3wee8r/python_based_opencv_dlib_libraries_facetrace/</link>
+      <description></description>
+<pubDate>2015-12-11 17:19:40</pubDate>    </item>
+    <item>
+      <title>dlib 19.0 - Clean C++11 Deep Learning API</title>
+      <link>https://www.reddit.com/r/programming/comments/4py875/dlib_190_clean_c11_deep_learning_api/</link>
+      <description></description>
+<pubDate>2016-06-26 15:29:52</pubDate>    </item>
+    <item>
+      <title>Dlib-ml: A Machine Learning Toolkit - Journal of Machine Learning ...</title>
+      <link>http://www.jmlr.org/papers/volume10/king09a/king09a.pdf</link>
+      <description>There are many excellent toolkits which provide support for developing machine learning soft- ware in Python, R, Matlab, and similar environments. Dlib-ml is an ...</description>
+    </item>
+    <item>
+      <title>Dilib - Promotions, coupons réduction et cashback ...</title>
+      <link>https://www.dilib.fr/index.html</link>
+      <description>Avec dilib, vous bénéficiez gratuitement d’avantages et de réductions permanentes sur vos restaurants, cinémas, loisirs et sorties. Vous découvrez chaque jour ...</description>
+    </item>
+    <item>
+      <title>dlib C++ Library v18.0 released. Lots of state-of-the-art Machine Learning algorithms and other useful tools meant for use on real world problems.</title>
+      <link>https://www.reddit.com/r/programming/comments/17wcmk/dlib_c_library_v180_released_lots_of/</link>
+      <description></description>
+<pubDate>2013-02-04 23:49:50</pubDate>    </item>
+    <item>
+      <title>dlib C++ Library: Vehicle Detection with Dlib 19.5</title>
+      <link>http://blog.dlib.net/2017/08/vehicle-detection-with-dlib-195_27.html</link>
+      <description>Dlib v19.5 is out and there are a lot of new features. There is a dlib to caffe converter, a bunch of new deep learning layer types, cuDNN v6 and v7 support, and a bunch of optimizations that make things run faster in different situations, like ARM NEON support, which makes HOG based detectors ...</description>
+    </item>
+    <item>
+      <title>Dlib 18.11 released</title>
+      <link>https://www.reddit.com/r/cpp/comments/2me1dy/dlib_1811_released/</link>
+      <description></description>
+<pubDate>2014-11-15 16:51:27</pubDate>    </item>
+    <item>
+      <title>DLib 18.3 released</title>
+      <link>https://www.reddit.com/r/cpp/comments/1guods/dlib_183_released/</link>
+      <description></description>
+<pubDate>2013-06-22 11:48:32</pubDate>    </item>
+    <item>
+      <title>eScholarship@BC | More Reach For Your Research</title>
+      <link>https://dlib.bc.edu/</link>
+      <description>&#34;The volunteer who seeks to help others also helps himself&#34;: Religion, class, and the development of youth volunteer service in the United States, 1934-1973</description>
+    </item>
+    <item>
+      <title>So I wrote a script that swaps people&#39;s faces in Python, using dlib, OpenCV and numpy. Here&#39;s how I did it. (Source code included.)</title>
+      <link>https://www.reddit.com/r/programming/comments/3f591x/so_i_wrote_a_script_that_swaps_peoples_faces_in/</link>
+      <description></description>
+<pubDate>2015-07-30 10:35:28</pubDate>    </item>
+    <item>
+      <title>Install Dlib on Windows | Learn OpenCV</title>
+      <link>https://www.learnopencv.com/install-dlib-on-windows/</link>
+      <description>In this post, we will provide step by step instructions on how to install Dlib on Windows. Compiling Python modules such as NumPy, SciPy etc. is a tedious task. Anaconda is a great Python distribution which comes with a lot of pre-compiled Python packages. So we will use Anaconda as our Python</description>
+    </item>
+    <item>
+      <title>Can I sell a program which uses dlib and OpenCV for face landmark detection?</title>
+      <link>https://www.reddit.com/r/computervision/comments/5ap6z1/can_i_sell_a_program_which_uses_dlib_and_opencv/</link>
+      <description>I am not good with licenses so that&#39;s why I&#39;m asking you about this. I made a program and I use dlib and opencv. So the big question is: can I sell it?</description>
+<pubDate>2016-11-02 10:46:56</pubDate>    </item>
+    <item>
+      <title>dlib C++ Library / Wiki / Known_users - SourceForge</title>
+      <link>http://sourceforge.net/p/dclib/wiki/Known_users/</link>
+      <description>This page is intended to be a list of the projects or groups using the dlib C++ library. So feel free to add to this page if you are using the library (including links to your project/group&#39;s homepage if you like).</description>
+    </item>
+    <item>
+      <title>dlib: a C++ library for developing portable applications dealing with networking, threads, graphical interfaces, data structures, linear algebra, machine learning, XML and text parsing, numerical optimization, Bayesian nets, and numerous other tasks.</title>
+      <link>https://www.reddit.com/r/cpp/comments/14pb3t/dlib_a_c_library_for_developing_portable/</link>
+      <description></description>
+<pubDate>2012-12-12 02:39:08</pubDate>    </item>
+    <item>
+      <title>Facial landmarks with dlib, OpenCV, and Python - PyImageSearch</title>
+      <link>http://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/</link>
+      <description>Learn how to detect and extract facial landmarks from images using dlib, OpenCV, and Python.</description>
+    </item>
+    <item>
+      <title>dlib C++ Library: Reinforcement Learning, Control, and 3D Visualization</title>
+      <link>https://www.reddit.com/r/programming/comments/38smk1/dlib_c_library_reinforcement_learning_control_and/</link>
+      <description></description>
+<pubDate>2015-06-06 13:41:56</pubDate>    </item>
+    <item>
+      <title>dlib C++ Library v18.2 released. Lots of state-of-the-art Machine Learning algorithms and other useful tools meant for use on real world problems.</title>
+      <link>https://www.reddit.com/r/MachineLearning/comments/1fdfom/dlib_c_library_v182_released_lots_of/</link>
+      <description></description>
+<pubDate>2013-05-31 00:20:11</pubDate>    </item>
+    <item>
+      <title>dlib.etc.ucla.edu/projects/Karnak - University of California ...</title>
+      <link>http://dlib.etc.ucla.edu/projects/Karnak/</link>
+      <description>The colossal site of Karnak is one of the largest temple complexes in the world, with an incredibly rich architectural, ritual, religious, economic, social and political history. The Amun-Ra precinct, which includes an astonishing number of individual temples, shrines and processional ways, stands</description>
+    </item>
+    <item>
+      <title>So I wrote a script that swaps people&#39;s faces in Python, using dlib, OpenCV and numpy. Here&#39;s how I did it. (Source code included.) [xpost r/programming]</title>
+      <link>https://www.reddit.com/r/Python/comments/3f59b6/so_i_wrote_a_script_that_swaps_peoples_faces_in/</link>
+      <description></description>
+<pubDate>2015-07-30 10:38:40</pubDate>    </item>
+    <item>
+      <title>Real-Time Face Pose Estimation with Dlib v18.10</title>
+      <link>https://www.reddit.com/r/cpp/comments/2ftnms/realtime_face_pose_estimation_with_dlib_v1810/</link>
+      <description></description>
+<pubDate>2014-09-08 17:16:34</pubDate>    </item>
+    <item>
+      <title>Digital Karnak: Experience Karnak - University of California ...</title>
+      <link>http://dlib.etc.ucla.edu/projects/Karnak/experience</link>
+      <description>In this section you can learn about Karnak&#39;s role in ancient Egyptian history, religion, architecture, and archaeology. Each of the themes listed on the left includes one or more video clips and an accompanying written guide. Each video shows scenes from the Karnak virtual reality model, photographs</description>
+    </item>
+    <item>
+      <title>[Blog] [Software] dlib C++ Library: Python Stuff and Real-Time Video Object Tracking by Davis King | 2015 Feb 3</title>
+      <link>https://www.reddit.com/r/datagangsta/comments/2uqwnv/blog_software_dlib_c_library_python_stuff_and/</link>
+      <description></description>
+<pubDate>2015-02-04 11:59:44</pubDate>    </item>
+    <item>
+      <title>dlib 19 released</title>
+      <link>https://www.reddit.com/r/cpp/comments/4pxmgs/dlib_19_released/</link>
+      <description></description>
+<pubDate>2016-06-26 12:50:16</pubDate>    </item>
+    <item>
+      <title>Dlib (Data Access Library) - Home</title>
+      <link>https://dlib.codeplex.com/</link>
+      <description>Dlib is a lite C# .NET data access helper class library. This library enables developing the data access layer of a project easily, quickly and efficiently.</description>
+    </item>
+    <item>
+      <title>DLib and OpenCV Help</title>
+      <link>https://www.reddit.com/r/Unity3d_help/comments/69a745/dlib_and_opencv_help/</link>
+      <description>Fairly new to Unity and C# but my day job is coding so not too bad so far haha. I was trying to make a very simple face mask using DLib and OpenCV as an example at work for a project. I was trying to use the WebCamTextureExample and just change the rectangle that goes around the face into an image but this seems harder then I thought it would be. I dont want it to mash around the face like a lot of the examples out there but sit flat on the face like a cut out (yea like snap chat) Any hints, ...</description>
+<pubDate>2017-05-04 20:41:10</pubDate>    </item>
+    <item>
+      <title>dlib.pnu.ac.ir - صفحه اصلی</title>
+      <link>http://dlib.pnu.ac.ir/</link>
+      <description>تمام حقوق استفاده از این سامانه متعلق به دانشگاه پیام نور می باشد. | تهیه شده در دفتر آمار و فناوری اطلاعات</description>
+    </item>
+    <item>
+      <title>Fast Multiclass Object Detection in Dlib 19.7</title>
+      <link>https://www.reddit.com/r/programming/comments/724321/fast_multiclass_object_detection_in_dlib_197/</link>
+      <description></description>
+<pubDate>2017-09-24 09:05:32</pubDate>    </item>
+    <item>
+      <title>Mr. DLib - Recommendations-as-a-Service for Academia</title>
+      <link>http://mr-dlib.org/</link>
+      <description>Welcome to Mr. DLib. Mr. DLib is a non-profit open-source project to provide recommendations-as-a-service for research articles, call for papers, and academic news 1.</description>
+    </item>
+    <item>
+      <title>How does the Dlib work in the background to detect face and facial landmark detection?</title>
+      <link>https://www.reddit.com/r/computervision/comments/6abtz8/how_does_the_dlib_work_in_the_background_to/</link>
+      <description>Hi, I would like to know how the Dlib library does the detecting and landmark detection in the background? Does it use haar features or HOG or LBP or something else entirely? On the GitHub page, it says &#34;A toolkit for making real world machine learning and data analysis applications in C++&#34;. So maybe it&#39;s a machine learning solution. But It&#39;d like to understand it in detail?</description>
+<pubDate>2017-05-10 09:57:10</pubDate>    </item>
+    <item>
+      <title>dlib 19.1.0 : Python Package Index</title>
+      <link>https://pypi.python.org/pypi/dlib/19.1.0</link>
+      <description>A toolkit for making real world machine learning and data analysis applications. Latest Version: 19.7.0. dlib C++ library Dlib is a modern C++ toolkit containing machine learning algorithms and tools</description>
+    </item>
+    <item>
+      <title>Media Collections Online</title>
+      <link>https://media.dlib.indiana.edu/</link>
+      <description>Media Collections Online houses audio and video collections. Use the search box, or browse using the terms on the left side to discover content.</description>
+    </item>
+    <item>
+      <title>D-Lib Magazine Archive</title>
+      <link>http://www.dlib.org/back.html</link>
+      <description>Send suggestions to dlib@dlib.org. To browse the contents pages and articles of back issues of D-Lib Magazine, select the appropriate item from the list below. You may also browse alphabetized lists of stories, editorials, and briefings by author or title.</description>
+    </item>
+  </channel>
+</rss>

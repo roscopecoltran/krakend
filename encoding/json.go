@@ -2,7 +2,6 @@ package encoding
 
 import (
 	"encoding/json"
-	// "errors"
 	"fmt"
 	"io"
 	"strings"
@@ -11,6 +10,22 @@ import (
 	"github.com/k0kubun/pp"
 	"github.com/roscopecoltran/mxj"
 )
+
+/*
+XPath                JSONPath                 Result
+/store/book/author   $.store.book[*].author   the authors of all books in the store
+//author             $..author                all authors
+/store/*             $.store.*                all things in store, which are some books and a red bicycle.
+/store//price        $.store..price           the price of everything in the store.
+//book[3]            $..book[2]               the third book
+//book[last()]       $..book[(@.length-1)]
+                     $..book[-1:]             the last book in order.
+//book[position()<3] $..book[0,1]
+                     $..book[:2]              the first two books
+//book[isbn]         $..book[?(@.isbn)]       filter all books with isbn number
+//book[price<10]     $..book[?(@.price<10)]   filter all books cheapier than 10
+//*                  $..*                     all Elements in XML document. All members of JSON structure.
+*/
 
 // JSON is the key for the json encoding
 const JSON = "json"
@@ -57,6 +72,8 @@ func JSONCollectionDecoder(r io.Reader, v *map[string]interface{}, targets []map
 	return nil
 }
 
+// https://github.com/clbanning/mxj/blob/master/examples/leafnodes.go
+
 // Retrieve a Map value from an io.Reader.
 //  NOTE: The raw JSON off the reader is buffered to []byte using a ByteReader. If the io.Reader is an
 //        os.File, there may be significant performance impact. If the io.Reader is wrapping a []byte
@@ -72,12 +89,26 @@ func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string
 	if merr != nil {
 		return merr
 	}
+
+	mxj.LeafUseDotNotation()
+	l := m.LeafNodes()
+	for _, v := range l {
+		fmt.Println("path:", v.Path, "value:", v.Value)
+	}
+
 	// fmt.Printf("NewMapJsonReader, mv : %#v\n", mv)
 	if len(targets) > 0 {
 		for _, target := range targets {
 			var newFieldName, targetName, targetPath string
 			for kv, fv := range target {
 				// fmt.Printf("JSONDecoderMXJ(..) > kv=%s, fv=%s\n", kv, fv)
+
+				/*
+					if strings.ToLower(kv) == "subkeys" {
+						subkeys = fv
+						subKeysList = strings.Split(",", subkeys)
+					}
+				*/
 				if strings.ToLower(kv) == "target" {
 					targetName = fv
 				}
@@ -96,6 +127,19 @@ func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string
 						return err
 					}
 				}
+				/*
+					if len(subKeysList) > 0 {
+						node, err := mv.ValuesForPath(newFieldName, subKeysList...)
+						if err != nil {
+							return err
+						}
+					} else {
+						node, err := mv.ValuesForPath(newFieldName)
+						if err != nil {
+							return err
+						}
+					}
+				*/
 				node, err := mv.ValuesForPath(newFieldName)
 				if err != nil {
 					return err
