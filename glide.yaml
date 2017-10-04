@@ -33,6 +33,10 @@ ignore:
 - github.com/generaltso/linguist # not committed modifications
 - github.com/ryszard/tfutils
 import:
+- package: github.com/kpacha/krakend-http-auth
+  subpackages:
+  - gin
+  - mux
 - package: github.com/google/martian
   version: master
   subpackages:
