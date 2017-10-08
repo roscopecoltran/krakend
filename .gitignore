@@ -152,3 +152,5 @@ dydet*
 .env
 !.env-example
 
+gin
+!cmd/krakend/gin
