@@ -10,6 +10,8 @@ stack.txt
 server.rsa.crt
 server.rsa.key
 
+infra*.etcd
+
 panicparse
 
 ..bfg-report
