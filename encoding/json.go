@@ -90,11 +90,13 @@ func JSONDecoderMXJ(r io.Reader, v *map[string]interface{}, targets []map[string
 		return merr
 	}
 
-	mxj.LeafUseDotNotation()
-	l := m.LeafNodes()
-	for _, v := range l {
-		fmt.Println("path:", v.Path, "value:", v.Value)
-	}
+	/*
+		mxj.LeafUseDotNotation()
+		l := m.LeafNodes()
+		for _, v := range l {
+			fmt.Println("path:", v.Path, "value:", v.Value)
+		}
+	*/
 
 	// fmt.Printf("NewMapJsonReader, mv : %#v\n", mv)
 	if len(targets) > 0 {

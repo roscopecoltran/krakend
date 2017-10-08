@@ -5,18 +5,21 @@
 # binary and no external dependencies are needed to run the service.
 
 KRAKEND_VERSION=$(shell git describe --always --long --dirty --tags)
-BIN_NAME=krakend_gin_example_${KRAKEND_VERSION}
+BIN_NAME=krakend_gin_${KRAKEND_VERSION}
 
 all: deps build
 
 deps:
-	go get "github.com/roscopecoltran/krakend/config/viper"
-	go get "github.com/roscopecoltran/krakend/proxy"
-	go get "github.com/roscopecoltran/krakend/router/gin"
-	go get "github.com/roscopecoltran/krakend/logging/gologging"
-	go get "github.com/gin-contrib/cache"
-	go get "github.com/gin-contrib/secure"
-	go get "github.com/aviddiviner/gin-limit"
+	go get -v "github.com/mattn/goreman"
+	go get -v "github.com/coreos/etcd"
+	go get -v "github.com/roscopecoltran/krakend/sd/etcd"
+	go get -v "github.com/roscopecoltran/krakend/config/viper"
+	go get -v "github.com/roscopecoltran/krakend/proxy"
+	go get -v "github.com/roscopecoltran/krakend/router/gin"
+	go get -v "github.com/roscopecoltran/krakend/logging/gologging"
+	go get -v "github.com/gin-contrib/cache"
+	go get -v "github.com/gin-contrib/secure"
+	go get -v "github.com/aviddiviner/gin-limit"
 
 build:
 	go build -a -ldflags="-X github.com/roscopecoltran/krakend/core.KrakendVersion=${KRAKEND_VERSION}" -o ${BIN_NAME}

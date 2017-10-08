@@ -1,65 +1,42 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"log"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/aviddiviner/gin-limit"
-
-	"github.com/gin-gonic/contrib/cache"
-	// "github.com/gregjones/httpcache"
-
-	// "github.com/gin-contrib/cache"
-	// "github.com/gin-contrib/cache/persistence"
 	"github.com/gin-contrib/secure"
-	// "github.com/gin-contrib/static"
-
+	"github.com/gin-gonic/contrib/cache"
 	"github.com/gin-gonic/gin"
-
-	// "github.com/k0kubun/pp"
 	"github.com/roscopecoltran/configor"
 
 	"github.com/roscopecoltran/krakend/config"
 	"github.com/roscopecoltran/krakend/config/viper"
 	"github.com/roscopecoltran/krakend/db"
-	//"github.com/roscopecoltran/krakend/db/model"
 	"github.com/roscopecoltran/krakend/logging"
 	"github.com/roscopecoltran/krakend/logging/gologging"
 	"github.com/roscopecoltran/krakend/proxy"
 	krakendgin "github.com/roscopecoltran/krakend/router/gin"
-	// plug_openapi "github.com/roscopecoltran/krakend/plugins/openapi"
-)
-
-var defaultConfigFiles = []string{
-	"shared/conf.d/krakend/debug.yaml",
-	"shared/conf.d/krakend/stores.yaml",
-	"shared/conf.d/krakend/apis.yaml",
-	"shared/conf.d/krakend/proxy.yaml",
-	"shared/conf.d/krakend/credentials.yaml",
-	"shared/conf.d/krakend/schemas.yaml",
-	"shared/conf.d/krakend/cloud.yaml",
-	"shared/conf.d/krakend/common.yaml",
-	"shared/conf.d/krakend/flows.yaml",
-	"shared/conf.d/krakend/tasks.yaml",
-	"shared/conf.d/krakend/frontend.yaml",
-	"shared/conf.d/krakend/backend.yaml",
-	"shared/conf.d/krakend/environment.yaml",
-	"shared/conf.d/krakend/locales.yaml",
-	"shared/conf.d/krakend/endpoints.yaml",
-	"shared/conf.d/krakend/providers.yaml"}
+	"github.com/roscopecoltran/krakend/sd/etcd"
+	/*
+		// "github.com/roscopecoltran/krakend/db/model"
+		// "github.com/gin-contrib/static"
+		// "github.com/gregjones/httpcache"
+		// "github.com/gin-contrib/cache"
+		// "github.com/gin-contrib/cache/persistence"
+		// "github.com/k0kubun/pp"
+	*/)
 
 func main() {
-	port := flag.Int("p", 0, "Port of the service")
-	logLevel := flag.String("l", "DEBUG", "Logging level")
-	debug := flag.Bool("d", true, "Enable the debug")
-	configFile := flag.String("c", "./conf.d/krakend/config.json", "Path to the configuration filename")
+
 	flag.Parse()
 
 	defaultConfigFiles = append(defaultConfigFiles, *configFile)
 
-	// $ export CONFIGOR_ENV=prod # Will load `config.json`, `config.prod.json` if it exists `config.prod.json` will overwrite `config.json`'s configuration
 	if err := configor.Load(&config.Config, defaultConfigFiles...); err != nil {
 		log.Fatal("ERROR while loading the config struct:", err.Error())
 	}
@@ -89,6 +66,13 @@ func main() {
 		log.Fatal("ERROR:", err.Error())
 	}
 
+	ctx, cancel := context.WithCancel(context.Background())
+
+	etcdClient, err := etcd.NewClient(ctx, strings.Split(*etcdServer, ","), etcd.ClientOptions{})
+	if err != nil {
+		panic(err)
+	}
+
 	store := cache.NewInMemoryStore(time.Minute)
 	// tp := httpcache.NewMemoryCacheTransport()
 	// client := http.Client{Transport: tp}
@@ -116,10 +100,27 @@ func main() {
 
 	routerFactory := krakendgin.NewFactory(krakendgin.Config{
 		Engine: gin.Default(),
-		// ProxyFactory: proxy.NewDefaultFactory(proxy.HTTPProxyFactory(&client), logger),
-		ProxyFactory: customProxyFactory{logger, proxy.DefaultFactory(logger)},
-		Middlewares:  mws,
-		Logger:       logger,
+		/*
+			ProxyFactory: proxy.NewDefaultFactory( // default
+				proxy.HTTPProxyFactory(&client),
+				logger,
+			),
+		*/
+		/*
+			ProxyFactory: customProxyFactory{ // gin (ref. https://github.com/devopsfaith/krakend/blob/master/examples/gin/main.go#L66-L71)
+				logger,
+				proxy.DefaultFactory(logger),
+			},
+		*/
+		ProxyFactory: customProxyFactory{
+			logger,
+			proxy.DefaultFactoryWithSubscriber( // etcd (ref. https://github.com/devopsfaith/krakend/blob/master/examples/etcd/main.go)
+				logger,
+				etcd.SubscriberFactory(ctx, etcdClient),
+			),
+		},
+		Middlewares: mws,
+		Logger:      logger,
 		HandlerFactory: func(configuration *config.EndpointConfig, proxy proxy.Proxy) gin.HandlerFunc {
 			return cache.CachePage(store, configuration.CacheTTL, krakendgin.EndpointHandler(configuration, proxy))
 		},
@@ -130,6 +131,8 @@ func main() {
 	}
 
 	routerFactory.New().Run(serviceConfig)
+
+	cancel()
 }
 
 // customProxyFactory adds a logging middleware wrapping the internal factory

@@ -1,7 +1,7 @@
 package entities
 
 import (
-	"github.com/jmcvetta/neoism" 															// data-neo4j
+	"github.com/jmcvetta/neoism" // data-neo4j
 	//"github.com/sirupsen/logrus" 															// logs-logrus
 	//"github.com/davecgh/go-spew/spew" 													// debug-print
 	//"github.com/k0kubun/pp" 																// debug-print
@@ -23,7 +23,7 @@ GetTags returns collection of news
 func GetTags(db *neoism.Database) (*[]Tag, error) {
 	var tags []Tag
 	if err := db.Cypher(&neoism.CypherQuery{
-		Statement:`MATCH (tag:Tag)
+		Statement: `MATCH (tag:Tag)
                 RETURN DISTINCT ID(tag) as id, tag.name as name`,
 		Result: &tags,
 	}); err != nil {

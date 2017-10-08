@@ -1,11 +1,11 @@
 package entities
 
 import (
-	"errors"																				// go-core
-	"fmt"																					// go-core
-	"strings"																				// go-core
-	un "github.com/tobyhede/go-underscore" 													// go-utils
-	"github.com/jmcvetta/neoism" 															// data-neo4j
+	"errors"                               // go-core
+	"fmt"                                  // go-core
+	"github.com/jmcvetta/neoism"           // data-neo4j
+	un "github.com/tobyhede/go-underscore" // go-utils
+	"strings"                              // go-core
 	//"github.com/sirupsen/logrus" 															// logs-logrus
 	//"github.com/davecgh/go-spew/spew" 													// debug-print
 	//"github.com/k0kubun/pp" 																// debug-print
@@ -15,16 +15,16 @@ import (
 NewsItem model
 */
 type NewsItem struct {
-	ID       		int64  			`json:"id" yaml:"id"`
-	Title    		string 			`json:"title" yaml:"title"`
-	URL      		string 			`json:"url" yaml:"url"`
-	Source   		string 			`json:"source" yaml:"source"`
-	Location 		string 			`json:"location" yaml:"location"`
-	Language 		string 			`json:"language" yaml:"language"`
-	Body     		string 			`json:"body" yaml:"body"`
-	Image    		string 			`json:"image" yaml:"image"`
-	Company  		string 			`json:"company" yaml:"company"`
-	Person   		string 			`json:"person" yaml:"person"`
+	ID       int64  `json:"id" yaml:"id"`
+	Title    string `json:"title" yaml:"title"`
+	URL      string `json:"url" yaml:"url"`
+	Source   string `json:"source" yaml:"source"`
+	Location string `json:"location" yaml:"location"`
+	Language string `json:"language" yaml:"language"`
+	Body     string `json:"body" yaml:"body"`
+	Image    string `json:"image" yaml:"image"`
+	Company  string `json:"company" yaml:"company"`
+	Person   string `json:"person" yaml:"person"`
 }
 
 // ---------------------------------------------------------------------------
@@ -37,7 +37,7 @@ GetNewsItem returns the new with that id
 func GetNewsItem(db *neoism.Database, id int) (*NewsItem, error) {
 	var news []NewsItem
 	if err := db.Cypher(&neoism.CypherQuery{
-		Statement:`MATCH (new:NewsItem)<-[r]-(k:NewsProvider)
+		Statement: `MATCH (new:NewsItem)<-[r]-(k:NewsProvider)
 								WHERE ID(new) = {id}
 								RETURN DISTINCT ID(new) as id, new.title as title, new.url as url,new.image as image, new.body as body, new.language as language, k.name as source`,
 		Parameters: neoism.Props{"id": id},
@@ -80,7 +80,6 @@ func GetNewsItems(db *neoism.Database, tags []string, providers []string, catego
 		names := un.MapString(func(provider string) string {
 			return fmt.Sprintf("\"%s\"", strings.TrimSpace(provider))
 		}, providers)
-
 
 		where = where + fmt.Sprintf(" AND p.name in [%s]", strings.Join(names, ", "))
 	}

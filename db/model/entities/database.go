@@ -1,3 +1,3 @@
 package entities
 
-type GraphDatabase struct {}
+type GraphDatabase struct{}

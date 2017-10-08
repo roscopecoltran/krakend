@@ -32,7 +32,18 @@ ignore:
 - github.com/gin-gonic/contrib/secure
 - github.com/generaltso/linguist # not committed modifications
 - github.com/ryszard/tfutils
+- github.com/devopsfaith/krakend
+- github.com/dorsha/lennon
+- gopkg.in/olivere/elastic.v2
+- github.com/captncraig/temple
+- github.com/tobyhede/go-underscore
+- github.com/gin-gonic/contrib/cache
+- github.com/asciimoo/morty
+- github.com/dogtools/dog
 import:
+- package: github.com/juju/errgo
+  subpackages:
+  - errors
 - package: github.com/kpacha/krakend-http-auth
   subpackages:
   - gin

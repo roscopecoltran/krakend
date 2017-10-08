@@ -1,7 +1,7 @@
 package entities
 
 import (
-	"github.com/jinzhu/gorm" 																// data-sql
+	"github.com/jinzhu/gorm" // data-sql
 	//"github.com/sirupsen/logrus" 															// logs-logrus
 	//"github.com/davecgh/go-spew/spew" 													// debug-print
 	//"github.com/k0kubun/pp" 																// debug-print
@@ -11,11 +11,11 @@ import (
 User model
 */
 type User struct {
-	ID       		uint   				`json:"id" yaml:"id"  gorm:"primary_key"`
-	Name     		string 				`json:"name" yaml:"name"  sql:"size:255"`
-	Username 		string 				`json:"username" yaml:"username"  sql:"size:255;unique_index"`
-	Email    		string 				`json:"email" yaml:"email"  sql:"size:255"`
-	Password 		string 				`json:"-" sql:"size:255"`
+	ID       uint   `json:"id" yaml:"id"  gorm:"primary_key"`
+	Name     string `json:"name" yaml:"name"  sql:"size:255"`
+	Username string `json:"username" yaml:"username"  sql:"size:255;unique_index"`
+	Email    string `json:"email" yaml:"email"  sql:"size:255"`
+	Password string `json:"-" sql:"size:255"`
 }
 
 // ---------------------------------------------------------------------------
