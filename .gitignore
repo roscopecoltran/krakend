@@ -52,6 +52,7 @@ panicparse
 
 shared/data/influxdb/data
 shared/data/influxdb/meta
+shared/data/influxdb/wal
 
 shared/data/grafana/lib
 shared/data/grafana/log
