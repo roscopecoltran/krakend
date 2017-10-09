@@ -1,0 +1,170 @@
+---
+version: '2.1'
+services:
+
+  # applications:
+  #   image: tianon/true
+  #   volumes:
+  #   - "./.caddy:/root/.caddy"
+  #   - "./conf.d/Caddyfile:/etc/Caddyfile"
+  #   - "./data:/var/www"
+  #   - "./conf.d/krakend.yaml:/conf.d/krakend/default.yaml"
+
+  fake_api:
+    container_name: fake-api
+    image: zzrot/alpine-caddy
+    ports:
+    - 8000:80
+    volumes:
+    - "./.caddy:/root/.caddy"
+    - "./shared/conf.d/fake-api/Caddyfile:/etc/Caddyfile"
+    - "./shared/data/fake-api:/var/www"
+    # volumes_from:
+    # - applications
+
+  krakend_gin:
+    container_name: krakend-gin
+    image: roscopecoltran/krakend:latest
+    build:
+      context: "./cmd/gin-etcd"
+      dockerfile: krakend-alpine3.6.dockerfile # krakend-tianon.dockerfile
+    ports:
+    - 8080:8080
+    volumes:
+    - "./shared/conf.d/krakend/krakend.yaml:/conf.d/krakend/default.yaml"
+    # volumes_from:
+    # - applications
+    depends_on:
+    - etcd1
+    - etcd2
+    - etcd3
+    links:
+    - fake_api
+    - etcd1
+    - etcd2
+    - etcd3
+    - influxdb
+    - grafana
+
+  krakend_jwt:
+    container_name: krakend-jwt
+    build:
+      context: "./cmd/gin-jwt"
+      dockerfile: krakend_jwt-alpine3.6.dockerfile
+    volumes:
+    - "./shared/conf.d/krakend/krakend.yaml:/conf.d/krakend/default.yaml"
+    # volumes_from:
+    # - applications
+    ports:
+    - "8085:8080"
+    - "8090:8090"
+    links:
+    - fake_api
+
+  influxdb:
+    container_name: influxdb
+    image: influxdb:1.3-alpine
+    volumes:
+    - ./shared/data/influxdb:/var/lib/influxdb
+    # volumes_from:
+    # - applications
+    ports:
+    - 8083:8083
+    - 8086:8086
+    privileged: true
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:4.5.2
+    # volumes_from:
+    # - applications
+    volumes:
+    - "./shared/conf.d/grafana/grafana.ini:/etc/grafana/grafana.ini"
+    - ./shared/data/grafana/lib:/var/lib/grafana
+    - ./shared/data/grafana/lib/plugins:/var/lib/grafana/plugins
+    - ./shared/data/grafana/log:/var/log/grafana
+    links:
+    - influxdb:influxdb
+    environment:
+    - GF_INSTALL_PLUGINS=grafana-clock-panel
+    ports:
+    - 3000:3000
+    depends_on:
+    - influxdb
+    privileged: true
+
+  etcd_browser:
+    container_name: etcd-browser
+    image: kiodo/etcd-browser:latest
+    ports:
+    - 8070:8070 
+    depends_on:
+    - etcd1
+    - etcd2
+    - etcd3
+    environment:
+    - ETCD_HOST=etcd-1
+    - ETCD_PORT=2379
+    - SERVER_PORT=8070
+    # - ETCDCTL_CA_FILE
+    # - ETCDCTL_CERT_FILE
+    # - ETCDCTL_KEY_FILE 
+    # - AUTH_PASS=doe
+    # - AUTH_USER=
+    links:
+    - fake_api
+    - etcd1
+    - etcd2
+    - etcd3
+
+  etcd1:
+    container_name: etcd-1
+    image: quay.io/coreos/etcd:v3.1.10
+    entrypoint: /usr/local/bin/etcd
+    command:
+    - '--name=etcd-1'
+    - '--initial-advertise-peer-urls=http://etcd-1:2380'
+    - '--listen-peer-urls=http://etcd-1:2380'
+    - '--listen-client-urls=http://etcd-1:2379,http://localhost:2379'
+    - '--advertise-client-urls=http://etcd-1:2379'
+    - '--initial-cluster-token=mys3cr3ttok3n'
+    - '--heartbeat-interval=250'
+    - '--election-timeout=1250'
+    - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
+    - '--initial-cluster-state=new'
+
+  etcd2:
+    container_name: etcd-2
+    image: quay.io/coreos/etcd:v3.1.10
+    entrypoint: /usr/local/bin/etcd
+    # extra_hosts:
+    #   - "dockerhost:$DOCKERHOST"
+    command:
+    - '--name=etcd-2'
+    - '--initial-advertise-peer-urls=http://etcd-2:2380'
+    - '--listen-peer-urls=http://etcd-2:2380'
+    - '--listen-client-urls=http://etcd-2:2379,http://localhost:2379'
+    - '--advertise-client-urls=http://etcd-2:2379'
+    - '--initial-cluster-token=mys3cr3ttok3n'
+    - '--heartbeat-interval=250'
+    - '--election-timeout=1250'
+    - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
+    - '--initial-cluster-state=new'
+
+  etcd3:
+    container_name: etcd-3
+    image: quay.io/coreos/etcd:v3.1.10
+    entrypoint: /usr/local/bin/etcd
+    # extra_hosts:
+    #   - "dockerhost:$DOCKERHOST"
+    command:
+    - '--name=etcd-3'
+    - '--initial-advertise-peer-urls=http://etcd-3:2380'
+    - '--listen-peer-urls=http://etcd-3:2380'
+    - '--listen-client-urls=http://etcd-3:2379,http://localhost:2379'
+    - '--advertise-client-urls=http://etcd-3:2379'
+    - '--initial-cluster-token=mys3cr3ttok3n'
+    - '--heartbeat-interval=250'
+    - '--election-timeout=1250'
+    - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
+    - '--initial-cluster-state=new'
