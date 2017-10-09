@@ -176,7 +176,6 @@ dydet*
 
 ### Docker ###
 *-*.env
-.env
 
 !Dockerfile.*
 !dockerfile*
@@ -194,7 +193,6 @@ dydet*
 !*.*-sample*
 !*.*-example*
 
-.env
 !.env-example
 
 dump
@@ -235,3 +233,5 @@ text8.zip
 
 server
 !cmd/server
+
+.env
