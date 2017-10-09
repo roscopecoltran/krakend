@@ -61,6 +61,9 @@ shared/data/etcd/member
 
 !shared/data/fake-api
 
+!cmd/convert-openapi
+!cmd/krakend-admin
+
 ..bfg-report
 ..bfg-report/
 ..bfg-report/**
