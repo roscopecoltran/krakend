@@ -1,0 +1,301 @@
+backends:
+- group: prediction-v1-6
+  url_pattern: /prediction/v1.6/projects/{project}/hostedmodels/{hostedModelName}/predict
+  method: POST
+  host:
+  - https://www.googleapis.com
+  whitelist:
+  - id
+  - kind
+  - outputLabel
+  - outputMulti
+  - outputMulti.label
+  - outputMulti.score
+  - outputValue
+  - selfLink
+  concurrent_calls: 1
+  extra_config:
+    provider: googleapis.com
+    description: Lets you access a cloud hosted machine learning service that makes
+      it easy to build smart apps
+    version: v1.6
+    slug: prediction-v1-6-prediction-v1-6-projects-project-hostedmodels-hostedmodelname-predict
+    schemes:
+    - https
+    mapping:
+      id: id
+      kind: kind
+      outputLabel: outputLabel
+      outputMulti: outputMulti
+      outputMulti.label: outputMulti.label
+      outputMulti.score: outputMulti.score
+      outputValue: outputValue
+      selfLink: selfLink
+    hosts:
+    - https://www.googleapis.com
+    topics:
+    - machine-learning
+- group: prediction-v1-6
+  url_pattern: /prediction/v1.6/projects/{project}/trainedmodels
+  method: POST
+  host:
+  - https://www.googleapis.com
+  whitelist:
+  - created
+  - id
+  - kind
+  - modelInfo
+  - modelInfo.classWeightedAccuracy
+  - modelInfo.classificationAccuracy
+  - modelInfo.meanSquaredError
+  - modelInfo.modelType
+  - modelInfo.numberInstances
+  - modelInfo.numberLabels
+  - modelType
+  - selfLink
+  - storageDataLocation
+  - storagePMMLLocation
+  - storagePMMLModelLocation
+  - trainingComplete
+  - trainingStatus
+  concurrent_calls: 1
+  extra_config:
+    provider: googleapis.com
+    description: Lets you access a cloud hosted machine learning service that makes
+      it easy to build smart apps
+    version: v1.6
+    slug: prediction-v1-6-prediction-v1-6-projects-project-trainedmodels
+    schemes:
+    - https
+    mapping:
+      created: created
+      id: id
+      kind: kind
+      modelInfo: modelInfo
+      modelInfo.classWeightedAccuracy: modelInfo.classWeightedAccuracy
+      modelInfo.classificationAccuracy: modelInfo.classificationAccuracy
+      modelInfo.meanSquaredError: modelInfo.meanSquaredError
+      modelInfo.modelType: modelInfo.modelType
+      modelInfo.numberInstances: modelInfo.numberInstances
+      modelInfo.numberLabels: modelInfo.numberLabels
+      modelType: modelType
+      selfLink: selfLink
+      storageDataLocation: storageDataLocation
+      storagePMMLLocation: storagePMMLLocation
+      storagePMMLModelLocation: storagePMMLModelLocation
+      trainingComplete: trainingComplete
+      trainingStatus: trainingStatus
+    hosts:
+    - https://www.googleapis.com
+    topics:
+    - machine-learning
+- group: prediction-v1-6
+  url_pattern: /prediction/v1.6/projects/{project}/trainedmodels/list
+  method: GET
+  host:
+  - https://www.googleapis.com
+  whitelist:
+  - items
+  - kind
+  - nextPageToken
+  - selfLink
+  concurrent_calls: 1
+  extra_config:
+    provider: googleapis.com
+    description: Lets you access a cloud hosted machine learning service that makes
+      it easy to build smart apps
+    version: v1.6
+    slug: prediction-v1-6-prediction-v1-6-projects-project-trainedmodels-list
+    schemes:
+    - https
+    mapping:
+      items: items
+      kind: kind
+      nextPageToken: nextPageToken
+      selfLink: selfLink
+    hosts:
+    - https://www.googleapis.com
+    topics:
+    - machine-learning
+- group: prediction-v1-6
+  url_pattern: /prediction/v1.6/projects/{project}/trainedmodels/{id}
+  method: GET
+  host:
+  - https://www.googleapis.com
+  whitelist:
+  - created
+  - id
+  - kind
+  - modelInfo
+  - modelInfo.classWeightedAccuracy
+  - modelInfo.classificationAccuracy
+  - modelInfo.meanSquaredError
+  - modelInfo.modelType
+  - modelInfo.numberInstances
+  - modelInfo.numberLabels
+  - modelType
+  - selfLink
+  - storageDataLocation
+  - storagePMMLLocation
+  - storagePMMLModelLocation
+  - trainingComplete
+  - trainingStatus
+  concurrent_calls: 1
+  extra_config:
+    provider: googleapis.com
+    description: Lets you access a cloud hosted machine learning service that makes
+      it easy to build smart apps
+    version: v1.6
+    slug: prediction-v1-6-prediction-v1-6-projects-project-trainedmodels-id
+    schemes:
+    - https
+    mapping:
+      created: created
+      id: id
+      kind: kind
+      modelInfo: modelInfo
+      modelInfo.classWeightedAccuracy: modelInfo.classWeightedAccuracy
+      modelInfo.classificationAccuracy: modelInfo.classificationAccuracy
+      modelInfo.meanSquaredError: modelInfo.meanSquaredError
+      modelInfo.modelType: modelInfo.modelType
+      modelInfo.numberInstances: modelInfo.numberInstances
+      modelInfo.numberLabels: modelInfo.numberLabels
+      modelType: modelType
+      selfLink: selfLink
+      storageDataLocation: storageDataLocation
+      storagePMMLLocation: storagePMMLLocation
+      storagePMMLModelLocation: storagePMMLModelLocation
+      trainingComplete: trainingComplete
+      trainingStatus: trainingStatus
+    hosts:
+    - https://www.googleapis.com
+    topics:
+    - machine-learning
+- group: prediction-v1-6
+  url_pattern: /prediction/v1.6/projects/{project}/trainedmodels/{id}/analyze
+  method: GET
+  host:
+  - https://www.googleapis.com
+  whitelist:
+  - dataDescription
+  - dataDescription.features
+  - dataDescription.features.items
+  - dataDescription.features.items.categorical
+  - dataDescription.features.items.categorical.count
+  - dataDescription.features.items.categorical.values
+  - dataDescription.features.items.categorical.values.items
+  - dataDescription.features.items.categorical.values.items.count
+  - dataDescription.features.items.categorical.values.items.value
+  - dataDescription.features.items.index
+  - dataDescription.features.items.numeric
+  - dataDescription.features.items.numeric.count
+  - dataDescription.features.items.numeric.mean
+  - dataDescription.features.items.numeric.variance
+  - dataDescription.features.items.text
+  - dataDescription.features.items.text.count
+  - dataDescription.outputFeature
+  - dataDescription.outputFeature.numeric
+  - dataDescription.outputFeature.numeric.count
+  - dataDescription.outputFeature.numeric.mean
+  - dataDescription.outputFeature.numeric.variance
+  - dataDescription.outputFeature.text
+  - dataDescription.outputFeature.text.items
+  - dataDescription.outputFeature.text.items.count
+  - dataDescription.outputFeature.text.items.value
+  - errors
+  - errors.additionalProperties
+  - id
+  - kind
+  - modelDescription
+  - modelDescription.confusionMatrix
+  - modelDescription.confusionMatrix.additionalProperties
+  - modelDescription.confusionMatrix.additionalProperties.additionalProperties
+  - modelDescription.confusionMatrixRowTotals
+  - modelDescription.confusionMatrixRowTotals.additionalProperties
+  - selfLink
+  concurrent_calls: 1
+  extra_config:
+    provider: googleapis.com
+    description: Lets you access a cloud hosted machine learning service that makes
+      it easy to build smart apps
+    version: v1.6
+    slug: prediction-v1-6-prediction-v1-6-projects-project-trainedmodels-id-analyze
+    schemes:
+    - https
+    mapping:
+      dataDescription: dataDescription
+      dataDescription.features: dataDescription.features
+      dataDescription.features.items: dataDescription.features.items
+      dataDescription.features.items.categorical: dataDescription.features.items.categorical
+      dataDescription.features.items.categorical.count: dataDescription.features.items.categorical.count
+      dataDescription.features.items.categorical.values: dataDescription.features.items.categorical.values
+      dataDescription.features.items.categorical.values.items: dataDescription.features.items.categorical.values.items
+      dataDescription.features.items.categorical.values.items.count: dataDescription.features.items.categorical.values.items.count
+      dataDescription.features.items.categorical.values.items.value: dataDescription.features.items.categorical.values.items.value
+      dataDescription.features.items.index: dataDescription.features.items.index
+      dataDescription.features.items.numeric: dataDescription.features.items.numeric
+      dataDescription.features.items.numeric.count: dataDescription.features.items.numeric.count
+      dataDescription.features.items.numeric.mean: dataDescription.features.items.numeric.mean
+      dataDescription.features.items.numeric.variance: dataDescription.features.items.numeric.variance
+      dataDescription.features.items.text: dataDescription.features.items.text
+      dataDescription.features.items.text.count: dataDescription.features.items.text.count
+      dataDescription.outputFeature: dataDescription.outputFeature
+      dataDescription.outputFeature.numeric: dataDescription.outputFeature.numeric
+      dataDescription.outputFeature.numeric.count: dataDescription.outputFeature.numeric.count
+      dataDescription.outputFeature.numeric.mean: dataDescription.outputFeature.numeric.mean
+      dataDescription.outputFeature.numeric.variance: dataDescription.outputFeature.numeric.variance
+      dataDescription.outputFeature.text: dataDescription.outputFeature.text
+      dataDescription.outputFeature.text.items: dataDescription.outputFeature.text.items
+      dataDescription.outputFeature.text.items.count: dataDescription.outputFeature.text.items.count
+      dataDescription.outputFeature.text.items.value: dataDescription.outputFeature.text.items.value
+      errors: errors
+      errors.additionalProperties: errors.additionalProperties
+      id: id
+      kind: kind
+      modelDescription: modelDescription
+      modelDescription.confusionMatrix: modelDescription.confusionMatrix
+      modelDescription.confusionMatrix.additionalProperties: modelDescription.confusionMatrix.additionalProperties
+      modelDescription.confusionMatrix.additionalProperties.additionalProperties: modelDescription.confusionMatrix.additionalProperties.additionalProperties
+      modelDescription.confusionMatrixRowTotals: modelDescription.confusionMatrixRowTotals
+      modelDescription.confusionMatrixRowTotals.additionalProperties: modelDescription.confusionMatrixRowTotals.additionalProperties
+      selfLink: selfLink
+    hosts:
+    - https://www.googleapis.com
+    topics:
+    - machine-learning
+- group: prediction-v1-6
+  url_pattern: /prediction/v1.6/projects/{project}/trainedmodels/{id}/predict
+  method: POST
+  host:
+  - https://www.googleapis.com
+  whitelist:
+  - id
+  - kind
+  - outputLabel
+  - outputMulti
+  - outputMulti.label
+  - outputMulti.score
+  - outputValue
+  - selfLink
+  concurrent_calls: 1
+  extra_config:
+    provider: googleapis.com
+    description: Lets you access a cloud hosted machine learning service that makes
+      it easy to build smart apps
+    version: v1.6
+    slug: prediction-v1-6-prediction-v1-6-projects-project-trainedmodels-id-predict
+    schemes:
+    - https
+    mapping:
+      id: id
+      kind: kind
+      outputLabel: outputLabel
+      outputMulti: outputMulti
+      outputMulti.label: outputMulti.label
+      outputMulti.score: outputMulti.score
+      outputValue: outputValue
+      selfLink: selfLink
+    hosts:
+    - https://www.googleapis.com
+    topics:
+    - machine-learning

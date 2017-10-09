@@ -1,0 +1,10 @@
+vendor
+vendor/
+vendor/**
+bin
+bin/
+bin/**
+dist
+dist/
+dist/**
+# *.go

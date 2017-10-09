@@ -1,0 +1,38 @@
+backends:
+- group: sentiment-apis-1-0-6
+  url_pattern: /api/11/sentiment/predict
+  method: GET
+  encoding: json
+  host:
+  - https://api.apitore.com
+  whitelist:
+  - endTime
+  - log
+  - processTime
+  - sentiments
+  - startTime
+  - text
+  concurrent_calls: 1
+  extra_config:
+    provider: apitore.com
+    description: Japanese sentiment analyzer.<BR />[Endpoint] https://api.apitore.com/api/11
+    version: 1.0.6
+    slug: sentiment-apis-1-0-6-api-11-sentiment-predict
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      endTime: endTime
+      log: log
+      processTime: processTime
+      sentiments: sentiments
+      startTime: startTime
+      text: text
+    hosts:
+    - https://api.apitore.com
+    topics:
+    - developer-tools
+    - text

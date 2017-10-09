@@ -1,0 +1,4441 @@
+backends:
+- group: business-registries-0-0-6
+  url_pattern: /business-names
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-business-names
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - business-names
+    - financial
+- group: business-registries-0-0-6
+  url_pattern: /classifications/address-types
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-address-types
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - address-types
+    - financial
+- group: business-registries-0-0-6
+  url_pattern: /classifications/business-name-lifecycle-states
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-business-name-lifecycle-states
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - business-name-lifecycle-states
+    - financial
+- group: business-registries-0-0-6
+  url_pattern: /classifications/electronic-address-types
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-electronic-address-types
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - electronic-address-types
+    - financial
+- group: business-registries-0-0-6
+  url_pattern: /classifications/genders
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-genders
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - genders
+- group: business-registries-0-0-6
+  url_pattern: /classifications/legal-entity-types
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-legal-entity-types
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - legal-entity-types
+- group: business-registries-0-0-6
+  url_pattern: /classifications/license-lifecycle-states
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-license-lifecycle-states
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - license-lifecycle-states
+- group: business-registries-0-0-6
+  url_pattern: /classifications/license-types
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-license-types
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - license-types
+- group: business-registries-0-0-6
+  url_pattern: /classifications/name-directions
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-name-directions
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - name-directions
+- group: business-registries-0-0-6
+  url_pattern: /classifications/name-prefixes
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-name-prefixes
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - name-prefixes
+- group: business-registries-0-0-6
+  url_pattern: /classifications/name-types
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-name-types
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - name-types
+- group: business-registries-0-0-6
+  url_pattern: /classifications/registered-identifier-types
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-registered-identifier-types
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - registered-identifier-types
+- group: business-registries-0-0-6
+  url_pattern: /classifications/roles
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-classifications-roles
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - roles
+- group: business-registries-0-0-6
+  url_pattern: /individuals
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - addresses
+  - dateOfBirth
+  - electronicAddresses
+  - fromDate
+  - gender
+  - names
+  - placeOfBirth
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      addresses: addresses
+      dateOfBirth: dateOfBirth
+      electronicAddresses: electronicAddresses
+      fromDate: fromDate
+      gender: gender
+      names: names
+      placeOfBirth: placeOfBirth
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/addresses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-addresses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-addresses
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/addresses/{addressId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - city
+  - country
+  - fromDate
+  - line1
+  - line2
+  - line3
+  - name
+  - postalCode
+  - suburb
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-addresses-addressid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      city: city
+      country: country
+      fromDate: fromDate
+      line1: line1
+      line2: line2
+      line3: line3
+      name: name
+      postalCode: postalCode
+      suburb: suburb
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-addresses
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/business-names
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-business-names
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-business-names
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/business-names/{productId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - fromDate
+  - lifecycleState
+  - name
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-business-names-productid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      fromDate: fromDate
+      lifecycleState: lifecycleState
+      name: name
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-business-names
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/electronic-addresses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-electronic-addresses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-electronic-addresses
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/electronic-addresses/{addressId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - areaCode
+  - countryPrefix
+  - electronicAddressType
+  - email
+  - extension
+  - fromDate
+  - number
+  - toDate
+  - url
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-electronic-addresses-addressid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      areaCode: areaCode
+      countryPrefix: countryPrefix
+      electronicAddressType: electronicAddressType
+      email: email
+      extension: extension
+      fromDate: fromDate
+      number: number
+      toDate: toDate
+      url: url
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-electronic-addresses
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/licenses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-licenses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-licenses
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/licenses/{productId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - fromDate
+  - licenseType
+  - lifecycleState
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-licenses-productid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      fromDate: fromDate
+      licenseType: licenseType
+      lifecycleState: lifecycleState
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-licenses
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/roles
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-roles
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-roles
+- group: business-registries-0-0-6
+  url_pattern: /individuals/{partyId}/roles/{roleId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - fromDate
+  - partyRoleType
+  - relatedPartyRoleType
+  - relationshipType
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-individuals-partyid-roles-roleid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      fromDate: fromDate
+      partyRoleType: partyRoleType
+      relatedPartyRoleType: relatedPartyRoleType
+      relationshipType: relationshipType
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - individuals-roles
+- group: business-registries-0-0-6
+  url_pattern: /licenses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-licenses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - licenses
+- group: business-registries-0-0-6
+  url_pattern: /organisations
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - addresses
+  - electronicAddresses
+  - establishmentDate
+  - fromDate
+  - legalEntityType
+  - names
+  - registeredIdentifiers
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      addresses: addresses
+      electronicAddresses: electronicAddresses
+      establishmentDate: establishmentDate
+      fromDate: fromDate
+      legalEntityType: legalEntityType
+      names: names
+      registeredIdentifiers: registeredIdentifiers
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/addresses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-addresses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-addresses
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/addresses/{addressId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - city
+  - country
+  - fromDate
+  - line1
+  - line2
+  - line3
+  - name
+  - postalCode
+  - suburb
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-addresses-addressid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      city: city
+      country: country
+      fromDate: fromDate
+      line1: line1
+      line2: line2
+      line3: line3
+      name: name
+      postalCode: postalCode
+      suburb: suburb
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-addresses
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/business-names
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-business-names
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-business-names
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/business-names/{productId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - fromDate
+  - lifecycleState
+  - name
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-business-names-productid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      fromDate: fromDate
+      lifecycleState: lifecycleState
+      name: name
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-business-names
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/electronic-addresses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-electronic-addresses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-electronic-addresses
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/electronic-addresses/{addressId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - areaCode
+  - countryPrefix
+  - electronicAddressType
+  - email
+  - extension
+  - fromDate
+  - number
+  - toDate
+  - url
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-electronic-addresses-addressid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      areaCode: areaCode
+      countryPrefix: countryPrefix
+      electronicAddressType: electronicAddressType
+      email: email
+      extension: extension
+      fromDate: fromDate
+      number: number
+      toDate: toDate
+      url: url
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-electronic-addresses
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/licenses
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-licenses
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-licenses
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/licenses/{productId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - fromDate
+  - licenseType
+  - lifecycleState
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-licenses-productid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      fromDate: fromDate
+      licenseType: licenseType
+      lifecycleState: lifecycleState
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-licenses
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/roles
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-roles
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-roles
+- group: business-registries-0-0-6
+  url_pattern: /organisations/{partyId}/roles/{roleId}
+  method: GET
+  encoding: json
+  host:
+  - https://api.abr.ato.gov.au
+  whitelist:
+  - fromDate
+  - partyRoleType
+  - relatedPartyRoleType
+  - relationshipType
+  - toDate
+  concurrent_calls: 1
+  extra_config:
+    provider: ato.gov.au
+    description: |
+      # Introduction
+      The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+        The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+        In addition to the standard OpenAPI syntax we use a few
+        <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+      # Overview
+      The following sections describe the resources that make up the Business Registries REST API.
+      ## Current Version
+      By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+          Accept: application/vnd.abr-ato.v1+json
+
+      ## Schema
+      All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+        All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DD
+
+        For example: `2017-07-01` (the 1st of July 2017)
+
+        All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+          YYYY-MM-DDTHH:MM:SSZ
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Timezones
+      Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+      ### Explicitly provide an ISO 8601 timestamp with timezone information
+      For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+        For example: `2017-07-01T11:05:06+10:00`
+
+      ## Pagination
+      Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+        For example:
+
+          Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+                <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+      `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+      ## Parameters
+      Many API methods take optional parameters:
+
+          GET /individuals/1234/addresses/?addressType='Mailing'
+
+      In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+      For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+      ## Metadata
+      The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+        For example:
+
+          GET /classifications/roles
+
+        Sample response:
+
+          [
+            {
+              "id": "123e4567-e89b-12d3-a456-426655440001",
+              "role": "Director",
+              "roleDescription": "An individual responsible for managing a company's ...",
+              "relationship": "Directorship",
+              "reciprocalRole": "Company",
+              "reciprocalRoleDescription": "An incorporated legal entity."
+            },
+            {
+              ...
+            }
+          ]
+
+      ## Root Endpoint
+      You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+          curl https://api.abr.ato.gov.au
+
+      ## Authentication
+      The Business Registries API supports API Key authentication.
+
+        When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+        API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+        providing your secret key in the request header.
+
+        **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+        accidental leakage of information to unauthorised users.
+    version: 0.0.6
+    slug: business-registries-0-0-6-organisations-partyid-roles-roleid
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      fromDate: fromDate
+      partyRoleType: partyRoleType
+      relatedPartyRoleType: relatedPartyRoleType
+      relationshipType: relationshipType
+      toDate: toDate
+    hosts:
+    - https://api.abr.ato.gov.au
+    topics:
+    - financial
+    - organisations-roles

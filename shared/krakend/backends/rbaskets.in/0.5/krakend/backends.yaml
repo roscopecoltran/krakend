@@ -1,0 +1,165 @@
+backends:
+- group: request-baskets-0-5
+  url_pattern: /baskets
+  method: GET
+  encoding: json
+  host:
+  - https://rbaskets.in
+  query_string_params:
+  - max
+  - q
+  - skip
+  whitelist:
+  - count
+  - has_more
+  - names
+  concurrent_calls: 1
+  extra_config:
+    provider: rbaskets.in
+    description: |
+      RESTful API of [Request Baskets](https://rbaskets.in) service.
+
+      Request Baskets is an open source project of a service to collect HTTP requests and inspect them via RESTful
+      API or web UI.
+
+      Check out the [project page](https://github.com/darklynx/request-baskets) for more detailed description.
+    version: "0.5"
+    slug: request-baskets-0-5-baskets
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      count: count
+      has_more: has_more
+      names: names
+    hosts:
+    - https://rbaskets.in
+    topics:
+    - baskets
+- group: request-baskets-0-5
+  url_pattern: /baskets/{name}
+  method: GET
+  encoding: json
+  host:
+  - https://rbaskets.in
+  url_keys:
+  - name
+  whitelist:
+  - capacity
+  - expand_path
+  - forward_url
+  - insecure_tls
+  concurrent_calls: 1
+  extra_config:
+    provider: rbaskets.in
+    description: |
+      RESTful API of [Request Baskets](https://rbaskets.in) service.
+
+      Request Baskets is an open source project of a service to collect HTTP requests and inspect them via RESTful
+      API or web UI.
+
+      Check out the [project page](https://github.com/darklynx/request-baskets) for more detailed description.
+    version: "0.5"
+    slug: request-baskets-0-5-baskets-name
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      capacity: capacity
+      expand_path: expand_path
+      forward_url: forward_url
+      insecure_tls: insecure_tls
+    hosts:
+    - https://rbaskets.in
+    topics:
+    - baskets
+- group: request-baskets-0-5
+  url_pattern: /baskets/{name}/requests
+  method: GET
+  encoding: json
+  host:
+  - https://rbaskets.in
+  url_keys:
+  - name
+  query_string_params:
+  - in
+  - max
+  - q
+  - skip
+  whitelist:
+  - count
+  - has_more
+  - requests
+  - total_count
+  concurrent_calls: 1
+  extra_config:
+    provider: rbaskets.in
+    description: |
+      RESTful API of [Request Baskets](https://rbaskets.in) service.
+
+      Request Baskets is an open source project of a service to collect HTTP requests and inspect them via RESTful
+      API or web UI.
+
+      Check out the [project page](https://github.com/darklynx/request-baskets) for more detailed description.
+    version: "0.5"
+    slug: request-baskets-0-5-baskets-name-requests
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      count: count
+      has_more: has_more
+      requests: requests
+      total_count: total_count
+    hosts:
+    - https://rbaskets.in
+    topics:
+    - requests
+- group: request-baskets-0-5
+  url_pattern: /baskets/{name}/responses/{method}
+  method: GET
+  encoding: json
+  host:
+  - https://rbaskets.in
+  url_keys:
+  - method
+  - name
+  whitelist:
+  - body
+  - is_template
+  - status
+  concurrent_calls: 1
+  extra_config:
+    provider: rbaskets.in
+    description: |
+      RESTful API of [Request Baskets](https://rbaskets.in) service.
+
+      Request Baskets is an open source project of a service to collect HTTP requests and inspect them via RESTful
+      API or web UI.
+
+      Check out the [project page](https://github.com/darklynx/request-baskets) for more detailed description.
+    version: "0.5"
+    slug: request-baskets-0-5-baskets-name-responses-method
+    schemes:
+    - https
+    consumes:
+    - json
+    produces:
+    - json
+    mapping:
+      body: body
+      is_template: is_template
+      status: status
+    hosts:
+    - https://rbaskets.in
+    topics:
+    - responses

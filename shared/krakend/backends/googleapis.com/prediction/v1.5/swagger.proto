@@ -1,0 +1,358 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+import "google/api/annotations.proto";
+
+package prediction;
+
+message PostHostedmodelsHostedModelNamePredictRequest {
+    alt alt = 1;
+    Input body = 2;
+    string fields = 3;
+    // The name of a hosted model.
+    string hostedModelName = 4;
+    string key = 5;
+    string oauth_token = 6;
+    boolean prettyPrint = 7;
+    string quotaUser = 8;
+    string userIp = 9;
+}
+
+message PostTrainedmodelsRequest {
+    alt alt = 1;
+    Training body = 2;
+    string fields = 3;
+    string key = 4;
+    string oauth_token = 5;
+    boolean prettyPrint = 6;
+    string quotaUser = 7;
+    string userIp = 8;
+}
+
+message GetTrainedmodelsListRequest {
+    alt alt = 1;
+    string fields = 2;
+    string key = 3;
+    // Maximum number of results to return
+    int32 maxResults = 4;
+    string oauth_token = 5;
+    // Pagination token
+    string pageToken = 6;
+    boolean prettyPrint = 7;
+    string quotaUser = 8;
+    string userIp = 9;
+}
+
+message GetTrainedmodelsIdRequest {
+    alt alt = 1;
+    string fields = 2;
+    // The unique name for the predictive model.
+    string id = 3;
+    string key = 4;
+    string oauth_token = 5;
+    boolean prettyPrint = 6;
+    string quotaUser = 7;
+    string userIp = 8;
+}
+
+message PutTrainedmodelsIdRequest {
+    alt alt = 1;
+    Update body = 2;
+    string fields = 3;
+    // The unique name for the predictive model.
+    string id = 4;
+    string key = 5;
+    string oauth_token = 6;
+    boolean prettyPrint = 7;
+    string quotaUser = 8;
+    string userIp = 9;
+}
+
+message DeleteTrainedmodelsIdRequest {
+    alt alt = 1;
+    string fields = 2;
+    // The unique name for the predictive model.
+    string id = 3;
+    string key = 4;
+    string oauth_token = 5;
+    boolean prettyPrint = 6;
+    string quotaUser = 7;
+    string userIp = 8;
+}
+
+message GetTrainedmodelsIdAnalyzeRequest {
+    alt alt = 1;
+    string fields = 2;
+    // The unique name for the predictive model.
+    string id = 3;
+    string key = 4;
+    string oauth_token = 5;
+    boolean prettyPrint = 6;
+    string quotaUser = 7;
+    string userIp = 8;
+}
+
+message PostTrainedmodelsIdPredictRequest {
+    alt alt = 1;
+    Input body = 2;
+    string fields = 3;
+    // The unique name for the predictive model.
+    string id = 4;
+    string key = 5;
+    string oauth_token = 6;
+    boolean prettyPrint = 7;
+    string quotaUser = 8;
+    string userIp = 9;
+}
+
+message Analyze {
+    // Description of the data the model was trained on.
+    message DataDescription {
+            // Description of the input features in the data set.
+    message Feature {
+                    // Description of the categorical values of this feature.
+    message Categorical {
+                            // Number of categorical values for this feature in the data.
+    string count = 1;
+                            // List of all the categories for this feature in the data set.
+    message Value {
+                                    // Number of times this feature had this value.
+    string count = 1;
+                                    // The category name.
+    string value = 2;
+                }
+                repeated Value values = 2;
+            }
+            Categorical categorical = 1;
+                    // The feature index.
+    string index = 2;
+                    // Description of the numeric values of this feature.
+    message Numeric {
+                            // Number of numeric values for this feature in the data set.
+    string count = 1;
+                            // Mean of the numeric values of this feature in the data set.
+    double mean = 2;
+                            // Variance of the numeric values of this feature in the data set.
+    double variance = 3;
+            }
+            Numeric numeric = 3;
+                    // Description of multiple-word text values of this feature.
+    message Text {
+                            // Number of multiple-word text values for this feature.
+    string count = 1;
+            }
+            Text text = 4;
+        }
+        repeated Feature features = 1;
+            // Description of the output value or label.
+    message OutputFeature {
+                    // Description of the output values in the data set.
+    message Numeric {
+                            // Number of numeric output values in the data set.
+    string count = 1;
+                            // Mean of the output values in the data set.
+    double mean = 2;
+                            // Variance of the output values in the data set.
+    double variance = 3;
+            }
+            Numeric numeric = 1;
+                    // Description of the output labels in the data set.
+    message Text {
+                            // Number of times the output label occurred in the data set.
+    string count = 1;
+                            // The output label.
+    string value = 2;
+            }
+            repeated Text text = 2;
+        }
+        OutputFeature outputFeature = 2;
+    }
+    DataDescription dataDescription = 1;
+    // List of errors with the data.
+    message Error {
+    }
+    repeated Error errors = 2;
+    // The unique name for the predictive model.
+    string id = 3;
+    // What kind of resource this is.
+    string kind = 4;
+    // Description of the model.
+    message ModelDescription {
+            // An output confusion matrix. This shows an estimate for how this model will do in predictions. This is first indexed by the true class label. For each true class label, this provides a pair {predicted_label, count}, where count is the estimated number of times the model will predict the predicted label given the true label. Will not output if more then 100 classes [Categorical models only].
+    map<string, object> confusionMatrix = 1;
+            // A list of the confusion matrix row totals
+    map<string, number> confusionMatrixRowTotals = 2;
+            // Basic information about the model.
+    Training modelinfo = 3;
+    }
+    ModelDescription modelDescription = 5;
+    // A URL to re-request this resource.
+    string selfLink = 6;
+}
+
+message Input {
+    // Input to the model for a prediction
+    message Input {
+            // A list of input features, these can be strings or doubles.
+    message CsvInstance {
+        }
+        repeated CsvInstance csvInstance = 1;
+    }
+    Input input = 1;
+}
+
+message List {
+    // List of models.
+    repeated Training items = 1;
+    // What kind of resource this is.
+    string kind = 2;
+    // Pagination token to fetch the next page, if one exists.
+    string nextPageToken = 3;
+    // A URL to re-request this resource.
+    string selfLink = 4;
+}
+
+message Output {
+    // The unique name for the predictive model.
+    string id = 1;
+    // What kind of resource this is.
+    string kind = 2;
+    // The most likely class label [Categorical models only].
+    string outputLabel = 3;
+    // A list of class labels with their estimated probabilities [Categorical models only].
+    message OutputMulti {
+            // The class label.
+    string label = 1;
+            // The probability of the class label.
+    double score = 2;
+    }
+    repeated OutputMulti outputMulti = 4;
+    // The estimated regression value [Regression models only].
+    double outputValue = 5;
+    // A URL to re-request this resource.
+    string selfLink = 6;
+}
+
+message Training {
+    // Insert time of the model (as a RFC 3339 timestamp).
+    string created = 1;
+    // The unique name for the predictive model.
+    string id = 2;
+    // What kind of resource this is.
+    string kind = 3;
+    // Model metadata.
+    message ModelInfo {
+            // Estimated accuracy of model taking utility weights into account [Categorical models only].
+    double classWeightedAccuracy = 1;
+            // A number between 0.0 and 1.0, where 1.0 is 100% accurate. This is an estimate, based on the amount and quality of the training data, of the estimated prediction accuracy. You can use this is a guide to decide whether the results are accurate enough for your needs. This estimate will be more reliable if your real input data is similar to your training data [Categorical models only].
+    double classificationAccuracy = 2;
+            // An estimated mean squared error. The can be used to measure the quality of the predicted model [Regression models only].
+    double meanSquaredError = 3;
+            // Type of predictive model (CLASSIFICATION or REGRESSION)
+    string modelType = 4;
+            // Number of valid data instances used in the trained model.
+    string numberInstances = 5;
+            // Number of class labels in the trained model [Categorical models only].
+    string numberLabels = 6;
+    }
+    ModelInfo modelInfo = 4;
+    // Type of predictive model (classification or regression)
+    string modelType = 5;
+    // A URL to re-request this resource.
+    string selfLink = 6;
+    // Google storage location of the training data file.
+    string storageDataLocation = 7;
+    // Google storage location of the preprocessing pmml file.
+    string storagePMMLLocation = 8;
+    // Google storage location of the pmml model file.
+    string storagePMMLModelLocation = 9;
+    // Training completion time (as a RFC 3339 timestamp).
+    string trainingComplete = 10;
+    // Instances to train model on.
+    message TrainingInstance {
+            // The input features for this instance
+    message CsvInstance {
+        }
+        repeated CsvInstance csvInstance = 1;
+            // The generic output value - could be regression or class label
+    string output = 2;
+    }
+    repeated TrainingInstance trainingInstances = 11;
+    // The current status of the training job. This can be one of following: RUNNING; DONE; ERROR; ERROR: TRAINING JOB NOT FOUND
+    string trainingStatus = 12;
+    // A class weighting function, which allows the importance weights for class labels to be specified [Categorical models only].
+    message Utility {
+    }
+    repeated Utility utility = 13;
+}
+
+message Update {
+    // The input features for this instance
+    message CsvInstance {
+    }
+    repeated CsvInstance csvInstance = 1;
+    // The class label of this instance
+    string label = 2;
+    // The generic output value - could be regression value or class label
+    string output = 3;
+}
+
+enum Alt {
+    JSON = 0;
+}
+
+service PredictionService {
+    // Submit input and request an output against a hosted model.
+    rpc PostHostedmodelsHostedModelNamePredict(PostHostedmodelsHostedModelNamePredictRequest) returns (Output) {
+      option (google.api.http) = {
+        post: "/prediction/v1.5/hostedmodels/{hostedModelName}/predict"
+        body: "body"
+      };
+    }
+    // Begin training your model.
+    rpc PostTrainedmodels(PostTrainedmodelsRequest) returns (Training) {
+      option (google.api.http) = {
+        post: "/prediction/v1.5/trainedmodels"
+        body: "body"
+      };
+    }
+    // List available models.
+    rpc GetTrainedmodelsList(GetTrainedmodelsListRequest) returns (List) {
+      option (google.api.http) = {
+        get: "/prediction/v1.5/trainedmodels/list"
+      };
+    }
+    // Check training status of your model.
+    rpc GetTrainedmodelsId(GetTrainedmodelsIdRequest) returns (Training) {
+      option (google.api.http) = {
+        get: "/prediction/v1.5/trainedmodels/{id}"
+      };
+    }
+    // Add new data to a trained model.
+    rpc PutTrainedmodelsId(PutTrainedmodelsIdRequest) returns (Training) {
+      option (google.api.http) = {
+        put: "/prediction/v1.5/trainedmodels/{id}"
+        body: "body"
+      };
+    }
+    // Delete a trained model.
+    rpc DeleteTrainedmodelsId(DeleteTrainedmodelsIdRequest) returns (google.protobuf.Empty) {
+      option (google.api.http) = {
+        delete: "/prediction/v1.5/trainedmodels/{id}"
+      };
+    }
+    // Get analysis of the model and the data the model was trained on.
+    rpc GetTrainedmodelsIdAnalyze(GetTrainedmodelsIdAnalyzeRequest) returns (Analyze) {
+      option (google.api.http) = {
+        get: "/prediction/v1.5/trainedmodels/{id}/analyze"
+      };
+    }
+    // Submit model id and request a prediction.
+    rpc PostTrainedmodelsIdPredict(PostTrainedmodelsIdPredictRequest) returns (Output) {
+      option (google.api.http) = {
+        post: "/prediction/v1.5/trainedmodels/{id}/predict"
+        body: "body"
+      };
+    }
+}

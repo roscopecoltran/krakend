@@ -1,0 +1,2455 @@
+basePath: /
+consumes.length: 1
+consumes[0]: application/json
+definitions.address-type.allOf.length: 2
+definitions.address-type.allOf[0].$ref: '#/definitions/type'
+definitions.address-type.allOf[1].type: object
+definitions.address.description: The Address resource.
+definitions.address.properties.city.description: The city.
+definitions.address.properties.city.example: Canberra
+definitions.address.properties.city.type: string
+definitions.address.properties.country.description: The country.
+definitions.address.properties.country.example: Australia
+definitions.address.properties.country.type: string
+definitions.address.properties.fromDate.description: The date and time the resource
+  became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.address.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.address.properties.fromDate.format: date-time
+definitions.address.properties.fromDate.readOnly: true
+definitions.address.properties.fromDate.type: string
+definitions.address.properties.id.allOf.length: 1
+definitions.address.properties.id.allOf[0].$ref: '#/definitions/addressId'
+definitions.address.properties.id.description: The resource's unique identifier.
+definitions.address.properties.id.readOnly: true
+definitions.address.properties.line1.description: The address line 1.
+definitions.address.properties.line1.example: Level 7
+definitions.address.properties.line1.type: string
+definitions.address.properties.line2.description: The address line 2.
+definitions.address.properties.line2.example: 21 Genge Street
+definitions.address.properties.line2.type: string
+definitions.address.properties.line3.description: The address line 3.
+definitions.address.properties.line3.example: ""
+definitions.address.properties.line3.type: string
+definitions.address.properties.name.description: The address name.
+definitions.address.properties.name.example: Kembery Building
+definitions.address.properties.name.type: string
+definitions.address.properties.postalCode.description: The postal code.
+definitions.address.properties.postalCode.example: "2601"
+definitions.address.properties.postalCode.type: string
+definitions.address.properties.suburb.description: The suburb.
+definitions.address.properties.suburb.example: Civic
+definitions.address.properties.suburb.type: string
+definitions.address.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.address.properties.toDate.example: ""
+definitions.address.properties.toDate.format: date-time
+definitions.address.properties.toDate.readOnly: true
+definitions.address.properties.toDate.type: string
+definitions.address.type: object
+definitions.addressId.allOf.length: 2
+definitions.addressId.allOf[0].$ref: '#/definitions/resourceId'
+definitions.addressId.allOf[1].type: string
+definitions.business-name-lifecycle-state.allOf.length: 2
+definitions.business-name-lifecycle-state.allOf[0].$ref: '#/definitions/type'
+definitions.business-name-lifecycle-state.allOf[1].type: object
+definitions.business-name.description: The Business Name resource.
+definitions.business-name.properties.fromDate.description: The date and time the resource
+  became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.business-name.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.business-name.properties.fromDate.format: date-time
+definitions.business-name.properties.fromDate.readOnly: true
+definitions.business-name.properties.fromDate.type: string
+definitions.business-name.properties.id.allOf.length: 1
+definitions.business-name.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.business-name.properties.id.description: The resource's unique identifier.
+definitions.business-name.properties.id.readOnly: true
+definitions.business-name.properties.lifecycleState.default: Pending Approval
+definitions.business-name.properties.lifecycleState.description: The business name's
+  lifecycle state.
+definitions.business-name.properties.lifecycleState.enum.length: 5
+definitions.business-name.properties.lifecycleState.enum[0]: Approved
+definitions.business-name.properties.lifecycleState.enum[1]: Expired
+definitions.business-name.properties.lifecycleState.enum[2]: Issued
+definitions.business-name.properties.lifecycleState.enum[3]: Pending Approval
+definitions.business-name.properties.lifecycleState.enum[4]: Suspended
+definitions.business-name.properties.lifecycleState.type: string
+definitions.business-name.properties.name.description: The business name.
+definitions.business-name.properties.name.example: XYZ Technology Ventures
+definitions.business-name.properties.name.type: string
+definitions.business-name.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.business-name.properties.toDate.example: ""
+definitions.business-name.properties.toDate.format: date-time
+definitions.business-name.properties.toDate.readOnly: true
+definitions.business-name.properties.toDate.type: string
+definitions.business-name.type: object
+definitions.electronic-address-type.allOf.length: 2
+definitions.electronic-address-type.allOf[0].$ref: '#/definitions/type'
+definitions.electronic-address-type.allOf[1].type: object
+definitions.electronic-address.description: The Electronic Address resource.
+definitions.electronic-address.properties.areaCode.description: The area code, for
+  example, "02".
+definitions.electronic-address.properties.areaCode.example: "02"
+definitions.electronic-address.properties.areaCode.type: string
+definitions.electronic-address.properties.countryPrefix.description: The country prefix,
+  for example, "61".
+definitions.electronic-address.properties.countryPrefix.example: "61"
+definitions.electronic-address.properties.countryPrefix.type: string
+definitions.electronic-address.properties.electronicAddressType.default: Landline
+definitions.electronic-address.properties.electronicAddressType.description: The electronic
+  address type.
+definitions.electronic-address.properties.electronicAddressType.enum.length: 5
+definitions.electronic-address.properties.electronicAddressType.enum[0]: Email
+definitions.electronic-address.properties.electronicAddressType.enum[1]: Fax
+definitions.electronic-address.properties.electronicAddressType.enum[2]: Landline
+definitions.electronic-address.properties.electronicAddressType.enum[3]: Mobile
+definitions.electronic-address.properties.electronicAddressType.enum[4]: Website
+definitions.electronic-address.properties.electronicAddressType.type: string
+definitions.electronic-address.properties.email.description: The email address, for
+  example, "robert.ferguson@ato.gov.au".
+definitions.electronic-address.properties.email.example: ""
+definitions.electronic-address.properties.email.type: string
+definitions.electronic-address.properties.extension.description: The extension number,
+  for example, "4453".
+definitions.electronic-address.properties.extension.example: ""
+definitions.electronic-address.properties.extension.type: string
+definitions.electronic-address.properties.fromDate.description: The date and time
+  the resource became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.electronic-address.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.electronic-address.properties.fromDate.format: date-time
+definitions.electronic-address.properties.fromDate.readOnly: true
+definitions.electronic-address.properties.fromDate.type: string
+definitions.electronic-address.properties.id.allOf.length: 1
+definitions.electronic-address.properties.id.allOf[0].$ref: '#/definitions/addressId'
+definitions.electronic-address.properties.id.description: The resource's unique identifier.
+definitions.electronic-address.properties.id.readOnly: true
+definitions.electronic-address.properties.number.description: The number, for example,
+  "62164453".
+definitions.electronic-address.properties.number.example: "62164453"
+definitions.electronic-address.properties.number.type: string
+definitions.electronic-address.properties.toDate.description: The date and time the
+  resource became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.electronic-address.properties.toDate.example: ""
+definitions.electronic-address.properties.toDate.format: date-time
+definitions.electronic-address.properties.toDate.readOnly: true
+definitions.electronic-address.properties.toDate.type: string
+definitions.electronic-address.properties.url.description: The website address, for
+  example, "https://ato.gov.au".
+definitions.electronic-address.properties.url.example: ""
+definitions.electronic-address.properties.url.type: string
+definitions.electronic-address.type: object
+definitions.error-details.properties.code.description: The error code.
+definitions.error-details.properties.code.example: NullValue
+definitions.error-details.properties.code.type: string
+definitions.error-details.properties.message.description: The error message.
+definitions.error-details.properties.message.example: Family name must not be null
+definitions.error-details.properties.message.type: string
+definitions.error-details.properties.target.description: The error target.
+definitions.error-details.properties.target.example: familyName
+definitions.error-details.properties.target.type: string
+definitions.error-details.type: object
+definitions.failed-precondition.properties.code.description: The error code.
+definitions.failed-precondition.properties.code.example: "400"
+definitions.failed-precondition.properties.code.type: string
+definitions.failed-precondition.properties.details.items.$ref: '#/definitions/error-details'
+definitions.failed-precondition.properties.details.type: array
+definitions.failed-precondition.properties.message.description: The error message.
+definitions.failed-precondition.properties.message.example: Request can not be executed
+  in the current system state
+definitions.failed-precondition.properties.message.type: string
+definitions.failed-precondition.properties.status.description: The error status.
+definitions.failed-precondition.properties.status.example: FAILED_PRECONDITION
+definitions.failed-precondition.properties.status.type: string
+definitions.failed-precondition.type: object
+definitions.gender.description: The Gender resource.
+definitions.gender.properties.gender.description: The gender.
+definitions.gender.properties.gender.type: string
+definitions.gender.properties.id.allOf.length: 1
+definitions.gender.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.gender.properties.id.description: The resource's unique identifier.
+definitions.gender.properties.id.readOnly: true
+definitions.gender.type: object
+definitions.individual-address.allOf.length: 2
+definitions.individual-address.allOf[0].$ref: '#/definitions/address'
+definitions.individual-address.allOf[1].properties.addressType.default: Principal
+  Place of Residence
+definitions.individual-address.allOf[1].properties.addressType.description: The address
+  type.
+definitions.individual-address.allOf[1].properties.addressType.enum.length: 3
+definitions.individual-address.allOf[1].properties.addressType.enum[0]: Mailing
+definitions.individual-address.allOf[1].properties.addressType.enum[1]: Principal
+  Place of Business
+definitions.individual-address.allOf[1].properties.addressType.enum[2]: Principal
+  Place of Residence
+definitions.individual-address.allOf[1].properties.addressType.type: string
+definitions.individual-address.allOf[1].properties.fromDate.description: The date
+  and time the resource became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.individual-address.allOf[1].properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.individual-address.allOf[1].properties.fromDate.format: date-time
+definitions.individual-address.allOf[1].properties.fromDate.readOnly: true
+definitions.individual-address.allOf[1].properties.fromDate.type: string
+definitions.individual-address.allOf[1].properties.toDate.description: The date and
+  time the resource became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.individual-address.allOf[1].properties.toDate.example: ""
+definitions.individual-address.allOf[1].properties.toDate.format: date-time
+definitions.individual-address.allOf[1].properties.toDate.readOnly: true
+definitions.individual-address.allOf[1].properties.toDate.type: string
+definitions.individual-address.allOf[1].type: object
+definitions.individual-name.description: The Individual Name resource.
+definitions.individual-name.properties.direction.default: left-to-right
+definitions.individual-name.properties.direction.description: The direction used to
+  render the individual's name.
+definitions.individual-name.properties.direction.enum.length: 2
+definitions.individual-name.properties.direction.enum[0]: left-to-right
+definitions.individual-name.properties.direction.enum[1]: right-to-left
+definitions.individual-name.properties.direction.type: string
+definitions.individual-name.properties.familyName.description: The individual's family
+  name.
+definitions.individual-name.properties.familyName.example: Ferguson
+definitions.individual-name.properties.familyName.type: string
+definitions.individual-name.properties.formalSalutation.description: The individual's
+  formal salutation, for example, "Mr William Smith".
+definitions.individual-name.properties.formalSalutation.example: Mr Robert Ferguson
+definitions.individual-name.properties.formalSalutation.type: string
+definitions.individual-name.properties.fromDate.description: The date and time the
+  resource became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.individual-name.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.individual-name.properties.fromDate.format: date-time
+definitions.individual-name.properties.fromDate.readOnly: true
+definitions.individual-name.properties.fromDate.type: string
+definitions.individual-name.properties.givenName.description: The individual's given
+  name.
+definitions.individual-name.properties.givenName.example: Robert
+definitions.individual-name.properties.givenName.type: string
+definitions.individual-name.properties.id.allOf.length: 1
+definitions.individual-name.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.individual-name.properties.id.description: The resource's unique identifier.
+definitions.individual-name.properties.id.readOnly: true
+definitions.individual-name.properties.informalSalutation.description: The individual's
+  informal salutation, for example, "Bill".
+definitions.individual-name.properties.informalSalutation.example: Rob
+definitions.individual-name.properties.informalSalutation.type: string
+definitions.individual-name.properties.middleName.description: The individual's middle
+  name.
+definitions.individual-name.properties.middleName.example: James
+definitions.individual-name.properties.middleName.type: string
+definitions.individual-name.properties.namePrefix.default: Mr
+definitions.individual-name.properties.namePrefix.description: The individual's name
+  prefix.
+definitions.individual-name.properties.namePrefix.enum.length: 2
+definitions.individual-name.properties.namePrefix.enum[0]: Mr
+definitions.individual-name.properties.namePrefix.enum[1]: Ms
+definitions.individual-name.properties.namePrefix.type: string
+definitions.individual-name.properties.nameSuffix.description: The individual's name
+  suffix, for example, "Jr" or "Sr".
+definitions.individual-name.properties.nameSuffix.example: ""
+definitions.individual-name.properties.nameSuffix.type: string
+definitions.individual-name.properties.nameType.default: Principal Name
+definitions.individual-name.properties.nameType.description: The name type.
+definitions.individual-name.properties.nameType.enum.length: 2
+definitions.individual-name.properties.nameType.enum[0]: Alias
+definitions.individual-name.properties.nameType.enum[1]: Principal Name
+definitions.individual-name.properties.nameType.type: string
+definitions.individual-name.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.individual-name.properties.toDate.example: ""
+definitions.individual-name.properties.toDate.format: date-time
+definitions.individual-name.properties.toDate.readOnly: true
+definitions.individual-name.properties.toDate.type: string
+definitions.individual-name.type: object
+definitions.individual.description: The Individual resource.
+definitions.individual.properties.addresses.items.$ref: '#/definitions/individual-address'
+definitions.individual.properties.addresses.type: array
+definitions.individual.properties.dateOfBirth.description: The individual's date of
+  birth, for example, `1979-01-13` (in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+  format).
+definitions.individual.properties.dateOfBirth.example: 1979-01-13
+definitions.individual.properties.dateOfBirth.format: date
+definitions.individual.properties.dateOfBirth.type: string
+definitions.individual.properties.electronicAddresses.items.$ref: '#/definitions/electronic-address'
+definitions.individual.properties.electronicAddresses.type: array
+definitions.individual.properties.fromDate.description: The date and time the resource
+  became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.individual.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.individual.properties.fromDate.format: date-time
+definitions.individual.properties.fromDate.readOnly: true
+definitions.individual.properties.fromDate.type: string
+definitions.individual.properties.gender.default: Male
+definitions.individual.properties.gender.description: The individual's gender.
+definitions.individual.properties.gender.enum.length: 4
+definitions.individual.properties.gender.enum[0]: Female
+definitions.individual.properties.gender.enum[1]: Male
+definitions.individual.properties.gender.enum[2]: Not Applicable
+definitions.individual.properties.gender.enum[3]: Not Known
+definitions.individual.properties.gender.type: string
+definitions.individual.properties.id.allOf.length: 1
+definitions.individual.properties.id.allOf[0].$ref: '#/definitions/partyId'
+definitions.individual.properties.id.description: The party's unique identifier.
+definitions.individual.properties.id.readOnly: true
+definitions.individual.properties.names.items.$ref: '#/definitions/individual-name'
+definitions.individual.properties.names.type: array
+definitions.individual.properties.placeOfBirth.description: The individual's place
+  of birth, for example, `Tamworth`.
+definitions.individual.properties.placeOfBirth.example: Tamworth
+definitions.individual.properties.placeOfBirth.type: string
+definitions.individual.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.individual.properties.toDate.example: ""
+definitions.individual.properties.toDate.format: date-time
+definitions.individual.properties.toDate.readOnly: true
+definitions.individual.properties.toDate.type: string
+definitions.individual.required.length: 2
+definitions.individual.required[0]: dateOfBirth
+definitions.individual.required[1]: placeOfBirth
+definitions.individual.type: object
+definitions.invalid-argument.properties.code.description: The error code.
+definitions.invalid-argument.properties.code.example: "400"
+definitions.invalid-argument.properties.code.type: string
+definitions.invalid-argument.properties.details.items.$ref: '#/definitions/error-details'
+definitions.invalid-argument.properties.details.type: array
+definitions.invalid-argument.properties.message.description: The error message.
+definitions.invalid-argument.properties.message.example: The client specified an invalid
+  argument
+definitions.invalid-argument.properties.message.type: string
+definitions.invalid-argument.properties.status.description: The error status.
+definitions.invalid-argument.properties.status.example: INVALID_ARGUMENT
+definitions.invalid-argument.properties.status.type: string
+definitions.invalid-argument.type: object
+definitions.legal-entity-type.allOf.length: 2
+definitions.legal-entity-type.allOf[0].$ref: '#/definitions/type'
+definitions.legal-entity-type.allOf[1].type: object
+definitions.license-lifecycle-state.allOf.length: 2
+definitions.license-lifecycle-state.allOf[0].$ref: '#/definitions/type'
+definitions.license-lifecycle-state.allOf[1].type: object
+definitions.license-type.allOf.length: 2
+definitions.license-type.allOf[0].$ref: '#/definitions/type'
+definitions.license-type.allOf[1].type: object
+definitions.license.description: The License resource.
+definitions.license.properties.fromDate.description: The date and time the resource
+  became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.license.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.license.properties.fromDate.format: date-time
+definitions.license.properties.fromDate.readOnly: true
+definitions.license.properties.fromDate.type: string
+definitions.license.properties.id.allOf.length: 1
+definitions.license.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.license.properties.id.description: The resource's unique identifier.
+definitions.license.properties.id.readOnly: true
+definitions.license.properties.licenseType.default: Australian Financial Services
+  License
+definitions.license.properties.licenseType.description: The license type.
+definitions.license.properties.licenseType.enum.length: 2
+definitions.license.properties.licenseType.enum[0]: Australian Financial Services
+  License
+definitions.license.properties.licenseType.enum[1]: License 2B
+definitions.license.properties.licenseType.type: string
+definitions.license.properties.lifecycleState.default: Pending Approval
+definitions.license.properties.lifecycleState.description: The business name's lifecycle
+  state.
+definitions.license.properties.lifecycleState.enum.length: 5
+definitions.license.properties.lifecycleState.enum[0]: Approved
+definitions.license.properties.lifecycleState.enum[1]: Expired
+definitions.license.properties.lifecycleState.enum[2]: Issued
+definitions.license.properties.lifecycleState.enum[3]: Pending Approval
+definitions.license.properties.lifecycleState.enum[4]: Suspended
+definitions.license.properties.lifecycleState.type: string
+definitions.license.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.license.properties.toDate.example: ""
+definitions.license.properties.toDate.format: date-time
+definitions.license.properties.toDate.readOnly: true
+definitions.license.properties.toDate.type: string
+definitions.license.type: object
+definitions.name-direction.allOf.length: 2
+definitions.name-direction.allOf[0].$ref: '#/definitions/type'
+definitions.name-direction.allOf[1].type: object
+definitions.name-prefix.allOf.length: 2
+definitions.name-prefix.allOf[0].$ref: '#/definitions/type'
+definitions.name-prefix.allOf[1].type: object
+definitions.name-type.allOf.length: 2
+definitions.name-type.allOf[0].$ref: '#/definitions/type'
+definitions.name-type.allOf[1].type: object
+definitions.not-found.properties.code.description: The error code.
+definitions.not-found.properties.code.example: "404"
+definitions.not-found.properties.code.type: string
+definitions.not-found.properties.details.items.$ref: '#/definitions/error-details'
+definitions.not-found.properties.details.type: array
+definitions.not-found.properties.message.description: The error message.
+definitions.not-found.properties.message.example: The specified resource was not found
+definitions.not-found.properties.message.type: string
+definitions.not-found.properties.status.description: The error status.
+definitions.not-found.properties.status.example: NOT_FOUND
+definitions.not-found.properties.status.type: string
+definitions.not-found.type: object
+definitions.organisation-address.allOf.length: 2
+definitions.organisation-address.allOf[0].$ref: '#/definitions/address'
+definitions.organisation-address.allOf[1].properties.addressType.default: Principal
+  Place of Business
+definitions.organisation-address.allOf[1].properties.addressType.description: The
+  address type.
+definitions.organisation-address.allOf[1].properties.addressType.enum.length: 2
+definitions.organisation-address.allOf[1].properties.addressType.enum[0]: Mailing
+definitions.organisation-address.allOf[1].properties.addressType.enum[1]: Principal
+  Place of Business
+definitions.organisation-address.allOf[1].properties.addressType.type: string
+definitions.organisation-address.allOf[1].properties.fromDate.description: The date
+  and time the resource became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.organisation-address.allOf[1].properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.organisation-address.allOf[1].properties.fromDate.format: date-time
+definitions.organisation-address.allOf[1].properties.fromDate.readOnly: true
+definitions.organisation-address.allOf[1].properties.fromDate.type: string
+definitions.organisation-address.allOf[1].properties.toDate.description: The date
+  and time the resource became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.organisation-address.allOf[1].properties.toDate.example: ""
+definitions.organisation-address.allOf[1].properties.toDate.format: date-time
+definitions.organisation-address.allOf[1].properties.toDate.readOnly: true
+definitions.organisation-address.allOf[1].properties.toDate.type: string
+definitions.organisation-address.allOf[1].type: object
+definitions.organisation-name.description: The Organisation Name resource.
+definitions.organisation-name.properties.fromDate.description: The date and time the
+  resource became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.organisation-name.properties.fromDate.example: 1928-03-03T09:05:06+10:00
+definitions.organisation-name.properties.fromDate.format: date-time
+definitions.organisation-name.properties.fromDate.readOnly: true
+definitions.organisation-name.properties.fromDate.type: string
+definitions.organisation-name.properties.id.allOf.length: 1
+definitions.organisation-name.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.organisation-name.properties.id.description: The resource's unique identifier.
+definitions.organisation-name.properties.id.readOnly: true
+definitions.organisation-name.properties.name.description: The organisation's name.
+definitions.organisation-name.properties.name.example: 321 Technology Ventures
+definitions.organisation-name.properties.name.type: string
+definitions.organisation-name.properties.toDate.description: The date and time the
+  resource became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.organisation-name.properties.toDate.example: ""
+definitions.organisation-name.properties.toDate.format: date-time
+definitions.organisation-name.properties.toDate.readOnly: true
+definitions.organisation-name.properties.toDate.type: string
+definitions.organisation-name.type: object
+definitions.organisation.description: The Organisation resource.
+definitions.organisation.properties.addresses.items.$ref: '#/definitions/organisation-address'
+definitions.organisation.properties.addresses.type: array
+definitions.organisation.properties.electronicAddresses.items.$ref: '#/definitions/electronic-address'
+definitions.organisation.properties.electronicAddresses.type: array
+definitions.organisation.properties.establishmentDate.description: The organisation's
+  establishment date, for example, `1928-03-03` (in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+  format).
+definitions.organisation.properties.establishmentDate.example: 1928-03-03
+definitions.organisation.properties.establishmentDate.format: date
+definitions.organisation.properties.establishmentDate.type: string
+definitions.organisation.properties.fromDate.description: The date and time the resource
+  became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.organisation.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.organisation.properties.fromDate.format: date-time
+definitions.organisation.properties.fromDate.readOnly: true
+definitions.organisation.properties.fromDate.type: string
+definitions.organisation.properties.id.allOf.length: 1
+definitions.organisation.properties.id.allOf[0].$ref: '#/definitions/partyId'
+definitions.organisation.properties.id.description: The party's unique identifier.
+definitions.organisation.properties.id.readOnly: true
+definitions.organisation.properties.legalEntityType.default: Company
+definitions.organisation.properties.legalEntityType.description: The organisation's
+  legal entity type.
+definitions.organisation.properties.legalEntityType.enum.length: 4
+definitions.organisation.properties.legalEntityType.enum[0]: Company
+definitions.organisation.properties.legalEntityType.enum[1]: Partnership
+definitions.organisation.properties.legalEntityType.enum[2]: Trust
+definitions.organisation.properties.legalEntityType.enum[3]: Joint Venture
+definitions.organisation.properties.legalEntityType.type: string
+definitions.organisation.properties.names.items.$ref: '#/definitions/organisation-name'
+definitions.organisation.properties.names.type: array
+definitions.organisation.properties.registeredIdentifiers.items.$ref: '#/definitions/registered-identifier'
+definitions.organisation.properties.registeredIdentifiers.type: array
+definitions.organisation.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.organisation.properties.toDate.example: ""
+definitions.organisation.properties.toDate.format: date-time
+definitions.organisation.properties.toDate.readOnly: true
+definitions.organisation.properties.toDate.type: string
+definitions.organisation.required.length: 2
+definitions.organisation.required[0]: legalEntityType
+definitions.organisation.required[1]: establishmentDate
+definitions.organisation.type: object
+definitions.party-role.description: The Party Role resource.
+definitions.party-role.properties.fromDate.description: The date and time the resource
+  became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.party-role.properties.fromDate.example: 2016-01-13T09:05:06+10:00
+definitions.party-role.properties.fromDate.format: date-time
+definitions.party-role.properties.fromDate.readOnly: true
+definitions.party-role.properties.fromDate.type: string
+definitions.party-role.properties.id.allOf.length: 1
+definitions.party-role.properties.id.allOf[0].$ref: '#/definitions/roleId'
+definitions.party-role.properties.id.description: The resource's unique identifier.
+definitions.party-role.properties.id.readOnly: true
+definitions.party-role.properties.partyRoleType.default: Employee
+definitions.party-role.properties.partyRoleType.description: The party's role type.
+definitions.party-role.properties.partyRoleType.enum.length: 5
+definitions.party-role.properties.partyRoleType.enum[0]: Director
+definitions.party-role.properties.partyRoleType.enum[1]: Employee
+definitions.party-role.properties.partyRoleType.enum[2]: Member
+definitions.party-role.properties.partyRoleType.enum[3]: Partner
+definitions.party-role.properties.partyRoleType.enum[4]: Trustee
+definitions.party-role.properties.partyRoleType.type: string
+definitions.party-role.properties.relatedPartyId.allOf.length: 1
+definitions.party-role.properties.relatedPartyId.allOf[0].$ref: '#/definitions/partyId'
+definitions.party-role.properties.relatedPartyId.description: The related party's
+  unique identifier.
+definitions.party-role.properties.relatedPartyRoleType.default: Employer
+definitions.party-role.properties.relatedPartyRoleType.description: The related party's
+  role type.
+definitions.party-role.properties.relatedPartyRoleType.enum.length: 6
+definitions.party-role.properties.relatedPartyRoleType.enum[0]: Association
+definitions.party-role.properties.relatedPartyRoleType.enum[1]: Company
+definitions.party-role.properties.relatedPartyRoleType.enum[2]: Employer
+definitions.party-role.properties.relatedPartyRoleType.enum[3]: Organisation
+definitions.party-role.properties.relatedPartyRoleType.enum[4]: Partnership
+definitions.party-role.properties.relatedPartyRoleType.enum[5]: Trust
+definitions.party-role.properties.relatedPartyRoleType.type: string
+definitions.party-role.properties.relationshipType.default: Employment
+definitions.party-role.properties.relationshipType.description: The relationship type.
+definitions.party-role.properties.relationshipType.enum.length: 5
+definitions.party-role.properties.relationshipType.enum[0]: Directorship
+definitions.party-role.properties.relationshipType.enum[1]: Employment
+definitions.party-role.properties.relationshipType.enum[2]: Membership
+definitions.party-role.properties.relationshipType.enum[3]: Partnership
+definitions.party-role.properties.relationshipType.enum[4]: Trusteeship
+definitions.party-role.properties.relationshipType.type: string
+definitions.party-role.properties.toDate.description: The date and time the resource
+  became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.party-role.properties.toDate.example: ""
+definitions.party-role.properties.toDate.format: date-time
+definitions.party-role.properties.toDate.readOnly: true
+definitions.party-role.properties.toDate.type: string
+definitions.party-role.required.length: 2
+definitions.party-role.required[0]: relatedPartyId
+definitions.party-role.required[1]: relationshipType
+definitions.party-role.type: object
+definitions.partyId.allOf.length: 2
+definitions.partyId.allOf[0].$ref: '#/definitions/resourceId'
+definitions.partyId.allOf[1].type: string
+definitions.permission-denied.properties.code.description: The error code.
+definitions.permission-denied.properties.code.example: "403"
+definitions.permission-denied.properties.code.type: string
+definitions.permission-denied.properties.details.items.$ref: '#/definitions/error-details'
+definitions.permission-denied.properties.details.type: array
+definitions.permission-denied.properties.message.description: The error message.
+definitions.permission-denied.properties.message.example: The client does not have
+  sufficient permission
+definitions.permission-denied.properties.message.type: string
+definitions.permission-denied.properties.status.description: The error status.
+definitions.permission-denied.properties.status.example: PERMISSION_DENIED
+definitions.permission-denied.properties.status.type: string
+definitions.permission-denied.type: object
+definitions.registered-identifier-type.allOf.length: 2
+definitions.registered-identifier-type.allOf[0].$ref: '#/definitions/type'
+definitions.registered-identifier-type.allOf[1].type: object
+definitions.registered-identifier.description: The Registered Identifier resource.
+definitions.registered-identifier.properties.fromDate.description: The date and time
+  the resource became active in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.registered-identifier.properties.fromDate.example: 1979-01-13T09:05:06+10:00
+definitions.registered-identifier.properties.fromDate.format: date-time
+definitions.registered-identifier.properties.fromDate.readOnly: true
+definitions.registered-identifier.properties.fromDate.type: string
+definitions.registered-identifier.properties.id.allOf.length: 1
+definitions.registered-identifier.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.registered-identifier.properties.id.description: The resource's unique
+  identifier.
+definitions.registered-identifier.properties.id.readOnly: true
+definitions.registered-identifier.properties.identifier.description: The registered
+  identifier.
+definitions.registered-identifier.properties.identifier.example: "123456789"
+definitions.registered-identifier.properties.identifier.type: string
+definitions.registered-identifier.properties.identifierType.default: ACN
+definitions.registered-identifier.properties.identifierType.description: The registered
+  identifier type.
+definitions.registered-identifier.properties.identifierType.enum.length: 2
+definitions.registered-identifier.properties.identifierType.enum[0]: ACN
+definitions.registered-identifier.properties.identifierType.enum[1]: ABN
+definitions.registered-identifier.properties.identifierType.type: string
+definitions.registered-identifier.properties.toDate.description: The date and time
+  the resource became inactive in the format defined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+definitions.registered-identifier.properties.toDate.example: ""
+definitions.registered-identifier.properties.toDate.format: date-time
+definitions.registered-identifier.properties.toDate.readOnly: true
+definitions.registered-identifier.properties.toDate.type: string
+definitions.registered-identifier.type: object
+definitions.resourceId.description: The resource ID. Defaults to UUID v4
+definitions.resourceId.example: 123e4567-e89b-12d3-a456-426655440000
+definitions.resourceId.maxLength: 36
+definitions.resourceId.type: string
+definitions.role.description: The Role Type resource.
+definitions.role.properties.id.allOf.length: 1
+definitions.role.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.role.properties.id.description: The resource's unique identifier.
+definitions.role.properties.id.readOnly: true
+definitions.role.properties.reciprocalRole.description: The reciprocal role name.
+definitions.role.properties.reciprocalRole.type: string
+definitions.role.properties.reciprocalRoleDescription.description: The reciprocal
+  role description.
+definitions.role.properties.reciprocalRoleDescription.type: string
+definitions.role.properties.relationship.description: The relationship name.
+definitions.role.properties.relationship.type: string
+definitions.role.properties.role.description: The role name.
+definitions.role.properties.role.type: string
+definitions.role.properties.roleDescription.description: The role description.
+definitions.role.properties.roleDescription.type: string
+definitions.role.type: object
+definitions.roleId.allOf.length: 2
+definitions.roleId.allOf[0].$ref: '#/definitions/resourceId'
+definitions.roleId.allOf[1].type: string
+definitions.type.description: The Type resource.
+definitions.type.properties.description.description: The scheme value description.
+definitions.type.properties.description.type: string
+definitions.type.properties.id.allOf.length: 1
+definitions.type.properties.id.allOf[0].$ref: '#/definitions/resourceId'
+definitions.type.properties.id.description: The resource's unique identifier.
+definitions.type.properties.id.readOnly: true
+definitions.type.properties.name.description: The scheme value.
+definitions.type.properties.name.type: string
+definitions.type.type: object
+definitions.unauthenticated.properties.code.description: The error code.
+definitions.unauthenticated.properties.code.example: "401"
+definitions.unauthenticated.properties.code.type: string
+definitions.unauthenticated.properties.details.$ref: '#/definitions/error-details'
+definitions.unauthenticated.properties.message.description: The error message.
+definitions.unauthenticated.properties.message.example: Request not authenticated
+  due to missing, invalid, or expired token
+definitions.unauthenticated.properties.message.type: string
+definitions.unauthenticated.properties.status.description: The error status.
+definitions.unauthenticated.properties.status.example: UNAUTHENTICATED
+definitions.unauthenticated.properties.status.type: string
+definitions.unauthenticated.type: object
+host: api.abr.ato.gov.au
+info.description: |
+  # Introduction
+  The Business Registries API is built on HTTP. The API is RESTful. It has predictable resource URIs.
+
+    The API is documented in <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification">OpenAPI</a> format.
+    In addition to the standard OpenAPI syntax we use a few
+    <a target="_blank" href="https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md">vendor extensions</a>.
+
+  # Overview
+  The following sections describe the resources that make up the Business Registries REST API.
+  ## Current Version
+  By default, all requests to https://api.abr.ato.gov.au receive the `v1` version of the REST API. We encourage you to explicitly request this version via the `Accept` header.
+
+      Accept: application/vnd.abr-ato.v1+json
+
+  ## Schema
+  All API access is over HTTPS, and accessed from https://api.abr.ato.gov.au. All data is sent and received as JSON. Blank fields are included.
+
+    All dates use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+      YYYY-MM-DD
+
+    For example: `2017-07-01` (the 1st of July 2017)
+
+    All timestamps use the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+
+      YYYY-MM-DDTHH:MM:SSZ
+
+    For example: `2017-07-01T11:05:06+10:00`
+
+  ## Timezones
+  Some requests allow for specifying timestamps or generate timestamps with time zone information. We apply the following rules, in order of priority, to determine timezone information for API calls.
+  ### Explicitly provide an ISO 8601 timestamp with timezone information
+  For API calls that allow for a timestamp to be specified, we use that exact timestamp.
+
+    For example: `2017-07-01T11:05:06+10:00`
+
+  ## Pagination
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+
+    For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+  ## Parameters
+  Many API methods take optional parameters:
+
+      GET /individuals/1234/addresses/?addressType='Mailing'
+
+  In this example, the '1234' value is provided for the `:partyId` parameter in the path while `:addressType` is passed in the query string.
+  For POST, PATCH, PUT, and DELETE requests, parameters not included in the URL should be encoded as JSON with a Content-Type of 'application/json'.
+  ## Metadata
+  The API provides **metadata services** that you can use to discover information about the classifcation schemes and values used by the Registry.
+
+    For example:
+
+      GET /classifications/roles
+
+    Sample response:
+
+      [
+        {
+          "id": "123e4567-e89b-12d3-a456-426655440001",
+          "role": "Director",
+          "roleDescription": "An individual responsible for managing a company's ...",
+          "relationship": "Directorship",
+          "reciprocalRole": "Company",
+          "reciprocalRoleDescription": "An incorporated legal entity."
+        },
+        {
+          ...
+        }
+      ]
+
+  ## Root Endpoint
+  You can issue a GET request to the root endpoint (also known as the service root) to get all the endpoint categories that the REST API supports:
+
+      curl https://api.abr.ato.gov.au
+
+  ## Authentication
+  The Business Registries API supports API Key authentication.
+
+    When you sign up for an account, you are given your first API key. You can generate additional API keys, and delete
+    API keys (as you may need to rotate your keys in the future). You authenticate to the Business Registries API by
+    providing your secret key in the request header.
+
+    **Note:** Some requests will return `404 Not Found`, instead of `403 Permission Denied`. This is to prevent the
+    accidental leakage of information to unauthorised users.
+info.license.name: Creative Commons Attribution 3.0 Australia
+info.license.url: https://creativecommons.org/licenses/by/3.0/au/
+info.termsOfService: https://ato.gov.au/terms-of-service/
+info.title: Business Registries
+info.version: 0.0.6
+info.x-apisguru-categories.length: 1
+info.x-apisguru-categories[0]: financial
+info.x-logo.backgroundColor: '#D3D3D3'
+info.x-logo.url: https://api.apis.guru/v2/cache/logo/https_www.ato.gov.au_uploadedImages_Content__DEM_Images_logo-ato.png
+info.x-origin.length: 1
+info.x-origin[0].format: swagger
+info.x-origin[0].url: https://ato-team.github.io/business-registries-rest-api-specification/swagger.yaml
+info.x-origin[0].version: "2.0"
+info.x-preferred: true
+info.x-providerName: ato.gov.au
+parameters.addressId.description: The address identifier.
+parameters.addressId.in: path
+parameters.addressId.name: addressId
+parameters.addressId.required: true
+parameters.addressId.type: string
+parameters.apiKey.description: The API key.
+parameters.apiKey.in: header
+parameters.apiKey.name: apiKey
+parameters.apiKey.required: true
+parameters.apiKey.type: string
+parameters.dateOfBirth.description: The individual's date of birth, for example, `1979-01-13`
+  (in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).
+parameters.dateOfBirth.in: query
+parameters.dateOfBirth.name: dateOfBirth
+parameters.dateOfBirth.required: false
+parameters.dateOfBirth.type: string
+parameters.identifier.description: The identifier, for example, `123456789`.
+parameters.identifier.in: query
+parameters.identifier.name: identifier
+parameters.identifier.required: false
+parameters.identifier.type: string
+parameters.partyId.description: The party identifier.
+parameters.partyId.in: path
+parameters.partyId.name: partyId
+parameters.partyId.required: true
+parameters.partyId.type: string
+parameters.placeOfBirth.description: The individual's place of birth, for example,
+  `Tamworth`.
+parameters.placeOfBirth.in: query
+parameters.placeOfBirth.name: placeOfBirth
+parameters.placeOfBirth.required: false
+parameters.placeOfBirth.type: string
+parameters.productId.description: The product identifier.
+parameters.productId.in: path
+parameters.productId.name: productId
+parameters.productId.required: true
+parameters.productId.type: string
+parameters.registeredIdentifier.description: The registered identifier, for example,
+  `ACN` or `ABN`.
+parameters.registeredIdentifier.in: query
+parameters.registeredIdentifier.name: registeredIdentifier
+parameters.registeredIdentifier.required: false
+parameters.registeredIdentifier.type: string
+parameters.roleId.description: The role identifier.
+parameters.roleId.in: path
+parameters.roleId.name: roleId
+parameters.roleId.required: true
+parameters.roleId.type: string
+paths./business-names.get.description: |
+  Retrieve a list of business names
+paths./business-names.get.parameters.length: 1
+paths./business-names.get.parameters[0].$ref: '#/parameters/apiKey'
+paths./business-names.get.responses.200.description: A list of business names was
+  retrieved successfully
+paths./business-names.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./business-names.get.responses.200.headers.Link.type: string
+paths./business-names.get.responses.200.schema.items.$ref: '#/definitions/business-name'
+paths./business-names.get.responses.200.schema.type: array
+paths./business-names.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./business-names.get.responses.404.$ref: '#/responses/NotFound'
+paths./business-names.get.summary: Retrieve a list of business names
+paths./business-names.get.tags.length: 1
+paths./business-names.get.tags[0]: Business Names
+paths./classifications/address-types.get.responses.200.description: Address types
+  were retrieved successfully
+paths./classifications/address-types.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/address-types.get.responses.200.headers.Link.type: string
+paths./classifications/address-types.get.responses.200.schema.example.length: 2
+paths./classifications/address-types.get.responses.200.schema.example[0].description: The
+  address at which an individual or organisation receives letters or packages.
+paths./classifications/address-types.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/address-types.get.responses.200.schema.example[0].name: Mailing
+paths./classifications/address-types.get.responses.200.schema.example[1].description: The
+  main location where work is conducted.
+paths./classifications/address-types.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/address-types.get.responses.200.schema.example[1].name: Principal
+  Place of Business
+paths./classifications/address-types.get.responses.200.schema.items.$ref: '#/definitions/address-type'
+paths./classifications/address-types.get.responses.200.schema.type: array
+paths./classifications/address-types.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/address-types.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/address-types.get.summary: Retrieve a list of address types
+paths./classifications/address-types.get.tags.length: 1
+paths./classifications/address-types.get.tags[0]: Address Types
+paths./classifications/address-types.parameters.length: 1
+paths./classifications/address-types.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/business-name-lifecycle-states.get.responses.200.description: Business
+  name lifecycle states were retrieved successfully
+paths./classifications/business-name-lifecycle-states.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/business-name-lifecycle-states.get.responses.200.headers.Link.type: string
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example.length: 5
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[0].description: The
+  Business Name has been approved.
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[0].name: Approved
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[1].description: The
+  Business Name has expired.
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[1].name: Expired
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[2].description: The
+  Business Name has been issued.
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[2].id: 123e4567-e89b-12d3-a456-426655440003
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[2].name: Issued
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[3].description: The
+  Business Name is pending approval.
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[3].id: 123e4567-e89b-12d3-a456-426655440004
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[3].name: Pending
+  Approval
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[4].description: The
+  Business Name has been suspended.
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[4].id: 123e4567-e89b-12d3-a456-426655440005
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.example[4].name: Suspended
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.items.$ref: '#/definitions/business-name-lifecycle-state'
+paths./classifications/business-name-lifecycle-states.get.responses.200.schema.type: array
+paths./classifications/business-name-lifecycle-states.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/business-name-lifecycle-states.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/business-name-lifecycle-states.get.summary: Retrieve a list
+  of business name lifecycle states
+paths./classifications/business-name-lifecycle-states.get.tags.length: 1
+paths./classifications/business-name-lifecycle-states.get.tags[0]: Business Name Lifecycle
+  States
+paths./classifications/business-name-lifecycle-states.parameters.length: 1
+paths./classifications/business-name-lifecycle-states.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/electronic-address-types.get.responses.200.description: Electronic
+  address types were retrieved successfully
+paths./classifications/electronic-address-types.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/electronic-address-types.get.responses.200.headers.Link.type: string
+paths./classifications/electronic-address-types.get.responses.200.schema.example.length: 2
+paths./classifications/electronic-address-types.get.responses.200.schema.example[0].description: An
+  address used to send and receive emails.
+paths./classifications/electronic-address-types.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/electronic-address-types.get.responses.200.schema.example[0].name: Email
+paths./classifications/electronic-address-types.get.responses.200.schema.example[1].description: A
+  number used to send and receive faxes.
+paths./classifications/electronic-address-types.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/electronic-address-types.get.responses.200.schema.example[1].name: Fax
+paths./classifications/electronic-address-types.get.responses.200.schema.items.$ref: '#/definitions/electronic-address-type'
+paths./classifications/electronic-address-types.get.responses.200.schema.type: array
+paths./classifications/electronic-address-types.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/electronic-address-types.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/electronic-address-types.get.summary: Retrieve a list of electronic
+  address types
+paths./classifications/electronic-address-types.get.tags.length: 1
+paths./classifications/electronic-address-types.get.tags[0]: Electronic Address Types
+paths./classifications/electronic-address-types.parameters.length: 1
+paths./classifications/electronic-address-types.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/genders.get.responses.200.description: Genders were retrieved
+  successfully
+paths./classifications/genders.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/genders.get.responses.200.headers.Link.type: string
+paths./classifications/genders.get.responses.200.schema.example.length: 4
+paths./classifications/genders.get.responses.200.schema.example[0].gender: Not Known
+paths./classifications/genders.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/genders.get.responses.200.schema.example[1].gender: Male
+paths./classifications/genders.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/genders.get.responses.200.schema.example[2].gender: Female
+paths./classifications/genders.get.responses.200.schema.example[2].id: 123e4567-e89b-12d3-a456-426655440003
+paths./classifications/genders.get.responses.200.schema.example[3].gender: Not Applicable
+paths./classifications/genders.get.responses.200.schema.example[3].id: 123e4567-e89b-12d3-a456-426655440004
+paths./classifications/genders.get.responses.200.schema.items.$ref: '#/definitions/gender'
+paths./classifications/genders.get.responses.200.schema.type: array
+paths./classifications/genders.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/genders.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/genders.get.summary: Retrieve a list of genders
+paths./classifications/genders.get.tags.length: 1
+paths./classifications/genders.get.tags[0]: Genders
+paths./classifications/genders.parameters.length: 1
+paths./classifications/genders.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/legal-entity-types.get.responses.200.description: Legal entity
+  types were retrieved successfully
+paths./classifications/legal-entity-types.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/legal-entity-types.get.responses.200.headers.Link.type: string
+paths./classifications/legal-entity-types.get.responses.200.schema.example.length: 5
+paths./classifications/legal-entity-types.get.responses.200.schema.example[0].description: If
+  you operate as a sole trader, you're responsible for all aspects of the business,
+  including any debts the business incurs.
+paths./classifications/legal-entity-types.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/legal-entity-types.get.responses.200.schema.example[0].name: Sole
+  Trader
+paths./classifications/legal-entity-types.get.responses.200.schema.example[1].description: A
+  partnership is two or more individuals or organisations who do business as partners
+  or receive income jointly.
+paths./classifications/legal-entity-types.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/legal-entity-types.get.responses.200.schema.example[1].name: Partnership
+paths./classifications/legal-entity-types.get.responses.200.schema.example[2].description: A
+  joint venture is two or more people or entities who join to do business together
+  for a particular purpose, usually a single project, rather than as an ongoing business.
+paths./classifications/legal-entity-types.get.responses.200.schema.example[2].id: 123e4567-e89b-12d3-a456-426655440003
+paths./classifications/legal-entity-types.get.responses.200.schema.example[2].name: Joint
+  Venture
+paths./classifications/legal-entity-types.get.responses.200.schema.example[3].description: A
+  company is a separate legal entity. This means it has the same rights as a natural
+  person and can incur debt, sue and be sued.
+paths./classifications/legal-entity-types.get.responses.200.schema.example[3].id: 123e4567-e89b-12d3-a456-426655440004
+paths./classifications/legal-entity-types.get.responses.200.schema.example[3].name: Company
+paths./classifications/legal-entity-types.get.responses.200.schema.example[4].description: A
+  trust is an obligation imposed on a person – the trustee – to hold property or assets
+  (e.g. business assets) for the benefit of others (known as beneficiaries).
+paths./classifications/legal-entity-types.get.responses.200.schema.example[4].id: 123e4567-e89b-12d3-a456-426655440005
+paths./classifications/legal-entity-types.get.responses.200.schema.example[4].name: Trust
+paths./classifications/legal-entity-types.get.responses.200.schema.items.$ref: '#/definitions/legal-entity-type'
+paths./classifications/legal-entity-types.get.responses.200.schema.type: array
+paths./classifications/legal-entity-types.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/legal-entity-types.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/legal-entity-types.get.summary: Retrieve a list of legal entity
+  types
+paths./classifications/legal-entity-types.get.tags.length: 1
+paths./classifications/legal-entity-types.get.tags[0]: Legal Entity Types
+paths./classifications/legal-entity-types.parameters.length: 1
+paths./classifications/legal-entity-types.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/license-lifecycle-states.get.responses.200.description: License
+  lifecycle states were retrieved successfully
+paths./classifications/license-lifecycle-states.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/license-lifecycle-states.get.responses.200.headers.Link.type: string
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example.length: 5
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[0].description: The
+  License has been approved.
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[0].name: Approved
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[1].description: The
+  License has expired.
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[1].name: Expired
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[2].description: The
+  License has been issued.
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[2].id: 123e4567-e89b-12d3-a456-426655440003
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[2].name: Issued
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[3].description: The
+  License is pending approval.
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[3].id: 123e4567-e89b-12d3-a456-426655440004
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[3].name: Pending
+  Approval
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[4].description: The
+  License has been suspended.
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[4].id: 123e4567-e89b-12d3-a456-426655440005
+paths./classifications/license-lifecycle-states.get.responses.200.schema.example[4].name: Suspended
+paths./classifications/license-lifecycle-states.get.responses.200.schema.items.$ref: '#/definitions/license-lifecycle-state'
+paths./classifications/license-lifecycle-states.get.responses.200.schema.type: array
+paths./classifications/license-lifecycle-states.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/license-lifecycle-states.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/license-lifecycle-states.get.summary: Retrieve a list of license
+  lifecycle states
+paths./classifications/license-lifecycle-states.get.tags.length: 1
+paths./classifications/license-lifecycle-states.get.tags[0]: License Lifecycle States
+paths./classifications/license-lifecycle-states.parameters.length: 1
+paths./classifications/license-lifecycle-states.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/license-types.get.responses.200.description: License types
+  were retrieved successfully
+paths./classifications/license-types.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/license-types.get.responses.200.headers.Link.type: string
+paths./classifications/license-types.get.responses.200.schema.example.length: 2
+paths./classifications/license-types.get.responses.200.schema.example[0].description: To
+  conduct a financial services business in Australia, you must have an Australian
+  Financial Services (AFS) licence.
+paths./classifications/license-types.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/license-types.get.responses.200.schema.example[0].name: Australian
+  Financial Services License
+paths./classifications/license-types.get.responses.200.schema.example[1].description: To
+  conduct a <insert-name-here> business you must have a 2B licence.
+paths./classifications/license-types.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/license-types.get.responses.200.schema.example[1].name: 2B
+  License
+paths./classifications/license-types.get.responses.200.schema.items.$ref: '#/definitions/license-type'
+paths./classifications/license-types.get.responses.200.schema.type: array
+paths./classifications/license-types.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/license-types.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/license-types.get.summary: Retrieve a list of license types
+paths./classifications/license-types.get.tags.length: 1
+paths./classifications/license-types.get.tags[0]: License Types
+paths./classifications/license-types.parameters.length: 1
+paths./classifications/license-types.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/name-directions.get.responses.200.description: Name directions
+  were retrieved successfully
+paths./classifications/name-directions.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/name-directions.get.responses.200.headers.Link.type: string
+paths./classifications/name-directions.get.responses.200.schema.example.length: 2
+paths./classifications/name-directions.get.responses.200.schema.example[0].description: The
+  full name or formal salutation is rendered left to right.
+paths./classifications/name-directions.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/name-directions.get.responses.200.schema.example[0].name: left-to-right
+paths./classifications/name-directions.get.responses.200.schema.example[1].description: The
+  full name or formal salutation is rendered right to left.
+paths./classifications/name-directions.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/name-directions.get.responses.200.schema.example[1].name: right-to-left
+paths./classifications/name-directions.get.responses.200.schema.items.$ref: '#/definitions/name-direction'
+paths./classifications/name-directions.get.responses.200.schema.type: array
+paths./classifications/name-directions.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/name-directions.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/name-directions.get.summary: Retrieve a list of name directions
+paths./classifications/name-directions.get.tags.length: 1
+paths./classifications/name-directions.get.tags[0]: Name Directions
+paths./classifications/name-directions.parameters.length: 1
+paths./classifications/name-directions.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/name-prefixes.get.responses.200.description: Name prefixes
+  were retrieved successfully
+paths./classifications/name-prefixes.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/name-prefixes.get.responses.200.headers.Link.type: string
+paths./classifications/name-prefixes.get.responses.200.schema.example.length: 2
+paths./classifications/name-prefixes.get.responses.200.schema.example[0].description: A
+  title used before a family name or formal salutation to address a man.
+paths./classifications/name-prefixes.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/name-prefixes.get.responses.200.schema.example[0].name: Mr
+paths./classifications/name-prefixes.get.responses.200.schema.example[1].description: A
+  title used before a family name or formal salutation to address a woman.
+paths./classifications/name-prefixes.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/name-prefixes.get.responses.200.schema.example[1].name: Ms
+paths./classifications/name-prefixes.get.responses.200.schema.items.$ref: '#/definitions/name-prefix'
+paths./classifications/name-prefixes.get.responses.200.schema.type: array
+paths./classifications/name-prefixes.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/name-prefixes.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/name-prefixes.get.summary: Retrieve a list of name prefixes
+paths./classifications/name-prefixes.get.tags.length: 1
+paths./classifications/name-prefixes.get.tags[0]: Name Prefixes
+paths./classifications/name-prefixes.parameters.length: 1
+paths./classifications/name-prefixes.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/name-types.get.responses.200.description: Name types were retrieved
+  successfully
+paths./classifications/name-types.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/name-types.get.responses.200.headers.Link.type: string
+paths./classifications/name-types.get.responses.200.schema.example.length: 2
+paths./classifications/name-types.get.responses.200.schema.example[0].description: An
+  alternate name used by a party.
+paths./classifications/name-types.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/name-types.get.responses.200.schema.example[0].name: Alias
+paths./classifications/name-types.get.responses.200.schema.example[1].description: The
+  primary name used by a party.
+paths./classifications/name-types.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/name-types.get.responses.200.schema.example[1].name: Principal
+  Name
+paths./classifications/name-types.get.responses.200.schema.items.$ref: '#/definitions/name-type'
+paths./classifications/name-types.get.responses.200.schema.type: array
+paths./classifications/name-types.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/name-types.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/name-types.get.summary: Retrieve a list of name types
+paths./classifications/name-types.get.tags.length: 1
+paths./classifications/name-types.get.tags[0]: Name Types
+paths./classifications/name-types.parameters.length: 1
+paths./classifications/name-types.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/registered-identifier-types.get.responses.200.description: Registered
+  identifier types were retrieved successfully
+paths./classifications/registered-identifier-types.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/registered-identifier-types.get.responses.200.headers.Link.type: string
+paths./classifications/registered-identifier-types.get.responses.200.schema.example.length: 2
+paths./classifications/registered-identifier-types.get.responses.200.schema.example[0].description: An
+  Australian Business Number (ABN) is a unique eleven-character number issued by the
+  Australian Business Register (ABR).
+paths./classifications/registered-identifier-types.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/registered-identifier-types.get.responses.200.schema.example[0].name: ABN
+paths./classifications/registered-identifier-types.get.responses.200.schema.example[1].description: An
+  Australian Company Number (ACN) is a unique nine-character number issued by the
+  Australian Securities and Investments Commission (ASIC).
+paths./classifications/registered-identifier-types.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/registered-identifier-types.get.responses.200.schema.example[1].name: ACN
+paths./classifications/registered-identifier-types.get.responses.200.schema.items.$ref: '#/definitions/registered-identifier-type'
+paths./classifications/registered-identifier-types.get.responses.200.schema.type: array
+paths./classifications/registered-identifier-types.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/registered-identifier-types.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/registered-identifier-types.get.summary: Retrieve a list of
+  registered identifier types
+paths./classifications/registered-identifier-types.get.tags.length: 1
+paths./classifications/registered-identifier-types.get.tags[0]: Registered Identifier
+  Types
+paths./classifications/registered-identifier-types.parameters.length: 1
+paths./classifications/registered-identifier-types.parameters[0].$ref: '#/parameters/apiKey'
+paths./classifications/roles.get.responses.200.description: Roles were retrieved successfully
+paths./classifications/roles.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./classifications/roles.get.responses.200.headers.Link.type: string
+paths./classifications/roles.get.responses.200.schema.example.length: 2
+paths./classifications/roles.get.responses.200.schema.example[0].id: 123e4567-e89b-12d3-a456-426655440001
+paths./classifications/roles.get.responses.200.schema.example[0].reciprocalRole: Company
+paths./classifications/roles.get.responses.200.schema.example[0].reciprocalRoleDescription: An
+  incorporated legal entity.
+paths./classifications/roles.get.responses.200.schema.example[0].relationship: Directorship
+paths./classifications/roles.get.responses.200.schema.example[0].role: Director
+paths./classifications/roles.get.responses.200.schema.example[0].roleDescription: An
+  individual responsible for managing a company's business activities.
+paths./classifications/roles.get.responses.200.schema.example[1].id: 123e4567-e89b-12d3-a456-426655440002
+paths./classifications/roles.get.responses.200.schema.example[1].reciprocalRole: Employer
+paths./classifications/roles.get.responses.200.schema.example[1].reciprocalRoleDescription: An
+  individual or organisation that employs people.
+paths./classifications/roles.get.responses.200.schema.example[1].relationship: Employment
+paths./classifications/roles.get.responses.200.schema.example[1].role: Employee
+paths./classifications/roles.get.responses.200.schema.example[1].roleDescription: An
+  individual employed for wages or salary.
+paths./classifications/roles.get.responses.200.schema.items.$ref: '#/definitions/role'
+paths./classifications/roles.get.responses.200.schema.type: array
+paths./classifications/roles.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./classifications/roles.get.responses.404.$ref: '#/responses/NotFound'
+paths./classifications/roles.get.summary: Retrieve a list of roles
+paths./classifications/roles.get.tags.length: 1
+paths./classifications/roles.get.tags[0]: Roles
+paths./classifications/roles.parameters.length: 1
+paths./classifications/roles.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals.get.description: |
+  Retrieve a list of individuals
+paths./individuals.get.parameters.length: 3
+paths./individuals.get.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals.get.parameters[1].$ref: '#/parameters/dateOfBirth'
+paths./individuals.get.parameters[2].$ref: '#/parameters/placeOfBirth'
+paths./individuals.get.responses.200.description: A list of individuals was retrieved
+  successfully
+paths./individuals.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./individuals.get.responses.200.headers.Link.type: string
+paths./individuals.get.responses.200.schema.items.$ref: '#/definitions/individual'
+paths./individuals.get.responses.200.schema.type: array
+paths./individuals.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals.get.summary: Retrieve a list of individuals
+paths./individuals.get.tags.length: 1
+paths./individuals.get.tags[0]: Individuals
+paths./individuals.post.description: |
+  Create an individual
+paths./individuals.post.parameters.length: 2
+paths./individuals.post.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals.post.parameters[1].description: Individual resource
+paths./individuals.post.parameters[1].in: body
+paths./individuals.post.parameters[1].name: body
+paths./individuals.post.parameters[1].required: true
+paths./individuals.post.parameters[1].schema.$ref: '#/definitions/individual'
+paths./individuals.post.responses.201.description: Individual was created
+paths./individuals.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./individuals.post.responses.201.headers.Location.type: string
+paths./individuals.post.responses.201.schema.$ref: '#/definitions/individual'
+paths./individuals.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals.post.summary: Create an individual
+paths./individuals.post.tags.length: 1
+paths./individuals.post.tags[0]: Individuals
+paths./individuals/{partyId}.delete.description: |
+  Delete an individual with the specified identifier
+paths./individuals/{partyId}.delete.responses.204.description: Individual was deleted
+paths./individuals/{partyId}.delete.responses.400.$ref: '#/responses/FailedPrecondition'
+paths./individuals/{partyId}.delete.responses.400.description: Individual has related
+  resources and cannot be deleted
+paths./individuals/{partyId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}.delete.summary: Delete an individual
+paths./individuals/{partyId}.delete.tags.length: 1
+paths./individuals/{partyId}.delete.tags[0]: Individuals
+paths./individuals/{partyId}.get.description: |
+  Retrieve an individual with the specified identifier
+paths./individuals/{partyId}.get.responses.200.description: Individual was retrieved
+  successfully
+paths./individuals/{partyId}.get.responses.200.schema.$ref: '#/definitions/individual'
+paths./individuals/{partyId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}.get.summary: Retrieve an individual
+paths./individuals/{partyId}.get.tags.length: 1
+paths./individuals/{partyId}.get.tags[0]: Individuals
+paths./individuals/{partyId}.parameters.length: 2
+paths./individuals/{partyId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}.put.description: |
+  Update an individual
+paths./individuals/{partyId}.put.parameters.length: 1
+paths./individuals/{partyId}.put.parameters[0].description: Individual resource
+paths./individuals/{partyId}.put.parameters[0].in: body
+paths./individuals/{partyId}.put.parameters[0].name: body
+paths./individuals/{partyId}.put.parameters[0].required: true
+paths./individuals/{partyId}.put.parameters[0].schema.$ref: '#/definitions/individual'
+paths./individuals/{partyId}.put.responses.200.description: Individual was updated
+paths./individuals/{partyId}.put.responses.200.schema.$ref: '#/definitions/individual'
+paths./individuals/{partyId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}.put.summary: Update an individual
+paths./individuals/{partyId}.put.tags.length: 1
+paths./individuals/{partyId}.put.tags[0]: Individuals
+paths./individuals/{partyId}/addresses.get.responses.200.description: Addresses were
+  retrieved successfully
+paths./individuals/{partyId}/addresses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./individuals/{partyId}/addresses.get.responses.200.headers.Link.type: string
+paths./individuals/{partyId}/addresses.get.responses.200.schema.items.$ref: '#/definitions/address'
+paths./individuals/{partyId}/addresses.get.responses.200.schema.type: array
+paths./individuals/{partyId}/addresses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/addresses.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/addresses.get.summary: Retrieve a list of addresses
+paths./individuals/{partyId}/addresses.get.tags.length: 1
+paths./individuals/{partyId}/addresses.get.tags[0]: Individuals Addresses
+paths./individuals/{partyId}/addresses.parameters.length: 2
+paths./individuals/{partyId}/addresses.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/addresses.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/addresses.post.description: |
+  Create an address
+paths./individuals/{partyId}/addresses.post.parameters.length: 1
+paths./individuals/{partyId}/addresses.post.parameters[0].description: Address resource
+paths./individuals/{partyId}/addresses.post.parameters[0].in: body
+paths./individuals/{partyId}/addresses.post.parameters[0].name: body
+paths./individuals/{partyId}/addresses.post.parameters[0].required: true
+paths./individuals/{partyId}/addresses.post.parameters[0].schema.$ref: '#/definitions/address'
+paths./individuals/{partyId}/addresses.post.responses.201.description: Address was
+  created
+paths./individuals/{partyId}/addresses.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./individuals/{partyId}/addresses.post.responses.201.headers.Location.type: string
+paths./individuals/{partyId}/addresses.post.responses.201.schema.$ref: '#/definitions/address'
+paths./individuals/{partyId}/addresses.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/addresses.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/addresses.post.summary: Create an address
+paths./individuals/{partyId}/addresses.post.tags.length: 1
+paths./individuals/{partyId}/addresses.post.tags[0]: Individuals Addresses
+paths./individuals/{partyId}/addresses/{addressId}.delete.description: |
+  Delete an address
+paths./individuals/{partyId}/addresses/{addressId}.delete.responses.204.description: Address
+  was deleted
+paths./individuals/{partyId}/addresses/{addressId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/addresses/{addressId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/addresses/{addressId}.delete.summary: Delete an address
+paths./individuals/{partyId}/addresses/{addressId}.delete.tags.length: 1
+paths./individuals/{partyId}/addresses/{addressId}.delete.tags[0]: Individuals Addresses
+paths./individuals/{partyId}/addresses/{addressId}.get.description: |
+  Retrieve an address
+paths./individuals/{partyId}/addresses/{addressId}.get.responses.200.description: Address
+  was retrieved successfully
+paths./individuals/{partyId}/addresses/{addressId}.get.responses.200.schema.$ref: '#/definitions/address'
+paths./individuals/{partyId}/addresses/{addressId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/addresses/{addressId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/addresses/{addressId}.get.summary: Retrieve an address
+paths./individuals/{partyId}/addresses/{addressId}.get.tags.length: 1
+paths./individuals/{partyId}/addresses/{addressId}.get.tags[0]: Individuals Addresses
+paths./individuals/{partyId}/addresses/{addressId}.parameters.length: 3
+paths./individuals/{partyId}/addresses/{addressId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/addresses/{addressId}.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/addresses/{addressId}.parameters[2].$ref: '#/parameters/addressId'
+paths./individuals/{partyId}/addresses/{addressId}.put.description: |
+  Update an address
+paths./individuals/{partyId}/addresses/{addressId}.put.parameters.length: 1
+paths./individuals/{partyId}/addresses/{addressId}.put.parameters[0].description: Address
+  resource
+paths./individuals/{partyId}/addresses/{addressId}.put.parameters[0].in: body
+paths./individuals/{partyId}/addresses/{addressId}.put.parameters[0].name: body
+paths./individuals/{partyId}/addresses/{addressId}.put.parameters[0].required: true
+paths./individuals/{partyId}/addresses/{addressId}.put.parameters[0].schema.$ref: '#/definitions/address'
+paths./individuals/{partyId}/addresses/{addressId}.put.responses.200.description: Address
+  was updated
+paths./individuals/{partyId}/addresses/{addressId}.put.responses.200.schema.$ref: '#/definitions/address'
+paths./individuals/{partyId}/addresses/{addressId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/addresses/{addressId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/addresses/{addressId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/addresses/{addressId}.put.summary: Update an address
+paths./individuals/{partyId}/addresses/{addressId}.put.tags.length: 1
+paths./individuals/{partyId}/addresses/{addressId}.put.tags[0]: Individuals Addresses
+paths./individuals/{partyId}/business-names.get.responses.200.description: Business
+  Names were retrieved successfully
+paths./individuals/{partyId}/business-names.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./individuals/{partyId}/business-names.get.responses.200.headers.Link.type: string
+paths./individuals/{partyId}/business-names.get.responses.200.schema.items.$ref: '#/definitions/business-name'
+paths./individuals/{partyId}/business-names.get.responses.200.schema.type: array
+paths./individuals/{partyId}/business-names.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/business-names.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/business-names.get.summary: Retrieve a list of business
+  names
+paths./individuals/{partyId}/business-names.get.tags.length: 1
+paths./individuals/{partyId}/business-names.get.tags[0]: Individuals Business Names
+paths./individuals/{partyId}/business-names.parameters.length: 2
+paths./individuals/{partyId}/business-names.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/business-names.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/business-names.post.description: |
+  Create a business name
+paths./individuals/{partyId}/business-names.post.parameters.length: 1
+paths./individuals/{partyId}/business-names.post.parameters[0].description: Business
+  Name resource
+paths./individuals/{partyId}/business-names.post.parameters[0].in: body
+paths./individuals/{partyId}/business-names.post.parameters[0].name: body
+paths./individuals/{partyId}/business-names.post.parameters[0].required: true
+paths./individuals/{partyId}/business-names.post.parameters[0].schema.$ref: '#/definitions/business-name'
+paths./individuals/{partyId}/business-names.post.responses.201.description: Business
+  Name was created
+paths./individuals/{partyId}/business-names.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./individuals/{partyId}/business-names.post.responses.201.headers.Location.type: string
+paths./individuals/{partyId}/business-names.post.responses.201.schema.$ref: '#/definitions/business-name'
+paths./individuals/{partyId}/business-names.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/business-names.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/business-names.post.summary: Create a business name
+paths./individuals/{partyId}/business-names.post.tags.length: 1
+paths./individuals/{partyId}/business-names.post.tags[0]: Individuals Business Names
+paths./individuals/{partyId}/business-names/{productId}.delete.description: |
+  Delete a business name
+paths./individuals/{partyId}/business-names/{productId}.delete.responses.204.description: Address
+  was deleted
+paths./individuals/{partyId}/business-names/{productId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/business-names/{productId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/business-names/{productId}.delete.summary: Delete a business
+  name
+paths./individuals/{partyId}/business-names/{productId}.delete.tags.length: 1
+paths./individuals/{partyId}/business-names/{productId}.delete.tags[0]: Individuals
+  Business Names
+paths./individuals/{partyId}/business-names/{productId}.get.description: |
+  Retrieve a business name
+paths./individuals/{partyId}/business-names/{productId}.get.responses.200.description: Business
+  Name was retrieved successfully
+paths./individuals/{partyId}/business-names/{productId}.get.responses.200.schema.$ref: '#/definitions/business-name'
+paths./individuals/{partyId}/business-names/{productId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/business-names/{productId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/business-names/{productId}.get.summary: Retrieve a business
+  name
+paths./individuals/{partyId}/business-names/{productId}.get.tags.length: 1
+paths./individuals/{partyId}/business-names/{productId}.get.tags[0]: Individuals Business
+  Names
+paths./individuals/{partyId}/business-names/{productId}.parameters.length: 3
+paths./individuals/{partyId}/business-names/{productId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/business-names/{productId}.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/business-names/{productId}.parameters[2].$ref: '#/parameters/productId'
+paths./individuals/{partyId}/business-names/{productId}.put.description: |
+  Update a business name
+paths./individuals/{partyId}/business-names/{productId}.put.parameters.length: 1
+paths./individuals/{partyId}/business-names/{productId}.put.parameters[0].description: Business
+  Name resource
+paths./individuals/{partyId}/business-names/{productId}.put.parameters[0].in: body
+paths./individuals/{partyId}/business-names/{productId}.put.parameters[0].name: body
+paths./individuals/{partyId}/business-names/{productId}.put.parameters[0].required: true
+paths./individuals/{partyId}/business-names/{productId}.put.parameters[0].schema.$ref: '#/definitions/business-name'
+paths./individuals/{partyId}/business-names/{productId}.put.responses.200.description: Address
+  was updated
+paths./individuals/{partyId}/business-names/{productId}.put.responses.200.schema.$ref: '#/definitions/business-name'
+paths./individuals/{partyId}/business-names/{productId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/business-names/{productId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/business-names/{productId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/business-names/{productId}.put.summary: Update a business
+  name
+paths./individuals/{partyId}/business-names/{productId}.put.tags.length: 1
+paths./individuals/{partyId}/business-names/{productId}.put.tags[0]: Individuals Business
+  Names
+paths./individuals/{partyId}/electronic-addresses.get.responses.200.description: Electronic
+  addresses were retrieved successfully
+paths./individuals/{partyId}/electronic-addresses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./individuals/{partyId}/electronic-addresses.get.responses.200.headers.Link.type: string
+paths./individuals/{partyId}/electronic-addresses.get.responses.200.schema.items.$ref: '#/definitions/electronic-address'
+paths./individuals/{partyId}/electronic-addresses.get.responses.200.schema.type: array
+paths./individuals/{partyId}/electronic-addresses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/electronic-addresses.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/electronic-addresses.get.summary: Retrieve a list of
+  electronic addresses
+paths./individuals/{partyId}/electronic-addresses.get.tags.length: 1
+paths./individuals/{partyId}/electronic-addresses.get.tags[0]: Individuals Electronic
+  Addresses
+paths./individuals/{partyId}/electronic-addresses.parameters.length: 2
+paths./individuals/{partyId}/electronic-addresses.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/electronic-addresses.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/electronic-addresses.post.description: |
+  Create an electronic address
+paths./individuals/{partyId}/electronic-addresses.post.parameters.length: 1
+paths./individuals/{partyId}/electronic-addresses.post.parameters[0].description: Electronic
+  Address resource
+paths./individuals/{partyId}/electronic-addresses.post.parameters[0].in: body
+paths./individuals/{partyId}/electronic-addresses.post.parameters[0].name: body
+paths./individuals/{partyId}/electronic-addresses.post.parameters[0].required: true
+paths./individuals/{partyId}/electronic-addresses.post.parameters[0].schema.$ref: '#/definitions/electronic-address'
+paths./individuals/{partyId}/electronic-addresses.post.responses.201.description: Electronic
+  Address was created
+paths./individuals/{partyId}/electronic-addresses.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./individuals/{partyId}/electronic-addresses.post.responses.201.headers.Location.type: string
+paths./individuals/{partyId}/electronic-addresses.post.responses.201.schema.$ref: '#/definitions/electronic-address'
+paths./individuals/{partyId}/electronic-addresses.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/electronic-addresses.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/electronic-addresses.post.summary: Create an electronic
+  address
+paths./individuals/{partyId}/electronic-addresses.post.tags.length: 1
+paths./individuals/{partyId}/electronic-addresses.post.tags[0]: Individuals Electronic
+  Addresses
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.description: |
+  Delete an electronic address
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.responses.204.description: Electronic
+  Address was deleted
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.summary: Delete
+  an electronic address
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.tags.length: 1
+paths./individuals/{partyId}/electronic-addresses/{addressId}.delete.tags[0]: Individuals
+  Electronic Addresses
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.description: |
+  Retrieve an electronic address
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.responses.200.description: Electronic
+  Address was retrieved successfully
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.responses.200.schema.$ref: '#/definitions/electronic-address'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.summary: Retrieve
+  an electronic address
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.tags.length: 1
+paths./individuals/{partyId}/electronic-addresses/{addressId}.get.tags[0]: Individuals
+  Electronic Addresses
+paths./individuals/{partyId}/electronic-addresses/{addressId}.parameters.length: 3
+paths./individuals/{partyId}/electronic-addresses/{addressId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.parameters[2].$ref: '#/parameters/addressId'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.description: |
+  Update an electronic address
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.parameters.length: 1
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.parameters[0].description: Electronic
+  Address resource
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.parameters[0].in: body
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.parameters[0].name: body
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.parameters[0].required: true
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.parameters[0].schema.$ref: '#/definitions/electronic-address'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.responses.200.description: Electronic
+  Address was updated
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.responses.200.schema.$ref: '#/definitions/electronic-address'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.summary: Update
+  an electronic address
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.tags.length: 1
+paths./individuals/{partyId}/electronic-addresses/{addressId}.put.tags[0]: Individuals
+  Electronic Addresses
+paths./individuals/{partyId}/licenses.get.responses.200.description: Licenses were
+  retrieved successfully
+paths./individuals/{partyId}/licenses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./individuals/{partyId}/licenses.get.responses.200.headers.Link.type: string
+paths./individuals/{partyId}/licenses.get.responses.200.schema.items.$ref: '#/definitions/license'
+paths./individuals/{partyId}/licenses.get.responses.200.schema.type: array
+paths./individuals/{partyId}/licenses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/licenses.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/licenses.get.summary: Retrieve a list of licenses
+paths./individuals/{partyId}/licenses.get.tags.length: 1
+paths./individuals/{partyId}/licenses.get.tags[0]: Individuals Licenses
+paths./individuals/{partyId}/licenses.parameters.length: 2
+paths./individuals/{partyId}/licenses.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/licenses.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/licenses.post.description: |
+  Create a license
+paths./individuals/{partyId}/licenses.post.parameters.length: 1
+paths./individuals/{partyId}/licenses.post.parameters[0].description: License resource
+paths./individuals/{partyId}/licenses.post.parameters[0].in: body
+paths./individuals/{partyId}/licenses.post.parameters[0].name: body
+paths./individuals/{partyId}/licenses.post.parameters[0].required: true
+paths./individuals/{partyId}/licenses.post.parameters[0].schema.$ref: '#/definitions/license'
+paths./individuals/{partyId}/licenses.post.responses.201.description: License was
+  created
+paths./individuals/{partyId}/licenses.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./individuals/{partyId}/licenses.post.responses.201.headers.Location.type: string
+paths./individuals/{partyId}/licenses.post.responses.201.schema.$ref: '#/definitions/license'
+paths./individuals/{partyId}/licenses.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/licenses.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/licenses.post.summary: Create a license
+paths./individuals/{partyId}/licenses.post.tags.length: 1
+paths./individuals/{partyId}/licenses.post.tags[0]: Individuals Licenses
+paths./individuals/{partyId}/licenses/{productId}.delete.description: |
+  Delete a license
+paths./individuals/{partyId}/licenses/{productId}.delete.responses.204.description: License
+  was deleted
+paths./individuals/{partyId}/licenses/{productId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/licenses/{productId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/licenses/{productId}.delete.summary: Delete a license
+paths./individuals/{partyId}/licenses/{productId}.delete.tags.length: 1
+paths./individuals/{partyId}/licenses/{productId}.delete.tags[0]: Individuals Licenses
+paths./individuals/{partyId}/licenses/{productId}.get.description: |
+  Retrieve a license
+paths./individuals/{partyId}/licenses/{productId}.get.responses.200.description: License
+  was retrieved successfully
+paths./individuals/{partyId}/licenses/{productId}.get.responses.200.schema.$ref: '#/definitions/license'
+paths./individuals/{partyId}/licenses/{productId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/licenses/{productId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/licenses/{productId}.get.summary: Retrieve a license
+paths./individuals/{partyId}/licenses/{productId}.get.tags.length: 1
+paths./individuals/{partyId}/licenses/{productId}.get.tags[0]: Individuals Licenses
+paths./individuals/{partyId}/licenses/{productId}.parameters.length: 3
+paths./individuals/{partyId}/licenses/{productId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/licenses/{productId}.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/licenses/{productId}.parameters[2].$ref: '#/parameters/productId'
+paths./individuals/{partyId}/licenses/{productId}.put.description: |
+  Update a license
+paths./individuals/{partyId}/licenses/{productId}.put.parameters.length: 1
+paths./individuals/{partyId}/licenses/{productId}.put.parameters[0].description: License
+  resource
+paths./individuals/{partyId}/licenses/{productId}.put.parameters[0].in: body
+paths./individuals/{partyId}/licenses/{productId}.put.parameters[0].name: body
+paths./individuals/{partyId}/licenses/{productId}.put.parameters[0].required: true
+paths./individuals/{partyId}/licenses/{productId}.put.parameters[0].schema.$ref: '#/definitions/license'
+paths./individuals/{partyId}/licenses/{productId}.put.responses.200.description: License
+  was updated
+paths./individuals/{partyId}/licenses/{productId}.put.responses.200.schema.$ref: '#/definitions/license'
+paths./individuals/{partyId}/licenses/{productId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/licenses/{productId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/licenses/{productId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/licenses/{productId}.put.summary: Update a license
+paths./individuals/{partyId}/licenses/{productId}.put.tags.length: 1
+paths./individuals/{partyId}/licenses/{productId}.put.tags[0]: Individuals Licenses
+paths./individuals/{partyId}/roles.get.responses.200.description: Roles were retrieved
+  successfully
+paths./individuals/{partyId}/roles.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./individuals/{partyId}/roles.get.responses.200.headers.Link.type: string
+paths./individuals/{partyId}/roles.get.responses.200.schema.items.$ref: '#/definitions/party-role'
+paths./individuals/{partyId}/roles.get.responses.200.schema.type: array
+paths./individuals/{partyId}/roles.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/roles.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/roles.get.summary: Retrieve a list of roles
+paths./individuals/{partyId}/roles.get.tags.length: 1
+paths./individuals/{partyId}/roles.get.tags[0]: Individuals Roles
+paths./individuals/{partyId}/roles.parameters.length: 2
+paths./individuals/{partyId}/roles.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/roles.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/roles.post.description: |
+  Create a role
+paths./individuals/{partyId}/roles.post.parameters.length: 1
+paths./individuals/{partyId}/roles.post.parameters[0].description: Role resource
+paths./individuals/{partyId}/roles.post.parameters[0].in: body
+paths./individuals/{partyId}/roles.post.parameters[0].name: body
+paths./individuals/{partyId}/roles.post.parameters[0].required: true
+paths./individuals/{partyId}/roles.post.parameters[0].schema.$ref: '#/definitions/party-role'
+paths./individuals/{partyId}/roles.post.responses.201.description: Role was created
+paths./individuals/{partyId}/roles.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./individuals/{partyId}/roles.post.responses.201.headers.Location.type: string
+paths./individuals/{partyId}/roles.post.responses.201.schema.$ref: '#/definitions/party-role'
+paths./individuals/{partyId}/roles.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/roles.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/roles.post.summary: Create a role
+paths./individuals/{partyId}/roles.post.tags.length: 1
+paths./individuals/{partyId}/roles.post.tags[0]: Individuals Roles
+paths./individuals/{partyId}/roles/{roleId}.delete.description: |
+  Delete a role
+paths./individuals/{partyId}/roles/{roleId}.delete.responses.204.description: Role
+  was deleted
+paths./individuals/{partyId}/roles/{roleId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/roles/{roleId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/roles/{roleId}.delete.summary: Delete a role
+paths./individuals/{partyId}/roles/{roleId}.delete.tags.length: 1
+paths./individuals/{partyId}/roles/{roleId}.delete.tags[0]: Individuals Roles
+paths./individuals/{partyId}/roles/{roleId}.get.description: |
+  Retrieve a role
+paths./individuals/{partyId}/roles/{roleId}.get.responses.200.description: Role was
+  retrieved successfully
+paths./individuals/{partyId}/roles/{roleId}.get.responses.200.schema.$ref: '#/definitions/party-role'
+paths./individuals/{partyId}/roles/{roleId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/roles/{roleId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/roles/{roleId}.get.summary: Retrieve a role
+paths./individuals/{partyId}/roles/{roleId}.get.tags.length: 1
+paths./individuals/{partyId}/roles/{roleId}.get.tags[0]: Individuals Roles
+paths./individuals/{partyId}/roles/{roleId}.parameters.length: 3
+paths./individuals/{partyId}/roles/{roleId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./individuals/{partyId}/roles/{roleId}.parameters[1].$ref: '#/parameters/partyId'
+paths./individuals/{partyId}/roles/{roleId}.parameters[2].$ref: '#/parameters/roleId'
+paths./individuals/{partyId}/roles/{roleId}.put.description: |
+  Update a role
+paths./individuals/{partyId}/roles/{roleId}.put.parameters.length: 1
+paths./individuals/{partyId}/roles/{roleId}.put.parameters[0].description: Role resource
+paths./individuals/{partyId}/roles/{roleId}.put.parameters[0].in: body
+paths./individuals/{partyId}/roles/{roleId}.put.parameters[0].name: body
+paths./individuals/{partyId}/roles/{roleId}.put.parameters[0].required: true
+paths./individuals/{partyId}/roles/{roleId}.put.parameters[0].schema.$ref: '#/definitions/party-role'
+paths./individuals/{partyId}/roles/{roleId}.put.responses.200.description: Role was
+  updated
+paths./individuals/{partyId}/roles/{roleId}.put.responses.200.schema.$ref: '#/definitions/party-role'
+paths./individuals/{partyId}/roles/{roleId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./individuals/{partyId}/roles/{roleId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./individuals/{partyId}/roles/{roleId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./individuals/{partyId}/roles/{roleId}.put.summary: Update a role
+paths./individuals/{partyId}/roles/{roleId}.put.tags.length: 1
+paths./individuals/{partyId}/roles/{roleId}.put.tags[0]: Individuals Roles
+paths./licenses.get.description: |
+  Retrieve a list of licenses
+paths./licenses.get.parameters.length: 1
+paths./licenses.get.parameters[0].$ref: '#/parameters/apiKey'
+paths./licenses.get.responses.200.description: A list of licenses was retrieved successfully
+paths./licenses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./licenses.get.responses.200.headers.Link.type: string
+paths./licenses.get.responses.200.schema.items.$ref: '#/definitions/license'
+paths./licenses.get.responses.200.schema.type: array
+paths./licenses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./licenses.get.responses.404.$ref: '#/responses/NotFound'
+paths./licenses.get.summary: Retrieve a list of licenses
+paths./licenses.get.tags.length: 1
+paths./licenses.get.tags[0]: Licenses
+paths./organisations.get.description: |
+  Retrieve a list of organisations
+paths./organisations.get.parameters.length: 3
+paths./organisations.get.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations.get.parameters[1].$ref: '#/parameters/registeredIdentifier'
+paths./organisations.get.parameters[2].$ref: '#/parameters/identifier'
+paths./organisations.get.responses.200.description: A list of organisations was retrieved
+  successfully
+paths./organisations.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./organisations.get.responses.200.headers.Link.type: string
+paths./organisations.get.responses.200.schema.items.$ref: '#/definitions/organisation'
+paths./organisations.get.responses.200.schema.type: array
+paths./organisations.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations.get.summary: Retrieve a list of organisations
+paths./organisations.get.tags.length: 1
+paths./organisations.get.tags[0]: Organisations
+paths./organisations.post.description: |
+  Create an organisation
+paths./organisations.post.parameters.length: 2
+paths./organisations.post.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations.post.parameters[1].description: Organisation resource
+paths./organisations.post.parameters[1].in: body
+paths./organisations.post.parameters[1].name: body
+paths./organisations.post.parameters[1].required: true
+paths./organisations.post.parameters[1].schema.$ref: '#/definitions/organisation'
+paths./organisations.post.responses.201.description: Organisation was created
+paths./organisations.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./organisations.post.responses.201.headers.Location.type: string
+paths./organisations.post.responses.201.schema.$ref: '#/definitions/organisation'
+paths./organisations.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations.post.summary: Create an organisation
+paths./organisations.post.tags.length: 1
+paths./organisations.post.tags[0]: Organisations
+paths./organisations/{partyId}.delete.description: |
+  Delete an organisation with the specified identifier
+paths./organisations/{partyId}.delete.responses.204.description: Organisation was
+  deleted
+paths./organisations/{partyId}.delete.responses.400.$ref: '#/responses/FailedPrecondition'
+paths./organisations/{partyId}.delete.responses.400.description: Organisation has
+  related resources and cannot be deleted
+paths./organisations/{partyId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}.delete.summary: Delete an organisation
+paths./organisations/{partyId}.delete.tags.length: 1
+paths./organisations/{partyId}.delete.tags[0]: Organisations
+paths./organisations/{partyId}.get.description: |
+  Retrieve an organisation with the specified identifier
+paths./organisations/{partyId}.get.responses.200.description: Individual was retrieved
+  successfully
+paths./organisations/{partyId}.get.responses.200.schema.$ref: '#/definitions/organisation'
+paths./organisations/{partyId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}.get.summary: Retrieve an organisation
+paths./organisations/{partyId}.get.tags.length: 1
+paths./organisations/{partyId}.get.tags[0]: Organisations
+paths./organisations/{partyId}.parameters.length: 2
+paths./organisations/{partyId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}.put.description: |
+  Update an organisation
+paths./organisations/{partyId}.put.parameters.length: 1
+paths./organisations/{partyId}.put.parameters[0].description: Organisation resource
+paths./organisations/{partyId}.put.parameters[0].in: body
+paths./organisations/{partyId}.put.parameters[0].name: body
+paths./organisations/{partyId}.put.parameters[0].required: true
+paths./organisations/{partyId}.put.parameters[0].schema.$ref: '#/definitions/organisation'
+paths./organisations/{partyId}.put.responses.200.description: Organisation was updated
+paths./organisations/{partyId}.put.responses.200.schema.$ref: '#/definitions/organisation'
+paths./organisations/{partyId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}.put.summary: Update an organisation
+paths./organisations/{partyId}.put.tags.length: 1
+paths./organisations/{partyId}.put.tags[0]: Organisations
+paths./organisations/{partyId}/addresses.get.responses.200.description: Addresses
+  were retrieved successfully
+paths./organisations/{partyId}/addresses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./organisations/{partyId}/addresses.get.responses.200.headers.Link.type: string
+paths./organisations/{partyId}/addresses.get.responses.200.schema.items.$ref: '#/definitions/address'
+paths./organisations/{partyId}/addresses.get.responses.200.schema.type: array
+paths./organisations/{partyId}/addresses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/addresses.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/addresses.get.summary: Retrieve a list of addresses
+paths./organisations/{partyId}/addresses.get.tags.length: 1
+paths./organisations/{partyId}/addresses.get.tags[0]: Organisations Addresses
+paths./organisations/{partyId}/addresses.parameters.length: 2
+paths./organisations/{partyId}/addresses.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/addresses.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/addresses.post.description: |
+  Create an address
+paths./organisations/{partyId}/addresses.post.parameters.length: 1
+paths./organisations/{partyId}/addresses.post.parameters[0].description: Address resource
+paths./organisations/{partyId}/addresses.post.parameters[0].in: body
+paths./organisations/{partyId}/addresses.post.parameters[0].name: body
+paths./organisations/{partyId}/addresses.post.parameters[0].required: true
+paths./organisations/{partyId}/addresses.post.parameters[0].schema.$ref: '#/definitions/address'
+paths./organisations/{partyId}/addresses.post.responses.201.description: Address was
+  created
+paths./organisations/{partyId}/addresses.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./organisations/{partyId}/addresses.post.responses.201.headers.Location.type: string
+paths./organisations/{partyId}/addresses.post.responses.201.schema.$ref: '#/definitions/address'
+paths./organisations/{partyId}/addresses.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/addresses.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/addresses.post.summary: Create an address
+paths./organisations/{partyId}/addresses.post.tags.length: 1
+paths./organisations/{partyId}/addresses.post.tags[0]: Organisations Addresses
+paths./organisations/{partyId}/addresses/{addressId}.delete.description: |
+  Delete an address
+paths./organisations/{partyId}/addresses/{addressId}.delete.responses.204.description: Address
+  was deleted
+paths./organisations/{partyId}/addresses/{addressId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/addresses/{addressId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/addresses/{addressId}.delete.summary: Delete an address
+paths./organisations/{partyId}/addresses/{addressId}.delete.tags.length: 1
+paths./organisations/{partyId}/addresses/{addressId}.delete.tags[0]: Organisations
+  Addresses
+paths./organisations/{partyId}/addresses/{addressId}.get.description: |
+  Retrieve an address
+paths./organisations/{partyId}/addresses/{addressId}.get.responses.200.description: Address
+  was retrieved successfully
+paths./organisations/{partyId}/addresses/{addressId}.get.responses.200.schema.$ref: '#/definitions/address'
+paths./organisations/{partyId}/addresses/{addressId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/addresses/{addressId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/addresses/{addressId}.get.summary: Retrieve an address
+paths./organisations/{partyId}/addresses/{addressId}.get.tags.length: 1
+paths./organisations/{partyId}/addresses/{addressId}.get.tags[0]: Organisations Addresses
+paths./organisations/{partyId}/addresses/{addressId}.parameters.length: 3
+paths./organisations/{partyId}/addresses/{addressId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/addresses/{addressId}.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/addresses/{addressId}.parameters[2].$ref: '#/parameters/addressId'
+paths./organisations/{partyId}/addresses/{addressId}.put.description: |
+  Update an address
+paths./organisations/{partyId}/addresses/{addressId}.put.parameters.length: 1
+paths./organisations/{partyId}/addresses/{addressId}.put.parameters[0].description: Address
+  resource
+paths./organisations/{partyId}/addresses/{addressId}.put.parameters[0].in: body
+paths./organisations/{partyId}/addresses/{addressId}.put.parameters[0].name: body
+paths./organisations/{partyId}/addresses/{addressId}.put.parameters[0].required: true
+paths./organisations/{partyId}/addresses/{addressId}.put.parameters[0].schema.$ref: '#/definitions/address'
+paths./organisations/{partyId}/addresses/{addressId}.put.responses.200.description: Address
+  was updated
+paths./organisations/{partyId}/addresses/{addressId}.put.responses.200.schema.$ref: '#/definitions/address'
+paths./organisations/{partyId}/addresses/{addressId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/addresses/{addressId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/addresses/{addressId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/addresses/{addressId}.put.summary: Update an address
+paths./organisations/{partyId}/addresses/{addressId}.put.tags.length: 1
+paths./organisations/{partyId}/addresses/{addressId}.put.tags[0]: Organisations Addresses
+paths./organisations/{partyId}/business-names.get.responses.200.description: Business
+  Names were retrieved successfully
+paths./organisations/{partyId}/business-names.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./organisations/{partyId}/business-names.get.responses.200.headers.Link.type: string
+paths./organisations/{partyId}/business-names.get.responses.200.schema.items.$ref: '#/definitions/business-name'
+paths./organisations/{partyId}/business-names.get.responses.200.schema.type: array
+paths./organisations/{partyId}/business-names.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/business-names.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/business-names.get.summary: Retrieve a list of business
+  names
+paths./organisations/{partyId}/business-names.get.tags.length: 1
+paths./organisations/{partyId}/business-names.get.tags[0]: Organisations Business
+  Names
+paths./organisations/{partyId}/business-names.parameters.length: 2
+paths./organisations/{partyId}/business-names.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/business-names.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/business-names.post.description: |
+  Create a business name
+paths./organisations/{partyId}/business-names.post.parameters.length: 1
+paths./organisations/{partyId}/business-names.post.parameters[0].description: Business
+  Name resource
+paths./organisations/{partyId}/business-names.post.parameters[0].in: body
+paths./organisations/{partyId}/business-names.post.parameters[0].name: body
+paths./organisations/{partyId}/business-names.post.parameters[0].required: true
+paths./organisations/{partyId}/business-names.post.parameters[0].schema.$ref: '#/definitions/business-name'
+paths./organisations/{partyId}/business-names.post.responses.201.description: Business
+  Name was created
+paths./organisations/{partyId}/business-names.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./organisations/{partyId}/business-names.post.responses.201.headers.Location.type: string
+paths./organisations/{partyId}/business-names.post.responses.201.schema.$ref: '#/definitions/business-name'
+paths./organisations/{partyId}/business-names.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/business-names.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/business-names.post.summary: Create a business name
+paths./organisations/{partyId}/business-names.post.tags.length: 1
+paths./organisations/{partyId}/business-names.post.tags[0]: Organisations Business
+  Names
+paths./organisations/{partyId}/business-names/{productId}.delete.description: |
+  Delete a business name
+paths./organisations/{partyId}/business-names/{productId}.delete.responses.204.description: Address
+  was deleted
+paths./organisations/{partyId}/business-names/{productId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/business-names/{productId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/business-names/{productId}.delete.summary: Delete a
+  business name
+paths./organisations/{partyId}/business-names/{productId}.delete.tags.length: 1
+paths./organisations/{partyId}/business-names/{productId}.delete.tags[0]: Organisations
+  Business Names
+paths./organisations/{partyId}/business-names/{productId}.get.description: |
+  Retrieve a business name
+paths./organisations/{partyId}/business-names/{productId}.get.responses.200.description: Business
+  Name was retrieved successfully
+paths./organisations/{partyId}/business-names/{productId}.get.responses.200.schema.$ref: '#/definitions/business-name'
+paths./organisations/{partyId}/business-names/{productId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/business-names/{productId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/business-names/{productId}.get.summary: Retrieve a
+  business name
+paths./organisations/{partyId}/business-names/{productId}.get.tags.length: 1
+paths./organisations/{partyId}/business-names/{productId}.get.tags[0]: Organisations
+  Business Names
+paths./organisations/{partyId}/business-names/{productId}.parameters.length: 3
+paths./organisations/{partyId}/business-names/{productId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/business-names/{productId}.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/business-names/{productId}.parameters[2].$ref: '#/parameters/productId'
+paths./organisations/{partyId}/business-names/{productId}.put.description: |
+  Update a business name
+paths./organisations/{partyId}/business-names/{productId}.put.parameters.length: 1
+paths./organisations/{partyId}/business-names/{productId}.put.parameters[0].description: Business
+  Name resource
+paths./organisations/{partyId}/business-names/{productId}.put.parameters[0].in: body
+paths./organisations/{partyId}/business-names/{productId}.put.parameters[0].name: body
+paths./organisations/{partyId}/business-names/{productId}.put.parameters[0].required: true
+paths./organisations/{partyId}/business-names/{productId}.put.parameters[0].schema.$ref: '#/definitions/business-name'
+paths./organisations/{partyId}/business-names/{productId}.put.responses.200.description: Address
+  was updated
+paths./organisations/{partyId}/business-names/{productId}.put.responses.200.schema.$ref: '#/definitions/business-name'
+paths./organisations/{partyId}/business-names/{productId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/business-names/{productId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/business-names/{productId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/business-names/{productId}.put.summary: Update a business
+  name
+paths./organisations/{partyId}/business-names/{productId}.put.tags.length: 1
+paths./organisations/{partyId}/business-names/{productId}.put.tags[0]: Organisations
+  Business Names
+paths./organisations/{partyId}/electronic-addresses.get.responses.200.description: Electronic
+  addresses were retrieved successfully
+paths./organisations/{partyId}/electronic-addresses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./organisations/{partyId}/electronic-addresses.get.responses.200.headers.Link.type: string
+paths./organisations/{partyId}/electronic-addresses.get.responses.200.schema.items.$ref: '#/definitions/electronic-address'
+paths./organisations/{partyId}/electronic-addresses.get.responses.200.schema.type: array
+paths./organisations/{partyId}/electronic-addresses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/electronic-addresses.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/electronic-addresses.get.summary: Retrieve a list of
+  electronic addresses
+paths./organisations/{partyId}/electronic-addresses.get.tags.length: 1
+paths./organisations/{partyId}/electronic-addresses.get.tags[0]: Organisations Electronic
+  Addresses
+paths./organisations/{partyId}/electronic-addresses.parameters.length: 2
+paths./organisations/{partyId}/electronic-addresses.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/electronic-addresses.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/electronic-addresses.post.description: |
+  Create an electronic address
+paths./organisations/{partyId}/electronic-addresses.post.parameters.length: 1
+paths./organisations/{partyId}/electronic-addresses.post.parameters[0].description: Electronic
+  Address resource
+paths./organisations/{partyId}/electronic-addresses.post.parameters[0].in: body
+paths./organisations/{partyId}/electronic-addresses.post.parameters[0].name: body
+paths./organisations/{partyId}/electronic-addresses.post.parameters[0].required: true
+paths./organisations/{partyId}/electronic-addresses.post.parameters[0].schema.$ref: '#/definitions/electronic-address'
+paths./organisations/{partyId}/electronic-addresses.post.responses.201.description: Electronic
+  Address was created
+paths./organisations/{partyId}/electronic-addresses.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./organisations/{partyId}/electronic-addresses.post.responses.201.headers.Location.type: string
+paths./organisations/{partyId}/electronic-addresses.post.responses.201.schema.$ref: '#/definitions/electronic-address'
+paths./organisations/{partyId}/electronic-addresses.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/electronic-addresses.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/electronic-addresses.post.summary: Create an electronic
+  address
+paths./organisations/{partyId}/electronic-addresses.post.tags.length: 1
+paths./organisations/{partyId}/electronic-addresses.post.tags[0]: Organisations Electronic
+  Addresses
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.description: |
+  Delete an electronic address
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.responses.204.description: Electronic
+  Address was deleted
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.summary: Delete
+  an electronic address
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.tags.length: 1
+paths./organisations/{partyId}/electronic-addresses/{addressId}.delete.tags[0]: Organisations
+  Electronic Addresses
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.description: |
+  Retrieve an electronic address
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.responses.200.description: Electronic
+  address was retrieved successfully
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.responses.200.schema.$ref: '#/definitions/electronic-address'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.summary: Retrieve
+  an electronic address
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.tags.length: 1
+paths./organisations/{partyId}/electronic-addresses/{addressId}.get.tags[0]: Organisations
+  Electronic Addresses
+paths./organisations/{partyId}/electronic-addresses/{addressId}.parameters.length: 3
+paths./organisations/{partyId}/electronic-addresses/{addressId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.parameters[2].$ref: '#/parameters/addressId'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.description: |
+  Update an electronic address
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.parameters.length: 1
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.parameters[0].description: Electronic
+  Address resource
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.parameters[0].in: body
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.parameters[0].name: body
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.parameters[0].required: true
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.parameters[0].schema.$ref: '#/definitions/electronic-address'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.responses.200.description: Electronic
+  Address was updated
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.responses.200.schema.$ref: '#/definitions/electronic-address'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.summary: Update
+  an electronic address
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.tags.length: 1
+paths./organisations/{partyId}/electronic-addresses/{addressId}.put.tags[0]: Organisations
+  Electronic Addresses
+paths./organisations/{partyId}/licenses.get.responses.200.description: Licenses were
+  retrieved successfully
+paths./organisations/{partyId}/licenses.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./organisations/{partyId}/licenses.get.responses.200.headers.Link.type: string
+paths./organisations/{partyId}/licenses.get.responses.200.schema.items.$ref: '#/definitions/license'
+paths./organisations/{partyId}/licenses.get.responses.200.schema.type: array
+paths./organisations/{partyId}/licenses.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/licenses.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/licenses.get.summary: Retrieve a list of licenses
+paths./organisations/{partyId}/licenses.get.tags.length: 1
+paths./organisations/{partyId}/licenses.get.tags[0]: Organisations Licenses
+paths./organisations/{partyId}/licenses.parameters.length: 2
+paths./organisations/{partyId}/licenses.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/licenses.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/licenses.post.description: |
+  Create a license
+paths./organisations/{partyId}/licenses.post.parameters.length: 1
+paths./organisations/{partyId}/licenses.post.parameters[0].description: License resource
+paths./organisations/{partyId}/licenses.post.parameters[0].in: body
+paths./organisations/{partyId}/licenses.post.parameters[0].name: body
+paths./organisations/{partyId}/licenses.post.parameters[0].required: true
+paths./organisations/{partyId}/licenses.post.parameters[0].schema.$ref: '#/definitions/license'
+paths./organisations/{partyId}/licenses.post.responses.201.description: License was
+  created
+paths./organisations/{partyId}/licenses.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./organisations/{partyId}/licenses.post.responses.201.headers.Location.type: string
+paths./organisations/{partyId}/licenses.post.responses.201.schema.$ref: '#/definitions/license'
+paths./organisations/{partyId}/licenses.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/licenses.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/licenses.post.summary: Create a license
+paths./organisations/{partyId}/licenses.post.tags.length: 1
+paths./organisations/{partyId}/licenses.post.tags[0]: Organisations Licenses
+paths./organisations/{partyId}/licenses/{productId}.delete.description: |
+  Delete a license
+paths./organisations/{partyId}/licenses/{productId}.delete.responses.204.description: License
+  was deleted
+paths./organisations/{partyId}/licenses/{productId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/licenses/{productId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/licenses/{productId}.delete.summary: Delete a license
+paths./organisations/{partyId}/licenses/{productId}.delete.tags.length: 1
+paths./organisations/{partyId}/licenses/{productId}.delete.tags[0]: Organisations
+  Licenses
+paths./organisations/{partyId}/licenses/{productId}.get.description: |
+  Retrieve a license
+paths./organisations/{partyId}/licenses/{productId}.get.responses.200.description: License
+  was retrieved successfully
+paths./organisations/{partyId}/licenses/{productId}.get.responses.200.schema.$ref: '#/definitions/license'
+paths./organisations/{partyId}/licenses/{productId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/licenses/{productId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/licenses/{productId}.get.summary: Retrieve a license
+paths./organisations/{partyId}/licenses/{productId}.get.tags.length: 1
+paths./organisations/{partyId}/licenses/{productId}.get.tags[0]: Organisations Licenses
+paths./organisations/{partyId}/licenses/{productId}.parameters.length: 3
+paths./organisations/{partyId}/licenses/{productId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/licenses/{productId}.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/licenses/{productId}.parameters[2].$ref: '#/parameters/productId'
+paths./organisations/{partyId}/licenses/{productId}.put.description: |
+  Update a license
+paths./organisations/{partyId}/licenses/{productId}.put.parameters.length: 1
+paths./organisations/{partyId}/licenses/{productId}.put.parameters[0].description: License
+  resource
+paths./organisations/{partyId}/licenses/{productId}.put.parameters[0].in: body
+paths./organisations/{partyId}/licenses/{productId}.put.parameters[0].name: body
+paths./organisations/{partyId}/licenses/{productId}.put.parameters[0].required: true
+paths./organisations/{partyId}/licenses/{productId}.put.parameters[0].schema.$ref: '#/definitions/license'
+paths./organisations/{partyId}/licenses/{productId}.put.responses.200.description: License
+  was updated
+paths./organisations/{partyId}/licenses/{productId}.put.responses.200.schema.$ref: '#/definitions/license'
+paths./organisations/{partyId}/licenses/{productId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/licenses/{productId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/licenses/{productId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/licenses/{productId}.put.summary: Update a license
+paths./organisations/{partyId}/licenses/{productId}.put.tags.length: 1
+paths./organisations/{partyId}/licenses/{productId}.put.tags[0]: Organisations Licenses
+paths./organisations/{partyId}/roles.get.responses.200.description: Roles were retrieved
+  successfully
+paths./organisations/{partyId}/roles.get.responses.200.headers.Link.description: |
+  Information about pagination is provided in the [Link](https://tools.ietf.org/html/rfc5988#page-6) header.
+  For example:
+
+      Link: <https://api.abr.ato.gov.au/individuals?page=2>; rel="next",
+            <https://api.abr.ato.gov.au/individuals?page=34>; rel="last"
+
+  `rel="next"` states that the next page is `page=2`. This makes sense, since by default, all paginated queries start at page `1`. `rel="last"` provides some more information, stating that the last page of results is on `page 34`. Accordingly, we have 33 more pages of information that we can consume.
+paths./organisations/{partyId}/roles.get.responses.200.headers.Link.type: string
+paths./organisations/{partyId}/roles.get.responses.200.schema.items.$ref: '#/definitions/party-role'
+paths./organisations/{partyId}/roles.get.responses.200.schema.type: array
+paths./organisations/{partyId}/roles.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/roles.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/roles.get.summary: Retrieve a list of roles
+paths./organisations/{partyId}/roles.get.tags.length: 1
+paths./organisations/{partyId}/roles.get.tags[0]: Organisations Roles
+paths./organisations/{partyId}/roles.parameters.length: 2
+paths./organisations/{partyId}/roles.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/roles.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/roles.post.description: |
+  Create a role
+paths./organisations/{partyId}/roles.post.parameters.length: 1
+paths./organisations/{partyId}/roles.post.parameters[0].description: Role resource
+paths./organisations/{partyId}/roles.post.parameters[0].in: body
+paths./organisations/{partyId}/roles.post.parameters[0].name: body
+paths./organisations/{partyId}/roles.post.parameters[0].required: true
+paths./organisations/{partyId}/roles.post.parameters[0].schema.$ref: '#/definitions/party-role'
+paths./organisations/{partyId}/roles.post.responses.201.description: Role was created
+paths./organisations/{partyId}/roles.post.responses.201.headers.Location.description: |
+  A [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the new resource.
+paths./organisations/{partyId}/roles.post.responses.201.headers.Location.type: string
+paths./organisations/{partyId}/roles.post.responses.201.schema.$ref: '#/definitions/party-role'
+paths./organisations/{partyId}/roles.post.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/roles.post.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/roles.post.summary: Create a role
+paths./organisations/{partyId}/roles.post.tags.length: 1
+paths./organisations/{partyId}/roles.post.tags[0]: Organisations Roles
+paths./organisations/{partyId}/roles/{roleId}.delete.description: |
+  Delete a role
+paths./organisations/{partyId}/roles/{roleId}.delete.responses.204.description: Role
+  was deleted
+paths./organisations/{partyId}/roles/{roleId}.delete.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/roles/{roleId}.delete.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/roles/{roleId}.delete.summary: Delete a role
+paths./organisations/{partyId}/roles/{roleId}.delete.tags.length: 1
+paths./organisations/{partyId}/roles/{roleId}.delete.tags[0]: Organisations Roles
+paths./organisations/{partyId}/roles/{roleId}.get.description: |
+  Retrieve a role
+paths./organisations/{partyId}/roles/{roleId}.get.responses.200.description: Role
+  was retrieved successfully
+paths./organisations/{partyId}/roles/{roleId}.get.responses.200.schema.$ref: '#/definitions/party-role'
+paths./organisations/{partyId}/roles/{roleId}.get.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/roles/{roleId}.get.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/roles/{roleId}.get.summary: Retrieve a role
+paths./organisations/{partyId}/roles/{roleId}.get.tags.length: 1
+paths./organisations/{partyId}/roles/{roleId}.get.tags[0]: Organisations Roles
+paths./organisations/{partyId}/roles/{roleId}.parameters.length: 3
+paths./organisations/{partyId}/roles/{roleId}.parameters[0].$ref: '#/parameters/apiKey'
+paths./organisations/{partyId}/roles/{roleId}.parameters[1].$ref: '#/parameters/partyId'
+paths./organisations/{partyId}/roles/{roleId}.parameters[2].$ref: '#/parameters/roleId'
+paths./organisations/{partyId}/roles/{roleId}.put.description: |
+  Update a role
+paths./organisations/{partyId}/roles/{roleId}.put.parameters.length: 1
+paths./organisations/{partyId}/roles/{roleId}.put.parameters[0].description: Role
+  resource
+paths./organisations/{partyId}/roles/{roleId}.put.parameters[0].in: body
+paths./organisations/{partyId}/roles/{roleId}.put.parameters[0].name: body
+paths./organisations/{partyId}/roles/{roleId}.put.parameters[0].required: true
+paths./organisations/{partyId}/roles/{roleId}.put.parameters[0].schema.$ref: '#/definitions/party-role'
+paths./organisations/{partyId}/roles/{roleId}.put.responses.200.description: Role
+  was updated
+paths./organisations/{partyId}/roles/{roleId}.put.responses.200.schema.$ref: '#/definitions/party-role'
+paths./organisations/{partyId}/roles/{roleId}.put.responses.400.$ref: '#/responses/InvalidArgument'
+paths./organisations/{partyId}/roles/{roleId}.put.responses.401.$ref: '#/responses/Unauthenticated'
+paths./organisations/{partyId}/roles/{roleId}.put.responses.404.$ref: '#/responses/NotFound'
+paths./organisations/{partyId}/roles/{roleId}.put.summary: Update a role
+paths./organisations/{partyId}/roles/{roleId}.put.tags.length: 1
+paths./organisations/{partyId}/roles/{roleId}.put.tags[0]: Organisations Roles
+produces.length: 1
+produces[0]: application/json
+responses.FailedPrecondition.description: Request can not be executed in the current
+  system state
+responses.FailedPrecondition.schema.$ref: '#/definitions/failed-precondition'
+responses.InvalidArgument.description: The client specified an invalid argument
+responses.InvalidArgument.schema.$ref: '#/definitions/invalid-argument'
+responses.NotFound.description: The specified resource was not found
+responses.NotFound.schema.$ref: '#/definitions/not-found'
+responses.PermissionDenied.description: The client does not have sufficient permission
+responses.PermissionDenied.schema.$ref: '#/definitions/permission-denied'
+responses.Unauthenticated.description: Request not authenticated due to missing, invalid,
+  or expired token
+responses.Unauthenticated.schema.$ref: '#/definitions/unauthenticated'
+schemes.length: 1
+schemes[0]: https
+swagger: "2.0"
+tags.length: 26
+tags[0].description: |
+  An individual is a person about whom the registry wishes to maintain information.
+
+    For example, the individual's date and place of birth (for the purposes of identification) and the individual's
+    residential address (which is used for administrative purposes).
+tags[0].name: Individuals
+tags[1].description: |
+  A role defines the characteristics of a relationship between parties.
+  An Individual can participate in a relationship with other individuals and organisations.
+
+  For example:
+
+  | Party         | Role           | Relationship     | Role          | Party                           |
+  | ------------- | -------------- | ---------------- | ------------- | ------------------------------- |
+  | Homer Simpson | Husband        | Marriage         | Wife          | Marge Simpson                   |
+  | Homer Simpson | Employee       | Employment       | Employer      | Springfield Nuclear Power Plant |
+  | Homer Simpson | Safety Officer | Colleague        | Supervisor    | Carl Carlson                    |
+  | Homer Simpson | Director       | Directorship     | Company       | Compu Global Hyper Mega Net     |
+  | Homer Simpson | Employee       | Employment       | Employer      | Compu Global Hyper Mega Net     |
+  | Homer Simpson | Member         | Membership       | Organisation  | The Stonecutters                |
+  | Homer Simpson | Partner        | Partnership      | Partnership   | The Be Sharps                   |
+  | Homer Simpson | Trustee        | Trusteeship      | Trust         | The Simpson Family Trust        |
+  | Homer Simpson | Member         | Membership       | Association   | Mensa International             |
+
+  You can use the API's **metadata services** to retrieve information about the classifcation schemes and
+  values used by the Registry.
+tags[1].name: Individuals Roles
+tags[2].description: |
+  The registry maintains information about an individual's contact details for administrative purposes.
+
+    Including:
+    - an address for the service of documents
+    - a principal place of business address
+tags[2].name: Individuals Addresses
+tags[3].description: |
+  The registry maintains information about an individual's contact details for administrative purposes.
+
+    Including:
+    - an email address
+    - a mobile number
+tags[3].name: Individuals Electronic Addresses
+tags[4].description: |
+  A business name is a name or title under which a person conducts a business.
+tags[4].name: Individuals Business Names
+tags[5].description: |
+  If you carry on a business you may need to hold a licence.
+
+    For example, if you provide financial services, you are required to hold an Australian Financial
+    Services (AFS) licence.
+tags[5].name: Individuals Licenses
+tags[6].description: |
+  An organisation usually consists of a number of individuals or groups bound by a common purpose about whom the
+  registry wishes to maintain information.
+
+    For example, the organisation's legal entity type (e.g., Incorporated Entity, Unincorporated Entity,
+    Partnership or Joint Venture).
+tags[6].name: Organisations
+tags[7].description: |
+  A role defines the characteristics of a relationship between parties.
+  An Organisation can participate in a relationship with other organisations and indiviuals.
+
+  For example:
+
+  | Party                           | Role     | Relationship | Role         | Party             |
+  | ------------------------------- | -------- | -------------| ------------ | ----------------- |
+  | Springfield Nuclear Power Plant | Employer | Employment   | Employee     | Homer Simpson     |
+  | Springfield Nuclear Power Plant | Company  | Directorship | Director     | Mr Burns          |
+  | Springfield Nuclear Power Plant | Employer | Employment   | Employee     | Mr Burns          |
+  | Springfield Nuclear Power Plant | Sponsor  | Sponsorship  | Organisation | The Stonecutters  |
+
+  You can use the API's **metadata services** to retrieve information about the classifcation schemes and
+  values used by the Registry.
+tags[7].name: Organisations Roles
+tags[8].description: |
+  The registry maintains information about an organisation's contact details for administrative purposes.
+
+    Including:
+    - an address for the service of documents
+    - a principal place of business address
+tags[8].name: Organisations Addresses
+tags[9].description: |
+  The registry maintains information about an organisation's contact details for administrative purposes.
+
+    Including:
+    - an email address
+    - a mobile number
+tags[9].name: Organisations Electronic Addresses
+tags[10].description: |
+  A business name is a name or title under which an organisation conducts a business.
+tags[10].name: Organisations Business Names
+tags[11].description: |
+  If you carry on a business you may need to hold a licence.
+
+    For example, if you provide financial services, you are required to hold an Australian Financial
+    Services (AFS) licence.
+tags[11].name: Organisations Licenses
+tags[12].description: |
+  A business name is a name or title under which a person or organisation conducts a business.
+tags[12].name: Business Names
+tags[13].description: |
+  If you carry on a business you may need to hold a licence.
+
+    For example, if you provide financial services, you are required to hold an Australian Financial
+    Services (AFS) licence.
+tags[13].name: Licenses
+tags[14].description: |
+  A classification scheme for business names.
+tags[14].name: Business Name Lifecycle States
+tags[15].description: |
+  A classification scheme for names.
+tags[15].name: Name Directions
+tags[16].description: |
+  A classification scheme for names.
+tags[16].name: Name Prefixes
+tags[17].description: |
+  A classification scheme for names.
+tags[17].name: Name Types
+tags[18].description: |
+  A classification scheme for addresses.
+tags[18].name: Address Types
+tags[19].description: |
+  A classification scheme for electronic addresses.
+tags[19].name: Electronic Address Types
+tags[20].description: |
+  A classification scheme for the representation of human sexes.
+tags[20].name: Genders
+tags[21].description: |
+  A classification scheme for parties (individuals and organisations).
+tags[21].name: Legal Entity Types
+tags[22].description: |
+  A classification scheme for licenses.
+tags[22].name: License Lifecycle States
+tags[23].description: |
+  A classification scheme for licenses.
+tags[23].name: License Types
+tags[24].description: |
+  A classification scheme for registered identifiers.
+tags[24].name: Registered Identifier Types
+tags[25].description: |
+  A classification scheme for the characteristics of relationships between parties (individuals and organisations).
+tags[25].name: Roles
+x-servers.length: 2
+x-servers[0].description: Production API Server
+x-servers[0].url: //api.abr.ato.gov.au/
+x-servers[1].description: Sandbox API Server
+x-servers[1].url: //api.sandbox.abr.ato.gov.au/
+x-tagGroups.length: 8
+x-tagGroups[0].name: Individuals Details
+x-tagGroups[0].tags.length: 2
+x-tagGroups[0].tags[0]: Individuals
+x-tagGroups[0].tags[1]: Individuals Roles
+x-tagGroups[1].name: Individuals Contact Details
+x-tagGroups[1].tags.length: 2
+x-tagGroups[1].tags[0]: Individuals Addresses
+x-tagGroups[1].tags[1]: Individuals Electronic Addresses
+x-tagGroups[2].name: Individuals Products
+x-tagGroups[2].tags.length: 2
+x-tagGroups[2].tags[0]: Individuals Business Names
+x-tagGroups[2].tags[1]: Individuals Licenses
+x-tagGroups[3].name: Organisations Details
+x-tagGroups[3].tags.length: 2
+x-tagGroups[3].tags[0]: Organisations
+x-tagGroups[3].tags[1]: Organisations Roles
+x-tagGroups[4].name: Organisations Contact Details
+x-tagGroups[4].tags.length: 2
+x-tagGroups[4].tags[0]: Organisations Addresses
+x-tagGroups[4].tags[1]: Organisations Electronic Addresses
+x-tagGroups[5].name: Organisations Products
+x-tagGroups[5].tags.length: 2
+x-tagGroups[5].tags[0]: Organisations Business Names
+x-tagGroups[5].tags[1]: Organisations Licenses
+x-tagGroups[6].name: Products & Services
+x-tagGroups[6].tags.length: 2
+x-tagGroups[6].tags[0]: Business Names
+x-tagGroups[6].tags[1]: Licenses
+x-tagGroups[7].name: Metadata
+x-tagGroups[7].tags.length: 12
+x-tagGroups[7].tags[0]: Business Name Lifecycle States
+x-tagGroups[7].tags[1]: Name Directions
+x-tagGroups[7].tags[2]: Name Prefixes
+x-tagGroups[7].tags[3]: Name Types
+x-tagGroups[7].tags[4]: Address Types
+x-tagGroups[7].tags[5]: Electronic Address Types
+x-tagGroups[7].tags[6]: Genders
+x-tagGroups[7].tags[7]: Legal Entity Types
+x-tagGroups[7].tags[8]: License Lifecycle States
+x-tagGroups[7].tags[9]: License Types
+x-tagGroups[7].tags[10]: Registered Identifier Types
+x-tagGroups[7].tags[11]: Roles

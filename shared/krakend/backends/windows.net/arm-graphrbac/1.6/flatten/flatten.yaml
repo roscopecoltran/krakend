@@ -1,0 +1,1458 @@
+consumes.length: 2
+consumes[0]: application/json
+consumes[1]: text/json
+definitions.AADObject.description: The properties of an Active Directory object.
+definitions.AADObject.properties.appId.description: The application ID.
+definitions.AADObject.properties.appId.readOnly: true
+definitions.AADObject.properties.appId.type: string
+definitions.AADObject.properties.appPermissions.description: The application permissions.
+definitions.AADObject.properties.appPermissions.items.type: string
+definitions.AADObject.properties.appPermissions.readOnly: true
+definitions.AADObject.properties.appPermissions.type: array
+definitions.AADObject.properties.availableToOtherTenants.description: Whether the
+  application is be available to other tenants.
+definitions.AADObject.properties.availableToOtherTenants.readOnly: true
+definitions.AADObject.properties.availableToOtherTenants.type: boolean
+definitions.AADObject.properties.displayName.description: The display name of the
+  object.
+definitions.AADObject.properties.displayName.type: string
+definitions.AADObject.properties.homepage.description: The home page of the application.
+definitions.AADObject.properties.homepage.readOnly: true
+definitions.AADObject.properties.homepage.type: string
+definitions.AADObject.properties.identifierUris.description: A collection of URIs
+  for the application.
+definitions.AADObject.properties.identifierUris.items.type: string
+definitions.AADObject.properties.identifierUris.readOnly: true
+definitions.AADObject.properties.identifierUris.type: array
+definitions.AADObject.properties.mail.description: The primary email address of the
+  object.
+definitions.AADObject.properties.mail.type: string
+definitions.AADObject.properties.mailEnabled.description: Whether the AAD object is
+  mail-enabled.
+definitions.AADObject.properties.mailEnabled.type: boolean
+definitions.AADObject.properties.mailNickname.description: The mail alias for the
+  user.
+definitions.AADObject.properties.mailNickname.readOnly: true
+definitions.AADObject.properties.mailNickname.type: string
+definitions.AADObject.properties.objectId.description: The ID of the object.
+definitions.AADObject.properties.objectId.type: string
+definitions.AADObject.properties.objectType.description: The type of AAD object.
+definitions.AADObject.properties.objectType.type: string
+definitions.AADObject.properties.replyUrls.description: A collection of reply URLs
+  for the application.
+definitions.AADObject.properties.replyUrls.items.type: string
+definitions.AADObject.properties.replyUrls.readOnly: true
+definitions.AADObject.properties.replyUrls.type: array
+definitions.AADObject.properties.securityEnabled.description: Whether the AAD object
+  is security-enabled.
+definitions.AADObject.properties.securityEnabled.type: boolean
+definitions.AADObject.properties.servicePrincipalNames.description: A collection of
+  service principal names associated with the object.
+definitions.AADObject.properties.servicePrincipalNames.items.type: string
+definitions.AADObject.properties.servicePrincipalNames.type: array
+definitions.AADObject.properties.signInName.description: The sign-in name of the object.
+definitions.AADObject.properties.signInName.type: string
+definitions.AADObject.properties.usageLocation.description: 'A two letter country
+  code (ISO standard 3166). Required for users that will be assigned licenses due
+  to legal requirement to check for availability of services in countries. Examples
+  include: "US", "JP", and "GB".'
+definitions.AADObject.properties.usageLocation.readOnly: true
+definitions.AADObject.properties.usageLocation.type: string
+definitions.AADObject.properties.userPrincipalName.description: The principal name
+  of the object.
+definitions.AADObject.properties.userPrincipalName.type: string
+definitions.AADObject.properties.userType.description: The user type of the object.
+definitions.AADObject.properties.userType.type: string
+definitions.ADGroup.description: Active Directory group information.
+definitions.ADGroup.properties.displayName.description: The display name of the group.
+definitions.ADGroup.properties.displayName.type: string
+definitions.ADGroup.properties.mail.description: The primary email address of the
+  group.
+definitions.ADGroup.properties.mail.type: string
+definitions.ADGroup.properties.objectId.description: The object ID.
+definitions.ADGroup.properties.objectId.type: string
+definitions.ADGroup.properties.objectType.description: The object type.
+definitions.ADGroup.properties.objectType.type: string
+definitions.ADGroup.properties.securityEnabled.description: Whether the group is security-enable.
+definitions.ADGroup.properties.securityEnabled.type: boolean
+definitions.Application.description: Active Directory application information.
+definitions.Application.properties.appId.description: The application ID.
+definitions.Application.properties.appId.type: string
+definitions.Application.properties.appPermissions.description: The application permissions.
+definitions.Application.properties.appPermissions.items.type: string
+definitions.Application.properties.appPermissions.type: array
+definitions.Application.properties.availableToOtherTenants.description: Whether the
+  application is be available to other tenants.
+definitions.Application.properties.availableToOtherTenants.type: boolean
+definitions.Application.properties.displayName.description: The display name of the
+  application.
+definitions.Application.properties.displayName.type: string
+definitions.Application.properties.homepage.description: The home page of the application.
+definitions.Application.properties.homepage.type: string
+definitions.Application.properties.identifierUris.description: A collection of URIs
+  for the application.
+definitions.Application.properties.identifierUris.items.type: string
+definitions.Application.properties.identifierUris.type: array
+definitions.Application.properties.objectId.description: The object ID.
+definitions.Application.properties.objectId.type: string
+definitions.Application.properties.objectType.description: The object type.
+definitions.Application.properties.objectType.type: string
+definitions.Application.properties.replyUrls.description: A collection of reply URLs
+  for the application.
+definitions.Application.properties.replyUrls.items.type: string
+definitions.Application.properties.replyUrls.type: array
+definitions.ApplicationCreateParameters.description: Request parameters for creating
+  a new application.
+definitions.ApplicationCreateParameters.properties.availableToOtherTenants.description: Whether
+  the application is available to other tenants.
+definitions.ApplicationCreateParameters.properties.availableToOtherTenants.type: boolean
+definitions.ApplicationCreateParameters.properties.displayName.description: The display
+  name of the application.
+definitions.ApplicationCreateParameters.properties.displayName.type: string
+definitions.ApplicationCreateParameters.properties.homepage.description: The home
+  page of the application.
+definitions.ApplicationCreateParameters.properties.homepage.type: string
+definitions.ApplicationCreateParameters.properties.identifierUris.description: A collection
+  of URIs for the application.
+definitions.ApplicationCreateParameters.properties.identifierUris.items.type: string
+definitions.ApplicationCreateParameters.properties.identifierUris.type: array
+definitions.ApplicationCreateParameters.properties.keyCredentials.description: The
+  list of KeyCredential objects.
+definitions.ApplicationCreateParameters.properties.keyCredentials.items.$ref: '#/definitions/KeyCredential'
+definitions.ApplicationCreateParameters.properties.keyCredentials.type: array
+definitions.ApplicationCreateParameters.properties.passwordCredentials.description: The
+  list of PasswordCredential objects.
+definitions.ApplicationCreateParameters.properties.passwordCredentials.items.$ref: '#/definitions/PasswordCredential'
+definitions.ApplicationCreateParameters.properties.passwordCredentials.type: array
+definitions.ApplicationCreateParameters.properties.replyUrls.description: A collection
+  of reply URLs for the application.
+definitions.ApplicationCreateParameters.properties.replyUrls.items.type: string
+definitions.ApplicationCreateParameters.properties.replyUrls.type: array
+definitions.ApplicationCreateParameters.required.length: 3
+definitions.ApplicationCreateParameters.required[0]: availableToOtherTenants
+definitions.ApplicationCreateParameters.required[1]: displayName
+definitions.ApplicationCreateParameters.required[2]: identifierUris
+definitions.ApplicationListResult.description: Application list operation result.
+definitions.ApplicationListResult.properties.odata.nextLink.description: The URL to
+  get the next set of results.
+definitions.ApplicationListResult.properties.odata.nextLink.type: string
+definitions.ApplicationListResult.properties.value.description: A collection of applications.
+definitions.ApplicationListResult.properties.value.items.$ref: '#/definitions/Application'
+definitions.ApplicationListResult.properties.value.type: array
+definitions.ApplicationUpdateParameters.description: Request parameters for updating
+  an existing application.
+definitions.ApplicationUpdateParameters.properties.availableToOtherTenants.description: Whether
+  the application is available to other tenants
+definitions.ApplicationUpdateParameters.properties.availableToOtherTenants.type: boolean
+definitions.ApplicationUpdateParameters.properties.displayName.description: The display
+  name of the application.
+definitions.ApplicationUpdateParameters.properties.displayName.type: string
+definitions.ApplicationUpdateParameters.properties.homepage.description: The home
+  page of the application.
+definitions.ApplicationUpdateParameters.properties.homepage.type: string
+definitions.ApplicationUpdateParameters.properties.identifierUris.description: A collection
+  of URIs for the application.
+definitions.ApplicationUpdateParameters.properties.identifierUris.items.type: string
+definitions.ApplicationUpdateParameters.properties.identifierUris.type: array
+definitions.ApplicationUpdateParameters.properties.keyCredentials.description: The
+  list of KeyCredential objects.
+definitions.ApplicationUpdateParameters.properties.keyCredentials.items.$ref: '#/definitions/KeyCredential'
+definitions.ApplicationUpdateParameters.properties.keyCredentials.type: array
+definitions.ApplicationUpdateParameters.properties.passwordCredentials.description: The
+  list of PasswordCredential objects.
+definitions.ApplicationUpdateParameters.properties.passwordCredentials.items.$ref: '#/definitions/PasswordCredential'
+definitions.ApplicationUpdateParameters.properties.passwordCredentials.type: array
+definitions.ApplicationUpdateParameters.properties.replyUrls.description: A collection
+  of reply URLs for the application.
+definitions.ApplicationUpdateParameters.properties.replyUrls.items.type: string
+definitions.ApplicationUpdateParameters.properties.replyUrls.type: array
+definitions.CheckGroupMembershipParameters.description: Request parameters for IsMemberOf
+  API call.
+definitions.CheckGroupMembershipParameters.properties.groupId.description: The object
+  ID of the group to check.
+definitions.CheckGroupMembershipParameters.properties.groupId.type: string
+definitions.CheckGroupMembershipParameters.properties.memberId.description: The object
+  ID of the contact, group, user, or service principal to check for membership in
+  the specified group.
+definitions.CheckGroupMembershipParameters.properties.memberId.type: string
+definitions.CheckGroupMembershipParameters.required.length: 2
+definitions.CheckGroupMembershipParameters.required[0]: groupId
+definitions.CheckGroupMembershipParameters.required[1]: memberId
+definitions.CheckGroupMembershipResult.description: Server response for IsMemberOf
+  API call
+definitions.CheckGroupMembershipResult.properties.value.description: True if the specified
+  user, group, contact, or service principal has either direct or transitive membership
+  in the specified group; otherwise, false.
+definitions.CheckGroupMembershipResult.properties.value.type: boolean
+definitions.Domain.description: Active Directory Domain information.
+definitions.Domain.properties.authenticationType.description: the type of the authentication
+  into the domain.
+definitions.Domain.properties.authenticationType.readOnly: true
+definitions.Domain.properties.authenticationType.type: string
+definitions.Domain.properties.isDefault.description: if this is the default domain
+  in the tenant.
+definitions.Domain.properties.isDefault.readOnly: true
+definitions.Domain.properties.isDefault.type: boolean
+definitions.Domain.properties.isVerified.description: if this domain's ownership is
+  verified.
+definitions.Domain.properties.isVerified.readOnly: true
+definitions.Domain.properties.isVerified.type: boolean
+definitions.Domain.properties.name.description: the domain name.
+definitions.Domain.properties.name.type: string
+definitions.Domain.required.length: 1
+definitions.Domain.required[0]: name
+definitions.DomainListResult.description: Server response for Get tenant domains API
+  call.
+definitions.DomainListResult.properties.value.description: the list of domains.
+definitions.DomainListResult.properties.value.items.$ref: '#/definitions/Domain'
+definitions.DomainListResult.properties.value.type: array
+definitions.ErrorMessage.description: Active Directory error message.
+definitions.ErrorMessage.properties.value.description: Error message value.
+definitions.ErrorMessage.properties.value.type: string
+definitions.ErrorMessage.properties.value.x-ms-client-name: message
+definitions.GetObjectsParameters.description: Request parameters for the GetObjectsByObjectIds
+  API.
+definitions.GetObjectsParameters.properties.includeDirectoryObjectReferences.description: If
+  true, also searches for object IDs in the partner tenant.
+definitions.GetObjectsParameters.properties.includeDirectoryObjectReferences.type: boolean
+definitions.GetObjectsParameters.properties.objectIds.description: The requested object
+  IDs.
+definitions.GetObjectsParameters.properties.objectIds.items.type: string
+definitions.GetObjectsParameters.properties.objectIds.type: array
+definitions.GetObjectsParameters.properties.types.description: The requested object
+  types.
+definitions.GetObjectsParameters.properties.types.items.type: string
+definitions.GetObjectsParameters.properties.types.type: array
+definitions.GetObjectsParameters.required.length: 1
+definitions.GetObjectsParameters.required[0]: includeDirectoryObjectReferences
+definitions.GetObjectsResult.description: The response to an Active Directory object
+  inquiry API request.
+definitions.GetObjectsResult.properties.odata.nextLink.description: The URL to get
+  the next set of results.
+definitions.GetObjectsResult.properties.odata.nextLink.type: string
+definitions.GetObjectsResult.properties.value.description: A collection of Active
+  Directory objects.
+definitions.GetObjectsResult.properties.value.items.$ref: '#/definitions/AADObject'
+definitions.GetObjectsResult.properties.value.type: array
+definitions.GraphError.description: Active Directory error information.
+definitions.GraphError.properties.odata.error.$ref: '#/definitions/OdataError'
+definitions.GraphError.properties.odata.error.description: A Graph API error.
+definitions.GraphError.properties.odata.error.type: object
+definitions.GraphError.properties.odata.error.x-ms-client-flatten: true
+definitions.GroupAddMemberParameters.description: Request parameters for adding a
+  member to a group.
+definitions.GroupAddMemberParameters.properties.url.description: A member object URL,
+  such as "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
+  where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and "f260bbc4-c254-447b-94cf-293b5ec434dd"
+  is the objectId of the member (user, application, servicePrincipal, group) to be
+  added.
+definitions.GroupAddMemberParameters.properties.url.type: string
+definitions.GroupAddMemberParameters.required.length: 1
+definitions.GroupAddMemberParameters.required[0]: url
+definitions.GroupCreateParameters.description: Request parameters for creating a new
+  group.
+definitions.GroupCreateParameters.properties.displayName.description: Group display
+  name
+definitions.GroupCreateParameters.properties.displayName.type: string
+definitions.GroupCreateParameters.properties.mailEnabled.description: Whether the
+  group is mail-enabled. Must be false. This is because only pure security groups
+  can be created using the Graph API.
+definitions.GroupCreateParameters.properties.mailEnabled.enum.length: 1
+definitions.GroupCreateParameters.properties.mailEnabled.enum[0]: false
+definitions.GroupCreateParameters.properties.mailEnabled.type: boolean
+definitions.GroupCreateParameters.properties.mailNickname.description: Mail nickname
+definitions.GroupCreateParameters.properties.mailNickname.type: string
+definitions.GroupCreateParameters.properties.securityEnabled.description: Whether
+  the group is a security group. Must be true. This is because only pure security
+  groups can be created using the Graph API.
+definitions.GroupCreateParameters.properties.securityEnabled.enum.length: 1
+definitions.GroupCreateParameters.properties.securityEnabled.enum[0]: true
+definitions.GroupCreateParameters.properties.securityEnabled.type: boolean
+definitions.GroupCreateParameters.required.length: 4
+definitions.GroupCreateParameters.required[0]: displayName
+definitions.GroupCreateParameters.required[1]: mailEnabled
+definitions.GroupCreateParameters.required[2]: mailNickname
+definitions.GroupCreateParameters.required[3]: securityEnabled
+definitions.GroupGetMemberGroupsParameters.description: Request parameters for GetMemberGroups
+  API call.
+definitions.GroupGetMemberGroupsParameters.properties.securityEnabledOnly.description: If
+  true, only membership in security-enabled groups should be checked. Otherwise, membership
+  in all groups should be checked.
+definitions.GroupGetMemberGroupsParameters.properties.securityEnabledOnly.type: boolean
+definitions.GroupGetMemberGroupsParameters.required.length: 1
+definitions.GroupGetMemberGroupsParameters.required[0]: securityEnabledOnly
+definitions.GroupGetMemberGroupsResult.description: Server response for GetMemberGroups
+  API call.
+definitions.GroupGetMemberGroupsResult.properties.value.description: A collection
+  of group IDs of which the group is a member.
+definitions.GroupGetMemberGroupsResult.properties.value.items.type: string
+definitions.GroupGetMemberGroupsResult.properties.value.type: array
+definitions.GroupListResult.description: Server response for Get tenant groups API
+  call
+definitions.GroupListResult.properties.odata.nextLink.description: The URL to get
+  the next set of results.
+definitions.GroupListResult.properties.odata.nextLink.type: string
+definitions.GroupListResult.properties.value.description: A collection of Active Directory
+  groups.
+definitions.GroupListResult.properties.value.items.$ref: '#/definitions/ADGroup'
+definitions.GroupListResult.properties.value.type: array
+definitions.KeyCredential.description: Active Directory Key Credential information.
+definitions.KeyCredential.properties.endDate.description: End date.
+definitions.KeyCredential.properties.endDate.format: date-time
+definitions.KeyCredential.properties.endDate.type: string
+definitions.KeyCredential.properties.keyId.description: Key ID.
+definitions.KeyCredential.properties.keyId.type: string
+definitions.KeyCredential.properties.startDate.description: Start date.
+definitions.KeyCredential.properties.startDate.format: date-time
+definitions.KeyCredential.properties.startDate.type: string
+definitions.KeyCredential.properties.type.description: Type. Acceptable values are
+  'AsymmetricX509Cert' and 'Symmetric'.
+definitions.KeyCredential.properties.type.type: string
+definitions.KeyCredential.properties.usage.description: Usage. Acceptable values are
+  'Verify' and 'Sign'.
+definitions.KeyCredential.properties.usage.type: string
+definitions.KeyCredential.properties.value.description: Key value.
+definitions.KeyCredential.properties.value.type: string
+definitions.KeyCredentialListResult.description: KeyCredential list operation result.
+definitions.KeyCredentialListResult.properties.value.description: A collection of
+  KeyCredentials.
+definitions.KeyCredentialListResult.properties.value.items.$ref: '#/definitions/KeyCredential'
+definitions.KeyCredentialListResult.properties.value.type: array
+definitions.KeyCredentialsUpdateParameters.description: Request parameters for a KeyCredentials
+  update operation
+definitions.KeyCredentialsUpdateParameters.properties.value.description: A collection
+  of KeyCredentials.
+definitions.KeyCredentialsUpdateParameters.properties.value.items.$ref: '#/definitions/KeyCredential'
+definitions.KeyCredentialsUpdateParameters.properties.value.type: array
+definitions.KeyCredentialsUpdateParameters.required.length: 1
+definitions.KeyCredentialsUpdateParameters.required[0]: value
+definitions.OdataError.description: Active Directory OData error information.
+definitions.OdataError.properties.code.description: Error code.
+definitions.OdataError.properties.code.type: string
+definitions.OdataError.properties.message.$ref: '#/definitions/ErrorMessage'
+definitions.OdataError.properties.message.description: Error Message.
+definitions.OdataError.properties.message.type: object
+definitions.OdataError.properties.message.x-ms-client-flatten: true
+definitions.PasswordCredential.description: Active Directory Password Credential information.
+definitions.PasswordCredential.properties.endDate.description: End date.
+definitions.PasswordCredential.properties.endDate.format: date-time
+definitions.PasswordCredential.properties.endDate.type: string
+definitions.PasswordCredential.properties.keyId.description: Key ID.
+definitions.PasswordCredential.properties.keyId.type: string
+definitions.PasswordCredential.properties.startDate.description: Start date.
+definitions.PasswordCredential.properties.startDate.format: date-time
+definitions.PasswordCredential.properties.startDate.type: string
+definitions.PasswordCredential.properties.value.description: Key value.
+definitions.PasswordCredential.properties.value.type: string
+definitions.PasswordCredentialListResult.description: PasswordCredential list operation
+  result.
+definitions.PasswordCredentialListResult.properties.value.description: A collection
+  of PasswordCredentials.
+definitions.PasswordCredentialListResult.properties.value.items.$ref: '#/definitions/PasswordCredential'
+definitions.PasswordCredentialListResult.properties.value.type: array
+definitions.PasswordCredentialsUpdateParameters.description: Request parameters for
+  a PasswordCredentials update operation.
+definitions.PasswordCredentialsUpdateParameters.properties.value.description: A collection
+  of PasswordCredentials.
+definitions.PasswordCredentialsUpdateParameters.properties.value.items.$ref: '#/definitions/PasswordCredential'
+definitions.PasswordCredentialsUpdateParameters.properties.value.type: array
+definitions.PasswordCredentialsUpdateParameters.required.length: 1
+definitions.PasswordCredentialsUpdateParameters.required[0]: value
+definitions.PasswordProfile.description: The password profile associated with a user.
+definitions.PasswordProfile.properties.forceChangePasswordNextLogin.description: Whether
+  to force a password change on next login.
+definitions.PasswordProfile.properties.forceChangePasswordNextLogin.type: boolean
+definitions.PasswordProfile.properties.password.description: Password
+definitions.PasswordProfile.properties.password.type: string
+definitions.PasswordProfile.required.length: 1
+definitions.PasswordProfile.required[0]: password
+definitions.ServicePrincipal.description: Active Directory service principal information.
+definitions.ServicePrincipal.properties.appId.description: The application ID.
+definitions.ServicePrincipal.properties.appId.type: string
+definitions.ServicePrincipal.properties.displayName.description: The display name
+  of the service principal.
+definitions.ServicePrincipal.properties.displayName.type: string
+definitions.ServicePrincipal.properties.objectId.description: The object ID.
+definitions.ServicePrincipal.properties.objectId.type: string
+definitions.ServicePrincipal.properties.objectType.description: The object type.
+definitions.ServicePrincipal.properties.objectType.type: string
+definitions.ServicePrincipal.properties.servicePrincipalNames.description: A collection
+  of service principal names.
+definitions.ServicePrincipal.properties.servicePrincipalNames.items.type: string
+definitions.ServicePrincipal.properties.servicePrincipalNames.type: array
+definitions.ServicePrincipalCreateParameters.description: Request parameters for creating
+  a new service principal.
+definitions.ServicePrincipalCreateParameters.properties.accountEnabled.description: Whether
+  the account is enabled
+definitions.ServicePrincipalCreateParameters.properties.accountEnabled.type: boolean
+definitions.ServicePrincipalCreateParameters.properties.appId.description: application
+  Id
+definitions.ServicePrincipalCreateParameters.properties.appId.type: string
+definitions.ServicePrincipalCreateParameters.properties.keyCredentials.description: A
+  collection of KeyCredential objects.
+definitions.ServicePrincipalCreateParameters.properties.keyCredentials.items.$ref: '#/definitions/KeyCredential'
+definitions.ServicePrincipalCreateParameters.properties.keyCredentials.type: array
+definitions.ServicePrincipalCreateParameters.properties.passwordCredentials.description: A
+  collection of PasswordCredential objects
+definitions.ServicePrincipalCreateParameters.properties.passwordCredentials.items.$ref: '#/definitions/PasswordCredential'
+definitions.ServicePrincipalCreateParameters.properties.passwordCredentials.type: array
+definitions.ServicePrincipalCreateParameters.required.length: 2
+definitions.ServicePrincipalCreateParameters.required[0]: appId
+definitions.ServicePrincipalCreateParameters.required[1]: accountEnabled
+definitions.ServicePrincipalListResult.description: Server response for get tenant
+  service principals API call.
+definitions.ServicePrincipalListResult.properties.odata.nextLink.description: the
+  URL to get the next set of results.
+definitions.ServicePrincipalListResult.properties.odata.nextLink.type: string
+definitions.ServicePrincipalListResult.properties.value.description: the list of service
+  principals.
+definitions.ServicePrincipalListResult.properties.value.items.$ref: '#/definitions/ServicePrincipal'
+definitions.ServicePrincipalListResult.properties.value.type: array
+definitions.User.description: Active Directory user information.
+definitions.User.properties.displayName.description: The display name of the user.
+definitions.User.properties.displayName.type: string
+definitions.User.properties.mail.description: The primary email address of the user.
+definitions.User.properties.mail.type: string
+definitions.User.properties.mailNickname.description: The mail alias for the user.
+definitions.User.properties.mailNickname.type: string
+definitions.User.properties.objectId.description: The object ID.
+definitions.User.properties.objectId.type: string
+definitions.User.properties.objectType.description: The object type.
+definitions.User.properties.objectType.type: string
+definitions.User.properties.signInName.description: The sign-in name of the user.
+definitions.User.properties.signInName.type: string
+definitions.User.properties.usageLocation.description: 'A two letter country code
+  (ISO standard 3166). Required for users that will be assigned licenses due to legal
+  requirement to check for availability of services in countries. Examples include:
+  "US", "JP", and "GB".'
+definitions.User.properties.usageLocation.type: string
+definitions.User.properties.userPrincipalName.description: The principal name of the
+  user.
+definitions.User.properties.userPrincipalName.type: string
+definitions.UserCreateParameters.description: Request parameters for creating a new
+  work or school account user.
+definitions.UserCreateParameters.properties.accountEnabled.description: Whether the
+  account is enabled.
+definitions.UserCreateParameters.properties.accountEnabled.type: boolean
+definitions.UserCreateParameters.properties.displayName.description: The display name
+  of the user.
+definitions.UserCreateParameters.properties.displayName.type: string
+definitions.UserCreateParameters.properties.immutableId.description: This must be
+  specified if you are using a federated domain for the user's userPrincipalName (UPN)
+  property when creating a new user account. It is used to associate an on-premises
+  Active Directory user account with their Azure AD user object.
+definitions.UserCreateParameters.properties.immutableId.type: string
+definitions.UserCreateParameters.properties.mailNickname.description: The mail alias
+  for the user.
+definitions.UserCreateParameters.properties.mailNickname.type: string
+definitions.UserCreateParameters.properties.passwordProfile.$ref: '#/definitions/PasswordProfile'
+definitions.UserCreateParameters.properties.passwordProfile.description: Password
+  Profile
+definitions.UserCreateParameters.properties.usageLocation.description: 'A two letter
+  country code (ISO standard 3166). Required for users that will be assigned licenses
+  due to legal requirement to check for availability of services in countries. Examples
+  include: "US", "JP", and "GB".'
+definitions.UserCreateParameters.properties.usageLocation.type: string
+definitions.UserCreateParameters.properties.userPrincipalName.description: The user
+  principal name (someuser@contoso.com). It must contain one of the verified domains
+  for the tenant.
+definitions.UserCreateParameters.properties.userPrincipalName.type: string
+definitions.UserCreateParameters.required.length: 5
+definitions.UserCreateParameters.required[0]: accountEnabled
+definitions.UserCreateParameters.required[1]: displayName
+definitions.UserCreateParameters.required[2]: passwordProfile
+definitions.UserCreateParameters.required[3]: userPrincipalName
+definitions.UserCreateParameters.required[4]: mailNickname
+definitions.UserGetMemberGroupsParameters.description: Request parameters for GetMemberGroups
+  API call.
+definitions.UserGetMemberGroupsParameters.properties.securityEnabledOnly.description: If
+  true, only membership in security-enabled groups should be checked. Otherwise, membership
+  in all groups should be checked.
+definitions.UserGetMemberGroupsParameters.properties.securityEnabledOnly.type: boolean
+definitions.UserGetMemberGroupsParameters.required.length: 1
+definitions.UserGetMemberGroupsParameters.required[0]: securityEnabledOnly
+definitions.UserGetMemberGroupsResult.description: Server response for GetMemberGroups
+  API call.
+definitions.UserGetMemberGroupsResult.properties.value.description: A collection of
+  group IDs of which the user is a member.
+definitions.UserGetMemberGroupsResult.properties.value.items.type: string
+definitions.UserGetMemberGroupsResult.properties.value.type: array
+definitions.UserListResult.description: Server response for Get tenant users API call.
+definitions.UserListResult.properties.odata.nextLink.description: The URL to get the
+  next set of results.
+definitions.UserListResult.properties.odata.nextLink.type: string
+definitions.UserListResult.properties.value.description: the list of users.
+definitions.UserListResult.properties.value.items.$ref: '#/definitions/User'
+definitions.UserListResult.properties.value.type: array
+definitions.UserUpdateParameters.description: Request parameters for updating an existing
+  work or school account user.
+definitions.UserUpdateParameters.properties.accountEnabled.description: Whether the
+  account is enabled.
+definitions.UserUpdateParameters.properties.accountEnabled.type: boolean
+definitions.UserUpdateParameters.properties.displayName.description: The display name
+  of the user.
+definitions.UserUpdateParameters.properties.displayName.type: string
+definitions.UserUpdateParameters.properties.mailNickname.description: The mail alias
+  for the user.
+definitions.UserUpdateParameters.properties.mailNickname.type: string
+definitions.UserUpdateParameters.properties.passwordProfile.$ref: '#/definitions/PasswordProfile'
+definitions.UserUpdateParameters.properties.passwordProfile.description: The password
+  profile of the user.
+definitions.UserUpdateParameters.properties.usageLocation.description: 'A two letter
+  country code (ISO standard 3166). Required for users that will be assigned licenses
+  due to legal requirement to check for availability of services in countries. Examples
+  include: "US", "JP", and "GB".'
+definitions.UserUpdateParameters.properties.usageLocation.type: string
+host: graph.windows.net
+info.description: The Graph RBAC Management Client
+info.title: GraphRbacManagementClient
+info.version: "1.6"
+info.x-apisguru-categories.length: 1
+info.x-apisguru-categories[0]: security
+info.x-logo.url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
+info.x-origin.length: 1
+info.x-origin[0].format: swagger
+info.x-origin[0].url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-graphrbac/1.6/swagger/graphrbac.json
+info.x-origin[0].version: "2.0"
+info.x-preferred: true
+info.x-providerName: windows.net
+info.x-serviceName: arm-graphrbac
+parameters.ApiVersionParameter.description: Client API version.
+parameters.ApiVersionParameter.in: query
+parameters.ApiVersionParameter.name: api-version
+parameters.ApiVersionParameter.required: true
+parameters.ApiVersionParameter.type: string
+parameters.tenantIDInPath.description: The tenant ID.
+parameters.tenantIDInPath.in: path
+parameters.tenantIDInPath.name: tenantID
+parameters.tenantIDInPath.required: true
+parameters.tenantIDInPath.type: string
+paths./{tenantID}/applications.get.description: Lists applications by filter parameters.
+paths./{tenantID}/applications.get.operationId: Applications_List
+paths./{tenantID}/applications.get.parameters.length: 3
+paths./{tenantID}/applications.get.parameters[0].description: The filters to apply
+  to the operation.
+paths./{tenantID}/applications.get.parameters[0].in: query
+paths./{tenantID}/applications.get.parameters[0].name: $filter
+paths./{tenantID}/applications.get.parameters[0].required: false
+paths./{tenantID}/applications.get.parameters[0].type: string
+paths./{tenantID}/applications.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications.get.responses.200.description: OK. The operation was
+  successful.
+paths./{tenantID}/applications.get.responses.200.schema.$ref: '#/definitions/ApplicationListResult'
+paths./{tenantID}/applications.get.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/applications.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications.get.tags.length: 1
+paths./{tenantID}/applications.get.tags[0]: Application
+paths./{tenantID}/applications.get.x-ms-odata: '#/definitions/Application'
+paths./{tenantID}/applications.get.x-ms-pageable.nextLinkName: odata.nextLink
+paths./{tenantID}/applications.get.x-ms-pageable.operationName: Applications_ListNext
+paths./{tenantID}/applications.post.description: Create a new application.
+paths./{tenantID}/applications.post.operationId: Applications_Create
+paths./{tenantID}/applications.post.parameters.length: 3
+paths./{tenantID}/applications.post.parameters[0].description: The parameters for
+  creating an application.
+paths./{tenantID}/applications.post.parameters[0].in: body
+paths./{tenantID}/applications.post.parameters[0].name: parameters
+paths./{tenantID}/applications.post.parameters[0].required: true
+paths./{tenantID}/applications.post.parameters[0].schema.$ref: '#/definitions/ApplicationCreateParameters'
+paths./{tenantID}/applications.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications.post.responses.201.description: The application was
+  created successfully.
+paths./{tenantID}/applications.post.responses.201.schema.$ref: '#/definitions/Application'
+paths./{tenantID}/applications.post.responses.default.description: Error response
+  describing why the operation failed.
+paths./{tenantID}/applications.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications.post.tags.length: 1
+paths./{tenantID}/applications.post.tags[0]: Application
+paths./{tenantID}/applications/{applicationObjectId}.delete.description: Delete an
+  application.
+paths./{tenantID}/applications/{applicationObjectId}.delete.operationId: Applications_Delete
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters.length: 3
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}.delete.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}.delete.responses.204.description: No
+  Content
+paths./{tenantID}/applications/{applicationObjectId}.delete.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}.delete.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}.delete.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}.delete.tags[0]: Application
+paths./{tenantID}/applications/{applicationObjectId}.get.description: Get an application
+  by object ID.
+paths./{tenantID}/applications/{applicationObjectId}.get.operationId: Applications_Get
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters.length: 3
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}.get.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/applications/{applicationObjectId}.get.responses.200.schema.$ref: '#/definitions/Application'
+paths./{tenantID}/applications/{applicationObjectId}.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}.get.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}.get.tags[0]: Application
+paths./{tenantID}/applications/{applicationObjectId}.patch.description: Update an
+  existing application.
+paths./{tenantID}/applications/{applicationObjectId}.patch.operationId: Applications_Patch
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters.length: 4
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[1].description: Parameters
+  to update an existing application.
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[1].in: body
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[1].name: parameters
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[1].required: true
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[1].schema.$ref: '#/definitions/ApplicationUpdateParameters'
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}.patch.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}.patch.responses.204.description: No
+  Content
+paths./{tenantID}/applications/{applicationObjectId}.patch.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}.patch.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}.patch.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}.patch.tags[0]: Application
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.description: Get
+  the keyCredentials associated with an application.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.operationId: Applications_ListKeyCredentials
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters.length: 3
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.responses.200.schema.$ref: '#/definitions/KeyCredentialListResult'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.get.tags[0]: ApplicationKeyCredentials
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.description: Update
+  the keyCredentials associated with an application.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.operationId: Applications_UpdateKeyCredentials
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters.length: 4
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[1].description: Parameters
+  to update the keyCredentials of an existing application.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[1].in: body
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[1].name: parameters
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[1].required: true
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[1].schema.$ref: '#/definitions/KeyCredentialsUpdateParameters'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.responses.204.description: No
+  Content
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}/keyCredentials.patch.tags[0]: ApplicationKeyCredentials
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.description: Get
+  the passwordCredentials associated with an application.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.operationId: Applications_ListPasswordCredentials
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters.length: 3
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.responses.200.schema.$ref: '#/definitions/PasswordCredentialListResult'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.get.tags[0]: ApplicationPasswordCredentials
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.description: Update
+  passwordCredentials associated with an application.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.operationId: Applications_UpdatePasswordCredentials
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters.length: 4
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[0].description: Application
+  object ID.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[0].in: path
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[0].name: applicationObjectId
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[0].required: true
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[0].type: string
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[1].description: Parameters
+  to update passwordCredentials of an existing application.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[1].in: body
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[1].name: parameters
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[1].required: true
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[1].schema.$ref: '#/definitions/PasswordCredentialsUpdateParameters'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.responses.204.description: No
+  Content
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.tags.length: 1
+paths./{tenantID}/applications/{applicationObjectId}/passwordCredentials.patch.tags[0]: ApplicationPasswordCredentials
+paths./{tenantID}/domains.get.description: Gets a list of domains for the current
+  tenant.
+paths./{tenantID}/domains.get.operationId: Domains_List
+paths./{tenantID}/domains.get.parameters.length: 3
+paths./{tenantID}/domains.get.parameters[0].description: The filter to apply to the
+  operation.
+paths./{tenantID}/domains.get.parameters[0].in: query
+paths./{tenantID}/domains.get.parameters[0].name: $filter
+paths./{tenantID}/domains.get.parameters[0].required: false
+paths./{tenantID}/domains.get.parameters[0].type: string
+paths./{tenantID}/domains.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/domains.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/domains.get.responses.200.description: OK. The operation was successful.
+paths./{tenantID}/domains.get.responses.200.schema.$ref: '#/definitions/DomainListResult'
+paths./{tenantID}/domains.get.tags.length: 1
+paths./{tenantID}/domains.get.tags[0]: Domain
+paths./{tenantID}/domains.get.x-ms-odata: '#/definitions/User'
+paths./{tenantID}/domains/{domainName}.get.description: Gets a specific domain in
+  the current tenant.
+paths./{tenantID}/domains/{domainName}.get.operationId: Domains_Get
+paths./{tenantID}/domains/{domainName}.get.parameters.length: 3
+paths./{tenantID}/domains/{domainName}.get.parameters[0].description: name of the
+  domain.
+paths./{tenantID}/domains/{domainName}.get.parameters[0].in: path
+paths./{tenantID}/domains/{domainName}.get.parameters[0].name: domainName
+paths./{tenantID}/domains/{domainName}.get.parameters[0].required: true
+paths./{tenantID}/domains/{domainName}.get.parameters[0].type: string
+paths./{tenantID}/domains/{domainName}.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/domains/{domainName}.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/domains/{domainName}.get.responses.200.description: OK. The operation
+  was successful.
+paths./{tenantID}/domains/{domainName}.get.responses.200.schema.$ref: '#/definitions/Domain'
+paths./{tenantID}/domains/{domainName}.get.tags.length: 1
+paths./{tenantID}/domains/{domainName}.get.tags[0]: Domain
+paths./{tenantID}/getObjectsByObjectIds.post.description: Gets AD group membership
+  for the specified AD object IDs.
+paths./{tenantID}/getObjectsByObjectIds.post.operationId: Objects_GetObjectsByObjectIds
+paths./{tenantID}/getObjectsByObjectIds.post.parameters.length: 3
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[0].description: Objects filtering
+  parameters.
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[0].in: body
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[0].name: parameters
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[0].required: true
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[0].schema.$ref: '#/definitions/GetObjectsParameters'
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/getObjectsByObjectIds.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/getObjectsByObjectIds.post.responses.200.description: OK. The operation
+  was successful.
+paths./{tenantID}/getObjectsByObjectIds.post.responses.200.schema.$ref: '#/definitions/GetObjectsResult'
+paths./{tenantID}/getObjectsByObjectIds.post.tags.length: 1
+paths./{tenantID}/getObjectsByObjectIds.post.tags[0]: Objects
+paths./{tenantID}/getObjectsByObjectIds.post.x-ms-pageable.nextLinkName: odata.nextLink
+paths./{tenantID}/getObjectsByObjectIds.post.x-ms-pageable.operationName: Objects_GetObjectsByObjectIdsNext
+paths./{tenantID}/groups.get.description: Gets list of groups for the current tenant.
+paths./{tenantID}/groups.get.operationId: Groups_List
+paths./{tenantID}/groups.get.parameters.length: 3
+paths./{tenantID}/groups.get.parameters[0].description: The filter to apply to the
+  operation.
+paths./{tenantID}/groups.get.parameters[0].in: query
+paths./{tenantID}/groups.get.parameters[0].name: $filter
+paths./{tenantID}/groups.get.parameters[0].required: false
+paths./{tenantID}/groups.get.parameters[0].type: string
+paths./{tenantID}/groups.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups.get.responses.200.description: OK. The operation was successful.
+paths./{tenantID}/groups.get.responses.200.schema.$ref: '#/definitions/GroupListResult'
+paths./{tenantID}/groups.get.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/groups.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups.get.tags.length: 1
+paths./{tenantID}/groups.get.tags[0]: Group
+paths./{tenantID}/groups.get.x-ms-odata: '#/definitions/ADGroup'
+paths./{tenantID}/groups.get.x-ms-pageable.nextLinkName: odata.nextLink
+paths./{tenantID}/groups.get.x-ms-pageable.operationName: Groups_ListNext
+paths./{tenantID}/groups.post.description: Create a group in the directory.
+paths./{tenantID}/groups.post.operationId: Groups_Create
+paths./{tenantID}/groups.post.parameters.length: 3
+paths./{tenantID}/groups.post.parameters[0].description: The parameters for the group
+  to create.
+paths./{tenantID}/groups.post.parameters[0].in: body
+paths./{tenantID}/groups.post.parameters[0].name: parameters
+paths./{tenantID}/groups.post.parameters[0].required: true
+paths./{tenantID}/groups.post.parameters[0].schema.$ref: '#/definitions/GroupCreateParameters'
+paths./{tenantID}/groups.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups.post.responses.201.description: Created
+paths./{tenantID}/groups.post.responses.201.schema.$ref: '#/definitions/ADGroup'
+paths./{tenantID}/groups.post.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/groups.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups.post.tags.length: 1
+paths./{tenantID}/groups.post.tags[0]: Group
+paths./{tenantID}/groups/{groupObjectId}.delete.description: Delete a group from the
+  directory.
+paths./{tenantID}/groups/{groupObjectId}.delete.operationId: Groups_Delete
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters.length: 3
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[0].description: The object
+  ID of the group to delete.
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[0].in: path
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[0].name: groupObjectId
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[0].required: true
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[0].type: string
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups/{groupObjectId}.delete.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups/{groupObjectId}.delete.responses.204.description: No Content
+paths./{tenantID}/groups/{groupObjectId}.delete.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/groups/{groupObjectId}.delete.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups/{groupObjectId}.delete.tags.length: 1
+paths./{tenantID}/groups/{groupObjectId}.delete.tags[0]: Group
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.description: Add a member
+  to a group.
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.operationId: Groups_AddMember
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters.length: 4
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[0].description: The
+  object ID of the group to which to add the member.
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[0].in: path
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[0].name: groupObjectId
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[0].required: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[0].type: string
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[1].description: The
+  URL of the member object, such as https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[1].in: body
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[1].name: parameters
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[1].required: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[1].schema.$ref: '#/definitions/GroupAddMemberParameters'
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.responses.204.description: No
+  Content. Indicates success. No response body is returned.
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.tags.length: 1
+paths./{tenantID}/groups/{groupObjectId}/$links/members.post.tags[0]: Group
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.description: Remove
+  a member from a group.
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.operationId: Groups_RemoveMember
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters.length: 4
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[0].description: The
+  object ID of the group from which to remove the member.
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[0].in: path
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[0].name: groupObjectId
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[0].required: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[0].type: string
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[1].description: Member
+  object id
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[1].in: path
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[1].name: memberObjectId
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[1].required: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[1].type: string
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[1].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.responses.204.description: No
+  Content. Indicates success. No response body is returned.
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.tags.length: 1
+paths./{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}.delete.tags[0]: Group
+paths./{tenantID}/groups/{objectId}.get.description: Gets group information from the
+  directory.
+paths./{tenantID}/groups/{objectId}.get.operationId: Groups_Get
+paths./{tenantID}/groups/{objectId}.get.parameters.length: 3
+paths./{tenantID}/groups/{objectId}.get.parameters[0].description: The object ID of
+  the user for which to get group information.
+paths./{tenantID}/groups/{objectId}.get.parameters[0].in: path
+paths./{tenantID}/groups/{objectId}.get.parameters[0].name: objectId
+paths./{tenantID}/groups/{objectId}.get.parameters[0].required: true
+paths./{tenantID}/groups/{objectId}.get.parameters[0].type: string
+paths./{tenantID}/groups/{objectId}.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{objectId}.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups/{objectId}.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups/{objectId}.get.responses.200.description: OK. The operation
+  was successful.
+paths./{tenantID}/groups/{objectId}.get.responses.200.schema.$ref: '#/definitions/ADGroup'
+paths./{tenantID}/groups/{objectId}.get.responses.default.description: Error response
+  describing why the operation failed.
+paths./{tenantID}/groups/{objectId}.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups/{objectId}.get.tags.length: 1
+paths./{tenantID}/groups/{objectId}.get.tags[0]: Group
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.description: Gets a collection
+  of object IDs of groups of which the specified group is a member.
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.operationId: Groups_GetMemberGroups
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters.length: 4
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[0].description: The
+  object ID of the group for which to get group membership.
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[0].in: path
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[0].name: objectId
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[0].required: true
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[0].type: string
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[1].description: Group
+  filtering parameters.
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[1].in: body
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[1].name: parameters
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[1].required: true
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[1].schema.$ref: '#/definitions/GroupGetMemberGroupsParameters'
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.responses.200.schema.$ref: '#/definitions/GroupGetMemberGroupsResult'
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.tags.length: 1
+paths./{tenantID}/groups/{objectId}/getMemberGroups.post.tags[0]: Group
+paths./{tenantID}/groups/{objectId}/members.get.description: Gets the members of a
+  group.
+paths./{tenantID}/groups/{objectId}/members.get.operationId: Groups_GetGroupMembers
+paths./{tenantID}/groups/{objectId}/members.get.parameters.length: 3
+paths./{tenantID}/groups/{objectId}/members.get.parameters[0].description: The object
+  ID of the group whose members should be retrieved.
+paths./{tenantID}/groups/{objectId}/members.get.parameters[0].in: path
+paths./{tenantID}/groups/{objectId}/members.get.parameters[0].name: objectId
+paths./{tenantID}/groups/{objectId}/members.get.parameters[0].required: true
+paths./{tenantID}/groups/{objectId}/members.get.parameters[0].type: string
+paths./{tenantID}/groups/{objectId}/members.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/groups/{objectId}/members.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/groups/{objectId}/members.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/groups/{objectId}/members.get.responses.200.description: OK. The
+  operation was successful.
+paths./{tenantID}/groups/{objectId}/members.get.responses.200.schema.$ref: '#/definitions/GetObjectsResult'
+paths./{tenantID}/groups/{objectId}/members.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/groups/{objectId}/members.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/groups/{objectId}/members.get.tags.length: 1
+paths./{tenantID}/groups/{objectId}/members.get.tags[0]: Group
+paths./{tenantID}/groups/{objectId}/members.get.x-ms-pageable.nextLinkName: odata.nextLink
+paths./{tenantID}/groups/{objectId}/members.get.x-ms-pageable.operationName: Groups_GetGroupMembersNext
+paths./{tenantID}/isMemberOf.post.description: Checks whether the specified user,
+  group, contact, or service principal is a direct or transitive member of the specified
+  group.
+paths./{tenantID}/isMemberOf.post.operationId: Groups_IsMemberOf
+paths./{tenantID}/isMemberOf.post.parameters.length: 3
+paths./{tenantID}/isMemberOf.post.parameters[0].description: The check group membership
+  parameters.
+paths./{tenantID}/isMemberOf.post.parameters[0].in: body
+paths./{tenantID}/isMemberOf.post.parameters[0].name: parameters
+paths./{tenantID}/isMemberOf.post.parameters[0].required: true
+paths./{tenantID}/isMemberOf.post.parameters[0].schema.$ref: '#/definitions/CheckGroupMembershipParameters'
+paths./{tenantID}/isMemberOf.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/isMemberOf.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/isMemberOf.post.responses.200.description: OK. Indicates success.
+  Returns true if the user, contact, group, or service principal is a direct or a
+  transitive member of the specified group; otherwsie, false.
+paths./{tenantID}/isMemberOf.post.responses.200.schema.$ref: '#/definitions/CheckGroupMembershipResult'
+paths./{tenantID}/isMemberOf.post.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/isMemberOf.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/isMemberOf.post.tags.length: 1
+paths./{tenantID}/isMemberOf.post.tags[0]: Group
+paths./{tenantID}/me.get.description: Gets the details for the currently logged-in
+  user.
+paths./{tenantID}/me.get.operationId: Objects_GetCurrentUser
+paths./{tenantID}/me.get.parameters.length: 2
+paths./{tenantID}/me.get.parameters[0].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/me.get.parameters[1].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/me.get.responses.200.description: OK. The operation was successful.
+paths./{tenantID}/me.get.responses.200.schema.$ref: '#/definitions/AADObject'
+paths./{tenantID}/me.get.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/me.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/me.get.tags.length: 1
+paths./{tenantID}/me.get.tags[0]: Objects
+paths./{tenantID}/servicePrincipals.get.description: Gets a list of service principals
+  from the current tenant.
+paths./{tenantID}/servicePrincipals.get.operationId: ServicePrincipals_List
+paths./{tenantID}/servicePrincipals.get.parameters.length: 3
+paths./{tenantID}/servicePrincipals.get.parameters[0].description: The filter to apply
+  to the operation.
+paths./{tenantID}/servicePrincipals.get.parameters[0].in: query
+paths./{tenantID}/servicePrincipals.get.parameters[0].name: $filter
+paths./{tenantID}/servicePrincipals.get.parameters[0].required: false
+paths./{tenantID}/servicePrincipals.get.parameters[0].type: string
+paths./{tenantID}/servicePrincipals.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals.get.responses.200.description: OK. The operation
+  was successful.
+paths./{tenantID}/servicePrincipals.get.responses.200.schema.$ref: '#/definitions/ServicePrincipalListResult'
+paths./{tenantID}/servicePrincipals.get.responses.default.description: Error response
+  describing why the operation failed.
+paths./{tenantID}/servicePrincipals.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals.get.tags.length: 1
+paths./{tenantID}/servicePrincipals.get.tags[0]: ServicePrincipal
+paths./{tenantID}/servicePrincipals.get.x-ms-odata: '#/definitions/ServicePrincipal'
+paths./{tenantID}/servicePrincipals.get.x-ms-pageable.nextLinkName: odata.nextLink
+paths./{tenantID}/servicePrincipals.get.x-ms-pageable.operationName: ServicePrincipals_ListNext
+paths./{tenantID}/servicePrincipals.post.description: Creates a service principal
+  in the directory.
+paths./{tenantID}/servicePrincipals.post.operationId: ServicePrincipals_Create
+paths./{tenantID}/servicePrincipals.post.parameters.length: 3
+paths./{tenantID}/servicePrincipals.post.parameters[0].description: Parameters to
+  create a service principal.
+paths./{tenantID}/servicePrincipals.post.parameters[0].in: body
+paths./{tenantID}/servicePrincipals.post.parameters[0].name: parameters
+paths./{tenantID}/servicePrincipals.post.parameters[0].required: true
+paths./{tenantID}/servicePrincipals.post.parameters[0].schema.$ref: '#/definitions/ServicePrincipalCreateParameters'
+paths./{tenantID}/servicePrincipals.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals.post.responses.201.description: The service principal
+  was created successfully.
+paths./{tenantID}/servicePrincipals.post.responses.201.schema.$ref: '#/definitions/ServicePrincipal'
+paths./{tenantID}/servicePrincipals.post.responses.default.description: Error response
+  describing why the operation failed.
+paths./{tenantID}/servicePrincipals.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals.post.tags.length: 1
+paths./{tenantID}/servicePrincipals.post.tags[0]: ServicePrincipal
+paths./{tenantID}/servicePrincipals/{objectId}.delete.description: Deletes a service
+  principal from the directory.
+paths./{tenantID}/servicePrincipals/{objectId}.delete.operationId: ServicePrincipals_Delete
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters.length: 3
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[0].description: The
+  object ID of the service principal to delete.
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[0].in: path
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[0].name: objectId
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[0].required: true
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[0].type: string
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals/{objectId}.delete.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals/{objectId}.delete.responses.204.description: No
+  Content
+paths./{tenantID}/servicePrincipals/{objectId}.delete.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/servicePrincipals/{objectId}.delete.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals/{objectId}.delete.tags.length: 1
+paths./{tenantID}/servicePrincipals/{objectId}.delete.tags[0]: ServicePrincipal
+paths./{tenantID}/servicePrincipals/{objectId}.get.description: Gets service principal
+  information from the directory.
+paths./{tenantID}/servicePrincipals/{objectId}.get.operationId: ServicePrincipals_Get
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters.length: 3
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[0].description: The
+  object ID of the service principal to get.
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[0].in: path
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[0].name: objectId
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[0].required: true
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[0].type: string
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals/{objectId}.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals/{objectId}.get.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/servicePrincipals/{objectId}.get.responses.200.schema.$ref: '#/definitions/ServicePrincipal'
+paths./{tenantID}/servicePrincipals/{objectId}.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/servicePrincipals/{objectId}.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals/{objectId}.get.tags.length: 1
+paths./{tenantID}/servicePrincipals/{objectId}.get.tags[0]: ServicePrincipal
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.description: Get
+  the keyCredentials associated with the specified service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.operationId: ServicePrincipals_ListKeyCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters.length: 3
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[0].description: The
+  object ID of the service principal for which to get keyCredentials.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[0].in: path
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[0].name: objectId
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[0].required: true
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[0].type: string
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.responses.200.schema.$ref: '#/definitions/KeyCredentialListResult'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.tags.length: 1
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.get.tags[0]: ServicePrincipalKeyCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.description: Update
+  the keyCredentials associated with a service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.operationId: ServicePrincipals_UpdateKeyCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters.length: 4
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[0].description: The
+  object ID for which to get service principal information.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[0].in: path
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[0].name: objectId
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[0].required: true
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[0].type: string
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[1].description: Parameters
+  to update the keyCredentials of an existing service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[1].in: body
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[1].name: parameters
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[1].required: true
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[1].schema.$ref: '#/definitions/KeyCredentialsUpdateParameters'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.responses.204.description: No
+  Content
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.tags.length: 1
+paths./{tenantID}/servicePrincipals/{objectId}/keyCredentials.patch.tags[0]: ServicePrincipalKeyCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.description: Gets
+  the passwordCredentials associated with a service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.operationId: ServicePrincipals_ListPasswordCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters.length: 3
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[0].description: The
+  object ID of the service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[0].in: path
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[0].name: objectId
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[0].required: true
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[0].type: string
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.responses.200.schema.$ref: '#/definitions/PasswordCredentialListResult'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.tags.length: 1
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.get.tags[0]: ServicePrincipalPasswordCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.description: Updates
+  the passwordCredentials associated with a service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.operationId: ServicePrincipals_UpdatePasswordCredentials
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters.length: 4
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[0].description: The
+  object ID of the service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[0].in: path
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[0].name: objectId
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[0].required: true
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[0].type: string
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[1].description: Parameters
+  to update the passwordCredentials of an existing service principal.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[1].in: body
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[1].name: parameters
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[1].required: true
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[1].schema.$ref: '#/definitions/PasswordCredentialsUpdateParameters'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.responses.204.description: No
+  Content
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.tags.length: 1
+paths./{tenantID}/servicePrincipals/{objectId}/passwordCredentials.patch.tags[0]: ServicePrincipalPasswordCredentials
+paths./{tenantID}/users.get.description: Gets list of users for the current tenant.
+paths./{tenantID}/users.get.operationId: Users_List
+paths./{tenantID}/users.get.parameters.length: 3
+paths./{tenantID}/users.get.parameters[0].description: The filter to apply to the
+  operation.
+paths./{tenantID}/users.get.parameters[0].in: query
+paths./{tenantID}/users.get.parameters[0].name: $filter
+paths./{tenantID}/users.get.parameters[0].required: false
+paths./{tenantID}/users.get.parameters[0].type: string
+paths./{tenantID}/users.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/users.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/users.get.responses.200.description: OK. The operation was successful.
+paths./{tenantID}/users.get.responses.200.schema.$ref: '#/definitions/UserListResult'
+paths./{tenantID}/users.get.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/users.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/users.get.tags.length: 1
+paths./{tenantID}/users.get.tags[0]: User
+paths./{tenantID}/users.get.x-ms-odata: '#/definitions/User'
+paths./{tenantID}/users.get.x-ms-pageable.nextLinkName: odata.nextLink
+paths./{tenantID}/users.get.x-ms-pageable.operationName: Users_ListNext
+paths./{tenantID}/users.post.description: Create a new user.
+paths./{tenantID}/users.post.operationId: Users_Create
+paths./{tenantID}/users.post.parameters.length: 3
+paths./{tenantID}/users.post.parameters[0].description: Parameters to create a user.
+paths./{tenantID}/users.post.parameters[0].in: body
+paths./{tenantID}/users.post.parameters[0].name: parameters
+paths./{tenantID}/users.post.parameters[0].required: true
+paths./{tenantID}/users.post.parameters[0].schema.$ref: '#/definitions/UserCreateParameters'
+paths./{tenantID}/users.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/users.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/users.post.responses.201.description: Created. Indicates success.
+  The new user is returned in the response body.
+paths./{tenantID}/users.post.responses.201.schema.$ref: '#/definitions/User'
+paths./{tenantID}/users.post.responses.default.description: Error response describing
+  why the operation failed.
+paths./{tenantID}/users.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/users.post.tags.length: 1
+paths./{tenantID}/users.post.tags[0]: User
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.description: Gets a collection
+  that contains the object IDs of the groups of which the user is a member.
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.operationId: Users_GetMemberGroups
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters.length: 4
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[0].description: The
+  object ID of the user for which to get group membership.
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[0].in: path
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[0].name: objectId
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[0].required: true
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[0].type: string
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[1].description: User
+  filtering parameters.
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[1].in: body
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[1].name: parameters
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[1].required: true
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[1].schema.$ref: '#/definitions/UserGetMemberGroupsParameters'
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.responses.200.description: OK.
+  The operation was successful.
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.responses.200.schema.$ref: '#/definitions/UserGetMemberGroupsResult'
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.tags.length: 1
+paths./{tenantID}/users/{objectId}/getMemberGroups.post.tags[0]: User
+paths./{tenantID}/users/{upnOrObjectId}.delete.description: Delete a user.
+paths./{tenantID}/users/{upnOrObjectId}.delete.operationId: Users_Delete
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters.length: 3
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[0].description: The object
+  ID or principal name of the user to delete.
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[0].in: path
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[0].name: upnOrObjectId
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[0].required: true
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[0].type: string
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/users/{upnOrObjectId}.delete.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/users/{upnOrObjectId}.delete.responses.204.description: No Content
+paths./{tenantID}/users/{upnOrObjectId}.delete.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/users/{upnOrObjectId}.delete.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/users/{upnOrObjectId}.delete.tags.length: 1
+paths./{tenantID}/users/{upnOrObjectId}.delete.tags[0]: User
+paths./{tenantID}/users/{upnOrObjectId}.get.description: Gets user information from
+  the directory.
+paths./{tenantID}/users/{upnOrObjectId}.get.operationId: Users_Get
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters.length: 3
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[0].description: The object
+  ID or principal name of the user for which to get information.
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[0].in: path
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[0].name: upnOrObjectId
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[0].required: true
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[0].type: string
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/users/{upnOrObjectId}.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/users/{upnOrObjectId}.get.responses.200.description: OK. The operation
+  was successful.
+paths./{tenantID}/users/{upnOrObjectId}.get.responses.200.schema.$ref: '#/definitions/User'
+paths./{tenantID}/users/{upnOrObjectId}.get.responses.default.description: Error response
+  describing why the operation failed.
+paths./{tenantID}/users/{upnOrObjectId}.get.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/users/{upnOrObjectId}.get.tags.length: 1
+paths./{tenantID}/users/{upnOrObjectId}.get.tags[0]: User
+paths./{tenantID}/users/{upnOrObjectId}.patch.description: Updates a user.
+paths./{tenantID}/users/{upnOrObjectId}.patch.operationId: Users_Update
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters.length: 4
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[0].description: The object
+  ID or principal name of the user to update.
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[0].in: path
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[0].name: upnOrObjectId
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[0].required: true
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[0].type: string
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[0].x-ms-skip-url-encoding: true
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[1].description: Parameters
+  to update an existing user.
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[1].in: body
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[1].name: parameters
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[1].required: true
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[1].schema.$ref: '#/definitions/UserUpdateParameters'
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[2].$ref: '#/parameters/ApiVersionParameter'
+paths./{tenantID}/users/{upnOrObjectId}.patch.parameters[3].$ref: '#/parameters/tenantIDInPath'
+paths./{tenantID}/users/{upnOrObjectId}.patch.responses.204.description: No Content.
+paths./{tenantID}/users/{upnOrObjectId}.patch.responses.default.description: Error
+  response describing why the operation failed.
+paths./{tenantID}/users/{upnOrObjectId}.patch.responses.default.schema.$ref: '#/definitions/GraphError'
+paths./{tenantID}/users/{upnOrObjectId}.patch.tags.length: 1
+paths./{tenantID}/users/{upnOrObjectId}.patch.tags[0]: User
+produces.length: 2
+produces[0]: application/json
+produces[1]: text/json
+schemes.length: 1
+schemes[0]: https
+security.length: 1
+security[0].azure_auth.length: 1
+security[0].azure_auth[0]: user_impersonation
+securityDefinitions.azure_auth.authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+securityDefinitions.azure_auth.description: Azure Active Directory OAuth2 Flow
+securityDefinitions.azure_auth.flow: implicit
+securityDefinitions.azure_auth.scopes.user_impersonation: impersonate your user account
+securityDefinitions.azure_auth.type: oauth2
+swagger: "2.0"
+x-hasEquivalentPaths: true
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.description: Gets a list
+  of applications from the current tenant.
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.operationId: Applications_ListNext
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters.length: 3
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[0].description: Next
+  link for the list operation.
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[0].in: path
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[0].name: nextLink
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[0].required: true
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[0].type: string
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[0].x-ms-skip-url-encoding: true
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.responses.200.description: OK.
+  The operation was successful.
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.responses.200.schema.$ref: '#/definitions/ApplicationListResult'
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.responses.default.description: Error
+  response describing why the operation failed.
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.responses.default.schema.$ref: '#/definitions/GraphError'
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.tags.length: 1
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.tags[0]: Applications
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.x-ms-pageable.nextLinkName: odata.nextLink
+x-ms-paths./{tenantID}/{nextLink}?Applications_ListNext.get.x-ms-pageable.operationName: Applications_ListNext
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.description: Gets
+  the members of a group.
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.operationId: Groups_GetGroupMembersNext
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters.length: 3
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[0].description: Next
+  link for the list operation.
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[0].in: path
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[0].name: nextLink
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[0].required: true
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[0].type: string
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[0].x-ms-skip-url-encoding: true
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.responses.200.description: OK.
+  The operation was successful.
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.responses.200.schema.$ref: '#/definitions/GetObjectsResult'
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.responses.default.description: Error
+  response describing why the operation failed.
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.responses.default.schema.$ref: '#/definitions/GraphError'
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.tags.length: 1
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.tags[0]: Group
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.x-ms-pageable.nextLinkName: odata.nextLink
+x-ms-paths./{tenantID}/{nextLink}?Groups_GetGroupMembersNext.get.x-ms-pageable.operationName: Groups_GetGroupMembersNext
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.description: Gets a list of
+  groups for the current tenant.
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.operationId: Groups_ListNext
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters.length: 3
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[0].description: Next
+  link for the list operation.
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[0].in: path
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[0].name: nextLink
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[0].required: true
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[0].type: string
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[0].x-ms-skip-url-encoding: true
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.responses.200.description: OK.
+  The operation was successful.
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.responses.200.schema.$ref: '#/definitions/GroupListResult'
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.responses.default.description: Error
+  response describing why the operation failed.
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.responses.default.schema.$ref: '#/definitions/GraphError'
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.tags.length: 1
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.tags[0]: Group
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.x-ms-pageable.nextLinkName: odata.nextLink
+x-ms-paths./{tenantID}/{nextLink}?Groups_ListNext.get.x-ms-pageable.operationName: Groups_ListNext
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.description: Gets
+  AD group membership for the specified AD object IDs.
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.operationId: Objects_GetObjectsByObjectIdsNext
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters.length: 3
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[0].description: Next
+  link for the list operation.
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[0].in: path
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[0].name: nextLink
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[0].required: true
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[0].type: string
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[0].x-ms-skip-url-encoding: true
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.parameters[2].$ref: '#/parameters/tenantIDInPath'
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.responses.200.description: OK.
+  The operation was successful.
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.responses.200.schema.$ref: '#/definitions/GetObjectsResult'
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.tags.length: 1
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.tags[0]: Objects
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.x-ms-pageable.nextLinkName: odata.nextLink
+x-ms-paths./{tenantID}/{nextLink}?Objects_GetObjectsByObjectIdsNext.post.x-ms-pageable.operationName: Objects_GetObjectsByObjectIdsNext
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.description: Gets
+  a list of service principals from the current tenant.
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.operationId: ServicePrincipals_ListNext
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters.length: 3
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[0].description: Next
+  link for the list operation.
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[0].in: path
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[0].name: nextLink
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[0].required: true
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[0].type: string
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[0].x-ms-skip-url-encoding: true
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.responses.200.description: OK.
+  The operation was successful.
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.responses.200.schema.$ref: '#/definitions/ServicePrincipalListResult'
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.responses.default.description: Error
+  response describing why the operation failed.
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.responses.default.schema.$ref: '#/definitions/GraphError'
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.tags.length: 1
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.tags[0]: ServicePrincipal
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.x-ms-pageable.nextLinkName: odata.nextLink
+x-ms-paths./{tenantID}/{nextLink}?ServicePrincipals_ListNext.get.x-ms-pageable.operationName: ServicePrincipals_ListNext
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.description: Gets a list of users
+  for the current tenant.
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.operationId: Users_ListNext
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters.length: 3
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[0].description: Next
+  link for the list operation.
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[0].in: path
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[0].name: nextLink
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[0].required: true
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[0].type: string
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[0].x-ms-skip-url-encoding: true
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[1].$ref: '#/parameters/ApiVersionParameter'
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.parameters[2].$ref: '#/parameters/tenantIDInPath'
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.responses.200.description: OK.
+  The operation was successful.
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.responses.200.schema.$ref: '#/definitions/UserListResult'
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.responses.default.description: Error
+  response describing why the operation failed.
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.responses.default.schema.$ref: '#/definitions/GraphError'
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.tags.length: 1
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.tags[0]: User
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.x-ms-pageable.nextLinkName: odata.nextLink
+x-ms-paths./{tenantID}/{nextLink}?Users_ListNext.get.x-ms-pageable.operationName: Users_ListNext

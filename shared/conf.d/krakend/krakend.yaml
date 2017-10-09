@@ -1,0 +1,122 @@
+---
+version: 1
+default_max_rate: 0
+client_max_rate: 0
+throttling_header: ''
+timeout: 3000ms
+cache_ttl: 300s
+host:
+- http://fake_api:80
+endpoints:
+- endpoint: "/nick/{nick}"
+  extra_config: {}      
+  backend:
+  - host:
+    - https://api.github.com
+    url_pattern: "/users/{nick}"
+    whitelist:
+    - avatar_url
+    - name
+    - company
+    - blog
+    - location
+    - mail
+    - hireable
+    - followers
+    - public_repos
+    - public_gists
+    mapping:
+      blog: website
+    group: github
+    extra_config: {}      
+  - host:
+    - https://api.bitbucket.org
+    url_pattern: "/2.0/users/{nick}"
+    whitelist:
+    - links.avatar
+    - display_name
+    - website
+    - location
+    mapping:
+      display_name: name
+    group: bitbucket
+    extra_config: {}      
+- endpoint: "/searx"
+  method: GET
+  concurrent_calls: 1
+  extra_config:
+    github.com/roscopecoltran/krakend-circuitbreaker/gobreaker:
+      Interval: 60
+      Timeout: 10
+      MaxErrors: 5
+    github.com/roscopecoltran/krakend-circuitbreaker/eapache:
+      Interval: 60
+      Timeout: 10
+      MaxErrors: 5
+  backend:
+  - url_pattern: "/search/searx.json"
+    host:
+    - http://fake_api
+    whitelist:
+    extra_config: {}        
+    target: query,number_of_results,corrections,suggestions,answers,infoboxes(engine,content,urls,attributes,id),results(engine,category,title,url,content,engines,positions)
+  extra_config: {}      
+- endpoint: "/filter-json"
+  method: GET
+  concurrent_calls: 1
+  cache_ttl: 0s
+  extra_config: {}      
+  backend:
+  - url_pattern: "/vcs/filter.json"
+    host:
+    - http://fake_api
+    target: test/a,id,object(site,attachments/url,content/name)
+    extra_config: {}      
+  extra_config: {}      
+- endpoint: "/github-search"
+  method: GET
+  concurrent_calls: 1
+  cache_ttl: 300s
+  extra_config: {}      
+  backend:
+  - url_pattern: "/vcs/search.json"
+    target: items(name,full_name,description,default_branch,fork,forks_count,watchers_count,stargazers_count,owner(login,id,avatar_url,type),language,topics)
+    extra_config: {}      
+    mapping:
+      items: results
+  extra_config: {}      
+- endpoint: "/splash"
+  method: GET
+  concurrent_calls: 1
+  extra_config: {}      
+  backend:
+  - url_pattern: "/shop/campaigns.json"
+    whitelist:
+    - campaigns
+    extra_config: {}      
+  - url_pattern: "/shop/products.json"
+    whitelist:
+    - products
+    extra_config: {}      
+  extra_config: {}      
+- endpoint: "/showrss/{id}"
+  extra_config: {}      
+  backend:
+  - host:
+    - http://showrss.info/
+    url_pattern: "/user/schedule/{id}.rss"
+    encoding: rss
+    group: schedule
+    whitelist:
+    - items
+    - title
+    extra_config: {}      
+  - host:
+    - http://showrss.info/
+    url_pattern: "/user/{id}.rss"
+    encoding: rss
+    group: available
+    whitelist:
+    - items
+    - title
+    extra_config: {}      

@@ -1,0 +1,740 @@
+backends:
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/applications
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  query_string_params:
+  - $filter
+  whitelist:
+  - odata.nextLink
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-applications
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      odata.nextLink: odata.nextLink
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - application
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/applications/{applicationObjectId}
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - applicationObjectId
+  whitelist:
+  - appId
+  - appPermissions
+  - availableToOtherTenants
+  - displayName
+  - homepage
+  - identifierUris
+  - objectId
+  - objectType
+  - replyUrls
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-applications-applicationobjectid
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      appId: appId
+      appPermissions: appPermissions
+      availableToOtherTenants: availableToOtherTenants
+      displayName: displayName
+      homepage: homepage
+      identifierUris: identifierUris
+      objectId: objectId
+      objectType: objectType
+      replyUrls: replyUrls
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - application
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/applications/{applicationObjectId}/keyCredentials
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - applicationObjectId
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-applications-applicationobjectid-keycredentials
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - applicationkeycredentials
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/applications/{applicationObjectId}/passwordCredentials
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - applicationObjectId
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-applications-applicationobjectid-passwordcredentials
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - applicationpasswordcredentials
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/domains
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  query_string_params:
+  - $filter
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-domains
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - domain
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/domains/{domainName}
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - domainName
+  whitelist:
+  - authenticationType
+  - isDefault
+  - isVerified
+  - name
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-domains-domainname
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      authenticationType: authenticationType
+      isDefault: isDefault
+      isVerified: isVerified
+      name: name
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - domain
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/getObjectsByObjectIds
+  method: POST
+  encoding: json
+  host:
+  - https://graph.windows.net
+  whitelist:
+  - odata.nextLink
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-getobjectsbyobjectids
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      odata.nextLink: odata.nextLink
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - objects
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/groups
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  query_string_params:
+  - $filter
+  whitelist:
+  - odata.nextLink
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-groups
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      odata.nextLink: odata.nextLink
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - group
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/groups/{groupObjectId}/$links/members
+  method: POST
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - groupObjectId
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-groups-groupobjectid-links-members
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - group
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/groups/{objectId}
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - displayName
+  - mail
+  - objectId
+  - objectType
+  - securityEnabled
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-groups-objectid
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      displayName: displayName
+      mail: mail
+      objectId: objectId
+      objectType: objectType
+      securityEnabled: securityEnabled
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - group
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/groups/{objectId}/getMemberGroups
+  method: POST
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-groups-objectid-getmembergroups
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - group
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/groups/{objectId}/members
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - odata.nextLink
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-groups-objectid-members
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      odata.nextLink: odata.nextLink
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - group
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/isMemberOf
+  method: POST
+  encoding: json
+  host:
+  - https://graph.windows.net
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-ismemberof
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - group
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/me
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  whitelist:
+  - appId
+  - appPermissions
+  - availableToOtherTenants
+  - displayName
+  - homepage
+  - identifierUris
+  - mail
+  - mailEnabled
+  - mailNickname
+  - objectId
+  - objectType
+  - replyUrls
+  - securityEnabled
+  - servicePrincipalNames
+  - signInName
+  - usageLocation
+  - userPrincipalName
+  - userType
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-me
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      appId: appId
+      appPermissions: appPermissions
+      availableToOtherTenants: availableToOtherTenants
+      displayName: displayName
+      homepage: homepage
+      identifierUris: identifierUris
+      mail: mail
+      mailEnabled: mailEnabled
+      mailNickname: mailNickname
+      objectId: objectId
+      objectType: objectType
+      replyUrls: replyUrls
+      securityEnabled: securityEnabled
+      servicePrincipalNames: servicePrincipalNames
+      signInName: signInName
+      usageLocation: usageLocation
+      userPrincipalName: userPrincipalName
+      userType: userType
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - objects
+    - security
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/servicePrincipals
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  query_string_params:
+  - $filter
+  whitelist:
+  - odata.nextLink
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-serviceprincipals
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      odata.nextLink: odata.nextLink
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - serviceprincipal
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/servicePrincipals/{objectId}
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - appId
+  - displayName
+  - objectId
+  - objectType
+  - servicePrincipalNames
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-serviceprincipals-objectid
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      appId: appId
+      displayName: displayName
+      objectId: objectId
+      objectType: objectType
+      servicePrincipalNames: servicePrincipalNames
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - serviceprincipal
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/servicePrincipals/{objectId}/keyCredentials
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-serviceprincipals-objectid-keycredentials
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - serviceprincipalkeycredentials
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/servicePrincipals/{objectId}/passwordCredentials
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-serviceprincipals-objectid-passwordcredentials
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - serviceprincipalpasswordcredentials
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/users
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  query_string_params:
+  - $filter
+  whitelist:
+  - odata.nextLink
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-users
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      odata.nextLink: odata.nextLink
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - user
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/users/{objectId}/getMemberGroups
+  method: POST
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - objectId
+  whitelist:
+  - value
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-users-objectid-getmembergroups
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      value: value
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - user
+- group: graphrbacmanagementclient-1-6
+  url_pattern: /{tenantID}/users/{upnOrObjectId}
+  method: GET
+  encoding: json
+  host:
+  - https://graph.windows.net
+  url_keys:
+  - upnOrObjectId
+  whitelist:
+  - displayName
+  - mail
+  - mailNickname
+  - objectId
+  - objectType
+  - signInName
+  - usageLocation
+  - userPrincipalName
+  concurrent_calls: 1
+  extra_config:
+    provider: windows.net
+    description: The Graph RBAC Management Client
+    version: "1.6"
+    slug: graphrbacmanagementclient-1-6-tenantid-users-upnorobjectid
+    schemes:
+    - https
+    consumes:
+    - json
+    - json
+    produces:
+    - json
+    - json
+    mapping:
+      displayName: displayName
+      mail: mail
+      mailNickname: mailNickname
+      objectId: objectId
+      objectType: objectType
+      signInName: signInName
+      usageLocation: usageLocation
+      userPrincipalName: userPrincipalName
+    hosts:
+    - https://graph.windows.net
+    topics:
+    - security
+    - user

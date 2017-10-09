@@ -1,0 +1,266 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+import "google/api/annotations.proto";
+
+package requestbaskets;
+
+message GetBasketsRequest {
+    // Maximum number of basket names to return; default 20
+    int32 max = 1;
+    // Query string to filter result, only those basket names that match the query will be included in response
+    string q = 2;
+    // Number of basket names to skip; default 0
+    int32 skip = 3;
+}
+
+message GetBasketsNameRequest {
+    // The basket name
+    string name = 1;
+}
+
+message PutBasketsNameRequest {
+    // New configuration to apply
+    Config config = 1;
+    // The basket name
+    string name = 2;
+}
+
+message PostBasketsNameRequest {
+    // Basket configuration
+    Config config = 1;
+    // The name of new basket
+    string name = 2;
+}
+
+message DeleteBasketsNameRequest {
+    // The basket name
+    string name = 1;
+}
+
+message GetBasketsNameRequestsRequest {
+    // Defines what is taken into account when filtering is applied: `body` - search in content body of collected requests,
+    // `query` - search among query parameters of collected requests, `headers` - search among request header values,
+    // `any` - search anywhere; default `any`
+    enum GetBasketsNameRequestsRequest_In {
+        GETBASKETSNAMEREQUESTSREQUEST_IN_ANY = 0;
+        GETBASKETSNAMEREQUESTSREQUEST_IN_BODY = 1;
+        GETBASKETSNAMEREQUESTSREQUEST_IN_QUERY = 2;
+        GETBASKETSNAMEREQUESTSREQUEST_IN_HEADERS = 3;
+    }
+    GetBasketsNameRequestsRequest_In in = 1;
+    // Maximum number of requests to return; default 20
+    int32 max = 2;
+    // The basket name
+    string name = 3;
+    // Query string to filter result, only requests that match the query will be included in response
+    string q = 4;
+    // Number of requests to skip; default 0
+    int32 skip = 5;
+}
+
+message DeleteBasketsNameRequestsRequest {
+    // The basket name
+    string name = 1;
+}
+
+message GetBasketsNameResponsesMethodRequest {
+    // The HTTP method this response is configured for
+    enum GetBasketsNameResponsesMethodRequest_Method {
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_GET = 0;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_HEAD = 1;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_POST = 2;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_PUT = 3;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_PATCH = 4;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_DELETE = 5;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_CONNECT = 6;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_OPTIONS = 7;
+        GETBASKETSNAMERESPONSESMETHODREQUEST_METHOD_TRACE = 8;
+    }
+    GetBasketsNameResponsesMethodRequest_Method method = 1;
+    // The basket name
+    string name = 2;
+}
+
+message PutBasketsNameResponsesMethodRequest {
+    // The HTTP method this response is configured for
+    enum PutBasketsNameResponsesMethodRequest_Method {
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_GET = 0;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_HEAD = 1;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_POST = 2;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_PUT = 3;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_PATCH = 4;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_DELETE = 5;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_CONNECT = 6;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_OPTIONS = 7;
+        PUTBASKETSNAMERESPONSESMETHODREQUEST_METHOD_TRACE = 8;
+    }
+    PutBasketsNameResponsesMethodRequest_Method method = 1;
+    // The basket name
+    string name = 2;
+    // HTTP response configuration
+    Response response = 3;
+}
+
+message Baskets {
+    // Total number of baskets in the system; not present if query is applied
+    int32 count = 1;
+    // Indicates if there are more baskets to fetch
+    bool has_more = 2;
+    // Collection of basket names
+    repeated string names = 3;
+}
+
+message Config {
+    // Baskets capacity, defines maximum number of requests to store
+    int32 capacity = 1;
+    // If set to `true` the forward URL path will be expanded when original HTTP request contains compound path.
+    bool expand_path = 2;
+    // URL to forward all incoming requests of the basket, `empty` value disables forwarding
+    string forward_url = 3;
+    // If set to `true` the certificate verification will be disabled if forward URL indicates HTTPS scheme.
+    // **Warning:** enabling this feature has known security implications.
+    bool insecure_tls = 4;
+}
+
+map<string, array> Headers = 1
+
+message Request {
+    // Content of request body
+    string body = 1;
+    // Content lenght of request
+    int32 content_length = 2;
+    // Date and time of request in Unix time ms. format (number of miliseconds elapsed since January 1, 1970 UTC)
+    int64 date = 3;
+    Headers headers = 4;
+    // HTTP methof of request
+    string method = 5;
+    // URL path of request
+    string path = 6;
+    // Query parameters of request
+    string query = 7;
+}
+
+message Requests {
+    // Current number of collected requests hold by basket; not present if query is applied
+    int32 count = 1;
+    // Indicates if there are more requests collected by basket to fetch
+    bool has_more = 2;
+    // Collection of collected requests
+    repeated Request requests = 3;
+    // Total number of all requests passed through this basket; not present if query is applied
+    int32 total_count = 4;
+}
+
+message Response {
+    // Content of response body
+    string body = 1;
+    Headers headers = 2;
+    // If set to `true` the body is treated as [HTML template](https://golang.org/pkg/html/template) that accepts
+    // input from request parameters.
+    bool is_template = 3;
+    // The HTTP status code to reply with
+    int32 status = 4;
+}
+
+message Token {
+    // Secure token to manage the basket, generated by system
+    string token = 1;
+}
+
+service RequestBasketsService {
+    // Get baskets
+    // 
+    // Fetches a list of basket names managed by service. Require master token.
+    rpc GetBaskets(GetBasketsRequest) returns (Baskets) {
+      option (google.api.http) = {
+        get: "//baskets"
+      };
+    }
+    // Get basket settings
+    // 
+    // Retrieves configuration settings of this basket.
+    rpc GetBasketsName(GetBasketsNameRequest) returns (Config) {
+      option (google.api.http) = {
+        get: "//baskets/{name}"
+      };
+    }
+    // Update basket settings
+    // 
+    // Updates configuration settings of this basket.
+    // 
+    // Special configuration parameters for request forwarding:
+    //   * `insecure_tls` controls certificate verification when forwarding requests. Setting this parameter to `true`
+    //   allows to forward collected HTTP requests via HTTPS protocol even if the forward end-point is configured with
+    //   self-signed TLS/SSL certificate. **Warning:** enabling this feature has known security implications.
+    //   * `expand_path` changes the logic of constructing taget URL when forwarding requests. If this parameter is
+    //   set to `true` the forward URL path will be expanded when original HTTP request contains compound path. For
+    //   example, a basket with name **server1** is configured to forward all requests to `http://server1.intranet:8001/myservice`
+    //   and it has received an HTTP request like `GET http://baskets.example.com/server1/component/123/events?status=OK`
+    //   then depending on `expand_path` settings the request will be forwarded to:
+    //     * `true` => `GET http://server1.intranet:8001/myservice/component/123/events?status=OK`
+    //     * `false` => `GET http://server1.intranet:8001/myservice?status=OK`
+    rpc PutBasketsName(PutBasketsNameRequest) returns (google.protobuf.Empty) {
+      option (google.api.http) = {
+        put: "//baskets/{name}"
+        body: "config"
+      };
+    }
+    // Create new basket
+    // 
+    // Creates a new basket with this name.
+    rpc PostBasketsName(PostBasketsNameRequest) returns (Token) {
+      option (google.api.http) = {
+        post: "//baskets/{name}"
+        body: "config"
+      };
+    }
+    // Delete basket
+    // 
+    // Permanently deletes this basket and all collected requests.
+    rpc DeleteBasketsName(DeleteBasketsNameRequest) returns (google.protobuf.Empty) {
+      option (google.api.http) = {
+        delete: "//baskets/{name}"
+      };
+    }
+    // Get collected requests
+    // 
+    // Fetches collection of requests collected by this basket.
+    rpc GetBasketsNameRequests(GetBasketsNameRequestsRequest) returns (Requests) {
+      option (google.api.http) = {
+        get: "//baskets/{name}/requests"
+      };
+    }
+    // Delete all requests
+    // 
+    // Deletes all requests collected by this basket.
+    rpc DeleteBasketsNameRequests(DeleteBasketsNameRequestsRequest) returns (google.protobuf.Empty) {
+      option (google.api.http) = {
+        delete: "//baskets/{name}/requests"
+      };
+    }
+    // Get response settings
+    // 
+    // Retrieves information about configured response of the basket. Service will reply with this response to any
+    // HTTP request sent to the basket with appropriate HTTP method.
+    // 
+    // If nothing is configured, the default response is HTTP 200 - OK with empty content.
+    rpc GetBasketsNameResponsesMethod(GetBasketsNameResponsesMethodRequest) returns (Response) {
+      option (google.api.http) = {
+        get: "//baskets/{name}/responses/{method}"
+      };
+    }
+    // Update response settings
+    // 
+    // Allows to configure HTTP response of this basket. The service will reply with configured response to any HTTP
+    // request sent to the basket with appropriate HTTP method.
+    // 
+    // If nothing is configured, the default response is HTTP 200 - OK with empty content.
+    rpc PutBasketsNameResponsesMethod(PutBasketsNameResponsesMethodRequest) returns (google.protobuf.Empty) {
+      option (google.api.http) = {
+        put: "//baskets/{name}/responses/{method}"
+        body: "response"
+      };
+    }
+}

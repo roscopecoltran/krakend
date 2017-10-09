@@ -1,0 +1,2921 @@
+backends:
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/alliances/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-alliances
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/alliances/names/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-alliances-names
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/alliances/{alliance_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-alliances-alliance-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/alliances/{alliance_id}/corporations/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-alliances-alliance-id-corporations
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/alliances/{alliance_id}/icons/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-alliances-alliance-id-icons
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/affiliation/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-affiliation
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/names/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-names
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/agents_research/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-agents-research
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/assets/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-assets
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/attributes/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-attributes
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/blueprints/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-blueprints
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/bookmarks/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-bookmarks
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/bookmarks/folders/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-bookmarks-folders
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/calendar/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-calendar
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/calendar/{event_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-calendar-event-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/calendar/{event_id}/attendees/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-calendar-event-id-attendees
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/chat_channels/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-chat-channels
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/clones/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-clones
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/contacts/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-contacts
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/contacts/labels/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-contacts-labels
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/contracts/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-contracts
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/contracts/{contract_id}/bids/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-contracts-contract-id-bids
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/contracts/{contract_id}/items/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-contracts-contract-id-items
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/corporationhistory/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-corporationhistory
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/cspa/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-cspa
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/fatigue/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-fatigue
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/fittings/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-fittings
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/implants/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-implants
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/industry/jobs/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-industry-jobs
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/killmails/recent/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-killmails-recent
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/location/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-location
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/loyalty/points/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-loyalty-points
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/mail/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-mail
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/mail/labels/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-mail-labels
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/mail/lists/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-mail-lists
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/mail/{mail_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-mail-mail-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/medals/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-medals
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/notifications/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-notifications
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/notifications/contacts/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-notifications-contacts
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/online/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-online
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/opportunities/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-opportunities
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/orders/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-orders
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/planets/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-planets
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/planets/{planet_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-planets-planet-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/portrait/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-portrait
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/roles/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-roles
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/search/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-search
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/ship/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-ship
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/skillqueue/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-skillqueue
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/skills/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-skills
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/standings/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-standings
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/wallet/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-wallet
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/wallet/journal/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-wallet-journal
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/characters/{character_id}/wallet/transactions/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-characters-character-id-wallet-transactions
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/names/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-names
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/npccorps/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-npccorps
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/alliancehistory/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-alliancehistory
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/assets/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-assets
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/blueprints/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-blueprints
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/contacts/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-contacts
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/divisions/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-divisions
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/icons/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-icons
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/killmails/recent/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-killmails-recent
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/members/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-members
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/members/limit/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-members-limit
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/membertracking/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-membertracking
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/roles/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-roles
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/structures/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-structures
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/wallets/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-wallets
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/wallets/{division}/journal/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-wallets-division-journal
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/corporations/{corporation_id}/wallets/{division}/transactions/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-corporations-corporation-id-wallets-division-transactions
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/dogma/attributes/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-dogma-attributes
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/dogma/attributes/{attribute_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-dogma-attributes-attribute-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/dogma/effects/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-dogma-effects
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/dogma/effects/{effect_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-dogma-effects-effect-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fleets/{fleet_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fleets-fleet-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fleets/{fleet_id}/members/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fleets-fleet-id-members
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fleets/{fleet_id}/wings/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fleets-fleet-id-wings
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fleets/{fleet_id}/wings/{wing_id}/squads/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fleets-fleet-id-wings-wing-id-squads
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fw/leaderboards/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fw-leaderboards
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fw/leaderboards/characters/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fw-leaderboards-characters
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fw/leaderboards/corporations/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fw-leaderboards-corporations
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fw/stats/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fw-stats
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fw/systems/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fw-systems
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/fw/wars/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-fw-wars
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/incursions/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-incursions
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/industry/facilities/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-industry-facilities
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/industry/systems/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-industry-systems
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/insurance/prices/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-insurance-prices
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/killmails/{killmail_id}/{killmail_hash}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-killmails-killmail-id-killmail-hash
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/loyalty/stores/{corporation_id}/offers/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-loyalty-stores-corporation-id-offers
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/groups/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-groups
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/groups/{market_group_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-groups-market-group-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/prices/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-prices
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/structures/{structure_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-structures-structure-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/{region_id}/history/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-region-id-history
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/{region_id}/orders/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-region-id-orders
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/markets/{region_id}/types/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-markets-region-id-types
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/opportunities/groups/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-opportunities-groups
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/opportunities/groups/{group_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-opportunities-groups-group-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/opportunities/tasks/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-opportunities-tasks
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/opportunities/tasks/{task_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-opportunities-tasks-task-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/route/{origin}/{destination}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-route-origin-destination
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/search/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-search
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/sovereignty/campaigns/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-sovereignty-campaigns
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/sovereignty/map/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-sovereignty-map
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/sovereignty/structures/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-sovereignty-structures
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/status/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-status
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/ui/autopilot/waypoint/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-ui-autopilot-waypoint
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/ui/openwindow/contract/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-ui-openwindow-contract
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/ui/openwindow/information/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-ui-openwindow-information
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/ui/openwindow/marketdetails/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-ui-openwindow-marketdetails
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/ui/openwindow/newmail/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-ui-openwindow-newmail
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/bloodlines/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-bloodlines
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/categories/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-categories
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/categories/{category_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-categories-category-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/constellations/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-constellations
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/constellations/{constellation_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-constellations-constellation-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/factions/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-factions
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/graphics/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-graphics
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/graphics/{graphic_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-graphics-graphic-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/groups/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-groups
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/groups/{group_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-groups-group-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/moons/{moon_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-moons-moon-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/names/
+  method: POST
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-names
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/planets/{planet_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-planets-planet-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/races/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-races
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/regions/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-regions
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/regions/{region_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-regions-region-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/schematics/{schematic_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-schematics-schematic-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/stargates/{stargate_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-stargates-stargate-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/stars/{star_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-stars-star-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/stations/{station_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-stations-station-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/structures/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-structures
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/structures/{structure_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-structures-structure-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/system_jumps/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-system-jumps
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/system_kills/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-system-kills
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/systems/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-systems
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/systems/{system_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-systems-system-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/types/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-types
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/universe/types/{type_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-universe-types-type-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/wars/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-wars
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/wars/{war_id}/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-wars-war-id
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
+- group: eve-swagger-interface-0-5-5
+  url_pattern: /latest/wars/{war_id}/killmails/
+  method: GET
+  encoding: json
+  host:
+  - https://esi.tech.ccp.is
+  concurrent_calls: 1
+  extra_config:
+    provider: ccp.is
+    description: An OpenAPI for EVE Online
+    version: 0.5.5
+    slug: eve-swagger-interface-0-5-5-latest-wars-war-id-killmails
+    schemes:
+    - https
+    produces:
+    - json
+    hosts:
+    - https://esi.tech.ccp.is
+    topics:
+    - media
