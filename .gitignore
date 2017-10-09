@@ -50,9 +50,11 @@ server.rsa.key
 
 panicparse
 
-shared/data/influxdb/wal
-shared/data/influxdb/wal/
-shared/data/influxdb/wal/**
+shared/data/influxdb/data
+shared/data/influxdb/meta
+
+shared/data/grafana/lib
+shared/data/grafana/log
 
 ..bfg-report
 ..bfg-report/

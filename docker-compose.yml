@@ -121,6 +121,8 @@ services:
     container_name: etcd-1
     image: quay.io/coreos/etcd:v3.1.10
     entrypoint: /usr/local/bin/etcd
+    volumes:
+    - ./shared/data/etcd:/data
     command:
     - '--name=etcd-1'
     - '--initial-advertise-peer-urls=http://etcd-1:2380'
@@ -139,6 +141,8 @@ services:
     entrypoint: /usr/local/bin/etcd
     # extra_hosts:
     #   - "dockerhost:$DOCKERHOST"
+    volumes:
+    - ./shared/data/etcd:/data
     command:
     - '--name=etcd-2'
     - '--initial-advertise-peer-urls=http://etcd-2:2380'
@@ -157,6 +161,8 @@ services:
     entrypoint: /usr/local/bin/etcd
     # extra_hosts:
     #   - "dockerhost:$DOCKERHOST"
+    volumes:
+    - ./shared/data/etcd:/data
     command:
     - '--name=etcd-3'
     - '--initial-advertise-peer-urls=http://etcd-3:2380'
