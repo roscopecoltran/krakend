@@ -5,7 +5,7 @@
 # binary and no external dependencies are needed to run the service.
 
 KRAKEND_VERSION=$(shell git describe --always --long --dirty --tags)
-# BIN_NAME=krakend-jwt-l${KRAKEND_VERSION}
+BIN_NAME=krakend-jwt-${KRAKEND_VERSION}
 
 all: deps build
 

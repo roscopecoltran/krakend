@@ -5,7 +5,7 @@
 # binary and no external dependencies are needed to run the service.
 
 KRAKEND_VERSION=$(shell git describe --always --long --dirty --tags)
-BIN_NAME=krakend_gin_example_${KRAKEND_VERSION}
+BIN_NAME=krakend-gin-${KRAKEND_VERSION}
 
 all: deps build
 
@@ -19,5 +19,6 @@ deps:
 	go get "github.com/aviddiviner/gin-limit"
 
 build:
-	go build -a -ldflags="-X github.com/roscopecoltran/krakend/core.KrakendVersion=${KRAKEND_VERSION}" -o ${BIN_NAME}
+	@gox -verbose -os="darwin linux" -arch="amd64" -output="krakend-gin-{{.OS}}" .
+	# go build -a -ldflags="-X github.com/roscopecoltran/krakend/core.KrakendVersion=${KRAKEND_VERSION}" -o ${BIN_NAME}
 	@echo "You can now use ./${BIN_NAME}"
