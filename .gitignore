@@ -59,6 +59,8 @@ shared/data/grafana/log
 
 shared/data/etcd/member
 
+!shared/data/fake-api
+
 ..bfg-report
 ..bfg-report/
 ..bfg-report/**
