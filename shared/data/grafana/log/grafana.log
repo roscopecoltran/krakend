@@ -872,3 +872,28 @@ t=2017-10-09T10:41:12+0000 lvl=info msg="Initializing Alerting" logger=alerting.
 t=2017-10-09T10:41:12+0000 lvl=info msg="Initializing CleanUpService" logger=cleanup
 t=2017-10-09T10:41:12+0000 lvl=info msg="Initializing Stream Manager"
 t=2017-10-09T10:41:12+0000 lvl=info msg="Initializing HTTP Server" logger=http.server address=0.0.0.0:3000 protocol=http subUrl= socket=
+t=2017-10-09T12:08:17+0000 lvl=info msg="Starting Grafana" logger=server version=4.5.2 commit=ec2b0fe compiled=2017-09-22T08:34:03+0000
+t=2017-10-09T12:08:17+0000 lvl=info msg="Config loaded from" logger=settings file=/usr/share/grafana/conf/defaults.ini
+t=2017-10-09T12:08:17+0000 lvl=info msg="Config loaded from" logger=settings file=/etc/grafana/grafana.ini
+t=2017-10-09T12:08:17+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.data=/var/lib/grafana"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.logs=/var/log/grafana"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.plugins=/var/lib/grafana/plugins"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.log.mode=console"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Path Home" logger=settings path=/usr/share/grafana
+t=2017-10-09T12:08:17+0000 lvl=info msg="Path Data" logger=settings path=/var/lib/grafana
+t=2017-10-09T12:08:17+0000 lvl=info msg="Path Logs" logger=settings path=/var/log/grafana
+t=2017-10-09T12:08:17+0000 lvl=info msg="Path Plugins" logger=settings path=/var/lib/grafana/plugins
+t=2017-10-09T12:08:17+0000 lvl=info msg="Initializing DB" logger=sqlstore dbtype=sqlite3
+t=2017-10-09T12:08:17+0000 lvl=info msg="Starting DB migration" logger=migrator
+t=2017-10-09T12:08:17+0000 lvl=info msg="Executing migration" logger=migrator id="copy data account to org"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Skipping migration condition not fulfilled" logger=migrator id="copy data account to org"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Executing migration" logger=migrator id="copy data account_user to org_user"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Skipping migration condition not fulfilled" logger=migrator id="copy data account_user to org_user"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Starting plugin search" logger=plugins
+t=2017-10-09T12:08:17+0000 lvl=info msg="Registering plugin" logger=plugins name=Clock
+t=2017-10-09T12:08:17+0000 lvl=info msg="Initializing Alerting" logger=alerting.engine
+t=2017-10-09T12:08:17+0000 lvl=info msg="Initializing CleanUpService" logger=cleanup
+t=2017-10-09T12:08:17+0000 lvl=info msg="Initializing Stream Manager"
+t=2017-10-09T12:08:17+0000 lvl=info msg="Initializing HTTP Server" logger=http.server address=0.0.0.0:3000 protocol=http subUrl= socket=
+t=2017-10-09T12:10:29+0000 lvl=info msg="Shutdown started" logger=server code=0 reason="system signal: terminated"
+t=2017-10-09T12:10:29+0000 lvl=info msg="stopped http server" logger=http.server

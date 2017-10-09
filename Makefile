@@ -14,6 +14,10 @@ deps:
 	go get -u github.com/mmcdole/gofeed
 	go get -u github.com/coreos/etcd/client
 	go get -u github.com/roscopecoltran/filter
+	go get -u github.com/mattn/goreman
+	go get -u github.com/mitchellh/gox
+	go get -u github.com/Masterminds/glide
+	go get -u github.com/golang/dep/cmd/dep
 
 test:
 	go fmt ./...
@@ -25,19 +29,22 @@ benchmark:
 
 build: build_gin_example build_dns_example build_mux_example build_gorilla_example build_negroni_example build_httpcache_example build_rss_example build_jwt_example build_etcd_example
 
-gin-docker: kraken-gin gin-run-docker
+gin-docker: kraken-gin kraken-jwt gin-run-docker
 
 gin: kraken-gin gin-run-local 
 
 # for bash: gox -verbose -os="darwin" -arch="amd64" -output="{{.Dir}}" $(glide novendor)
 kraken-gin:
-	gox -verbose -os="darwin linux" -arch="amd64" -output="./bin/krakend-gin-{{.OS}}" ./cmd/gin-etcd
+	gox -verbose -os="darwin linux" -arch="amd64" -output="./cmd/gin-etcd/bin/krakend-gin-{{.OS}}" ./cmd/gin-etcd
+
+kraken-jwt:
+	gox -verbose -os="darwin linux" -arch="amd64" -output="./cmd/gin-jwt/bin/krakend-jwt-{{.OS}}" ./cmd/gin-jwt
 
 gin-darwin:
 	gox -verbose -os="darwin" -arch="amd64" -output="./bin/krakend-gin-{{.OS}}" ./cmd/gin-etcd
 
-kraken-jwt:
-	gox -verbose -os="darwin" -arch="amd64" -output="./bin/krakend-jwt-{{.OS}}" ./cmd/gin-jwt
+jwt-darwin:
+	gox -verbose -os="darwin" -arch="amd64" -output="./bin/krakend-jwt-{{.OS}}" ./cmd/gin-etcd
 
 gin-run-local:
 	# replace by osname variable

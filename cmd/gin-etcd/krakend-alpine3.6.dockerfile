@@ -6,7 +6,7 @@ ARG GOSU_VERSION=${GOSU_VERSION:-"1.10"}
 ADD https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64 /usr/local/sbin/gosu
 
 EXPOSE 8080
-COPY ./krakend-gin-linux /app/krakend
+COPY ./bin/krakend-gin-linux /app/krakend
 
 # Install runtime dependencies & create runtime user
 RUN chmod +x /usr/local/sbin/gosu \
