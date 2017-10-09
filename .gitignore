@@ -50,6 +50,9 @@ server.rsa.key
 
 panicparse
 
+shared/data/influxdb/wal
+shared/data/influxdb/wal/
+shared/data/influxdb/wal/**
 
 ..bfg-report
 ..bfg-report/
